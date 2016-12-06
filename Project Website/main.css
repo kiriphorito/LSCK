@@ -1,37 +1,56 @@
-/* Space out content a bit */
+html {
+  height: 100%;
+}
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
+.content {
+  flex: 1;
+}
+
+.uclimage{
+  padding-bottom: 10px;
+}
+
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+footer {
+  margin-top: 50px;
+  right: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  background-color: #f2f2f2;
+  padding-top: 10px;
+}
+
+.container {
+  max-width: 900px;
+}
+
 .header,
 .marketing,
-.footer {
-  padding-right: 15px;
-  padding-left: 15px;
-}
 
 /* Custom page header */
 .header {
   padding-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
 }
-/* Make the masthead heading the same height as the navigation */
+
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-/* Customize container */
 @media (min-width: 900px) {
   .container {
     max-width: 900;

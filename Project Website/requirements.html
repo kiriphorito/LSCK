@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LSCK</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="main.css" rel="stylesheet">
+  <style>
+
+    div.uclimage{
+      padding-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">LSCK</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav pull-right">
+        <li><a href="background.html">Background</a></li>
+        <li class="active"><a href="requirements.html">Requirements</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="prototyping.html">Prototyping</a></li>
+        <li><a href="testing.html">Testing</a></li>
+        <li><a href="progress.html">Progress</a></li>
+        <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
+      </ul>
+      <div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <h1>Requirements and Use Cases</h1><br>
+  <p>In this page we will talk about our client and the task that they have assigned us.</p>
+  <h3>Initial Requirements</h3>
+  <p>The clients for this project are the Visual Studio team from Microsoft and Dean Mohamedally. The Visual Studio Team at Microsoft produces a variety of software and services for developers around the world to use such as Visual Studio Team Services (VSTS), Visual Studio Code and Visual Studio IDE. We are developing an extension for Visual Studio IDE.</p>
+  <h3>Gathering Requirements</h3>
+  <p>Imagine there is a new start-up that wishes to showcase their new project with a few snippets of code and paraphrasing other sections. They could have to take time out of their schedule to first trawl through their code base to find the snippets of code, add comments or a paraphrase and with this develop a website that include this along with images and videos. </p>
+  <p>This time could have been spent further developing the project and an extension could have generated the website. All you had to do was link the files and add tags to the code that you wanted to include as a snippet. This is what we want to investigate and achieve.</p>
+<h3>Negotiated Requirements</h3>
+<table class="table table-condensed">
+				        <tbody>
+				            <tr class="c6" style="background-color:#ccc">
+				               <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c13 c0">ID</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c13 c0">Description</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c0 c13">Type</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c13 c0">Priority</span></p>
+				               </td>
+				            </tr>
+				            <tr class="c6">
+				               <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">1</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Design wearable application on Microsoft Band 2 that will help suggest a smart generated playlist on iPhone</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+  			               <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">2</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Use C# in Visual studio to code for the Band</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+    		               <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">3</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Use a combination of Objective-C and Swift in XCode to code for the iPhone application</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+    		               <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">4</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Implement Spotify API: login and access rights to songs and playlist in the iPhone application</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+      	               <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">5</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Run Ruby Client for Spotify API: ensures valid token is exchanged hourly with Spotify’s Web App so User stays logged in.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+                    </tr>
+                    <tr class="c6">
+      	               <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">6</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Harvest data from sensors on the Microsoft Band 2 using the Band SDK.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+                    </tr>
+                    <tr class="c6">
+      	               <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">7</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Heart rate monitor: measures heart rate, can tell us whether the user is relaxed or stressed, or is running</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+                    </tr>
+                    <tr class="c6">
+      	               <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">8</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Accelerometer: detects motion, used for calculating number of steps. Can tell us whether static or movement scenario.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">9</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">GPS: tracks location, refines distance and speed calculations, useful for determining static/active scenarios.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">10</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Ambient light sensor: determines whether day or night, natural or artificial light (i.e. outdoors or indoors).</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">11</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Galvanic skin response sensors: determines whether user is wearing watch. This can act as on/off for watch</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">12</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Combination of sensor data will be used to match  scenarios which will determine the playlist being streamed.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">13</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Pages in the app should load within 2 seconds.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Non-Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">14</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Streaming of music should commence as soon as possible, preferably less than 10 seconds from when the app is opened.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Non-Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+  			                  <p class="c4"><span class="c2 c0">15</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Ensure that any personal data entered by user is encrypted and client ID transmission is encrypted.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Non-Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+    		                  <p class="c4"><span class="c2 c0">16</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">The UI must be simple and easy to use. This is done by not overloading pages with content.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Non-Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Must Have</span></p>
+				               </td>
+				            </tr>
+
+
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">A</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Microphone: monitors ambient noise, thus decreasing or increasing volume in headphones.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Should Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+  			                  <p class="c4"><span class="c2 c0">B</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Access Warner Music's Song Metadata Database to gain track info.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Should Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+    		                  <p class="c4"><span class="c2 c0">C</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Use more advanced festures such as Sub-Genre and Tempo to determine what tracks to play.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Should Have</span></p>
+				               </td>
+				            </tr>
+
+
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+  			                  <p class="c4"><span class="c2 c0">a</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Map generated by GPS can determine daily routine, or if the user is traveling by train (if the path taken is over train tracks).</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Could Have</span></p>
+				               </td>
+				            </tr>
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+    		                  <p class="c4"><span class="c2 c0">b</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Barometer: detects changes in atmospheric pressure, thus determining vertical distance travelled. Useful for hiking.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Could Have</span></p>
+				               </td>
+				            </tr>
+
+
+                    <tr class="c6">
+                       <td class="c17" colspan="1" rowspan="1">
+      	                  <p class="c4"><span class="c2 c0">100</span></p>
+				               </td>
+				               <td class="c10" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Extend the functionality to the Apple Watch.</span></p>
+				               </td>
+				               <td class="c5" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Functional</span></p>
+				               </td>
+				               <td class="c16" colspan="1" rowspan="1">
+				                  <p class="c4"><span class="c2 c0">Would (Won't) Have</span></p>
+				               </td>
+				            </tr>
+
+				         </tbody>
+				      </table>
+<h3>Use Cases</h3>
+</div>
+<footer class="container-fluid text-center">
+  <div class="container">
+    <div class="uclimage">
+  <a href="http://ucl.ac.uk"><img id="ucl" src="images/ucl-logo.png"></a>
+</div>
+  <p>Copyright © 2016 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>
