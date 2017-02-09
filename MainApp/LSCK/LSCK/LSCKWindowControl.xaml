@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="LSCK.LSCKWindowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             Foreground="{DynamicResource VsBrush.WindowText}"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300"
+             Name="MyToolWindow" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" BorderThickness="2,0,0,0" MinWidth="300" MinHeight="300" MaxWidth="300" MaxHeight="300">
+    <Grid>
+        <TabControl x:Name="tabs"  Background="#FF86D0E6" >
+            <TabItem Header="Add Code" BorderBrush="#FF4386F4">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="24" FontFamily="Georgia" FontWeight="SemiBold">LSCK</TextBlock>
+                    <ComboBox x:Name="combo"  Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small">
+                        <ComboBoxItem>C#</ComboBoxItem>
+                        <ComboBoxItem IsSelected="True">Java</ComboBoxItem>
+                        <ComboBoxItem>C</ComboBoxItem>
+                        <ComboBoxItem>C++</ComboBoxItem>
+                        <ComboBoxItem>PHP</ComboBoxItem>
+                        <ComboBoxItem>Python</ComboBoxItem>
+                        <ComboBoxItem>Javascript</ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock Margin="110,10,96,10" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold" Text="Section Title" Height="22" Width="86"/>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="combo2" HorizontalAlignment="Left" Width="143" Margin="5" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
+                    </StackPanel>
+                    <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold">Add Comment or Brief Description</TextBlock>
+                    <TextBox x:Name="textBox" Height="36" TextWrapping="Wrap" Text="Comment" Background="#FFA9DFF0" BorderBrush="#FF62A7CF" FontFamily="Sitka Small" Foreground="#FF0C0F0D"/>
+                    <Button Content="Add" Width="120" Height="32" x:Name="button1" Margin="90,10,82,10" Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Auto add" BorderBrush="#FF19461D">
+
+                <Button Content="Run" x:Name="AutoSearch"   HorizontalAlignment="Right" Width="100" Margin="0,217,96,31" Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+
+            </TabItem>
+            
+            <TabItem Header="Files" BorderBrush="#FF19461D">
+                <Grid Margin="10">
+                    <TextBlock Margin="0,10,216,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Sections</TextBlock>
+                    <TextBlock Margin="1,102,237,-82" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Files</TextBlock>
+                    <Button Content="Add" x:Name="addDoc"  HorizontalAlignment="Right" Width="100" Margin="0,197,88,30" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <Button Content="Delete" x:Name="deleteDoc"  HorizontalAlignment="Right" Width="100" Margin="0,227,23,0" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <Button Content="Edit" x:Name="editDoc"  HorizontalAlignment="Right" Width="100" Margin="0,227,151,0" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <ListBox x:Name="listbox1" Margin="0,31,0,155"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>ListBox Item #1</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>ListBox Item #2</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>ListBox Item #3</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                    <ListBox x:Name="listbox2" Margin="0,122,0,64"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>ListBox Item #1</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>ListBox Item #2</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>ListBox Item #3</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Website" BorderBrush="#FF19461D">
+                <StackPanel Orientation="Vertical">
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Upload" BorderBrush="#FF19461D">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Section marker:</TextBlock>
+                        <TextBlock Margin="30,0">Double comment+</TextBlock>
+                        <TextBox x:Name="marker"  Height="20"  Text="/" Margin="-45,0" MaxLength="5" Width="49" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Auto code:</TextBlock>
+                        <TextBlock Margin="25,0"></TextBlock>
+                        <TextBox x:Name="marker2"  Height="20"  Text="//s-" Margin="-45,0" MaxLength="5" Width="61" />
+                        <TextBlock Margin="35,0">+ Section title</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+</UserControl>
