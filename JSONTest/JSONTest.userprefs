@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{16977B02-2030-4845-8350-58579618DA76}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="JSONTest/FileHandler.cs">
+    <Files>
+      <File FileName="JSONTest/Program.cs" Line="35" Column="16" />
+      <File FileName="JSONTest/FJController.cs" Line="91" Column="28" />
+      <File FileName="JSONTest/FileHandler.cs" Line="12" Column="46" />
+      <File FileName="JSONTest/HTMLGenerator.cs" Line="19" Column="44" />
+      <File FileName="JSONTest/Snippet.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.JSONTest PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
