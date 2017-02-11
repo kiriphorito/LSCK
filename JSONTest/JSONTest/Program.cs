@@ -10,15 +10,64 @@ namespace JSONTest
         public static void Main(string[] args)
         {
 
+            //JSON json = new JSON(Environment.CurrentDirectory , "website");
+            //json.newPage("hello kitty");
+            //json.insertSection("Hello vi!");
+
+            //json.setPage("Hello vi!", "home");
+
+            //json.deleteSection("Hello world!");
+
+            //json.insertSnippet("Hello World!" , 2 , "html" , "Programming is cool");
+
+            //json.deleteSnippet("Hello World!" , 2);
+
+            //json.swapSnippet("Hello World!", 1, 2);
+
+            //json.deleteSection("Goodbye vi!");
+
+            //json.swapSection("Hello World!" , "Goodbye vi!");
 
             //StreamReader reader = new StreamReader("0.txt");
             //string fileJson = reader.ReadToEnd();
             //Console.Write(fileJson);
 
-            FJController fjController = new FJController(Environment.CurrentDirectory);
-            //String test = "<html>\n<body>\n  Hello World\n</body>\n</html>";
-            //String test2 = "<?php\n  echo 'Hello World' \n?>";
-            //fjController.insert("Hello World Test" , "HTML" , "The world's first PHP page" , test);
+            FJController fjController = FJController.GetInstance;
+            FJController fjController2 = FJController.GetInstance;
+
+            if (fjController == fjController2)
+            {
+                Console.WriteLine("SAME INSTANCE");
+            }
+
+            //fjController.insertPageName("Kiriphorito");
+            //fjController.insertSection("Goodbye World!");
+            //fjController.setPage("Hello World!" , "home");
+            //fjController.nullPage("Hello World!");
+
+            String test1 = "for (int i=0;i < total;i++){\n    printf(\"blah\");\n}";            //String test2 = "<?php\n  echo 'Hello World' \n?>";
+            String test2 = "<html>\n<body>\n    Hello World\n</body>\n</html>";
+            String test3 = "<?php\n    echo \"Hello World\"\n?>";
+            String test4 = "<?php\n    echo \"Goodbye Wrold\"\n?>";
+
+            //fjController.insertSection("Hello World!");
+            //fjController.swapSection("Hello World!", "Goodbye World!");
+
+
+
+            //fjController.insertSnippet("Hello World!", "c" , "We invented the for loop" , test1);
+            //fjController.insertSnippet("Hello World!", "html", "The world's first html!", test2);
+            //fjController.insertSnippet("Hello World!", "php", "PHP yay!", test3);
+            //fjController.insertSnippet("Hello World!", 2, "fortan", "Hello", test4);
+
+            //fjController.insertSnippet("Goodbye World!", "c" , "We invented the for loop" , test1);
+            //fjController.insertSnippet("Goodbye World!", "html", "The world's first html!", test2);
+            //fjController.insertSnippet("Goodbye World!", "php", "PHP yay!", test3);
+            //fjController.insertSnippet("Goodbye World!", 2, "fortan", "Hello", test4);
+
+            //fjController.swapSnippet(2, 4, "Hello World!");
+
+            //fjController.insert("For Loop" , "c" , "We invented the for loop" , test);
             //fjController.insert("Hello World Test" , "FSharp" , "The world's first PHP page" , test2);
             //fjController.delete(2);
             //fjController.swap(2,4);
@@ -37,9 +86,19 @@ namespace JSONTest
             //test = test.Replace("<" , "blah");
             //Console.WriteLine(test);
 
-            HTMLGenerator html = new HTMLGenerator(fjController , "twilight" , true , Environment.CurrentDirectory + @"/presets" , Environment.CurrentDirectory + @"/generatedWebsite");
-            html.writeHTML();
-            Console.WriteLine(html.generateHTML());
+            fjController.setAceTheme("monokai");
+
+            HTMLGenerator html = new HTMLGenerator(fjController , false , Environment.CurrentDirectory + @"/presets" , Environment.CurrentDirectory + @"/generatedWebsite");
+            html.generateWebsite();
+            //html.writeHTML();
+            //Console.WriteLine(html.generateHTML());
+
+            //FileHandler fh = new FileHandler();
+            //fh.swap(1 , 2 , "Hello World" , Environment.CurrentDirectory + @"/data");
+            //fh.insertSnippet(test1, 1, "Hello World", Environment.CurrentDirectory + @"/data");
+            //fh.insertSnippet(test2, 2, "Hello World", Environment.CurrentDirectory + @"/data");
+            //fh.insertSnippet(test3, 3, "Hello World", Environment.CurrentDirectory + @"/data");
+            //fh.delete(2, "Hello World", Environment.CurrentDirectory + @"/data");
         }
     }
 }

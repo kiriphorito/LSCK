@@ -41,7 +41,8 @@
     <Compile Include="HTMLGenerator.cs" />
     <Compile Include="FJController.cs" />
     <Compile Include="FileHandler.cs" />
-    <Compile Include="Snippet.cs" />
+    <Compile Include="Section.cs" />
+    <Compile Include="LSCKExceptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

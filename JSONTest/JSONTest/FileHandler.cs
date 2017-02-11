@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Collections.Generic;
 
 namespace JSONTest
@@ -7,47 +6,52 @@ namespace JSONTest
     public class FileHandler
     {
 
-        public String read(String fileDir)
+        public string read(string fileDir)
         {
-            StreamReader reader = new StreamReader(fileDir);
+            var reader = new StreamReader(fileDir);
             return reader.ReadToEnd();
         }
 
         //Using List<String>
-        public void insert(List<String> code , int index , String fileDir , int total)
+        public void insertSnippet(List<string> code, int index, string section, string fileDir)
         {
             string codeString = string.Join("\n", code.ToArray());
-            insert(codeString , index , fileDir , total);
+            insertSnippet(codeString , index , section , fileDir);
         }
 
         //Using String
-        public void insert(String code, int index, String fileDir , int total)
+        public void insertSnippet(string code, int index, string section, string fileDir)
         {
-            for (int x = total; x >= index; x--)
+            string sectionFD = fileDir + "/" + section.ToLower().Replace(" ", "") + "-";
+            string[] files = Directory.GetFiles(fileDir + "/", string.Concat(section.ToLower().Replace(" ", "") + "*"));
+            for (int x = files.Length; x >= index; x--)
             {
-                String oldFile = String.Concat(fileDir + x + ".txt");
-                String newFile = String.Concat(fileDir + (x + 1) + ".txt");
-                System.IO.File.Move(oldFile, newFile);
+                string oldFile = sectionFD + x + ".txt";
+                string newFile = sectionFD + (x + 1) + ".txt";
+                File.Move(oldFile, newFile);
             }
-            String fileName = String.Concat(fileDir, index + ".txt");
+            string fileName = sectionFD + index + ".txt";
             File.WriteAllText(fileName, code);
         }
 
-        public void swap(String fileDir , int first , int second)
+        public void swap(int first , int second , string section , string fileDir)
         {
-            System.IO.File.Move(fileDir + first + ".txt" , fileDir + first + ".txt.bak"); 
-            System.IO.File.Move(fileDir + second + ".txt", fileDir + first + ".txt");
-            System.IO.File.Move(fileDir + first + ".txt.bak", fileDir + second + ".txt");
+            string sectionFD = fileDir + "/" + section.ToLower().Replace(" ", "") + "-";
+            File.Move(sectionFD + first + ".txt" , sectionFD + first + ".txt.bak"); 
+            File.Move(sectionFD + second + ".txt", sectionFD + first + ".txt");
+            File.Move(sectionFD + first + ".txt.bak", sectionFD + second + ".txt");
         }
 
-        public void delete(int index , int total , String fileDir)
+        public void delete(int index , string section , string fileDir)
         {
-            File.Delete(fileDir + index + ".txt");
-            for (int x = index + 1; x <= total + 1 ; x++)
+            string sectionFD = fileDir + "/" + section.ToLower().Replace(" ", "") + "-";
+            File.Delete(sectionFD + index + ".txt");
+            string[] files = Directory.GetFiles(fileDir + "/", string.Concat(section.ToLower().Replace(" ", "") + "*"));
+            for (int x = index + 1; x <= files.Length + 1 ; x++)
             {
-                String oldFile = String.Concat(fileDir + x + ".txt");
-                String newFile = String.Concat(fileDir + (x - 1) + ".txt");
-                System.IO.File.Move(oldFile, newFile); 
+                string oldFile = string.Concat(sectionFD + x + ".txt");
+                string newFile = string.Concat(sectionFD + (x - 1) + ".txt");
+                File.Move(oldFile, newFile); 
             }
         }
     }

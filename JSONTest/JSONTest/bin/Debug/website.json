@@ -1,0 +1,64 @@
+{
+  "title": "mono-sgen32",
+  "ace_theme": "monokai",
+  "page_titles": [
+    "home",
+    "Kiriphorito"
+  ],
+  "sections": [
+    {
+      "sectionName": "Hello World!",
+      "page": "home",
+      "position": 1,
+      "snippets": [
+        {
+          "position": 1,
+          "language": "c",
+          "comment": "We invented the for loop"
+        },
+        {
+          "position": 2,
+          "language": "php",
+          "comment": "Hello"
+        },
+        {
+          "position": 3,
+          "language": "html",
+          "comment": "The world's first html!"
+        },
+        {
+          "position": 4,
+          "language": "php",
+          "comment": "PHP yay!"
+        }
+      ]
+    },
+    {
+      "sectionName": "Goodbye World!",
+      "page": "home",
+      "position": 2,
+      "snippets": [
+        {
+          "position": 1,
+          "language": "c",
+          "comment": "We invented the for loop"
+        },
+        {
+          "position": 2,
+          "language": "fortan",
+          "comment": "Hello"
+        },
+        {
+          "position": 3,
+          "language": "html",
+          "comment": "The world's first html!"
+        },
+        {
+          "position": 4,
+          "language": "php",
+          "comment": "PHP yay!"
+        }
+      ]
+    }
+  ]
+}
