@@ -40,6 +40,12 @@ namespace JSONTest
                 Console.WriteLine("SAME INSTANCE");
             }
 
+            //fjController.insertFile("Hello World!", "A random txt file.", "/Users/sampham/Documents/Test1.txt");
+
+            //fjController.deleteSnippet("Hello World!", 5);
+
+            //fjController.deleteSection("Hello World!");
+
             //fjController.insertPageName("Kiriphorito");
             //fjController.insertSection("Goodbye World!");
             //fjController.setPage("Hello World!" , "home");
@@ -86,9 +92,9 @@ namespace JSONTest
             //test = test.Replace("<" , "blah");
             //Console.WriteLine(test);
 
-            fjController.setAceTheme("monokai");
+            //fjController.setAceTheme("monokai");
 
-            HTMLGenerator html = new HTMLGenerator(fjController , false , Environment.CurrentDirectory + @"/presets" , Environment.CurrentDirectory + @"/generatedWebsite");
+            HTMLGenerator html = new HTMLGenerator(fjController , false , Environment.CurrentDirectory, Environment.CurrentDirectory + @"/generatedWebsite");
             html.generateWebsite();
             //html.writeHTML();
             //Console.WriteLine(html.generateHTML());

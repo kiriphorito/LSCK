@@ -8,14 +8,14 @@ namespace JSONTest
     public class HTMLGenerator
     {
         private FJController fjController;
-        private readonly String presetDir;
+        private readonly String fileDir;
         private readonly String generateDir;
         private bool CDN;
 
-        public HTMLGenerator(FJController fjController, bool CDN, string presetDir, string generateDir)
+        public HTMLGenerator(FJController fjController, bool CDN, string fileDir, string generateDir)
         {
             this.fjController = fjController;
-            this.presetDir = presetDir;
+            this.fileDir = fileDir;
             this.generateDir = generateDir;
             this.CDN = CDN;
         }
@@ -43,8 +43,8 @@ namespace JSONTest
             }
             foreach (string pageTitle in fjController.getPageTitles())
             {
-                Console.WriteLine(pageTitle);
-                Console.WriteLine(generateHTML(pageTitle));
+                //Console.WriteLine(pageTitle);
+                //Console.WriteLine(generateHTML(pageTitle));
                 writeHTML(generateHTML(pageTitle), pageTitle);
             }
         }
@@ -137,12 +137,25 @@ namespace JSONTest
                         code[y] = code[y].Replace("<", "&lt;");
                     }
                     htmlCL.Add("            <p>" + snippet.comment + "</p>");
-                    htmlCL.Add("            <div id = \"editor" + ++x + "\">" + code[0]);
-                    for (int y = 1; y < code.Count - 1; y++)
+                    if (snippet.language != "file")
                     {
-                        htmlCL.Add(code[y]);
+                        htmlCL.Add("            <div id = \"editor" + ++x + "\">" + code[0]);
+                        for (int y = 1; y < code.Count - 1; y++)
+                        {
+                            htmlCL.Add(code[y]);
+                        }
+                        htmlCL.Add(code[code.Count - 1] + "</div>");
                     }
-                    htmlCL.Add(code[code.Count - 1] + "</div>");
+                    else
+                    {
+                        if (!Directory.Exists(generateDir + @"/userfiles"))
+                        {
+                            Directory.CreateDirectory(generateDir + @"/userfiles");
+                        }
+                        Console.WriteLine("Write File!");
+                        File.Copy(fileDir + @"/data/userfiles/" + code[0], generateDir + @"/userfiles/" + code[0]);
+                        htmlCL.Add("            <center><a href=\"userfiles/" + code[0] + "\"/>" + code[0] + "</a></center>");
+                    }
                     htmlCL.Add("            <br>");
                 }
             }
@@ -159,7 +172,7 @@ namespace JSONTest
 
             htmlCL.Add("    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js\" type=\"text/javascript\" charset=\"utf-8\"></script>");
             htmlCL.Add("    <script>");
-            htmlCL.Add("        for (x = 1 ; x <= " + snippets.Count + " ; x++){");
+            htmlCL.Add("        for (x = 1 ; x <= " + snippets.Count(snippet => snippet.language != "file") + " ; x++){");
             htmlCL.Add("        var editor = ace.edit(\"editor\" + x);");
             htmlCL.Add("            editor.getSession().setUseWorker(false);");
             htmlCL.Add("            editor.setTheme(\"ace/theme/" + aceTheme + "\");");

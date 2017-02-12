@@ -121,7 +121,6 @@ namespace JSONTest
             for (int x = 1; x <= sectionNames.Count; x++)
             {
                 Section section = new Section();
-                string currentSection = "";
                 foreach (string sectionName in sectionNames)
                 {
                     if (json.getSectionPosition(sectionName) == x)
@@ -131,7 +130,7 @@ namespace JSONTest
                     }
                 }
                 List<Snippet> listOfSnippets = new List<Snippet>();
-                for (int y = 1; y <= json.getNumberOfSnippets(currentSection); y++)
+                for (int y = 1; y <= json.getNumberOfSnippets(section.sectionName); y++)
                 {
                     listOfSnippets.Add(readSnippet(section.sectionName, y));
                 }
@@ -168,6 +167,10 @@ namespace JSONTest
 
         public void deleteSection(string section)
         {
+            for (int x = json.getNumberOfSnippets(section); x >= 1; x--)
+            {
+                deleteSnippet(section, x);
+            }
             json.deleteSection(section);
         }
 
@@ -186,7 +189,13 @@ namespace JSONTest
         public void insertSnippet(string section, int index, string language, string comment, string code)
         {
             fileHandler.insertSnippet(code, index, section, fileDir + @"/data/");
-            json.insertSnippet(section, index, language, comment);
+            json.insertSnippet(section, index, language, comment);   
+        }
+
+        public void insertFile(string section, int index, string comment, string code)
+        {
+            fileHandler.insertFile(code, index, section, fileDir + @"/data/");
+            json.insertSnippet(section, index, "file", comment);
         }
 
         //Add to the end of the list
@@ -200,6 +209,12 @@ namespace JSONTest
         {
             fileHandler.insertSnippet(code, json.getNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
             json.insertSnippet(section, json.getNumberOfSnippets(section) + 1, language, comment);
+        }
+
+        public void insertFile(string section, string comment, string userFileDir)
+        {
+            fileHandler.insertFile(userFileDir, json.getNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
+            json.insertSnippet(section, json.getNumberOfSnippets(section) + 1, "file", comment);
         }
 
         //Swaps two different entries

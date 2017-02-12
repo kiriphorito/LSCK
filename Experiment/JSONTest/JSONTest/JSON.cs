@@ -48,7 +48,7 @@ namespace JSONTest
                 JSONFile.title = Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName);
                 JSONFile.ace_theme = "monokai";
                 JSONFile.page_titles = new List<string>();
-                JSONFile.page_titles.Add("home");
+                JSONFile.page_titles.Add("index");
                 JSONFile.sections = new List<Section>();
                 writeJSON();
             }

@@ -13,7 +13,7 @@ namespace JSONTest
         }
 
         //Using List<String>
-        public void insertSnippet(List<string> code, int index, string section, string fileDir)
+        public void insertSnippet(string language, List<string> code, int index, string section, string fileDir)
         {
             string codeString = string.Join("\n", code.ToArray());
             insertSnippet(codeString , index , section , fileDir);
@@ -34,6 +34,17 @@ namespace JSONTest
             File.WriteAllText(fileName, code);
         }
 
+        public void insertFile(string code, int index, string section, string fileDir)
+        {
+            string userFile = Path.GetFileName(code);
+            if (!Directory.Exists(string.Concat(fileDir, @"userfiles/")))
+            {
+                Directory.CreateDirectory(string.Concat(fileDir, @"userfiles/"));
+            }
+            File.Copy(code, fileDir + @"userfiles/" + userFile);
+            insertSnippet(userFile, index, section, fileDir);
+        }
+
         public void swap(int first , int second , string section , string fileDir)
         {
             string sectionFD = fileDir + "/" + section.ToLower().Replace(" ", "") + "-";
@@ -45,6 +56,10 @@ namespace JSONTest
         public void delete(int index , string section , string fileDir)
         {
             string sectionFD = fileDir + "/" + section.ToLower().Replace(" ", "") + "-";
+            if (File.Exists(fileDir + @"/userfiles/" + read(sectionFD + index + ".txt").Split('\n')[0]))
+            {
+                File.Delete(fileDir + @"/userfiles/" + read(sectionFD + index + ".txt"));
+            }
             File.Delete(sectionFD + index + ".txt");
             string[] files = Directory.GetFiles(fileDir + "/", string.Concat(section.ToLower().Replace(" ", "") + "*"));
             for (int x = index + 1; x <= files.Length + 1 ; x++)

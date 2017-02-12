@@ -30,6 +30,11 @@
           "position": 4,
           "language": "php",
           "comment": "PHP yay!"
+        },
+        {
+          "position": 5,
+          "language": "file",
+          "comment": "A random txt file."
         }
       ]
     },

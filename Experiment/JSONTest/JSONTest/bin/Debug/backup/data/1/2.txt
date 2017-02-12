@@ -1,5 +1,0 @@
-<html>
-<body>
-  Hello World! Good day!
-</body>
-</html>
