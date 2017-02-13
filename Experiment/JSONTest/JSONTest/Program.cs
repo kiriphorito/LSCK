@@ -96,6 +96,8 @@ namespace JSONTest
 
             HTMLGenerator html = new HTMLGenerator(fjController , false , Environment.CurrentDirectory, Environment.CurrentDirectory + @"/generatedWebsite");
             html.generateWebsite();
+
+
             //html.writeHTML();
             //Console.WriteLine(html.generateHTML());
 

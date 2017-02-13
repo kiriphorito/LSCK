@@ -176,8 +176,10 @@ namespace JSONTest
             Console.WriteLine(firstElementIndex);
             Console.WriteLine(secondElementIndex);
             int tempPosition = JSONFile.sections[firstElementIndex].position;
+            string tempPage = JSONFile.sections[firstElementIndex].page;
             JSONFile.sections[firstElementIndex].position = JSONFile.sections[secondElementIndex].position;
-            JSONFile.sections[secondElementIndex].position = tempPosition;
+            JSONFile.sections[firstElementIndex].page = JSONFile.sections[secondElementIndex].page;
+            JSONFile.sections[secondElementIndex].page = tempPage;
             writeJSON();
         }
 
@@ -235,7 +237,7 @@ namespace JSONTest
             writeJSON();
         }
 
-        public int getNumberOfSnippets(String sectionName)
+        public int getNumberOfSnippets(string sectionName)
         {
             return JSONFile.sections[getSectionIndex(sectionName)].snippets.Count;
         }
@@ -257,7 +259,7 @@ namespace JSONTest
 
         public List<string> getPageSections(string page)
         {
-            List<string> sections = new List<string>();
+            var sections = new List<string>();
             foreach (Section section in JSONFile.sections)
             {
                 if (section.page == page)

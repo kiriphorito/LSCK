@@ -8,8 +8,8 @@ namespace JSONTest
     public class HTMLGenerator
     {
         private FJController fjController;
-        private readonly String fileDir;
-        private readonly String generateDir;
+        private readonly string fileDir;
+        private readonly string generateDir;
         private bool CDN;
 
         public HTMLGenerator(FJController fjController, bool CDN, string fileDir, string generateDir)
@@ -26,6 +26,20 @@ namespace JSONTest
             File.WriteAllText(path, htmlCode);
         }
 
+        private void deleteFolder(string dir)
+        {
+            var di = new DirectoryInfo(dir);
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo folder in di.GetDirectories())
+            {
+                deleteFolder(folder.FullName);
+                folder.Delete(true);
+            }
+        }
+
         public void generateWebsite()
         {
             if (!Directory.Exists(generateDir))
@@ -35,11 +49,19 @@ namespace JSONTest
             else
             {
                 //Clean out directory
-                DirectoryInfo di = new DirectoryInfo(generateDir);
-                foreach (FileInfo file in di.GetFiles())
-                {
-                    file.Delete();
-                }
+                deleteFolder(generateDir);
+            }
+            if (CDN == false)
+            {
+                Directory.CreateDirectory(generateDir + @"/styles");
+                File.Copy(fileDir + @"/presets/bootstrap.min.css" , generateDir + @"/styles/bootstrap.min.css");
+                Directory.CreateDirectory(generateDir + @"/styles/ace");
+                string sourcePath = fileDir + @"/presets/ace";
+                string destinPath = generateDir + @"/styles/ace";
+                foreach (string dirPath in Directory.GetDirectories(fileDir + @"/presets/ace", "*", SearchOption.AllDirectories))
+                    Directory.CreateDirectory(dirPath.Replace(sourcePath, destinPath));
+                foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
+                    File.Copy(newPath, newPath.Replace(sourcePath, destinPath), true);
             }
             foreach (string pageTitle in fjController.getPageTitles())
             {
@@ -51,10 +73,10 @@ namespace JSONTest
 
         public string generateHTML(string pageTitle)
         {
-            List<string> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
             List<Section> page = fjController.readPage(pageTitle);
-            List<Snippet> pageSnippets = fjController.snippetsOnly(page);
+            List<Snippet> pageSnippets = fjController.pageSnippetsOnly(page);
 
             htmlCL.Add(generateHead(fjController.getTitle()));
             htmlCL.Add(generateBody(page, fjController.getTitle(), pageTitle));
@@ -67,7 +89,7 @@ namespace JSONTest
 
         private string generateHead(string title)
         {
-            List<string> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
             htmlCL.Add("<!DOCTYPE html>");
             htmlCL.Add("<html lang=\"en\">");
@@ -76,7 +98,14 @@ namespace JSONTest
             htmlCL.Add("    <meta charset=\"utf-8\">");
             htmlCL.Add("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
             htmlCL.Add("    <title>" + title + "</title>");
-            htmlCL.Add("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" type=\"text/css\"/>");
+            if (CDN == true)
+            {
+                htmlCL.Add("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\"/>");
+            }
+            else 
+            {
+                htmlCL.Add("    <link rel=\"stylesheet\" href=\"styles/bootstrap.min.css\"/>");
+            }
             htmlCL.Add("    <link href=\"style.css\" rel=\"stylesheet\">");
             htmlCL.Add("</head>");
 
@@ -86,7 +115,7 @@ namespace JSONTest
 
         private string generateNavBar(string title, string pageTitle)
         {
-            List<string> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
             htmlCL.Add("    <nav class=\"navbar navbar-inverse navbar-default navbar-static-top\" role=\"navigation\">");
             htmlCL.Add("        <div class=\"container\">");
@@ -100,10 +129,10 @@ namespace JSONTest
             htmlCL.Add("                <a class=\"navbar-brand\" href=\"" + fjController.getPageTitles()[0].ToLower().Replace(" ", "") + ".html\">" + title + "</a>");
             htmlCL.Add("            </div>");
             htmlCL.Add("            <div id=\"navbar\" class=\"collapse navbar-collapse\">");
-            htmlCL.Add("                <ul class=\"nav navbar-nav navbar-right\">");
+            htmlCL.Add("                <ul class=\"nav navbar-nav navbar-left\">");
             for (int x = 1; x < fjController.getPageTitles().Count; x++)
             {
-                htmlCL.Add("                    <li>");
+                htmlCL.Add("                    <li" + ((fjController.getPageTitles()[x] == pageTitle) ? " class=\"active\"" : "") + ">");
                 htmlCL.Add("                        <a href=\"" + fjController.getPageTitles()[x].ToLower().Replace(" ","") + ".html\">" + fjController.getPageTitles()[x] + "</a>");
                 htmlCL.Add("                    </li>");
             }
@@ -118,7 +147,7 @@ namespace JSONTest
 
         private string generateBody(List<Section> page, string title, string pageTitle)
         {
-            List<string> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
             htmlCL.Add("<body>");
             htmlCL.Add(generateNavBar(title, pageTitle));
@@ -168,9 +197,15 @@ namespace JSONTest
 
         private String generateAceScript(List<Snippet> snippets, string aceTheme)
         {
-            List<String> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
-            htmlCL.Add("    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js\" type=\"text/javascript\" charset=\"utf-8\"></script>");
+            if (CDN == true)
+            {
+                htmlCL.Add("    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js\" type=\"text/javascript\" charset=\"utf-8\"></script>");
+            }
+            else {
+                htmlCL.Add("    <script src=\"styles/ace/ace.js\" type=\"text/javascript\" charset=\"utf-8\"></script>");
+            }
             htmlCL.Add("    <script>");
             htmlCL.Add("        for (x = 1 ; x <= " + snippets.Count(snippet => snippet.language != "file") + " ; x++){");
             htmlCL.Add("        var editor = ace.edit(\"editor\" + x);");
@@ -178,16 +213,20 @@ namespace JSONTest
             htmlCL.Add("            editor.setTheme(\"ace/theme/" + aceTheme + "\");");
             htmlCL.Add("            editor.renderer.setScrollMargin(10, 10, 0, 0);");
             htmlCL.Add("            editor.renderer.$cursorLayer.element.style.opacity = 0;");
+            htmlCL.Add("            editor.setShowPrintMargin(false);");
             htmlCL.Add("            editor.setOptions({");
             htmlCL.Add("                maxLines: Infinity,");
             htmlCL.Add("                readOnly: true,");
             htmlCL.Add("                highlightActiveLine: false,");
-            htmlCL.Add("                highlightGutterLine: false");
+            htmlCL.Add("                highlightGutterLine: false,");
             htmlCL.Add("            });");
             htmlCL.Add("        }");
+            int y = 0;
             for (int x = 1; x <= snippets.Count; x++)
             {
-                htmlCL.Add("        ace.edit(\"editor" + x + "\").getSession().setMode(\"ace/mode/" + snippets[x - 1].language + "\");");
+                if (snippets[x - 1].language == "file")
+                    continue;
+                htmlCL.Add("        ace.edit(\"editor" + ++y + "\").getSession().setMode(\"ace/mode/" + snippets[x - 1].language + "\");");
             }
             htmlCL.Add("    </script>");
 
@@ -197,7 +236,7 @@ namespace JSONTest
 
         private String generateFooter()
         {
-            List<String> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
             htmlCL.Add("</body>");
             htmlCL.Add("</html>");

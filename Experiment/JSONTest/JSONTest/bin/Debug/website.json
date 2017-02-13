@@ -13,7 +13,7 @@
       "snippets": [
         {
           "position": 1,
-          "language": "c",
+          "language": "c_cpp",
           "comment": "We invented the for loop"
         },
         {
@@ -45,7 +45,7 @@
       "snippets": [
         {
           "position": 1,
-          "language": "c",
+          "language": "c_cpp",
           "comment": "We invented the for loop"
         },
         {

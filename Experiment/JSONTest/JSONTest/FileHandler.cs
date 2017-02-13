@@ -13,7 +13,7 @@ namespace JSONTest
         }
 
         //Using List<String>
-        public void insertSnippet(string language, List<string> code, int index, string section, string fileDir)
+        public void insertSnippet(List<string> code, int index, string section, string fileDir)
         {
             string codeString = string.Join("\n", code.ToArray());
             insertSnippet(codeString , index , section , fileDir);
@@ -34,14 +34,14 @@ namespace JSONTest
             File.WriteAllText(fileName, code);
         }
 
-        public void insertFile(string code, int index, string section, string fileDir)
+        public void insertFile(string userFileDir, int index, string section, string fileDir)
         {
-            string userFile = Path.GetFileName(code);
+            string userFile = Path.GetFileName(userFileDir);
             if (!Directory.Exists(string.Concat(fileDir, @"userfiles/")))
             {
                 Directory.CreateDirectory(string.Concat(fileDir, @"userfiles/"));
             }
-            File.Copy(code, fileDir + @"userfiles/" + userFile);
+            File.Copy(userFileDir, fileDir + @"userfiles/" + userFile);
             insertSnippet(userFile, index, section, fileDir);
         }
 
