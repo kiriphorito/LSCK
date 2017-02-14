@@ -51,6 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="FileHandler.cs" />
     <Compile Include="FJController.cs" />
     <Compile Include="HTMLGenerator.cs" />
@@ -62,7 +63,7 @@
     </Compile>
     <Compile Include="LSCKWindowPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Snippet.cs" />
+    <Compile Include="Section.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

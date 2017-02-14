@@ -8,11 +8,10 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Name="MyToolWindow" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" BorderThickness="2,0,0,0" MinWidth="300" MinHeight="300" MaxWidth="300" MaxHeight="300">
     <Grid>
-        <TabControl x:Name="tabs"  Background="#FF86D0E6" >
+        <TabControl x:Name="tabs"  Background="#FF86D0E6">
             <TabItem Header="Add Code" BorderBrush="#FF4386F4">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="24" FontFamily="Georgia" FontWeight="SemiBold">LSCK</TextBlock>
-                    <ComboBox x:Name="combo"  Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small">
+                <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                    <ComboBox x:Name="comboLang"  Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small">
                         <ComboBoxItem>C#</ComboBoxItem>
                         <ComboBoxItem IsSelected="True">Java</ComboBoxItem>
                         <ComboBoxItem>C</ComboBoxItem>
@@ -23,11 +22,12 @@
                     </ComboBox>
                     <TextBlock Margin="110,10,96,10" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold" Text="Section Title" Height="22" Width="86"/>
                     <StackPanel Orientation="Horizontal">
-                        <ComboBox x:Name="combo2" HorizontalAlignment="Left" Width="143" Margin="5" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
+                        <ComboBox x:Name="comboSectionsCode" SelectionChanged="comboSectionsCode_SelectionChanged" HorizontalAlignment="Left" Width="143" Margin="5" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
+                        <Button x:Name="createSection" Click="createSection_Click" Content="Create" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="20,0,0,0"/>
                     </StackPanel>
                     <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold">Add Comment or Brief Description</TextBlock>
                     <TextBox x:Name="textBox" Height="36" TextWrapping="Wrap" Text="Comment" Background="#FFA9DFF0" BorderBrush="#FF62A7CF" FontFamily="Sitka Small" Foreground="#FF0C0F0D"/>
-                    <Button Content="Add" Width="120" Height="32" x:Name="button1" Margin="90,10,82,10" Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand">
+                    <Button Click="addButton_Click" Content="Add" Width="120" Height="32" x:Name="button1" Margin="90,10,82,10" Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
@@ -43,27 +43,13 @@
                 </Button>
 
             </TabItem>
-            
-            <TabItem Header="Files" BorderBrush="#FF19461D">
+
+            <TabItem Header="Files" BorderBrush="#FF19461D" Height="22" VerticalAlignment="Top">
                 <Grid Margin="10">
-                    <TextBlock Margin="0,10,216,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Sections</TextBlock>
-                    <TextBlock Margin="1,102,237,-82" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Files</TextBlock>
-                    <Button Content="Add" x:Name="addDoc"  HorizontalAlignment="Right" Width="100" Margin="0,197,88,30" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
-                        <Button.Effect>
-                            <DropShadowEffect/>
-                        </Button.Effect>
-                    </Button>
-                    <Button Content="Delete" x:Name="deleteDoc"  HorizontalAlignment="Right" Width="100" Margin="0,227,23,0" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
-                        <Button.Effect>
-                            <DropShadowEffect/>
-                        </Button.Effect>
-                    </Button>
-                    <Button Content="Edit" x:Name="editDoc"  HorizontalAlignment="Right" Width="100" Margin="0,227,151,0" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
-                        <Button.Effect>
-                            <DropShadowEffect/>
-                        </Button.Effect>
-                    </Button>
-                    <ListBox x:Name="listbox1" Margin="0,31,0,155"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
+                    <TextBlock Margin="102,10,112,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Sections</TextBlock>
+                    <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="144" Margin="60,37,0,187" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
+                    <TextBlock Margin="108,85,128,-65" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Files</TextBlock>
+                    <ListBox x:Name="listFile" Margin="0,115,0,71"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
                         <ListBoxItem>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock>ListBox Item #1</TextBlock>
@@ -80,23 +66,11 @@
                             </StackPanel>
                         </ListBoxItem>
                     </ListBox>
-                    <ListBox x:Name="listbox2" Margin="0,122,0,64"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>ListBox Item #1</TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>ListBox Item #2</TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>ListBox Item #3</TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
-                    </ListBox>
+                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="100" Margin="0,223,88,4" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
                 </Grid>
             </TabItem>
 
