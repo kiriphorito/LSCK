@@ -127,7 +127,7 @@ namespace JSONTest
             WriteJSON();
         }
 
-        public void SwapPageName(string firstName, string secondName)
+        public void SwapPage(string firstName, string secondName)
         {
             for (int x = 0; x < JSONFile.page_titles.Count; x++)
             {
@@ -142,9 +142,22 @@ namespace JSONTest
             }
         }
 
-        public void InsertPageName(string sectionName)
+        public void InsertPage(string pageName)
         {
-            JSONFile.page_titles.Add(sectionName);
+            JSONFile.page_titles.Add(pageName);
+            WriteJSON();
+        }
+
+        public void DeletePage(string pageName)
+        {
+            JSONFile.page_titles.Remove(pageName);
+            foreach (Section section in JSONFile.sections)
+            {
+                if (section.page == pageName)
+                {
+                    NullPage(section.sectionName);
+                }
+            }
             WriteJSON();
         }
 
@@ -250,6 +263,11 @@ namespace JSONTest
         public string GetAceTheme()
         {
             return JSONFile.ace_theme;
+        }
+
+        public int GetAceThemeIndex()
+        {
+
         }
 
         public List<string> GetPageTitles()

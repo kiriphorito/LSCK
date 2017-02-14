@@ -109,9 +109,27 @@ namespace JSONTest
         ///<summary>
         ///<para>Retreive the theme for Ace Editor of the website fron JSON</para>
         ///</summary>
-        public string GetAceTheme()
+        public string ReadAceTheme()
         {
             return json.GetAceTheme();
+        }
+
+        public int ReadAceThemeIndex()
+        {
+            var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
+            string stringThemes = reader.ReadToEnd();
+            reader.Close();
+            List<string> themes = stringThemes.Split('\n').ToList();
+            int x = 0;
+            foreach (string theme in themes)
+            {
+                if (json.GetAceTheme() == theme)
+                {
+                    return x;
+                }
+                x++;
+            }
+            return -1; //To make compiler happy
         }
 
         ///<summary>
