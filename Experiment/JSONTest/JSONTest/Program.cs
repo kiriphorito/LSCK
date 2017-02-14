@@ -94,9 +94,11 @@ namespace JSONTest
 
             //fjController.setAceTheme("monokai");
 
-            HTMLGenerator html = new HTMLGenerator(fjController , false , Environment.CurrentDirectory, Environment.CurrentDirectory + @"/generatedWebsite");
-            html.generateWebsite();
+            //HTMLGenerator html = new HTMLGenerator(fjController , false , Environment.CurrentDirectory, Environment.CurrentDirectory + @"/generatedWebsite");
+            //html.generateWebsite();
 
+            AcceptableList gen = new AcceptableList();
+            gen.modeList("theme-*.js", Environment.CurrentDirectory + @"/presets/ace", "acceptable_ace_themes");
 
             //html.writeHTML();
             //Console.WriteLine(html.generateHTML());
