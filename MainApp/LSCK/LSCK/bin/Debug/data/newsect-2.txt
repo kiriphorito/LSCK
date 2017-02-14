@@ -1,4 +1,0 @@
-        private void comboSectionsCode_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            e.Handled = true;
-        }

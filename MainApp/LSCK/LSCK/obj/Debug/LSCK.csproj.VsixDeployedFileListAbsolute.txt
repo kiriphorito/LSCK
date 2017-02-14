@@ -3,3 +3,4 @@ C:\Users\Javier\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.p
 C:\Users\Javier\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\LSCK\1.0\\Newtonsoft.Json.dll
 C:\Users\Javier\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\LSCK\1.0\\LSCK.pkgdef
 C:\Users\Javier\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\LSCK\1.0\\extension.vsixmanifest
+C:\Users\Javier\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\LSCK\1.0\\GongSolutions.Wpf.DragDrop.dll

@@ -49,7 +49,7 @@
                     <TextBlock Margin="102,10,112,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Sections</TextBlock>
                     <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="144" Margin="60,37,0,187" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
                     <TextBlock Margin="108,85,128,-65" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Files</TextBlock>
-                    <ListBox x:Name="listFile" Margin="0,115,0,71"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
+                    <ListBox  x:Name="listFile" Margin="0,115,0,71"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
                         <ListBoxItem>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock>ListBox Item #1</TextBlock>
@@ -76,7 +76,67 @@
 
             <TabItem Header="Website" BorderBrush="#FF19461D">
                 <StackPanel Orientation="Vertical">
-
+                    <TextBlock Margin="94,10,90,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Project title" Width="108"/>
+                    <TextBox x:Name="projectTitle" LostFocus="projectTitle_LostFocus" Margin="62,0,66,0" HorizontalAlignment="Center" Width="164"/>
+                    <TextBlock Margin="102,10,112,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Pages"/>
+                    <ListBox  x:Name="listFil2e" Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock><Run Text="ListBox Item #1"/></TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock><Run Text="ListBox Item #2"/></TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock><Run Text="ListBox Item #3"/></TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                    <StackPanel Orientation="Horizontal" Margin="0,12,0,0" HorizontalAlignment="Center" >
+                        <Button x:Name="createPage" Click="createPage_Click" Content="Add" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="0,0,5,0"/>
+                        <Button x:Name="deletePage" Click="deletePage_Click" Content="Delete" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D"/>
+                    </StackPanel>
+                    <TextBlock Margin="30,10,0,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Ace theme:" Width="108"/>
+                    <ComboBox x:Name="comboTheme"  Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small">
+                        <ComboBoxItem>Ambiance</ComboBoxItem>
+                        <ComboBoxItem IsSelected="True">Chaos</ComboBoxItem>
+                        <ComboBoxItem>Chrome</ComboBoxItem>
+                        <ComboBoxItem>Clouds</ComboBoxItem>
+                        <ComboBoxItem>Clouds Midnight</ComboBoxItem>
+                        <ComboBoxItem>Cobalt</ComboBoxItem>
+                        <ComboBoxItem>Crimson Editor</ComboBoxItem>
+                        <ComboBoxItem>Dawn</ComboBoxItem>
+                        <ComboBoxItem>Dreamweaver</ComboBoxItem>
+                        <ComboBoxItem>Eclipse</ComboBoxItem>
+                        <ComboBoxItem>Github</ComboBoxItem>
+                        <ComboBoxItem>Idle Fingers</ComboBoxItem>
+                        <ComboBoxItem>Iplastic</ComboBoxItem>
+                        <ComboBoxItem>Katzenmilch</ComboBoxItem>
+                        <ComboBoxItem>Kr Theme</ComboBoxItem>
+                        <ComboBoxItem>Kuroir</ComboBoxItem>
+                        <ComboBoxItem>Merbivore</ComboBoxItem>
+                        <ComboBoxItem>Merbivore Soft</ComboBoxItem>
+                        <ComboBoxItem>Mono Industrial</ComboBoxItem>
+                        <ComboBoxItem>Monokai</ComboBoxItem>
+                        <ComboBoxItem>Pastel On Dark</ComboBoxItem>
+                        <ComboBoxItem>Solarized Dark</ComboBoxItem>
+                        <ComboBoxItem>Solarized Light</ComboBoxItem>
+                        <ComboBoxItem>SQLserver</ComboBoxItem>
+                        <ComboBoxItem>Terminal</ComboBoxItem>
+                        <ComboBoxItem>Textmate</ComboBoxItem>
+                        <ComboBoxItem>Tomorrow</ComboBoxItem>
+                        <ComboBoxItem>Tomorrow Night</ComboBoxItem>
+                        <ComboBoxItem>Tomorrow Night Blue</ComboBoxItem>
+                        <ComboBoxItem>Tomorrow Night Bright</ComboBoxItem>
+                        <ComboBoxItem>Tomorrow Night Eighties</ComboBoxItem>
+                        <ComboBoxItem>Twilight</ComboBoxItem>
+                        <ComboBoxItem>Vibrant Ink</ComboBoxItem>
+                        <ComboBoxItem>Xcode</ComboBoxItem>
+                    </ComboBox>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Upload" BorderBrush="#FF19461D">

@@ -89,7 +89,7 @@ namespace LSCK
         private void createSection_Click(object sender, RoutedEventArgs e)
         {
             string sectionName = Prompt.ShowDialog("Section name:", "Create Section");
-            fjController.insertSection(sectionName);
+            fjController.InsertSection(sectionName);
             updateUI(0);
             
         }
@@ -98,7 +98,7 @@ namespace LSCK
         {
             switch (tab) {
                 case 0:
-                    List<string> sectionNames = fjController.readSectionNames();
+                    List<string> sectionNames = fjController.ReadSectionNames();
                     comboSectionsCode.Items.Clear();
                     comboSectionsFile.Items.Clear();
                     foreach (string section in sectionNames)
@@ -106,12 +106,15 @@ namespace LSCK
                         comboSectionsFile.Items.Add(section);
                         comboSectionsCode.Items.Add(section);
                     }
+                    projectTitle.Text = fjController.GetTitle();
+                    System.Windows.MessageBox.Show("" + fjController.ReadAceThemeIndex());
+                    comboTheme.SelectedIndex = fjController.ReadAceThemeIndex();
                     break;
                 case 1:
                     break;
                 case 2:
                     string sectionName = comboSectionsFile.SelectedValue.ToString();
-                    List<string> fileNames = fjController.readFileNames(sectionName);
+                    List<string> fileNames = fjController.ReadFileNames(sectionName);
                     listFile.Items.Clear();
                     foreach (string fileName in fileNames)
                     {
@@ -137,8 +140,7 @@ namespace LSCK
             if (browseFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string path = browseFileDialog.FileName;
-                string name = Path.GetFileName(path);
-                //fjController.insertSnippet(comboSectionsFile.SelectedValue.ToString(),"file","",);
+                fjController.insertSnippet(comboSectionsFile.SelectedValue.ToString(),"file","",path);
 
             }
         }
@@ -146,6 +148,23 @@ namespace LSCK
         private void comboSectionsCode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void projectTitle_LostFocus(object sender, RoutedEventArgs e)
+        {
+            fjController.SetTitle(projectTitle.Text);
+        }
+
+        private void createPage_Click(object sender, RoutedEventArgs e)
+        {
+            string pageName = Prompt.ShowDialog("Page name:", "Create Page");
+            fjController.InsertPage(pageName);
+            updateUI(0);
+        }
+
+        private void deletePage_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

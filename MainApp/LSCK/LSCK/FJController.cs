@@ -8,41 +8,45 @@
  * 
  * Public Functions
  * Website Information
- * - getTitle()
- * - getAceTheme()
- * - getPageTitles()
+ * - GetTitle()
+ * - GetAceTheme()
+ * - GetPageTitles()
  * 
- * - setTitle()
- * - setAceTheme()
+ * - SetTitle()
+ * - SetAceTheme()
  * 
- * - insertPageTitle()
+ * - InsertPageTitle()
  * 
  * Page Infomation 
- * - readPage()
- * - readPageSnippetOnly()
+ * - ReadPage()
+ * - ReadPageSnippetOnly()
  * 
  * Section Information
- * - insertSection()
- * - deleteSection()
- * - swapSection()
- * - setPage()
- * - nullPage()
+ * - InsertSection()
+ * - DeleteSection()
+ * - SwapSection()
+ * - SetPage()
+ * - NullPage()
  * 
- * - snippetsOnly()
+ * - PageSnippetsOnly()
+ * - SnippetsOnly()
+ * - ReadSectionNames()
  * 
  * Snippet Information
- * - insertSnippet()
- * - deleteSnippet()
- * - swapSnippet()
- * - readSnippet()
+ * - InsertSnippet()
+ * - DeleteSnippet()
+ * - DeleteFileSnippet()
+ * - SwapSnippet()
+ * - ReadSnippet()
  * 
- * 
+ * - ReadFileNames()
 */
 
 using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace LSCK
 {
@@ -84,38 +88,56 @@ namespace LSCK
 
         public class InvalidInputException : Exception
         {
-            public InvalidInputException(string message)
-                : base(message) { }
+            public InvalidInputException(string message) : base(message) { }
         }
 
         ///<summary>
         ///<para>Retreive the Title of the website fron JSON</para>
         ///</summary>
-        public string getTitle()
+        public string GetTitle()
         {
-            return json.getTitle();
+            return json.GetTitle();
         }
 
         ///<summary>
         ///<para>Set the Title of the website fron JSON</para>
         ///</summary>
-        public void setTitle(string newTitle)
+        public void SetTitle(string newTitle)
         {
-            json.setTitle(newTitle);
+            json.SetTitle(newTitle);
         }
 
         ///<summary>
         ///<para>Retreive the theme for Ace Editor of the website fron JSON</para>
         ///</summary>
-        public string getAceTheme()
+        public string ReadAceTheme()
         {
-            return json.getAceTheme();
+            return json.GetAceTheme();
+        }
+
+        public int ReadAceThemeIndex()
+        {
+            var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
+            string stringThemes = reader.ReadToEnd();
+            reader.Close();
+            List<string> themes = stringThemes.Split('\n').ToList();
+            int x = 0;
+            foreach (string theme in themes)
+            {
+                string correctedTheme = theme.Substring(0, theme.Length - 1);
+                if (json.GetAceTheme().Equals(correctedTheme))
+                {
+                    return x;
+                }
+                x++;
+            }
+            return -1; //To make compiler happy
         }
 
         ///<summary>
         ///<para>Set the theme for Ace Editor of the website fron JSON</para>
         ///</summary>
-        public void setAceTheme(string newAceTheme)
+        public void SetAceTheme(string newAceTheme)
         {
             var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
             string stringThemes = reader.ReadToEnd();
@@ -123,66 +145,77 @@ namespace LSCK
             List<string> themes = stringThemes.Split('\n').ToList();
             if (!themes.Contains(newAceTheme))
                 throw new InvalidInputException("You have entered an invalid theme for the Ace Editor!");
-            json.setAceTheme(newAceTheme);
+            json.SetAceTheme(newAceTheme);
         }
 
         ///<summary>
         ///<para>Retreive the names of all pages in the website</para>
         ///</summary>
-        public List<string> getPageTitles()
+        public List<string> GetPageTitles()
         {
-            return json.getPageTitles();
+            return json.GetPageTitles();
         }
 
         ///<summary>
         ///<para>Add a new page to the website</para>
         ///</summary>
-        public void insertPageTitle(string newPageTitle)
+        public void InsertPage(string newPageTitle)
         {
-            if (json.getPageTitles().Contains(newPageTitle))
-                throw new InvalidInputException("You have already entered this title for a page!");
-            json.insertPageName(newPageTitle);
+            if (json.GetPageTitles().Contains(newPageTitle))
+                throw (new InvalidInputException("You have already entered this title for a page!"));
+            else
+                json.InsertPage(newPageTitle);
+        }
+
+        public void DeletePage(string pageName)
+        {
+            json.DeletePage(pageName);
+        }
+
+        public void SwapPages(string firstPage, string secondPage)
+        {
+            json.SwapPage(firstPage, secondPage);
         }
 
         ///<summary>
         ///<para>Associates section to the bottom of a selected page</para>
         ///</summary>
-        public void setPage(string sectionName, string pageTitle)
+        public void SetPage(string sectionName, string pageTitle)
         {
-            if (!json.getPageTitles().Contains(pageTitle))
+            if (!json.GetPageTitles().Contains(pageTitle))
                 throw new InvalidInputException("You have selected a page name that hasn't been added!");
-            json.setPage(sectionName, pageTitle);
+            json.SetPage(sectionName, pageTitle);
         }
 
         ///<summary>
         ///<para>dissociates section from its selected page</para>
         ///</summary>
-        public void nullPage(string sectionName)
+        public void NullPage(string sectionName)
         {
-            json.nullPage(sectionName);
+            json.NullPage(sectionName);
         }
 
         ///<summary>
         ///<para>Retreive all elements of a snippet</para>
         ///</summary>
-        public Snippet readSnippet(string sectionName, int index)
+        public Snippet ReadSnippet(string sectionName, int index)
         {
             var snippet = new Snippet();
-            snippet.language = json.getLanguage(sectionName, index);
-            snippet.comment = json.getComment(sectionName, index);
-            snippet.code = fileHandler.read(fileDir + @"/data/" + sectionName.ToLower().Replace(" ", "") + "-" + index + ".txt");
+            snippet.language = json.GetLanguage(sectionName, index);
+            snippet.comment = json.GetComment(sectionName, index);
+            snippet.code = fileHandler.Read(fileDir + @"/data/" + sectionName.ToLower().Replace(" ", "") + "-" + index + ".txt");
             return snippet;
         }
 
         ///<summary>
         ///<para>Retreive all sections on a specific page</para>
         ///</summary>
-        public List<Section> readPage(string pageTitle)
+        public List<Section> ReadPage(string pageTitle)
         {
             var result = new List<Section>();
 
             //Retrieve list of sections with the associated pageTitle
-            List<string> sectionNames = json.getPageSections(pageTitle);
+            List<string> sectionNames = json.GetPageSections(pageTitle);
 
             //For each section
             for (int x = 1; x <= sectionNames.Count; x++)
@@ -190,16 +223,16 @@ namespace LSCK
                 var section = new Section();
                 foreach (string sectionName in sectionNames)
                 {
-                    if (json.getSectionPosition(sectionName) == x)
+                    if (json.GetSectionPosition(sectionName) == x)
                     {
                         section.sectionName = sectionName;
                         break;
                     }
                 }
                 var listOfSnippets = new List<Snippet>();
-                for (int y = 1; y <= json.getNumberOfSnippets(section.sectionName); y++)
+                for (int y = 1; y <= json.GetNumberOfSnippets(section.sectionName); y++)
                 {
-                    listOfSnippets.Add(readSnippet(section.sectionName, y));
+                    listOfSnippets.Add(ReadSnippet(section.sectionName, y));
                 }
                 section.snippets = listOfSnippets;
                 result.Add(section);
@@ -210,15 +243,15 @@ namespace LSCK
         ///<summary>
         ///<para>Reteive all snippets from a specific page, removing section information</para>
         ///</summary>
-        public List<Snippet> readPageSnippetOnly(string pageTitle)
+        public List<Snippet> ReadPageSnippetOnly(string pageTitle)
         {
-            return pageSnippetsOnly(readPage(pageTitle));
+            return PageSnippetsOnly(ReadPage(pageTitle));
         }
 
         ///<summary>
         ///<para>Retreive snippets from sections, i.e removing section information</para>
         ///</summary>
-        public List<Snippet> pageSnippetsOnly(List<Section> page)
+        public List<Snippet> PageSnippetsOnly(List<Section> page)
         {
             var result = new List<Snippet>();
 
@@ -233,71 +266,86 @@ namespace LSCK
             return result;
         }
 
-        public List<string> readSectionNames()
+        ///<summary>
+        ///<para>Retreive all sections names stored</para>
+        ///</summary>
+        public List<string> ReadSectionNames()
         {
-            return json.getSectionNames();
+            return json.GetSectionNames();
+        }
+
+        ///<summary>
+        ///<para>Retreive all file names in a particular snippet</para>
+        ///</summary>
+        public List<string> ReadFileNames(string sectionName)
+        {
+            var result = new List<string>();
+            for (int x = 1; x <= json.GetNumberOfSnippets(sectionName); x++)
+            {
+                if (json.GetLanguage(sectionName, x) == "file")
+                {
+                    result.Add(fileHandler.Read(fileDir + @"/data/" + sectionName.ToLower().Replace(" ", "") + "-" + x + ".txt"));
+                }
+            }
+            return result;
         }
 
         ///<summary>
         ///<para>Add a new section</para>
         ///</summary>
-        public void insertSection(string section)
+        public void InsertSection(string section)
         {
-            if (json.getSectionNames().Contains(section))
+            if (json.GetSectionNames().Contains(section))
             {
-                throw new InvalidInputException("You have already entered this title for a section!");
+                Console.WriteLine("You have already entered this title for a section!");
+                return;
             }
-            json.insertSection(section);
+            else
+            {
+                json.InsertSection(section);
+            }
         }
 
         ///<summary>
         ///<para>Delete a section</para>
         ///</summary>
-        public void deleteSection(string section)
+        public void DeleteSection(string section)
         {
-            for (int x = json.getNumberOfSnippets(section); x >= 1; x--)
+            for (int x = json.GetNumberOfSnippets(section); x >= 1; x--)
             {
-                deleteSnippet(section, x);
+                DeleteSnippet(section, x);
             }
-            json.deleteSection(section);
-        }
-
-        public List<string> readFileNames(string section)
-        {
-            List<string> x = new List<string>();
-            x.Add("LOL.txt");
-            x.Add("HEY.ppt");
-            return x;
+            json.DeleteSection(section);
         }
 
         ///<summary>
         ///<para>Swap two sections</para>
         ///</summary>
-        public void swapSection(string first, string second)
+        public void SwapSection(string first, string second)
         {
-            json.swapSection(first, second);
+            json.SwapSection(first, second);
         }
 
         ///<summary>
         ///<para>Add a snippet to a specific position in the section</para>
         ///</summary>
-        public void insertSnippet(string section, int index, string language, string comment, List<string> code)
+        public void InsertSnippet(string section, int index, string language, string comment, List<string> code)
         {
             string codeString = string.Join("\n", code.ToArray());
-            insertSnippet(section, index, language, comment, codeString);
+            InsertSnippet(section, index, language, comment, codeString);
         }
 
-        public void insertSnippet(string section, int index, string language, string comment, string content)
+        public void InsertSnippet(string section, int index, string language, string comment, string content)
         {
             switch (language)
             {
                 case "file":
-                    fileHandler.insertFile(content, index, section, fileDir + @"/data/");
-                    json.insertSnippet(section, index, "file", comment);
+                    fileHandler.InsertFile(content, index, section, fileDir + @"/data/");
+                    json.InsertSnippet(section, index, "file", comment);
                     break;
                 default:
-                    fileHandler.insertSnippet(content, index, section, fileDir + @"/data/");
-                    json.insertSnippet(section, index, language, comment);
+                    fileHandler.InsertSnippet(content, index, section, fileDir + @"/data/");
+                    json.InsertSnippet(section, index, language, comment);
                     break;
             }
         }
@@ -305,7 +353,7 @@ namespace LSCK
         ///<summary>
         ///<para>Add a snippet to the end of a section</para>
         ///</summary>
-        public void insertSnippet(string section, string language, string comment, List<string> code)
+        public void InsertSnippet(string section, string language, string comment, List<string> code)
         {
             string codeString = string.Join("\n", code.ToArray());
             insertSnippet(section, language, comment, codeString);
@@ -316,12 +364,12 @@ namespace LSCK
             switch (language)
             {
                 case "file":
-                    fileHandler.insertFile(content, json.getNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
-                    json.insertSnippet(section, json.getNumberOfSnippets(section) + 1, "file", comment);
+                    fileHandler.InsertFile(content, json.GetNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
+                    json.InsertSnippet(section, json.GetNumberOfSnippets(section) + 1, "file", comment);
                     break;
                 default:
-                    fileHandler.insertSnippet(content, json.getNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
-                    json.insertSnippet(section, json.getNumberOfSnippets(section) + 1, language, comment);
+                    fileHandler.InsertSnippet(content, json.GetNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
+                    json.InsertSnippet(section, json.GetNumberOfSnippets(section) + 1, language, comment);
                     break;
             }
         }
@@ -329,19 +377,36 @@ namespace LSCK
         ///<summary>
         ///<para>Swaps two different snippets</para>
         ///</summary>
-        public void swapSnippet(int first, int second, string section)
+        public void SwapSnippet(int first, int second, string section)
         {
-            fileHandler.swap(first, second, section, fileDir + @"/data");
-            json.swapSnippet(section, first, second);
+            fileHandler.Swap(first, second, section, fileDir + @"/data");
+            json.SwapSnippet(section, first, second);
         }
 
         ///<summary>
         ///<para>Delete a snippet at a specific position</para>
         ///</summary>
-        public void deleteSnippet(string section, int index)
+        public void DeleteSnippet(string section, int index)
         {
-            fileHandler.delete(index, section, fileDir + @"/data");
-            json.deleteSnippet(section, index);
+            fileHandler.Delete(index, section, fileDir + @"/data");
+            json.DeleteSnippet(section, index);
+        }
+
+        ///<summary>
+        ///<para>Delete a particular file in a section</para>
+        ///</summary>
+        public void DeleteFileSnippet(string sectionName, string fileName)
+        {
+            for (int x = 1; x <= json.GetNumberOfSnippets(sectionName); x++)
+            {
+                if (json.GetLanguage(sectionName, x) == "file")
+                {
+                    if (fileHandler.Read(fileDir + @"/data/" + sectionName.ToLower().Replace(" ", "") + "-" + x + ".txt") == fileName)
+                    {
+                        DeleteSnippet(sectionName, x);
+                    }
+                }
+            }
         }
     }
 }

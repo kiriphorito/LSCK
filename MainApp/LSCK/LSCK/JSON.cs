@@ -50,7 +50,7 @@ namespace LSCK
                 JSONFile.page_titles = new List<string>();
                 JSONFile.page_titles.Add("index");
                 JSONFile.sections = new List<Section>();
-                writeJSON();
+                WriteJSON();
             }
             var reader = new StreamReader(this.fileDir);
             string fileJson = reader.ReadToEnd();
@@ -59,38 +59,38 @@ namespace LSCK
         }
 
         //Writes to/Updates the JSON file
-        private void writeJSON()
+        private void WriteJSON()
         {
             string jsonString = JsonConvert.SerializeObject(JSONFile, Formatting.Indented);
             File.WriteAllText(fileDir, jsonString);
         }
 
-        public void setTitle(string title)
+        public void SetTitle(string title)
         {
             JSONFile.title = title;
-            writeJSON();
+            WriteJSON();
         }
 
-        public void setAceTheme(string newTheme)
+        public void SetAceTheme(string newTheme)
         {
             JSONFile.ace_theme = newTheme;
-            writeJSON();
+            WriteJSON();
         }
 
-        public void updatePageName(string oldName, string newName)
+        public void UpdatePageName(string oldName, string newName)
         {
             for (int x = 0; x < JSONFile.page_titles.Count; x++)
             {
                 if (JSONFile.page_titles[x] == oldName)
                 {
                     JSONFile.page_titles[x] = newName;
-                    writeJSON();
+                    WriteJSON();
                     return;
                 }
             }
         }
 
-        public int countPage(string pageTitle)
+        public int CountPage(string pageTitle)
         {
             int count = 0;
             foreach (Section section in JSONFile.sections)
@@ -105,14 +105,14 @@ namespace LSCK
             return count;
         }
 
-        public void setPage(string sectionName, string pageTitle)
+        public void SetPage(string sectionName, string pageTitle)
         {
-            JSONFile.sections[getSectionIndex(sectionName)].position = countPage(pageTitle) + 1;
+            JSONFile.sections[getSectionIndex(sectionName)].position = CountPage(pageTitle) + 1;
             JSONFile.sections[getSectionIndex(sectionName)].page = pageTitle;
-            writeJSON();
+            WriteJSON();
         }
 
-        public void nullPage(string sectionName)
+        public void NullPage(string sectionName)
         {
             int sectionIndex = getSectionIndex(sectionName);
             for (int x = 0; x < JSONFile.sections.Count; x++)
@@ -124,10 +124,10 @@ namespace LSCK
             }
             JSONFile.sections[sectionIndex].page = null;
             JSONFile.sections[sectionIndex].position = 0;
-            writeJSON();
+            WriteJSON();
         }
 
-        public void swapPageName(string firstName, string secondName)
+        public void SwapPage(string firstName, string secondName)
         {
             for (int x = 0; x < JSONFile.page_titles.Count; x++)
             {
@@ -142,34 +142,47 @@ namespace LSCK
             }
         }
 
-        public void insertPageName(string sectionName)
+        public void InsertPage(string pageName)
         {
-            JSONFile.page_titles.Add(sectionName);
-            writeJSON();
+            JSONFile.page_titles.Add(pageName);
+            WriteJSON();
+        }
+
+        public void DeletePage(string pageName)
+        {
+            JSONFile.page_titles.Remove(pageName);
+            foreach (Section section in JSONFile.sections)
+            {
+                if (section.page == pageName)
+                {
+                    NullPage(section.sectionName);
+                }
+            }
+            WriteJSON();
         }
 
         //Adds the new section to the end
-        public void insertSection(string sectionName)
+        public void InsertSection(string sectionName)
         {
             var section = new Section();
             section.sectionName = sectionName;
             section.snippets = new List<Snippet>();
             JSONFile.sections.Add(section);
-            writeJSON();
+            WriteJSON();
         }
 
-        public void deleteSection(string sectionName)
+        public void DeleteSection(string sectionName)
         {
             int sectionIndex = getSectionIndex(sectionName);
             if (JSONFile.sections[sectionIndex].page != null) //If the section is tied to a page
             {
-                nullPage(sectionName);
+                NullPage(sectionName);
             }
             JSONFile.sections.RemoveAt(sectionIndex);
-            writeJSON();
+            WriteJSON();
         }
 
-        public void swapSection(string firstElement, string secondElement)
+        public void SwapSection(string firstElement, string secondElement)
         {
             int firstElementIndex = getSectionIndex(firstElement);
             int secondElementIndex = getSectionIndex(secondElement);
@@ -180,7 +193,7 @@ namespace LSCK
             JSONFile.sections[firstElementIndex].position = JSONFile.sections[secondElementIndex].position;
             JSONFile.sections[firstElementIndex].page = JSONFile.sections[secondElementIndex].page;
             JSONFile.sections[secondElementIndex].page = tempPage;
-            writeJSON();
+            WriteJSON();
         }
 
         private int getSectionIndex(string sectionName)
@@ -196,7 +209,7 @@ namespace LSCK
         }
 
         //Insert an entry at any position value in a particular section
-        public void insertSnippet(string sectionName, int index, string language, string comment)
+        public void InsertSnippet(string sectionName, int index, string language, string comment)
         {
             var snippet = new Snippet();
             snippet.language = language;
@@ -209,11 +222,11 @@ namespace LSCK
             {
                 JSONFile.sections[sectionIndex].snippets[x].position++;
             }
-            writeJSON();
+            WriteJSON();
         }
 
         //Swaps two entries in a specific section
-        public void swapSnippet(string sectionName, int first, int second)
+        public void SwapSnippet(string sectionName, int first, int second)
         {
             int sectionIndex = getSectionIndex(sectionName);
             JSONFile.sections[sectionIndex].snippets[first - 1].position = second;
@@ -222,11 +235,11 @@ namespace LSCK
             JSONFile.sections[sectionIndex].snippets.Insert(second, JSONFile.sections[sectionIndex].snippets[first]);
             JSONFile.sections[sectionIndex].snippets.RemoveAt(first);
             JSONFile.sections[sectionIndex].snippets.RemoveAt(second);
-            writeJSON();
+            WriteJSON();
         }
 
         //Deletes an entry
-        public void deleteSnippet(string sectionName, int index)
+        public void DeleteSnippet(string sectionName, int index)
         {
             int sectionIndex = getSectionIndex(sectionName);
             JSONFile.sections[sectionIndex].snippets.RemoveAt(index - 1);
@@ -234,30 +247,30 @@ namespace LSCK
             {
                 JSONFile.sections[sectionIndex].snippets[x].position--;
             }
-            writeJSON();
+            WriteJSON();
         }
 
-        public int getNumberOfSnippets(string sectionName)
+        public int GetNumberOfSnippets(string sectionName)
         {
             return JSONFile.sections[getSectionIndex(sectionName)].snippets.Count;
         }
 
-        public string getTitle()
+        public string GetTitle()
         {
             return JSONFile.title;
         }
 
-        public string getAceTheme()
+        public string GetAceTheme()
         {
             return JSONFile.ace_theme;
         }
 
-        public List<string> getPageTitles()
+        public List<string> GetPageTitles()
         {
             return JSONFile.page_titles;
         }
 
-        public List<string> getPageSections(string page)
+        public List<string> GetPageSections(string page)
         {
             var sections = new List<string>();
             foreach (Section section in JSONFile.sections)
@@ -270,14 +283,14 @@ namespace LSCK
             return sections;
         }
 
-        public int getSectionPosition(string sectionName)
+        public int GetSectionPosition(string sectionName)
         {
             return JSONFile.sections[getSectionIndex(sectionName)].position;
         }
 
-        public List<string> getSectionNames()
+        public List<string> GetSectionNames()
         {
-            List<string> result = new List<string>();
+            var result = new List<string>();
             foreach (Section section in JSONFile.sections)
             {
                 result.Add(section.sectionName);
@@ -285,13 +298,13 @@ namespace LSCK
             return result;
         }
 
-        public string getLanguage(string sectionName, int index)
+        public string GetLanguage(string sectionName, int index)
         {
             int sectionIndex = getSectionIndex(sectionName);
             return JSONFile.sections[sectionIndex].snippets[index - 1].language;
         }
 
-        public string getComment(string sectionName, int index)
+        public string GetComment(string sectionName, int index)
         {
             int sectionIndex = getSectionIndex(sectionName);
             return JSONFile.sections[sectionIndex].snippets[index - 1].comment;
