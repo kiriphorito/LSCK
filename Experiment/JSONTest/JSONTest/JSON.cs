@@ -107,14 +107,14 @@ namespace JSONTest
 
         public void SetPage(string sectionName, string pageTitle)
         {
-            JSONFile.sections[GetSectionIndex(sectionName)].position = CountPage(pageTitle) + 1;
-            JSONFile.sections[GetSectionIndex(sectionName)].page = pageTitle;
+            JSONFile.sections[getSectionIndex(sectionName)].position = CountPage(pageTitle) + 1;
+            JSONFile.sections[getSectionIndex(sectionName)].page = pageTitle;
             WriteJSON();
         }
 
         public void NullPage(string sectionName)
         {
-            int sectionIndex = GetSectionIndex(sectionName);
+            int sectionIndex = getSectionIndex(sectionName);
             for (int x = 0; x < JSONFile.sections.Count; x++)
             {
                 if (JSONFile.sections[x].page == JSONFile.sections[sectionIndex].page && JSONFile.sections[x].position > JSONFile.sections[sectionIndex].position)
@@ -160,7 +160,7 @@ namespace JSONTest
 
         public void DeleteSection(string sectionName)
         {
-            int sectionIndex = GetSectionIndex(sectionName);
+            int sectionIndex = getSectionIndex(sectionName);
             if (JSONFile.sections[sectionIndex].page != null) //If the section is tied to a page
             {
                 NullPage(sectionName);
@@ -171,8 +171,8 @@ namespace JSONTest
 
         public void SwapSection(string firstElement , string secondElement)
         {
-            int firstElementIndex = GetSectionIndex(firstElement);
-            int secondElementIndex = GetSectionIndex(secondElement);
+            int firstElementIndex = getSectionIndex(firstElement);
+            int secondElementIndex = getSectionIndex(secondElement);
             Console.WriteLine(firstElementIndex);
             Console.WriteLine(secondElementIndex);
             int tempPosition = JSONFile.sections[firstElementIndex].position;
@@ -183,7 +183,7 @@ namespace JSONTest
             WriteJSON();
         }
 
-        private int GetSectionIndex(string sectionName)
+        private int getSectionIndex(string sectionName)
         {
             for (int x = 0; x < JSONFile.sections.Count; x++)
             {
@@ -203,7 +203,7 @@ namespace JSONTest
             snippet.comment = comment;
             snippet.position = index;
 
-            int sectionIndex = GetSectionIndex(sectionName);
+            int sectionIndex = getSectionIndex(sectionName);
             JSONFile.sections[sectionIndex].snippets.Insert(index - 1, snippet);
             for (int x = index; x < JSONFile.sections[sectionIndex].snippets.Count ; x++)
             {
@@ -213,9 +213,9 @@ namespace JSONTest
         }
 
         //Swaps two entries in a specific section
-        public void swapSnippet(string sectionName , int first, int second)
+        public void SwapSnippet(string sectionName , int first, int second)
         {
-            int sectionIndex = GetSectionIndex(sectionName);
+            int sectionIndex = getSectionIndex(sectionName);
             JSONFile.sections[sectionIndex].snippets[first - 1].position = second;
             JSONFile.sections[sectionIndex].snippets[second - 1].position = first;
             JSONFile.sections[sectionIndex].snippets.Insert(first - 1, JSONFile.sections[sectionIndex].snippets[second - 1]);
@@ -226,9 +226,9 @@ namespace JSONTest
         }
 
         //Deletes an entry
-        public void deleteSnippet(string sectionName , int index)
+        public void DeleteSnippet(string sectionName , int index)
         {
-            int sectionIndex = GetSectionIndex(sectionName);
+            int sectionIndex = getSectionIndex(sectionName);
             JSONFile.sections[sectionIndex].snippets.RemoveAt(index - 1);
             for (int x = index - 1 ; x < JSONFile.sections[sectionIndex].snippets.Count ; x++)
             {
@@ -237,27 +237,27 @@ namespace JSONTest
             WriteJSON();
         }
 
-        public int getNumberOfSnippets(string sectionName)
+        public int GetNumberOfSnippets(string sectionName)
         {
-            return JSONFile.sections[GetSectionIndex(sectionName)].snippets.Count;
+            return JSONFile.sections[getSectionIndex(sectionName)].snippets.Count;
         }
 
-        public string getTitle()
+        public string GetTitle()
         {
             return JSONFile.title;
         }
 
-        public string getAceTheme()
+        public string GetAceTheme()
         {
             return JSONFile.ace_theme;
         }
 
-        public List<string> getPageTitles()
+        public List<string> GetPageTitles()
         {
             return JSONFile.page_titles;
         }
 
-        public List<string> getPageSections(string page)
+        public List<string> GetPageSections(string page)
         {
             var sections = new List<string>();
             foreach (Section section in JSONFile.sections)
@@ -270,12 +270,12 @@ namespace JSONTest
             return sections;
         }
 
-        public int getSectionPosition(string sectionName)
+        public int GetSectionPosition(string sectionName)
         {
-            return JSONFile.sections[GetSectionIndex(sectionName)].position;
+            return JSONFile.sections[getSectionIndex(sectionName)].position;
         }
 
-        public List<string> getSectionNames()
+        public List<string> GetSectionNames()
         {
             var result = new List<string>();
             foreach (Section section in JSONFile.sections)
@@ -285,15 +285,15 @@ namespace JSONTest
             return result;
         }
 
-        public string getLanguage(string sectionName, int index)
+        public string GetLanguage(string sectionName, int index)
         {
-            int sectionIndex = GetSectionIndex(sectionName);
+            int sectionIndex = getSectionIndex(sectionName);
             return JSONFile.sections[sectionIndex].snippets[index - 1].language;
         }
 
-        public string getComment(string sectionName, int index)
+        public string GetComment(string sectionName, int index)
         {
-            int sectionIndex = GetSectionIndex(sectionName);
+            int sectionIndex = getSectionIndex(sectionName);
             return JSONFile.sections[sectionIndex].snippets[index - 1].comment;
         }
     }
