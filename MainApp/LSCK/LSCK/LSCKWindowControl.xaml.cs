@@ -107,8 +107,8 @@ namespace LSCK
                         comboSectionsCode.Items.Add(section);
                     }
                     projectTitle.Text = fjController.GetTitle();
-                    System.Windows.MessageBox.Show("" + fjController.ReadAceThemeIndex());
                     comboTheme.SelectedIndex = fjController.ReadAceThemeIndex();
+                    comboTheme.SelectionChanged += comboTheme_SelectionChanged;
                     break;
                 case 1:
                     break;
@@ -165,6 +165,12 @@ namespace LSCK
         private void deletePage_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void comboTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            System.Windows.MessageBox.Show(comboTheme.Text.ToLower().Replace(' ', '_'));
+            fjController.SetAceTheme(comboTheme.Text.ToLower().Replace(' ', '_'));
         }
     }
 }

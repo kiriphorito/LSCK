@@ -143,9 +143,17 @@ namespace LSCK
             string stringThemes = reader.ReadToEnd();
             reader.Close();
             List<string> themes = stringThemes.Split('\n').ToList();
-            if (!themes.Contains(newAceTheme))
-                throw new InvalidInputException("You have entered an invalid theme for the Ace Editor!");
-            json.SetAceTheme(newAceTheme);
+            foreach (string theme in themes)
+            {
+                string correctedTheme = theme.Substring(0, theme.Length - 1);
+                if (newAceTheme.Equals(correctedTheme))
+                {
+                    json.SetAceTheme(newAceTheme);
+                    return;
+                }
+            }
+            throw new InvalidInputException("You have entered an invalid theme for the Ace Editor!");
+            
         }
 
         ///<summary>

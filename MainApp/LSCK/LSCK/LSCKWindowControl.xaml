@@ -101,7 +101,7 @@
                         <Button x:Name="deletePage" Click="deletePage_Click" Content="Delete" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D"/>
                     </StackPanel>
                     <TextBlock Margin="30,10,0,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Ace theme:" Width="108"/>
-                    <ComboBox x:Name="comboTheme"  Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small">
+                    <ComboBox x:Name="comboTheme" Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small">
                         <ComboBoxItem>Ambiance</ComboBoxItem>
                         <ComboBoxItem IsSelected="True">Chaos</ComboBoxItem>
                         <ComboBoxItem>Chrome</ComboBoxItem>
