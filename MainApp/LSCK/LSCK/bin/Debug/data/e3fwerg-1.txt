@@ -1,0 +1,18 @@
+            switch (langName)
+            {
+                case "Java":
+                    return "java";
+                case "C#":
+                    return "csharp";
+                case "C":
+                case "C++":
+                    return "c_cpp";
+                case "PHP":
+                    return "php";
+                case "Python":
+                    return "python";
+                case "Javascript":
+                    return "javascript";
+                default:
+                    throw new InvalidInputException("Language Not Supported");
+            }

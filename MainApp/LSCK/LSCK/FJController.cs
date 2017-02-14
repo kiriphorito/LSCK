@@ -1,149 +1,347 @@
-﻿//Class to controll JSON and files
+﻿/*
+ * The following class is a controller to manaage a JSON class and a File Handler class - MVC pattern
+ * Controller - FJController
+ * Model - FileHander & JSON
+ * View - Extension UI
+ * 
+ * FJController class follows the Singleton design pattern where only one instance can be instantiated
+ * 
+ * Public Functions
+ * Website Information
+ * - getTitle()
+ * - getAceTheme()
+ * - getPageTitles()
+ * 
+ * - setTitle()
+ * - setAceTheme()
+ * 
+ * - insertPageTitle()
+ * 
+ * Page Infomation 
+ * - readPage()
+ * - readPageSnippetOnly()
+ * 
+ * Section Information
+ * - insertSection()
+ * - deleteSection()
+ * - swapSection()
+ * - setPage()
+ * - nullPage()
+ * 
+ * - snippetsOnly()
+ * 
+ * Snippet Information
+ * - insertSnippet()
+ * - deleteSnippet()
+ * - swapSnippet()
+ * - readSnippet()
+ * 
+ * 
+*/
 
 using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace LSCK
 {
-    public class FJController
+    public sealed class FJController
     {
-        private SettingsJSON settingsJSON = new SettingsJSON();
-        private List<JSON> json = new List<JSON>();
-        private FileHandler fileHandler = new FileHandler();
-        private readonly String fileDir;
-        private int currentPage = 1;
+        private readonly JSON json;
+        private readonly FileHandler fileHandler = new FileHandler();
+        private readonly string fileDir;
 
-        String settingsFileName = @"/settings.json";
-            
-         private class SettingsJSON
+        private string jsonSettingsName = "website";
+
+        private static FJController instance = null;
+        private static readonly object Instancelock = new object();
+
+        private FJController()
         {
-            public String Title { get; set; }
-            public List<String> PageHeadings { get; set; }
+            fileDir = Environment.CurrentDirectory;
+            json = new JSON(fileDir, jsonSettingsName);
+            if (!Directory.Exists(string.Concat(fileDir, @"/data")))
+            {
+                Directory.CreateDirectory(string.Concat(fileDir, @"/data"));
+            }
         }
 
-        public FJController(String fileDir)
+        public static FJController GetInstance
         {
-            this.fileDir = fileDir;
-            if (!Directory.Exists(String.Concat(fileDir, @"/data")))
+            get
             {
-                Directory.CreateDirectory(String.Concat(fileDir, @"/data/"));
-            }
-            if (!File.Exists(String.Concat(fileDir, settingsFileName)))
-            {
-                List<String> newPageHeadings = new List<String>();
-                newPageHeadings.Add("LSCK"); //NEED TO CHANGE TO NAME OF SOLUTION!!!!!!
-                settingsJSON.Title = newPageHeadings[0];
-                settingsJSON.PageHeadings = newPageHeadings;
-                string jsonString = JsonConvert.SerializeObject(settingsJSON, Formatting.Indented);
-                File.WriteAllText(String.Concat(fileDir , settingsFileName), jsonString);
-                json.Add(new JSON(fileDir + @"/data/", 1));
-                if (!Directory.Exists(String.Concat(fileDir, @"/" + 1)))
+                lock (Instancelock)
                 {
-                    Directory.CreateDirectory(String.Concat(fileDir, @"/data/" + 1));
-                }
-            }
-            else
-            {
-                StreamReader reader = new StreamReader(String.Concat(fileDir, settingsFileName));
-                string fileJson = reader.ReadToEnd();
-                reader.Close();
-                settingsJSON = JsonConvert.DeserializeObject<SettingsJSON>(fileJson);
-                for (int x = 1 ; x <= settingsJSON.PageHeadings.Count ; x++)
-                {
-                    json.Add(new JSON(fileDir + @"/data/" , x));
+                    if (instance == null)
+                    {
+                        instance = new FJController();
+                    }
+                    return instance;
                 }
             }
         }
 
-        public void addPage(String newPageHeader)
+        public class InvalidInputException : Exception
         {
-            settingsJSON.PageHeadings.Add(newPageHeader);
-            string jsonString = JsonConvert.SerializeObject(settingsJSON, Formatting.Indented);
-            File.WriteAllText(String.Concat(fileDir, settingsFileName), jsonString);
-            if (!Directory.Exists(String.Concat(fileDir, @"/" + settingsJSON.PageHeadings.Count)))
+            public InvalidInputException(string message)
+                : base(message) { }
+        }
+
+        ///<summary>
+        ///<para>Retreive the Title of the website fron JSON</para>
+        ///</summary>
+        public string getTitle()
+        {
+            return json.getTitle();
+        }
+
+        ///<summary>
+        ///<para>Set the Title of the website fron JSON</para>
+        ///</summary>
+        public void setTitle(string newTitle)
+        {
+            json.setTitle(newTitle);
+        }
+
+        ///<summary>
+        ///<para>Retreive the theme for Ace Editor of the website fron JSON</para>
+        ///</summary>
+        public string getAceTheme()
+        {
+            return json.getAceTheme();
+        }
+
+        ///<summary>
+        ///<para>Set the theme for Ace Editor of the website fron JSON</para>
+        ///</summary>
+        public void setAceTheme(string newAceTheme)
+        {
+            var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
+            string stringThemes = reader.ReadToEnd();
+            reader.Close();
+            List<string> themes = stringThemes.Split('\n').ToList();
+            if (!themes.Contains(newAceTheme))
+                throw new InvalidInputException("You have entered an invalid theme for the Ace Editor!");
+            json.setAceTheme(newAceTheme);
+        }
+
+        ///<summary>
+        ///<para>Retreive the names of all pages in the website</para>
+        ///</summary>
+        public List<string> getPageTitles()
+        {
+            return json.getPageTitles();
+        }
+
+        ///<summary>
+        ///<para>Add a new page to the website</para>
+        ///</summary>
+        public void insertPageTitle(string newPageTitle)
+        {
+            if (json.getPageTitles().Contains(newPageTitle))
+                throw new InvalidInputException("You have already entered this title for a page!");
+            json.insertPageName(newPageTitle);
+        }
+
+        ///<summary>
+        ///<para>Associates section to the bottom of a selected page</para>
+        ///</summary>
+        public void setPage(string sectionName, string pageTitle)
+        {
+            if (!json.getPageTitles().Contains(pageTitle))
+                throw new InvalidInputException("You have selected a page name that hasn't been added!");
+            json.setPage(sectionName, pageTitle);
+        }
+
+        ///<summary>
+        ///<para>dissociates section from its selected page</para>
+        ///</summary>
+        public void nullPage(string sectionName)
+        {
+            json.nullPage(sectionName);
+        }
+
+        ///<summary>
+        ///<para>Retreive all elements of a snippet</para>
+        ///</summary>
+        public Snippet readSnippet(string sectionName, int index)
+        {
+            var snippet = new Snippet();
+            snippet.language = json.getLanguage(sectionName, index);
+            snippet.comment = json.getComment(sectionName, index);
+            snippet.code = fileHandler.read(fileDir + @"/data/" + sectionName.ToLower().Replace(" ", "") + "-" + index + ".txt");
+            return snippet;
+        }
+
+        ///<summary>
+        ///<para>Retreive all sections on a specific page</para>
+        ///</summary>
+        public List<Section> readPage(string pageTitle)
+        {
+            var result = new List<Section>();
+
+            //Retrieve list of sections with the associated pageTitle
+            List<string> sectionNames = json.getPageSections(pageTitle);
+
+            //For each section
+            for (int x = 1; x <= sectionNames.Count; x++)
             {
-                Directory.CreateDirectory(String.Concat(fileDir, @"/data/" + settingsJSON.PageHeadings.Count));
+                var section = new Section();
+                foreach (string sectionName in sectionNames)
+                {
+                    if (json.getSectionPosition(sectionName) == x)
+                    {
+                        section.sectionName = sectionName;
+                        break;
+                    }
+                }
+                var listOfSnippets = new List<Snippet>();
+                for (int y = 1; y <= json.getNumberOfSnippets(section.sectionName); y++)
+                {
+                    listOfSnippets.Add(readSnippet(section.sectionName, y));
+                }
+                section.snippets = listOfSnippets;
+                result.Add(section);
             }
-            json.Add(new JSON(fileDir + @"/data/", settingsJSON.PageHeadings.Count));
+            return result;
         }
 
-        public void setCurrentPage(int newPage)
+        ///<summary>
+        ///<para>Reteive all snippets from a specific page, removing section information</para>
+        ///</summary>
+        public List<Snippet> readPageSnippetOnly(string pageTitle)
         {
-            currentPage = newPage;
+            return pageSnippetsOnly(readPage(pageTitle));
         }
 
-        public int getNoOfPages()
+        ///<summary>
+        ///<para>Retreive snippets from sections, i.e removing section information</para>
+        ///</summary>
+        public List<Snippet> pageSnippetsOnly(List<Section> page)
         {
-            return settingsJSON.PageHeadings.Count;
-        }
+            var result = new List<Snippet>();
 
-        public String getTitle()
-        {
-            return settingsJSON.Title;
-        }
-
-        //Get all elements of a snippet
-        public Snippet readElement(int index)
-        {
-            Snippet element = new Snippet();
-            element.position = json[currentPage - 1].getPosition(index);
-            element.header = json[currentPage - 1].getHeader(index);
-            element.language = json[currentPage - 1].getLanguage(index);
-            element.code = fileHandler.read(fileDir + @"/data/" + currentPage + @"/" + index + @".txt");
-            element.comment = json[currentPage - 1].getComment(index);
-            return element;
-        }
-
-        public List<Snippet> readAll()
-        {
-            List<Snippet> list = new List<Snippet>();
-            for (int x = 1; x <= json[currentPage - 1].numberOfEntries(); x++)
+            foreach (Section section in page)
             {
-                list.Add(readElement(x));
+                foreach (Snippet snippet in section.snippets)
+                {
+                    result.Add(snippet);
+                }
             }
-            return list;
+
+            return result;
         }
 
-        //Insert into specific position in list
-        public void insert(int index , String header , String language , String comment , List<String> code)
+        public List<string> readSectionNames()
         {
-            fileHandler.insert(code , index , fileDir + @"/data/" + currentPage + @"/" , json[currentPage - 1].numberOfEntries());
-            json[currentPage].insert(header, language, comment, index);
+            return json.getSectionNames();
         }
 
-        public void insert(int index, String header, String language, String comment, String code)
+        ///<summary>
+        ///<para>Add a new section</para>
+        ///</summary>
+        public void insertSection(string section)
         {
-            fileHandler.insert(code, index, fileDir + @"/data/" + currentPage + @"/" , json[currentPage - 1].numberOfEntries());
-            json[currentPage - 1].insert(header, language, comment, index);
+            if (json.getSectionNames().Contains(section))
+            {
+                throw new InvalidInputException("You have already entered this title for a section!");
+            }
+            json.insertSection(section);
         }
 
-        //Add to the end of the list
-        public void insert(String header, String language, String comment, List<String> code)
+        ///<summary>
+        ///<para>Delete a section</para>
+        ///</summary>
+        public void deleteSection(string section)
         {
-            fileHandler.insert(code, json[currentPage - 1].numberOfEntries() + 1, fileDir + @"/data/" + currentPage + @"/" , json[currentPage - 1].numberOfEntries());
-            json[currentPage].insert(header, language, comment, json[currentPage - 1].numberOfEntries() + 1);
+            for (int x = json.getNumberOfSnippets(section); x >= 1; x--)
+            {
+                deleteSnippet(section, x);
+            }
+            json.deleteSection(section);
         }
 
-        public void insert(String header, String language, String comment, String code)
+        public List<string> readFileNames(string section)
         {
-            fileHandler.insert(code, json[currentPage - 1].numberOfEntries() + 1, fileDir + @"/data/" + currentPage + @"/" , json[currentPage - 1].numberOfEntries());
-            json[currentPage - 1].insert(header, language, comment, json[currentPage - 1].numberOfEntries() + 1);
+            List<string> x = new List<string>();
+            x.Add("LOL.txt");
+            x.Add("HEY.ppt");
+            return x;
         }
 
-        //Swaps two different entries
-        public void swap(int first , int second)
+        ///<summary>
+        ///<para>Swap two sections</para>
+        ///</summary>
+        public void swapSection(string first, string second)
         {
-            fileHandler.swap(fileDir + @"/data/" + currentPage + @"/", first, second);
-            json[currentPage - 1].swap(first , second);
+            json.swapSection(first, second);
         }
 
-        //Delete an entry at a specific position
-        public void delete(int index)
+        ///<summary>
+        ///<para>Add a snippet to a specific position in the section</para>
+        ///</summary>
+        public void insertSnippet(string section, int index, string language, string comment, List<string> code)
         {
-            fileHandler.delete(index, json[currentPage - 1].numberOfEntries(), fileDir + @"/data/" + currentPage + @"/");
-            json[currentPage - 1].delete(index);
+            string codeString = string.Join("\n", code.ToArray());
+            insertSnippet(section, index, language, comment, codeString);
+        }
+
+        public void insertSnippet(string section, int index, string language, string comment, string content)
+        {
+            switch (language)
+            {
+                case "file":
+                    fileHandler.insertFile(content, index, section, fileDir + @"/data/");
+                    json.insertSnippet(section, index, "file", comment);
+                    break;
+                default:
+                    fileHandler.insertSnippet(content, index, section, fileDir + @"/data/");
+                    json.insertSnippet(section, index, language, comment);
+                    break;
+            }
+        }
+
+        ///<summary>
+        ///<para>Add a snippet to the end of a section</para>
+        ///</summary>
+        public void insertSnippet(string section, string language, string comment, List<string> code)
+        {
+            string codeString = string.Join("\n", code.ToArray());
+            insertSnippet(section, language, comment, codeString);
+        }
+
+        public void insertSnippet(string section, string language, string comment, string content)
+        {
+            switch (language)
+            {
+                case "file":
+                    fileHandler.insertFile(content, json.getNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
+                    json.insertSnippet(section, json.getNumberOfSnippets(section) + 1, "file", comment);
+                    break;
+                default:
+                    fileHandler.insertSnippet(content, json.getNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
+                    json.insertSnippet(section, json.getNumberOfSnippets(section) + 1, language, comment);
+                    break;
+            }
+        }
+
+        ///<summary>
+        ///<para>Swaps two different snippets</para>
+        ///</summary>
+        public void swapSnippet(int first, int second, string section)
+        {
+            fileHandler.swap(first, second, section, fileDir + @"/data");
+            json.swapSnippet(section, first, second);
+        }
+
+        ///<summary>
+        ///<para>Delete a snippet at a specific position</para>
+        ///</summary>
+        public void deleteSnippet(string section, int index)
+        {
+            fileHandler.delete(index, section, fileDir + @"/data");
+            json.deleteSnippet(section, index);
         }
     }
 }

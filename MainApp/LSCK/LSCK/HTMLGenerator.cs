@@ -8,56 +8,88 @@ namespace LSCK
     public class HTMLGenerator
     {
         private FJController fjController;
-        private readonly String presetDir;
-        private readonly String generateDir;
-        private String aceTheme;
-        private Boolean CDN;
+        private readonly string fileDir;
+        private readonly string generateDir;
+        private bool CDN=true;
 
-        public HTMLGenerator(FJController fjController , String aceTheme , Boolean CDN , String presetDir , String generateDir)
+        public HTMLGenerator(FJController fjController, bool CDN, string fileDir, string generateDir)
         {
             this.fjController = fjController;
-            this.presetDir = presetDir;
+            this.fileDir = fileDir;
             this.generateDir = generateDir;
-            this.aceTheme = aceTheme;
             this.CDN = CDN;
         }
 
-        public void writeHTML()
+        private void writeHTML(string htmlCode, string pageTitle)
+        {
+            string path = string.Concat(generateDir, @"/" + pageTitle.ToLower().Replace(" ", "") + ".html");
+            File.WriteAllText(path, htmlCode);
+        }
+
+        private void deleteFolder(string dir)
+        {
+            var di = new DirectoryInfo(dir);
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo folder in di.GetDirectories())
+            {
+                deleteFolder(folder.FullName);
+                folder.Delete(true);
+            }
+        }
+
+        public void generateWebsite()
         {
             if (!Directory.Exists(generateDir))
             {
                 Directory.CreateDirectory(generateDir);
             }
-            else 
+            else
             {
-                System.IO.DirectoryInfo di = new DirectoryInfo(generateDir);
-                foreach (FileInfo file in di.GetFiles())
-                {
-                    file.Delete();
-                }
+                //Clean out directory
+                deleteFolder(generateDir);
             }
-            //string path = string.Concat(generateDir, @"/index.html");
-            //File.WriteAllText(path, generateHTML());
+            if (CDN == false)
+            {
+                Directory.CreateDirectory(generateDir + @"/styles");
+                File.Copy(fileDir + @"/presets/bootstrap.min.css" , generateDir + @"/styles/bootstrap.min.css");
+                Directory.CreateDirectory(generateDir + @"/styles/ace");
+                string sourcePath = fileDir + @"/presets/ace";
+                string destinPath = generateDir + @"/styles/ace";
+                foreach (string dirPath in Directory.GetDirectories(fileDir + @"/presets/ace", "*", SearchOption.AllDirectories))
+                    Directory.CreateDirectory(dirPath.Replace(sourcePath, destinPath));
+                foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
+                    File.Copy(newPath, newPath.Replace(sourcePath, destinPath), true);
+            }
+            foreach (string pageTitle in fjController.getPageTitles())
+            {
+                //Console.WriteLine(pageTitle);
+                //Console.WriteLine(generateHTML(pageTitle));
+                writeHTML(generateHTML(pageTitle), pageTitle);
+            }
         }
 
-        public String generateHTML()
+        public string generateHTML(string pageTitle)
         {
-            List<String> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
-            htmlCL.Add(generateHead());
+            List<Section> page = fjController.readPage(pageTitle);
+            List<Snippet> pageSnippets = fjController.pageSnippetsOnly(page);
 
-            htmlCL.Add(generateBody());
-            htmlCL.Add(generateAceScript());
-            htmlCL.Add("</body>");
-            htmlCL.Add("</html>");
+            htmlCL.Add(generateHead(fjController.getTitle()));
+            htmlCL.Add(generateBody(page, fjController.getTitle(), pageTitle));
+            htmlCL.Add(generateAceScript(pageSnippets, fjController.getAceTheme()));
+            htmlCL.Add(generateFooter());
 
             string htmlContent = string.Join("\n", htmlCL.ToArray());
             return htmlContent;
         }
 
-        private String generateHead()
+        private string generateHead(string title)
         {
-            List<String> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
             htmlCL.Add("<!DOCTYPE html>");
             htmlCL.Add("<html lang=\"en\">");
@@ -65,8 +97,15 @@ namespace LSCK
             htmlCL.Add("<head>");
             htmlCL.Add("    <meta charset=\"utf-8\">");
             htmlCL.Add("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
-            htmlCL.Add("    <title>Test</title>");
-            htmlCL.Add("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" type=\"text/css\"/>");
+            htmlCL.Add("    <title>" + title + "</title>");
+            if (CDN == true)
+            {
+                htmlCL.Add("    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\"/>");
+            }
+            else 
+            {
+                htmlCL.Add("    <link rel=\"stylesheet\" href=\"styles/bootstrap.min.css\"/>");
+            }
             htmlCL.Add("    <link href=\"style.css\" rel=\"stylesheet\">");
             htmlCL.Add("</head>");
 
@@ -74,9 +113,9 @@ namespace LSCK
             return htmlContent;
         }
 
-        private String generateNavBar()
+        private string generateNavBar(string title, string pageTitle)
         {
-            List<String> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
             htmlCL.Add("    <nav class=\"navbar navbar-inverse navbar-default navbar-static-top\" role=\"navigation\">");
             htmlCL.Add("        <div class=\"container\">");
@@ -87,12 +126,16 @@ namespace LSCK
             htmlCL.Add("                    <span class=\"icon-bar\"></span>");
             htmlCL.Add("                    <span class=\"icon-bar\"></span>");
             htmlCL.Add("                </button>");
-            htmlCL.Add("                <a class=\"navbar-brand\" href=\"/\">" + fjController.getTitle() + "</a>");
+            htmlCL.Add("                <a class=\"navbar-brand\" href=\"" + fjController.getPageTitles()[0].ToLower().Replace(" ", "") + ".html\">" + title + "</a>");
             htmlCL.Add("            </div>");
             htmlCL.Add("            <div id=\"navbar\" class=\"collapse navbar-collapse\">");
-            htmlCL.Add("                <ul class=\"nav navbar-nav navbar-right\">");
-            htmlCL.Add("                    <li>");
-            htmlCL.Add("                    </li>");
+            htmlCL.Add("                <ul class=\"nav navbar-nav navbar-left\">");
+            for (int x = 1; x < fjController.getPageTitles().Count; x++)
+            {
+                htmlCL.Add("                    <li" + ((fjController.getPageTitles()[x] == pageTitle) ? " class=\"active\"" : "") + ">");
+                htmlCL.Add("                        <a href=\"" + fjController.getPageTitles()[x].ToLower().Replace(" ","") + ".html\">" + fjController.getPageTitles()[x] + "</a>");
+                htmlCL.Add("                    </li>");
+            }
             htmlCL.Add("                </ul>");
             htmlCL.Add("            </div>");
             htmlCL.Add("        </div>");
@@ -102,30 +145,48 @@ namespace LSCK
             return htmlContent;
         }
 
-        private String generateBody()
+        private string generateBody(List<Section> page, string title, string pageTitle)
         {
-            List<String> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
             htmlCL.Add("<body>");
-            htmlCL.Add(generateNavBar());
+            htmlCL.Add(generateNavBar(title, pageTitle));
             htmlCL.Add("    <div class=\"container\">");
             htmlCL.Add("        <div class=\"container-fluid text-left\">");
-            for (int x = 1; x <= fjController.readAll().Count; x++)
+            int x = 0;
+            foreach (Section section in page)
             {
-                List<string> code = fjController.readElement(x).code.Split('\n').ToList();
-                for (int y = 0 ; y < code.Count ; y++)
+                htmlCL.Add("            <h3><strong>" + section.sectionName + "</strong></h3>");
+                foreach (Snippet snippet in section.snippets)
                 {
-                    //Change character to special character equivalent
-                    code[y] = code[y].Replace("<", "&lt;");
+                    List<string> code = snippet.code.Split('\n').ToList();
+                    for (int y = 0; y < code.Count; y++)
+                    {
+                        //Change character to special character equivalent
+                        code[y] = code[y].Replace("<", "&lt;");
+                    }
+                    htmlCL.Add("            <p>" + snippet.comment + "</p>");
+                    if (snippet.language != "file")
+                    {
+                        htmlCL.Add("            <div id = \"editor" + ++x + "\">" + code[0]);
+                        for (int y = 1; y < code.Count - 1; y++)
+                        {
+                            htmlCL.Add(code[y]);
+                        }
+                        htmlCL.Add(code[code.Count - 1] + "</div>");
+                    }
+                    else
+                    {
+                        if (!Directory.Exists(generateDir + @"/userfiles"))
+                        {
+                            Directory.CreateDirectory(generateDir + @"/userfiles");
+                        }
+                        Console.WriteLine("Write File!");
+                        File.Copy(fileDir + @"/data/userfiles/" + code[0], generateDir + @"/userfiles/" + code[0]);
+                        htmlCL.Add("            <center><a href=\"userfiles/" + code[0] + "\"/>" + code[0] + "</a></center>");
+                    }
+                    htmlCL.Add("            <br>");
                 }
-                htmlCL.Add("<h3><strong>" + fjController.readElement(x).header + "</strong></h3>");
-                htmlCL.Add("<p>" + fjController.readElement(x).comment + "</p>");
-                htmlCL.Add("            <div id = \"editor" + x + "\">" + code[0]);
-                for (int y = 1 ; y < code.Count - 1 ; y++)
-                {
-                    htmlCL.Add(code[y]);
-                }
-                htmlCL.Add(code[code.Count - 1] + "</div>");
             }
             htmlCL.Add("        </div>");
             htmlCL.Add("    </div>");
@@ -134,29 +195,51 @@ namespace LSCK
             return htmlContent;
         }
 
-        private String generateAceScript()
+        private String generateAceScript(List<Snippet> snippets, string aceTheme)
         {
-            List<String> htmlCL = new List<string>(); //HTMLContentList
+            var htmlCL = new List<string>(); //HTMLContentList
 
-            htmlCL.Add("    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js\" type=\"text/javascript\" charset=\"utf-8\"></script>");
+            if (CDN == true)
+            {
+                htmlCL.Add("    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js\" type=\"text/javascript\" charset=\"utf-8\"></script>");
+            }
+            else {
+                htmlCL.Add("    <script src=\"styles/ace/ace.js\" type=\"text/javascript\" charset=\"utf-8\"></script>");
+            }
             htmlCL.Add("    <script>");
-            htmlCL.Add("        for (x = 1 ; x <= " + fjController.readAll().Count + " ; x++){");
+            htmlCL.Add("        for (x = 1 ; x <= " + snippets.Count(snippet => snippet.language != "file") + " ; x++){");
             htmlCL.Add("        var editor = ace.edit(\"editor\" + x);");
+            htmlCL.Add("            editor.getSession().setUseWorker(false);");
             htmlCL.Add("            editor.setTheme(\"ace/theme/" + aceTheme + "\");");
             htmlCL.Add("            editor.renderer.setScrollMargin(10, 10, 0, 0);");
             htmlCL.Add("            editor.renderer.$cursorLayer.element.style.opacity = 0;");
+            htmlCL.Add("            editor.setShowPrintMargin(false);");
             htmlCL.Add("            editor.setOptions({");
             htmlCL.Add("                maxLines: Infinity,");
             htmlCL.Add("                readOnly: true,");
             htmlCL.Add("                highlightActiveLine: false,");
-            htmlCL.Add("                highlightGutterLine: false");
+            htmlCL.Add("                highlightGutterLine: false,");
             htmlCL.Add("            });");
             htmlCL.Add("        }");
-            for (int x = 1; x <= fjController.readAll().Count; x++)
+            int y = 0;
+            for (int x = 1; x <= snippets.Count; x++)
             {
-                htmlCL.Add("        ace.edit(\"editor" + x + "\").getSession().setMode(\"ace/mode/" + fjController.readElement(x).language + "\");");
+                if (snippets[x - 1].language == "file")
+                    continue;
+                htmlCL.Add("        ace.edit(\"editor" + ++y + "\").getSession().setMode(\"ace/mode/" + snippets[x - 1].language + "\");");
             }
             htmlCL.Add("    </script>");
+
+            string htmlContent = string.Join("\n", htmlCL.ToArray());
+            return htmlContent;
+        }
+
+        private String generateFooter()
+        {
+            var htmlCL = new List<string>(); //HTMLContentList
+
+            htmlCL.Add("</body>");
+            htmlCL.Add("</html>");
 
             string htmlContent = string.Join("\n", htmlCL.ToArray());
             return htmlContent;
