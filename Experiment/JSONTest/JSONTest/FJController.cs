@@ -139,12 +139,22 @@ namespace JSONTest
         ///<summary>
         ///<para>Add a new page to the website</para>
         ///</summary>
-        public void InsertPageTitle(string newPageTitle)
+        public void InsertPage(string newPageTitle)
         {
             if (json.GetPageTitles().Contains(newPageTitle))
                 throw (new InvalidInputException("You have already entered this title for a page!"));
             else
-                json.InsertPageName(newPageTitle);
+                json.InsertPage(newPageTitle);
+        }
+
+        public void DeletePage(string pageName)
+        {
+            json.DeletePage(pageName);
+        }
+
+        public void SwapPages(string firstPage, string secondPage)
+        {
+            json.SwapPage(firstPage, secondPage);
         }
 
         ///<summary>
