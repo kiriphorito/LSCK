@@ -275,6 +275,16 @@ namespace JSONTest
             return JSONFile.sections[getSectionIndex(sectionName)].position;
         }
 
+        public List<string> getSectionNames()
+        {
+            List<string> result = new List<string>();
+            foreach (Section section in JSONFile.sections)
+            {
+                result.Add(section.sectionName);
+            }
+            return result;
+        }
+
         public string getLanguage(string sectionName, int index)
         {
             int sectionIndex = getSectionIndex(sectionName);

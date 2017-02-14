@@ -139,6 +139,8 @@ namespace JSONTest
         ///</summary>
         public void insertPageTitle(string newPageTitle)
         {
+            if (json.getPageTitles().Contains(newPageTitle))
+                throw new InvalidInputException("You have already entered this title for a page!");
             json.insertPageName(newPageTitle);
         }
 
@@ -231,11 +233,20 @@ namespace JSONTest
             return result;
         }
 
+        public List<string> readSectionNames()
+        {
+            return json.getSectionNames();
+        }
+
         ///<summary>
         ///<para>Add a new section</para>
         ///</summary>
         public void insertSection(string section)
         {
+            if (json.getSectionNames().Contains(section))
+            {
+                throw new InvalidInputException("You have already entered this title for a section!");
+            }
             json.insertSection(section);
         }
 

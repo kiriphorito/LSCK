@@ -7,6 +7,13 @@ namespace JSONTest
 {
     class MainClass
     {
+
+        public class InvalidInputException : Exception
+        {
+            public InvalidInputException(string message)
+                : base(message) { }
+        }
+
         public static void Main(string[] args)
         {
 
@@ -33,12 +40,21 @@ namespace JSONTest
             //Console.Write(fileJson);
 
             FJController fjController = FJController.GetInstance;
-            FJController fjController2 = FJController.GetInstance;
 
-            if (fjController == fjController2)
+            try
             {
-                Console.WriteLine("SAME INSTANCE");
+                fjController.insertSection("Hello World!");
             }
+            catch (InvalidInputException e)
+            {
+                Console.WriteLine("You have entered this section name already!");
+            }
+            //FJController fjController2 = FJController.GetInstance;
+
+            //if (fjController == fjController2)
+            //{
+            //    Console.WriteLine("SAME INSTANCE");
+            //}
 
             //fjController.insertFile("Hello World!", "A random txt file.", "/Users/sampham/Documents/Test1.txt");
 
@@ -97,8 +113,10 @@ namespace JSONTest
             //HTMLGenerator html = new HTMLGenerator(fjController , false , Environment.CurrentDirectory, Environment.CurrentDirectory + @"/generatedWebsite");
             //html.generateWebsite();
 
-            AcceptableList gen = new AcceptableList();
-            gen.modeList("theme-*.js", Environment.CurrentDirectory + @"/presets/ace", "acceptable_ace_themes");
+            //AcceptableList gen = new AcceptableList();
+            //gen.modeList("theme-*.js", Environment.CurrentDirectory + @"/presets/ace", "acceptable_ace_themes");
+
+
 
             //html.writeHTML();
             //Console.WriteLine(html.generateHTML());
