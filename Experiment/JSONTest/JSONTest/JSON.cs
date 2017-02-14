@@ -265,11 +265,6 @@ namespace JSONTest
             return JSONFile.ace_theme;
         }
 
-        public int GetAceThemeIndex()
-        {
-
-        }
-
         public List<string> GetPageTitles()
         {
             return JSONFile.page_titles;
