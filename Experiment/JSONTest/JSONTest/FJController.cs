@@ -95,7 +95,7 @@ namespace JSONTest
         ///</summary>
         public string GetTitle()
         {
-            return json.getTitle();
+            return json.GetTitle();
         }
 
         ///<summary>
@@ -111,7 +111,7 @@ namespace JSONTest
         ///</summary>
         public string GetAceTheme()
         {
-            return json.getAceTheme();
+            return json.GetAceTheme();
         }
 
         ///<summary>
@@ -133,7 +133,7 @@ namespace JSONTest
         ///</summary>
         public List<string> GetPageTitles()
         {
-            return json.getPageTitles();
+            return json.GetPageTitles();
         }
 
         ///<summary>
@@ -141,7 +141,7 @@ namespace JSONTest
         ///</summary>
         public void InsertPageTitle(string newPageTitle)
         {
-            if (json.getPageTitles().Contains(newPageTitle))
+            if (json.GetPageTitles().Contains(newPageTitle))
                 throw (new InvalidInputException("You have already entered this title for a page!"));
             else
                 json.InsertPageName(newPageTitle);
@@ -152,7 +152,7 @@ namespace JSONTest
         ///</summary>
         public void SetPage(string sectionName, string pageTitle)
         {
-            if (!json.getPageTitles().Contains(pageTitle))
+            if (!json.GetPageTitles().Contains(pageTitle))
                 throw new InvalidInputException("You have selected a page name that hasn't been added!");
             json.SetPage(sectionName , pageTitle);
         }
@@ -171,8 +171,8 @@ namespace JSONTest
         public Snippet ReadSnippet(string sectionName, int index)
         {
             var snippet = new Snippet();
-            snippet.language = json.getLanguage(sectionName, index);
-            snippet.comment = json.getComment(sectionName, index);
+            snippet.language = json.GetLanguage(sectionName, index);
+            snippet.comment = json.GetComment(sectionName, index);
             snippet.code = fileHandler.Read(fileDir + @"/data/" + sectionName.ToLower().Replace(" ", "") + "-" + index + ".txt");
             return snippet;
         }
@@ -185,7 +185,7 @@ namespace JSONTest
             var result = new List<Section>();
 
             //Retrieve list of sections with the associated pageTitle
-            List<string> sectionNames = json.getPageSections(pageTitle);
+            List<string> sectionNames = json.GetPageSections(pageTitle);
 
             //For each section
             for (int x = 1; x <= sectionNames.Count; x++)
@@ -193,14 +193,14 @@ namespace JSONTest
                 var section = new Section();
                 foreach (string sectionName in sectionNames)
                 {
-                    if (json.getSectionPosition(sectionName) == x)
+                    if (json.GetSectionPosition(sectionName) == x)
                     {
                         section.sectionName = sectionName;
                         break;
                     }
                 }
                 var listOfSnippets = new List<Snippet>();
-                for (int y = 1; y <= json.getNumberOfSnippets(section.sectionName); y++)
+                for (int y = 1; y <= json.GetNumberOfSnippets(section.sectionName); y++)
                 {
                     listOfSnippets.Add(ReadSnippet(section.sectionName, y));
                 }
@@ -241,7 +241,7 @@ namespace JSONTest
         ///</summary>
         public List<string> ReadSectionNames()
         {
-            return json.getSectionNames();
+            return json.GetSectionNames();
         }
 
         ///<summary>
@@ -250,9 +250,9 @@ namespace JSONTest
         public List<string> ReadFileNames(string sectionName)
         {
             var result = new List<string>();
-            for (int x = 1; x <= json.getNumberOfSnippets(sectionName); x++)
+            for (int x = 1; x <= json.GetNumberOfSnippets(sectionName); x++)
             {
-                if (json.getLanguage(sectionName, x) == "file")
+                if (json.GetLanguage(sectionName, x) == "file")
                 {
                     result.Add(fileHandler.Read(fileDir + @"/data/" + sectionName.ToLower().Replace(" ", "") + "-" + x + ".txt"));
                 }
@@ -265,7 +265,7 @@ namespace JSONTest
         ///</summary>
         public void InsertSection(string section)
         {
-            if (json.getSectionNames().Contains(section))
+            if (json.GetSectionNames().Contains(section))
             {
                 Console.WriteLine("You have already entered this title for a section!");
                 return;
@@ -280,7 +280,7 @@ namespace JSONTest
         ///</summary>
         public void DeleteSection(string section)
         {
-            for (int x = json.getNumberOfSnippets(section); x >= 1; x--)
+            for (int x = json.GetNumberOfSnippets(section); x >= 1; x--)
             {
                 DeleteSnippet(section, x);
             }
@@ -333,12 +333,12 @@ namespace JSONTest
             switch (language)
             {
                 case "file":
-                    fileHandler.InsertFile(content, json.getNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
-                    json.InsertSnippet(section, json.getNumberOfSnippets(section) + 1, "file", comment);
+                    fileHandler.InsertFile(content, json.GetNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
+                    json.InsertSnippet(section, json.GetNumberOfSnippets(section) + 1, "file", comment);
                     break;
                 default:
-                    fileHandler.InsertSnippet(content, json.getNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
-                    json.InsertSnippet(section, json.getNumberOfSnippets(section) + 1, language, comment);
+                    fileHandler.InsertSnippet(content, json.GetNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
+                    json.InsertSnippet(section, json.GetNumberOfSnippets(section) + 1, language, comment);
                     break;
             }
         }
@@ -349,7 +349,7 @@ namespace JSONTest
         public void SwapSnippet(int first, int second, string section)
         {
             fileHandler.Swap(first, second, section, fileDir + @"/data");
-            json.swapSnippet(section, first, second);
+            json.SwapSnippet(section, first, second);
         }
 
         ///<summary>
@@ -358,7 +358,7 @@ namespace JSONTest
         public void DeleteSnippet(string section, int index)
         {
             fileHandler.Delete(index, section, fileDir + @"/data");
-            json.deleteSnippet(section, index);
+            json.DeleteSnippet(section, index);
         }
 
         ///<summary>
@@ -366,9 +366,9 @@ namespace JSONTest
         ///</summary>
         public void DeleteFileSnippet(string sectionName, string fileName)
         {
-            for (int x = 1; x <= json.getNumberOfSnippets(sectionName); x++)
+            for (int x = 1; x <= json.GetNumberOfSnippets(sectionName); x++)
             {
-                if (json.getLanguage(sectionName, x) == "file")
+                if (json.GetLanguage(sectionName, x) == "file")
                 {
                     if (fileHandler.Read(fileDir + @"/data/" + sectionName.ToLower().Replace(" ", "") + "-" + x + ".txt") == fileName)
                     {
