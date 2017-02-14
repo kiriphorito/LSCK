@@ -20,13 +20,13 @@ namespace JSONTest
             this.CDN = CDN;
         }
 
-        private void writeHTML(string htmlCode, string pageTitle)
+        private void WriteHTML(string htmlCode, string pageTitle)
         {
             string path = string.Concat(generateDir, @"/" + pageTitle.ToLower().Replace(" ", "") + ".html");
             File.WriteAllText(path, htmlCode);
         }
 
-        private void deleteFolder(string dir)
+        private void DeleteFolder(string dir)
         {
             var di = new DirectoryInfo(dir);
             foreach (FileInfo file in di.GetFiles())
@@ -35,12 +35,12 @@ namespace JSONTest
             }
             foreach (DirectoryInfo folder in di.GetDirectories())
             {
-                deleteFolder(folder.FullName);
+                DeleteFolder(folder.FullName);
                 folder.Delete(true);
             }
         }
 
-        public void generateWebsite()
+        public void GenerateWebsite()
         {
             if (!Directory.Exists(generateDir))
             {
@@ -49,7 +49,7 @@ namespace JSONTest
             else
             {
                 //Clean out directory
-                deleteFolder(generateDir);
+                DeleteFolder(generateDir);
             }
             if (CDN == false)
             {
@@ -63,31 +63,31 @@ namespace JSONTest
                 foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
                     File.Copy(newPath, newPath.Replace(sourcePath, destinPath), true);
             }
-            foreach (string pageTitle in fjController.getPageTitles())
+            foreach (string pageTitle in fjController.GetPageTitles())
             {
                 //Console.WriteLine(pageTitle);
                 //Console.WriteLine(generateHTML(pageTitle));
-                writeHTML(generateHTML(pageTitle), pageTitle);
+                WriteHTML(GenerateHTML(pageTitle), pageTitle);
             }
         }
 
-        public string generateHTML(string pageTitle)
+        public string GenerateHTML(string pageTitle)
         {
             var htmlCL = new List<string>(); //HTMLContentList
 
-            List<Section> page = fjController.readPage(pageTitle);
-            List<Snippet> pageSnippets = fjController.pageSnippetsOnly(page);
+            List<Section> page = fjController.ReadPage(pageTitle);
+            List<Snippet> pageSnippets = fjController.PageSnippetsOnly(page);
 
-            htmlCL.Add(generateHead(fjController.getTitle()));
-            htmlCL.Add(generateBody(page, fjController.getTitle(), pageTitle));
-            htmlCL.Add(generateAceScript(pageSnippets, fjController.getAceTheme()));
-            htmlCL.Add(generateFooter());
+            htmlCL.Add(GenerateHead(fjController.GetTitle()));
+            htmlCL.Add(GenerateBody(page, fjController.GetTitle(), pageTitle));
+            htmlCL.Add(GenerateAceScript(pageSnippets, fjController.GetAceTheme()));
+            htmlCL.Add(GenerateFooter());
 
             string htmlContent = string.Join("\n", htmlCL.ToArray());
             return htmlContent;
         }
 
-        private string generateHead(string title)
+        private string GenerateHead(string title)
         {
             var htmlCL = new List<string>(); //HTMLContentList
 
@@ -113,7 +113,7 @@ namespace JSONTest
             return htmlContent;
         }
 
-        private string generateNavBar(string title, string pageTitle)
+        private string GenerateNavBar(string title, string pageTitle)
         {
             var htmlCL = new List<string>(); //HTMLContentList
 
@@ -126,14 +126,14 @@ namespace JSONTest
             htmlCL.Add("                    <span class=\"icon-bar\"></span>");
             htmlCL.Add("                    <span class=\"icon-bar\"></span>");
             htmlCL.Add("                </button>");
-            htmlCL.Add("                <a class=\"navbar-brand\" href=\"" + fjController.getPageTitles()[0].ToLower().Replace(" ", "") + ".html\">" + title + "</a>");
+            htmlCL.Add("                <a class=\"navbar-brand\" href=\"" + fjController.GetPageTitles()[0].ToLower().Replace(" ", "") + ".html\">" + title + "</a>");
             htmlCL.Add("            </div>");
             htmlCL.Add("            <div id=\"navbar\" class=\"collapse navbar-collapse\">");
             htmlCL.Add("                <ul class=\"nav navbar-nav navbar-left\">");
-            for (int x = 1; x < fjController.getPageTitles().Count; x++)
+            for (int x = 1; x < fjController.GetPageTitles().Count; x++)
             {
-                htmlCL.Add("                    <li" + ((fjController.getPageTitles()[x] == pageTitle) ? " class=\"active\"" : "") + ">");
-                htmlCL.Add("                        <a href=\"" + fjController.getPageTitles()[x].ToLower().Replace(" ","") + ".html\">" + fjController.getPageTitles()[x] + "</a>");
+                htmlCL.Add("                    <li" + ((fjController.GetPageTitles()[x] == pageTitle) ? " class=\"active\"" : "") + ">");
+                htmlCL.Add("                        <a href=\"" + fjController.GetPageTitles()[x].ToLower().Replace(" ","") + ".html\">" + fjController.GetPageTitles()[x] + "</a>");
                 htmlCL.Add("                    </li>");
             }
             htmlCL.Add("                </ul>");
@@ -145,12 +145,12 @@ namespace JSONTest
             return htmlContent;
         }
 
-        private string generateBody(List<Section> page, string title, string pageTitle)
+        private string GenerateBody(List<Section> page, string title, string pageTitle)
         {
             var htmlCL = new List<string>(); //HTMLContentList
 
             htmlCL.Add("<body>");
-            htmlCL.Add(generateNavBar(title, pageTitle));
+            htmlCL.Add(GenerateNavBar(title, pageTitle));
             htmlCL.Add("    <div class=\"container\">");
             htmlCL.Add("        <div class=\"container-fluid text-left\">");
             int x = 0;
@@ -195,7 +195,7 @@ namespace JSONTest
             return htmlContent;
         }
 
-        private String generateAceScript(List<Snippet> snippets, string aceTheme)
+        private string GenerateAceScript(List<Snippet> snippets, string aceTheme)
         {
             var htmlCL = new List<string>(); //HTMLContentList
 
@@ -234,7 +234,7 @@ namespace JSONTest
             return htmlContent;
         }
 
-        private String generateFooter()
+        private string GenerateFooter()
         {
             var htmlCL = new List<string>(); //HTMLContentList
 

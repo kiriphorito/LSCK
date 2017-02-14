@@ -40,10 +40,13 @@ namespace JSONTest
             //Console.Write(fileJson);
 
             FJController fjController = FJController.GetInstance;
-
+            //foreach (string fileName in fjController.readFileNames("Hello World!"))
+            //{
+            //    Console.WriteLine(fileName);
+            //}
             try
             {
-                fjController.insertSection("Hello World!");
+                fjController.InsertSection("Hello World!");
             }
             catch (InvalidInputException e)
             {
