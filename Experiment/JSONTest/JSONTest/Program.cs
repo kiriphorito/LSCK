@@ -40,18 +40,19 @@ namespace JSONTest
             //Console.Write(fileJson);
 
             FJController fjController = FJController.GetInstance;
+            fjController.SetAceTheme("twilight");
             //foreach (string fileName in fjController.readFileNames("Hello World!"))
             //{
             //    Console.WriteLine(fileName);
             //}
-            try
-            {
-                fjController.InsertSection("Hello World!");
-            }
-            catch (InvalidInputException e)
-            {
-                Console.WriteLine("You have entered this section name already!");
-            }
+            //try
+            //{
+            //    fjController.InsertSection("Hello World!");
+            //}
+            //catch (InvalidInputException e)
+            //{
+            //    Console.WriteLine("You have entered this section name already!");
+            //}
             //FJController fjController2 = FJController.GetInstance;
 
             //if (fjController == fjController2)

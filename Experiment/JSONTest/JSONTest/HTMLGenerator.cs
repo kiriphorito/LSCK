@@ -63,7 +63,7 @@ namespace JSONTest
                 foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
                     File.Copy(newPath, newPath.Replace(sourcePath, destinPath), true);
             }
-            foreach (string pageTitle in fjController.GetPageTitles())
+            foreach (string pageTitle in fjController.ReadPageTitles())
             {
                 //Console.WriteLine(pageTitle);
                 //Console.WriteLine(generateHTML(pageTitle));
@@ -78,9 +78,9 @@ namespace JSONTest
             List<Section> page = fjController.ReadPage(pageTitle);
             List<Snippet> pageSnippets = fjController.PageSnippetsOnly(page);
 
-            htmlCL.Add(GenerateHead(fjController.GetTitle()));
-            htmlCL.Add(GenerateBody(page, fjController.GetTitle(), pageTitle));
-            htmlCL.Add(GenerateAceScript(pageSnippets, fjController.GetAceTheme()));
+            htmlCL.Add(GenerateHead(fjController.ReadTitle()));
+            htmlCL.Add(GenerateBody(page, fjController.ReadTitle(), pageTitle));
+            htmlCL.Add(GenerateAceScript(pageSnippets, fjController.ReadAceTheme()));
             htmlCL.Add(GenerateFooter());
 
             string htmlContent = string.Join("\n", htmlCL.ToArray());
@@ -126,14 +126,14 @@ namespace JSONTest
             htmlCL.Add("                    <span class=\"icon-bar\"></span>");
             htmlCL.Add("                    <span class=\"icon-bar\"></span>");
             htmlCL.Add("                </button>");
-            htmlCL.Add("                <a class=\"navbar-brand\" href=\"" + fjController.GetPageTitles()[0].ToLower().Replace(" ", "") + ".html\">" + title + "</a>");
+            htmlCL.Add("                <a class=\"navbar-brand\" href=\"" + fjController.ReadPageTitles()[0].ToLower().Replace(" ", "") + ".html\">" + title + "</a>");
             htmlCL.Add("            </div>");
             htmlCL.Add("            <div id=\"navbar\" class=\"collapse navbar-collapse\">");
             htmlCL.Add("                <ul class=\"nav navbar-nav navbar-left\">");
-            for (int x = 1; x < fjController.GetPageTitles().Count; x++)
+            for (int x = 1; x < fjController.ReadPageTitles().Count; x++)
             {
-                htmlCL.Add("                    <li" + ((fjController.GetPageTitles()[x] == pageTitle) ? " class=\"active\"" : "") + ">");
-                htmlCL.Add("                        <a href=\"" + fjController.GetPageTitles()[x].ToLower().Replace(" ","") + ".html\">" + fjController.GetPageTitles()[x] + "</a>");
+                htmlCL.Add("                    <li" + ((fjController.ReadPageTitles()[x] == pageTitle) ? " class=\"active\"" : "") + ">");
+                htmlCL.Add("                        <a href=\"" + fjController.ReadPageTitles()[x].ToLower().Replace(" ","") + ".html\">" + fjController.ReadPageTitles()[x] + "</a>");
                 htmlCL.Add("                    </li>");
             }
             htmlCL.Add("                </ul>");

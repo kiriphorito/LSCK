@@ -93,7 +93,7 @@ namespace JSONTest
         ///<summary>
         ///<para>Retreive the Title of the website fron JSON</para>
         ///</summary>
-        public string GetTitle()
+        public string ReadTitle()
         {
             return json.GetTitle();
         }
@@ -114,24 +114,6 @@ namespace JSONTest
             return json.GetAceTheme();
         }
 
-        public int ReadAceThemeIndex()
-        {
-            var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
-            string stringThemes = reader.ReadToEnd();
-            reader.Close();
-            List<string> themes = stringThemes.Split('\n').ToList();
-            int x = 0;
-            foreach (string theme in themes)
-            {
-                if (json.GetAceTheme() == theme)
-                {
-                    return x;
-                }
-                x++;
-            }
-            return -1; //To make compiler happy
-        }
-
         ///<summary>
         ///<para>Set the theme for Ace Editor of the website fron JSON</para>
         ///</summary>
@@ -149,7 +131,7 @@ namespace JSONTest
         ///<summary>
         ///<para>Retreive the names of all pages in the website</para>
         ///</summary>
-        public List<string> GetPageTitles()
+        public List<string> ReadPageTitles()
         {
             return json.GetPageTitles();
         }
@@ -157,22 +139,12 @@ namespace JSONTest
         ///<summary>
         ///<para>Add a new page to the website</para>
         ///</summary>
-        public void InsertPage(string newPageTitle)
+        public void InsertPageTitle(string newPageTitle)
         {
             if (json.GetPageTitles().Contains(newPageTitle))
                 throw (new InvalidInputException("You have already entered this title for a page!"));
             else
                 json.InsertPage(newPageTitle);
-        }
-
-        public void DeletePage(string pageName)
-        {
-            json.DeletePage(pageName);
-        }
-
-        public void SwapPages(string firstPage, string secondPage)
-        {
-            json.SwapPage(firstPage, secondPage);
         }
 
         ///<summary>
@@ -236,6 +208,11 @@ namespace JSONTest
                 result.Add(section);
             }
             return result;
+        }
+
+        public List<string> ReadPageSections(string pageName)
+        {
+            return json.GetPageSections(pageName);
         }
 
         ///<summary>
