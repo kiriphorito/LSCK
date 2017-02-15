@@ -10,6 +10,7 @@
  * Website Information
  * - GetTitle()
  * - GetAceTheme()
+ * - GetAceThemeIndex()
  * - GetPageTitles()
  * 
  * - SetTitle()
@@ -18,8 +19,13 @@
  * - InsertPageTitle()
  * 
  * Page Infomation 
- * - ReadPage()
- * - ReadPageSnippetOnly()
+ * - GetPage()
+ * - GetPageSnippetOnly()
+ * - GetPageTitles()
+ * 
+ * - SetPageTitle()
+ * - DeletePage()
+ * - SwapPage()
  * 
  * Section Information
  * - InsertSection()
@@ -30,16 +36,17 @@
  * 
  * - PageSnippetsOnly()
  * - SnippetsOnly()
- * - ReadSectionNames()
+ * - GetSectionNames()
+ * - GetPageSections()
  * 
  * Snippet Information
  * - InsertSnippet()
  * - DeleteSnippet()
  * - DeleteFileSnippet()
  * - SwapSnippet()
- * - ReadSnippet()
+ * - GetSnippet()
  * 
- * - ReadFileNames()
+ * - GetFileNames()
 */
 
 using System;
@@ -104,6 +111,21 @@ namespace JSONTest
         public void SetTitle(string newTitle)
         {
             json.SetTitle(newTitle);
+        }
+
+        public void SetPageTitle(string oldName, string newName)
+        {
+            json.UpdatePageName(oldName, newName);
+        }
+
+        public void DeletePage(string pageName)
+        {
+            json.DeletePage(pageName);
+        }
+
+        public void SwapPage(string firstName, string secondName)
+        {
+            json.SwapPage(firstName, secondName);
         }
 
         private List<string> getListofThemes()
