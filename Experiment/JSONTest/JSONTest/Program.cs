@@ -40,7 +40,8 @@ namespace JSONTest
             //Console.Write(fileJson);
 
             FJController fjController = FJController.GetInstance;
-            fjController.SetAceTheme("twilight");
+            fjController.ReadAceThemeIndex();
+            //fjController.SetAceTheme("twilight");
             //foreach (string fileName in fjController.readFileNames("Hello World!"))
             //{
             //    Console.WriteLine(fileName);

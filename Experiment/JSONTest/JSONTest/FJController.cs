@@ -106,6 +106,29 @@ namespace JSONTest
             json.SetTitle(newTitle);
         }
 
+        private List<string> getListofThemes()
+        {
+            var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
+            string stringThemes = reader.ReadToEnd();
+            reader.Close();
+            return stringThemes.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();
+        }
+
+        public int ReadAceThemeIndex()
+        {
+            List<string> themes = getListofThemes();
+            int x = 0;
+            foreach (string theme in themes)
+            {
+                if (json.GetAceTheme().Equals(theme))
+                {
+                    return x;
+                }
+                x++;
+            }
+            return -1; //To make compiler happy
+        }
+
         ///<summary>
         ///<para>Retreive the theme for Ace Editor of the website fron JSON</para>
         ///</summary>
@@ -119,10 +142,7 @@ namespace JSONTest
         ///</summary>
         public void SetAceTheme(string newAceTheme)
         {
-            var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
-            string stringThemes = reader.ReadToEnd();
-            reader.Close();
-            List<string> themes = stringThemes.Split('\n').ToList();
+            List<string> themes = getListofThemes();
             if (!themes.Contains(newAceTheme))
                 throw new InvalidInputException("You have entered an invalid theme for the Ace Editor!");
             json.SetAceTheme(newAceTheme);
