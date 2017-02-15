@@ -1,0 +1,9 @@
+C:\Users\Sam\Git\LSCK\Experiment\JSONTest\JSONTest\obj\x86\Debug\JSONTest.exe
+C:\Users\Sam\Git\LSCK\Experiment\JSONTest\JSONTest\bin\Debug\JSONTest.exe
+C:\Users\Sam\Git\LSCK\Experiment\JSONTest\JSONTest\bin\Debug\JSONTest.pdb
+C:\Users\Sam\Git\LSCK\Experiment\JSONTest\JSONTest\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Sam\Git\LSCK\Experiment\JSONTest\JSONTest\bin\Debug\Renci.SshNet.dll
+C:\Users\Sam\Git\LSCK\Experiment\JSONTest\JSONTest\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Sam\Git\LSCK\Experiment\JSONTest\JSONTest\bin\Debug\Renci.SshNet.xml
+C:\Users\Sam\Git\LSCK\Experiment\JSONTest\JSONTest\obj\x86\Debug\JSONTest.csprojResolveAssemblyReference.cache
+C:\Users\Sam\Git\LSCK\Experiment\JSONTest\JSONTest\obj\x86\Debug\JSONTest.pdb
