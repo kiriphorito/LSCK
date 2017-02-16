@@ -22,6 +22,7 @@ namespace LSCK
     {
         public ObservableCollection<BoolStringClass> TheList { get; set; }
         FJController fjController;
+        string sectionName;
         /// <summary>
         /// Initializes a new instance of the <see cref="StructureControl"/> class.
         /// </summary>
@@ -78,11 +79,27 @@ namespace LSCK
                     string page = comboPages.SelectedValue.ToString();
                     List<string> sectionNames = fjController.GetPageSections(page);
                     listSections.Items.Clear();
+                    comboSections.Items.Clear();
                     foreach (string section in sectionNames)
                     {
+                        comboSections.Items.Add(section);
                         listSections.Items.Add(section);
                     }
                     CreateCheckBoxList();
+                    break;
+                case 2:
+                    sectionName = comboSections.SelectedValue.ToString();
+                    List<Snippet> snippets = fjController.GetSectionSnippets(sectionName);
+                    listSnippets.Items.Clear();
+                    foreach (Snippet snippet in snippets)
+                    {
+                        string shortComment = snippet.comment.Substring(0,20)+"...";
+                        listSnippets.Items.Add(shortComment);
+                        commentBox.Text = snippet.comment;
+                    }
+                    break;
+                case 3:
+                    Snippet selectedSnippet = fjController.GetSectionSnippets(sectionName)[];
                     break;
             }
         }
@@ -137,6 +154,16 @@ namespace LSCK
             {
                 MessageBox.Show("Please selectthe section you wish to delete.");
             }
+        }
+
+        private void comboSections_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            updateUI(2);
+        }
+
+        private void listSnippets_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

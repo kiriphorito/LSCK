@@ -31,49 +31,14 @@
     </nav>
     <div class="container">
         <div class="container-fluid text-left">
-            <h3><strong>New sect</strong></h3>
-            <p>Switch statement</p>
-            <div id = "editor1">switch (tab) {
-                case 0:
-                    List&lt;string> sectionNames = fjController.ReadSectionNames();
-                    comboSectionsCode.Items.Clear();
-                    comboSectionsFile.Items.Clear();
-                    foreach (string section in sectionNames)
-                    {
-                        comboSectionsFile.Items.Add(section);
-                        comboSectionsCode.Items.Add(section);
-                    }
-                    projectTitle.Text = fjController.GetTitle();
-                    comboTheme.SelectedIndex = fjController.ReadAceThemeIndex();
-                    comboTheme.SelectionChanged += comboTheme_SelectionChanged;
-                    List&lt;string> pageNames = fjController.GetPageTitles();
-                    listPages.Items.Clear();
-                    foreach (string pageName in pageNames)
-                    {
-                        listPages.Items.Add(pageName);
-                    }
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    string sectionName = comboSectionsFile.SelectedValue.ToString();
-                    List&lt;string> fileNames = fjController.ReadFileNames(sectionName);
-                    listFile.Items.Clear();
-                    foreach (string fileName in fileNames)
-                    {
-                        listFile.Items.Add(fileName);
-                    }
-                    break;
-                case 3:
-                    
-                    break;
-                case 4:
-                    
-                    break;
-
-            }</div>
-            <br>
             <h3><strong>Other sect</strong></h3>
+            <p>Includes</p>
+            <div id = "editor1">using System;
+using System.ComponentModel.Design;
+using System.Globalization;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;</div>
+            <br>
             <p>Includes</p>
             <div id = "editor2">using System;
 using System.ComponentModel.Design;
@@ -81,25 +46,11 @@ using System.Globalization;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;</div>
             <br>
-            <p>Includes</p>
-            <div id = "editor3">using System;
-using System.ComponentModel.Design;
-using System.Globalization;
-using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;</div>
-            <br>
-            <h3><strong>secttest</strong></h3>
-            <p></p>
-            <center><a href="userfiles/test3.txt"/>test3.txt</a></center>
-            <br>
-            <p></p>
-            <center><a href="userfiles/pptexamples.ppt"/>pptexamples.ppt</a></center>
-            <br>
         </div>
     </div>
     <script src="styles/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        for (x = 1 ; x <= 3 ; x++){
+        for (x = 1 ; x <= 2 ; x++){
         var editor = ace.edit("editor" + x);
             editor.getSession().setUseWorker(false);
             editor.setTheme("ace/theme/idle_fingers");
@@ -115,7 +66,6 @@ using Microsoft.VisualStudio.Shell.Interop;</div>
         }
         ace.edit("editor1").getSession().setMode("ace/mode/csharp");
         ace.edit("editor2").getSession().setMode("ace/mode/csharp");
-        ace.edit("editor3").getSession().setMode("ace/mode/csharp");
     </script>
 </body>
 </html>

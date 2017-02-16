@@ -8,8 +8,8 @@
   "sections": [
     {
       "sectionName": "New sect",
-      "page": "Main functions",
-      "position": 1,
+      "page": null,
+      "position": 0,
       "snippets": [
         {
           "position": 1,
@@ -21,7 +21,7 @@
     {
       "sectionName": "Other sect",
       "page": "Main functions",
-      "position": 2,
+      "position": 1,
       "snippets": [
         {
           "position": 1,
@@ -49,8 +49,8 @@
     },
     {
       "sectionName": "secttest",
-      "page": "Main functions",
-      "position": 3,
+      "page": null,
+      "position": 0,
       "snippets": [
         {
           "position": 1,

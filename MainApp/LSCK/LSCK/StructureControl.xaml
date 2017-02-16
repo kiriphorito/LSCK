@@ -68,10 +68,23 @@
                     </TabItem>
                     <TabItem Header="Snippets" Height="22" VerticalAlignment="Bottom">
                         <Grid Background="#FFE5E5E5">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <StackPanel Orientation="Vertical" Margin="30,5,0,0">
-                                    <TextBlock HorizontalAlignment="Center">Sections:Sections:</TextBlock>
-                                    <ListBox  x:Name="listSnippets" BorderBrush="#FF62A7CF" Width="200" Height="180" Margin="0,5,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,5,50,0">
+                                    <TextBlock HorizontalAlignment="Center" Text="Section:"/>
+                                    <ComboBox x:Name="comboSections" SelectionChanged="comboSections_SelectionChanged" Width="120" Margin="0,10,0,0"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0,60,0,0">
+                                        <Button Width="60" Height="20" Margin="0,0,5,0"></Button>
+                                        <Button Width="60"></Button>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="0,5,0,0">
+                                    <TextBlock HorizontalAlignment="Center" Text="Snippets/Files:"/>
+                                    <ListBox x:Name="listSnippets" SelectionChanged="listSnippets_SelectionChanged" Width="200" Height="180" Margin="0,5,0,0">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Button ></Button>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
                                         <ListBoxItem>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock>ListBox Item #1</TextBlock>
@@ -89,31 +102,13 @@
                                         </ListBoxItem>
                                     </ListBox>
                                 </StackPanel>
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                    <Button x:Name="deleteSnippetButton" Click="deleteSectionButton_Click" Height="35" Width="100" HorizontalAlignment="Center" Margin="0,4,0,0" Content="Delete Section" Background="#FF2DF10E" BorderBrush="#FFF70404" Foreground="{x:Null}" Cursor="Hand">
-                                        <Button.Template>
-                                            <ControlTemplate>
-                                                <Image Source="Resources/arrow-18 copy.png"/>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
-                                    <Button x:Name="addSnippetsButton" Click="addSectionsButton_Click" Height="35" Width="100" HorizontalAlignment="Center" Margin="0,15,0,0" Cursor="Hand" OpacityMask="#FFC72D2D">
-                                        <Button.Template>
-                                            <ControlTemplate>
-                                                <Image Source="Resources/arrow-18.png"/>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Margin="0,5,0,0">
-                                    <TextBlock HorizontalAlignment="Center">Unset sections:</TextBlock>
-                                    <ListBox x:Name="listFreeSnippets" Width="200" Height="180" Margin="0,5,0,0" ItemsSource="{Binding TheList}" >
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <CheckBox Content="{Binding name}" IsChecked="{Binding check}" Margin="5 5 0 0"/>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="50,5,0,0">
+                                    <TextBlock HorizontalAlignment="Center" Text="Comment:"/>
+                                    <TextBox x:Name="commentBox" Height="60" Width="200"></TextBox>
+                                    <TextBlock HorizontalAlignment="Center" Text="Code:"/>
+                                    <TextBox x:Name="codeBox" Height="120" Width="200"></TextBox>
+
+                                    
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
