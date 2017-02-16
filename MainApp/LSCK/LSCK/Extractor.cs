@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace LSCK
 {
-    /*
     public static class Extractor
     {
-        public static List<Tuple<string,string>> FindFiles(string key)
+        public static void FindFiles(string key)
         {
             List<Tuple<string, string>> files = new List<Tuple<string, string>>();
             EnvDTE80.DTE2 dte2 = (EnvDTE80.DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE.14.0");
@@ -22,21 +21,39 @@ namespace LSCK
                 if (extensions.Any(x => foundFile.EndsWith(x, StringComparison.Ordinal)))
                 {
                     string extension = Path.GetExtension(foundFile);
-                    string comment;
+                    string marker;
                     switch (extension)
                     {
                         case ".py":
-                            comment = "**";
+                            marker = "**";
                             break;
                         default:
-                            comment = "//";
+                            marker = "//";
                             break;
                     }
-                    /*files.Add(new Tuple<string, string>());
-                    autoFind(s, comment+key);
+                    FindSnippets(foundFile,marker,key);
                 }
             }
         }
 
-    }*/
+        public static void FindSnippets(string file,string comment,string key)
+        {
+            int keyCounter = 0;
+            string marker;
+            foreach (var line in File.ReadAllLines(file))
+            {
+                if (line.Contains(comment + key))
+                {
+                    keyCounter++;
+                    if (keyCounter == 2)
+                    {
+                        marker = line.Substring(comment.Length + key.Length - 1, line.Length - (comment.Length + key.Length));
+                        System.Windows.MessageBox.Show(marker);
+                        keyCounter = 0;
+                    }
+                }
+            }
+
+        }
+    }
 }

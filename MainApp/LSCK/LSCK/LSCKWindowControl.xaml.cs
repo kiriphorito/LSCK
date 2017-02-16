@@ -53,7 +53,7 @@ namespace LSCK
             string comment = textBox.Text;
             string code = selection.Text;
             string language = getConvertedLang();
-            fjController.InsertSnippet(comboSectionsCode.SelectedValue.ToString(),language,comment,code);
+            fjController.insertSnippet(comboSectionsCode.SelectedValue.ToString(),language,comment,code);
         }
 
         private string getConvertedLang()
@@ -155,7 +155,7 @@ namespace LSCK
             if (browseFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string path = browseFileDialog.FileName;
-                fjController.InsertSnippet(comboSectionsFile.SelectedValue.ToString(),"file","",path);
+                fjController.insertSnippet(comboSectionsFile.SelectedValue.ToString(),"file","",path);
 
             }
         }
