@@ -1,4 +1,0 @@
-C:\Users\Javier\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\Final\1.0\\Final.dll
-C:\Users\Javier\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\Final\1.0\\Final.pdb
-C:\Users\Javier\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\Final\1.0\\Final.pkgdef
-C:\Users\Javier\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\Final\1.0\\extension.vsixmanifest
