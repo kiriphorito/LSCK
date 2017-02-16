@@ -64,6 +64,16 @@
     <Compile Include="LSCKWindowPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Section.cs" />
+    <Compile Include="SitePreview.cs" />
+    <Compile Include="SitePreviewCommand.cs" />
+    <Compile Include="SitePreviewControl.xaml.cs">
+      <DependentUpon>SitePreviewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Structure.cs" />
+    <Compile Include="StructureCommand.cs" />
+    <Compile Include="StructureControl.xaml.cs">
+      <DependentUpon>StructureControl.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -78,12 +88,26 @@
     <VSCTCompile Include="LSCKWindowPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
+    <Resource Include="Resources\arrow-18 copy.png" />
+    <Resource Include="Resources\arrow-18.png" />
     <Content Include="Resources\LSCKWindowCommand.png" />
     <Content Include="Resources\LSCKWindowPackage.ico" />
+    <Resource Include="Resources\refresh.png" />
+    <Content Include="Resources\SitePreviewCommand.png" />
+    <Content Include="Resources\StructureCommand.png" />
+    <Content Include="Resources\ToolWindow2Command.png" />
     <Content Include="stylesheet.css" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="LSCKWindowControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SitePreviewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StructureControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

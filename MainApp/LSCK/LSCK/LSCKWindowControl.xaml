@@ -8,6 +8,13 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Name="MyToolWindow" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" BorderThickness="2,0,0,0" MinWidth="300" MinHeight="300" MaxWidth="300" MaxHeight="300">
     <Grid>
+        <Button x:Name="refreshButton" Width="30" Height="20" Margin="264,1,0,280" Click="refreshButton_Click" Cursor="Hand">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Resources/refresh.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
         <TabControl x:Name="tabs"  Background="#FF86D0E6">
             <TabItem Header="Add Code" BorderBrush="#FF4386F4">
                 <StackPanel Orientation="Vertical" Margin="0,20,0,0">
@@ -79,7 +86,7 @@
                     <TextBlock Margin="94,10,90,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Project title" Width="108"/>
                     <TextBox x:Name="projectTitle" LostFocus="projectTitle_LostFocus" Margin="62,0,66,0" HorizontalAlignment="Center" Width="164"/>
                     <TextBlock Margin="102,10,112,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Pages"/>
-                    <ListBox  x:Name="listFil2e" Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
+                    <ListBox  x:Name="listPages" Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
                         <ListBoxItem>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock><Run Text="ListBox Item #1"/></TextBlock>
@@ -137,24 +144,16 @@
                         <ComboBoxItem>Vibrant Ink</ComboBoxItem>
                         <ComboBoxItem>Xcode</ComboBoxItem>
                     </ComboBox>
+                    <Button x:Name="openStructure" Click="openStructure_Click" Content="Structure" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="0,5,0,0"/>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Upload" BorderBrush="#FF19461D">
+            <TabItem Header="Order" BorderBrush="#FF19461D">
                 <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock>Section marker:</TextBlock>
-                        <TextBlock Margin="30,0">Double comment+</TextBlock>
-                        <TextBox x:Name="marker"  Height="20"  Text="/" Margin="-45,0" MaxLength="5" Width="49" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock>Auto code:</TextBlock>
-                        <TextBlock Margin="25,0"></TextBlock>
-                        <TextBox x:Name="marker2"  Height="20"  Text="//s-" Margin="-45,0" MaxLength="5" Width="61" />
-                        <TextBlock Margin="35,0">+ Section title</TextBlock>
-                    </StackPanel>
+                    <Button x:Name="uploadButton" Click="uploadButton_Click">Hello</Button>
                 </StackPanel>
             </TabItem>
         </TabControl>
+        
     </Grid>
 
 </UserControl>

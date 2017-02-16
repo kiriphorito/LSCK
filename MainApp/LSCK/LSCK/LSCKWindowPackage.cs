@@ -41,6 +41,8 @@ namespace LSCK
     [ProvideToolWindow(typeof(LSCKWindow))]
     [Guid(LSCKWindowPackage.PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
+    [ProvideToolWindow(typeof(Structure))]
+    [ProvideToolWindow(typeof(SitePreview))]
     public sealed class LSCKWindowPackage : Package
     {
         /// <summary>
@@ -69,6 +71,8 @@ namespace LSCK
         {
             LSCKWindowCommand.Initialize(this);
             base.Initialize();
+            StructureCommand.Initialize(this);
+            SitePreviewCommand.Initialize(this);
         }
 
         #endregion

@@ -7,6 +7,8 @@
 namespace LSCK
 {
     using EnvDTE;
+    using Microsoft.VisualStudio.Shell;
+    using Microsoft.VisualStudio.Shell.Interop;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
@@ -98,7 +100,7 @@ namespace LSCK
         {
             switch (tab) {
                 case 0:
-                    List<string> sectionNames = fjController.ReadSectionNames();
+                    List<string> sectionNames = fjController.GetSectionNames();
                     comboSectionsCode.Items.Clear();
                     comboSectionsFile.Items.Clear();
                     foreach (string section in sectionNames)
@@ -107,20 +109,33 @@ namespace LSCK
                         comboSectionsCode.Items.Add(section);
                     }
                     projectTitle.Text = fjController.GetTitle();
-                    comboTheme.SelectedIndex = fjController.ReadAceThemeIndex();
+                    comboTheme.SelectedIndex = fjController.GetAceThemeIndex();
                     comboTheme.SelectionChanged += comboTheme_SelectionChanged;
+                    List<string> pageNames = fjController.GetPageTitles();
+                    listPages.Items.Clear();
+                    foreach (string pageName in pageNames)
+                    {
+                        listPages.Items.Add(pageName);
+                    }
                     break;
                 case 1:
                     break;
                 case 2:
                     string sectionName = comboSectionsFile.SelectedValue.ToString();
-                    List<string> fileNames = fjController.ReadFileNames(sectionName);
+                    List<string> fileNames = fjController.GetFileNames(sectionName);
                     listFile.Items.Clear();
                     foreach (string fileName in fileNames)
                     {
                         listFile.Items.Add(fileName);
                     }
                     break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    
+                    break;
+
             }
         }
 
@@ -158,19 +173,60 @@ namespace LSCK
         private void createPage_Click(object sender, RoutedEventArgs e)
         {
             string pageName = Prompt.ShowDialog("Page name:", "Create Page");
-            fjController.InsertPage(pageName);
+            fjController.InsertPageTitle(pageName);
             updateUI(0);
         }
 
         private void deletePage_Click(object sender, RoutedEventArgs e)
         {
-
+            string pageName = listPages.SelectedValue.ToString();
+            fjController.DeletePage(pageName);
+            updateUI(0);
         }
 
         private void comboTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            System.Windows.MessageBox.Show(comboTheme.Text.ToLower().Replace(' ', '_'));
-            fjController.SetAceTheme(comboTheme.Text.ToLower().Replace(' ', '_'));
+            ListBoxItem selectedItem = comboTheme.SelectedItem as ListBoxItem;
+            string themeName = selectedItem.Content.ToString();
+            System.Windows.MessageBox.Show(themeName.ToLower().Replace(' ', '_'));
+            fjController.SetAceTheme(themeName.ToLower().Replace(' ', '_'));
+        }
+
+        private void openStructure_Click(object sender, RoutedEventArgs e)
+        {
+            IVsUIShell vsUIShell = (IVsUIShell)Package.GetGlobalService(typeof(SVsUIShell));
+            Guid guid = typeof(Structure).GUID;
+            IVsWindowFrame windowFrame;
+            int result = vsUIShell.FindToolWindow((uint)__VSFINDTOOLWIN.FTW_fFindFirst, ref guid, out windowFrame);   // Find MyToolWindow
+
+            if (result != Microsoft.VisualStudio.VSConstants.S_OK)
+                result = vsUIShell.FindToolWindow((uint)__VSFINDTOOLWIN.FTW_fForceCreate, ref guid, out windowFrame); // Crate MyToolWindow if not found
+
+            if (result == Microsoft.VisualStudio.VSConstants.S_OK)                                                                           // Show MyToolWindow
+                Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
+        }
+
+        private void uploadButton_Click(object sender, RoutedEventArgs e)
+        {
+            HTMLGenerator html = new HTMLGenerator(fjController , false , Environment.CurrentDirectory, Environment.CurrentDirectory + @"/generatedWebsite");
+            html.GenerateWebsite();
+            IVsUIShell vsUIShell = (IVsUIShell)Package.GetGlobalService(typeof(SVsUIShell));
+            Guid guid = typeof(SitePreview).GUID;
+            IVsWindowFrame windowFrame;
+            int result = vsUIShell.FindToolWindow((uint)__VSFINDTOOLWIN.FTW_fFindFirst, ref guid, out windowFrame);   // Find MyToolWindow
+
+            if (result != Microsoft.VisualStudio.VSConstants.S_OK)
+                result = vsUIShell.FindToolWindow((uint)__VSFINDTOOLWIN.FTW_fForceCreate, ref guid, out windowFrame); // Crate MyToolWindow if not found
+
+            if (result == Microsoft.VisualStudio.VSConstants.S_OK)                                                                           // Show MyToolWindow
+                Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
+        }
+
+        private void refreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            HTMLGenerator html = new HTMLGenerator(fjController, false, Environment.CurrentDirectory, Environment.CurrentDirectory + @"/generatedWebsite");
+            html.GenerateWebsite();
+            System.Windows.MessageBox.Show("HTML Generated");
         }
     }
 }
