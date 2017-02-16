@@ -35,9 +35,11 @@ namespace LSCK
                 }
             }
         }
-
+        //??Section
+        //??Comment
         public static void FindSnippets(string file,string comment,string key)
         {
+            FJController fjController = FJController.GetInstance;
             int keyCounter = 0;
             string marker;
             foreach (var line in File.ReadAllLines(file))
