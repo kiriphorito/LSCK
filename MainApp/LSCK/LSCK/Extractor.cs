@@ -79,7 +79,10 @@ namespace LSCK
                     }
                 }else
                 {
-                    code.Append(line);
+                    if (keyCounter == 2)
+                    {
+                        code.Append(line);
+                    }
                 }
             }
 

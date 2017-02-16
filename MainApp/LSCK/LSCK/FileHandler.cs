@@ -1,7 +1,9 @@
 ﻿using System.IO;
 using System.Collections.Generic;
-
+//??New sect
+//??lololol
 namespace LSCK
+//??
 {
     public class FileHandler
     {
