@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css"/>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id = "editor1"><?php
+  echo 'Hello World'
+?></div>
+<div id = "editor2"><?php
+  echo 'Hello World'
+?></div>
+<div id = "editor3"><html>
+<body>
+  Hello World
+</body>
+</html></div>
+<div id = "editor4"><html>
+<body>
+  Hello World! Good day!
+</body>
+</html></div>
+<div id = "editor5"><html>
+<body>
+  Hello World
+</body>
+</html></div>
+<div id = "editor6"><?php
+  echo 'Hello World'
+?></div>
+<div id = "editor7"><html>
+<body>
+  Hello World
+</body>
+</html></div>
+    <script>
+        for (x = 1 ; x <= 7 ; x++){
+            editor.setTheme("ace/theme/monokai");
+            editor.renderer.setScrollMargin(10, 10, 0, 0)
+            editor.renderer.$cursorLayer.element.style.opacity = 0;
+            editor.setOptions({
+                maxLines: Infinity,
+                readOnly: true,
+                highlightActiveLine: false,
+                highlightGutterLine: false
+            })
+        }
+        ace.edit("editor1").getSession().setMode("ace/mode/PHP");
+        ace.edit("editor2").getSession().setMode("ace/mode/FSharp");
+        ace.edit("editor3").getSession().setMode("ace/mode/PHP");
+        ace.edit("editor4").getSession().setMode("ace/mode/HTML");
+        ace.edit("editor5").getSession().setMode("ace/mode/PHP");
+        ace.edit("editor6").getSession().setMode("ace/mode/FSharp");
+        ace.edit("editor7").getSession().setMode("ace/mode/HTML");
+    </script>
+</body>
+</html>
