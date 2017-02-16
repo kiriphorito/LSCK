@@ -52,6 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Extractor.cs" />
     <Compile Include="FileHandler.cs" />
     <Compile Include="FJController.cs" />
     <Compile Include="HTMLGenerator.cs" />

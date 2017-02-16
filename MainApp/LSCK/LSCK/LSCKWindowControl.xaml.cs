@@ -228,6 +228,5 @@ namespace LSCK
             html.GenerateWebsite();
             System.Windows.MessageBox.Show("HTML Generated");
         }
-
     }
 }

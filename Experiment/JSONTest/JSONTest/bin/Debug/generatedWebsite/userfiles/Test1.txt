@@ -1,0 +1,201 @@
+
+Left Ticks Change: 7 Right Ticks Change: 7
+Angle New: 0.000000
+Distance Hori: -0.000012 Distance Vertical: 22.750000
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 8
+Angle New: -0.030718
+Distance Hori: -0.374341 Distance Vertical: 47.121674
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 8
+Angle New: -0.030718
+Distance Hori: -0.748669 Distance Vertical: 71.493347
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 7
+Angle New: 0.030718
+Distance Hori: -0.374341 Distance Vertical: 95.864143
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 7
+Angle New: 0.000000
+Distance Hori: -0.374353 Distance Vertical: 118.614143
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 9
+Angle New: -0.030718
+Distance Hori: -0.798608 Distance Vertical: 146.235382
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 8
+Angle New: 0.000000
+Distance Hori: -0.798622 Distance Vertical: 172.235382
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 7
+Angle New: 0.030718
+Distance Hori: -0.424293 Distance Vertical: 196.606186
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 8
+Angle New: -0.030718
+Distance Hori: -0.798622 Distance Vertical: 220.977859
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 7
+Angle New: 0.030718
+Distance Hori: -0.424293 Distance Vertical: 245.348663
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 9
+Angle New: -0.030718
+Distance Hori: -0.848549 Distance Vertical: 272.969910
+CurrentAngle: 0.000000
+
+Left Ticks Change: 9 Right Ticks Change: 8
+Angle New: 0.030718
+Distance Hori: -0.424293 Distance Vertical: 300.590149
+CurrentAngle: 0.000000
+
+Left Ticks Change: 9 Right Ticks Change: 7
+Angle New: 0.061437
+Distance Hori: 0.374138 Distance Vertical: 326.573639
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 8
+Angle New: -0.030718
+Distance Hori: -0.000190 Distance Vertical: 350.945313
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 8
+Angle New: -0.030718
+Distance Hori: -0.374519 Distance Vertical: 375.316986
+CurrentAngle: 0.000000
+
+Left Ticks Change: 9 Right Ticks Change: 9
+Angle New: 0.000000
+Distance Hori: -0.374535 Distance Vertical: 404.566986
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 9
+Angle New: -0.030718
+Distance Hori: -0.798790 Distance Vertical: 432.188232
+CurrentAngle: 0.000000
+
+Left Ticks Change: 9 Right Ticks Change: 11
+Angle New: -0.061437
+Distance Hori: -1.796837 Distance Vertical: 464.668182
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 15
+Angle New: -0.215028
+Distance Hori: -5.799721 Distance Vertical: 501.756226
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 15
+Angle New: -0.215028
+Distance Hori: -9.802605 Distance Vertical: 538.844238
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 13
+Angle New: -0.153592
+Distance Hori: -12.418114 Distance Vertical: 572.835571
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 13
+Angle New: -0.153592
+Distance Hori: -15.033623 Distance Vertical: 606.826904
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 12
+Angle New: -0.122873
+Distance Hori: -17.027794 Distance Vertical: 639.245483
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 12
+Angle New: -0.122873
+Distance Hori: -19.021965 Distance Vertical: 671.664063
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 10
+Angle New: -0.092155
+Distance Hori: -20.293968 Distance Vertical: 699.250244
+CurrentAngle: 0.000000
+
+Left Ticks Change: 9 Right Ticks Change: 12
+Angle New: -0.092155
+Distance Hori: -21.865257 Distance Vertical: 733.327271
+CurrentAngle: 0.000000
+
+Left Ticks Change: 9 Right Ticks Change: 12
+Angle New: -0.092155
+Distance Hori: -23.436546 Distance Vertical: 767.404297
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 10
+Angle New: -0.092155
+Distance Hori: -24.708549 Distance Vertical: 794.990479
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 9
+Angle New: -0.061437
+Distance Hori: -25.506981 Distance Vertical: 820.974426
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 10
+Angle New: -0.061437
+Distance Hori: -26.405235 Distance Vertical: 850.206360
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 9
+Angle New: -0.061437
+Distance Hori: -27.203667 Distance Vertical: 876.190308
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 9
+Angle New: -0.030718
+Distance Hori: -27.627922 Distance Vertical: 903.811523
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 9
+Angle New: -0.030718
+Distance Hori: -28.052177 Distance Vertical: 931.432739
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 10
+Angle New: -0.061437
+Distance Hori: -28.950432 Distance Vertical: 960.664673
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 9
+Angle New: -0.030718
+Distance Hori: -29.374687 Distance Vertical: 988.285889
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 9
+Angle New: -0.030718
+Distance Hori: -29.798943 Distance Vertical: 1015.907104
+CurrentAngle: 0.000000
+
+Left Ticks Change: 8 Right Ticks Change: 8
+Angle New: 0.000000
+Distance Hori: -29.798956 Distance Vertical: 1041.907104
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 9
+Angle New: -0.061437
+Distance Hori: -30.597387 Distance Vertical: 1067.891113
+CurrentAngle: 0.000000
+
+Left Ticks Change: 7 Right Ticks Change: 10
+Angle New: -0.092155
+Distance Hori: -31.869390 Distance Vertical: 1095.477295
+CurrentAngle: 0.000000
+
+Final
+Left: 1095.477295 Right: -31.869390
+Displacement: 109.594078 cm
+Angle: 0.814482 radi 
+Angle: 460.578583 degrees 
