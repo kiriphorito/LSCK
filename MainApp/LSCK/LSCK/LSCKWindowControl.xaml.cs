@@ -228,5 +228,10 @@ namespace LSCK
             html.GenerateWebsite();
             System.Windows.MessageBox.Show("HTML Generated");
         }
+
+        private void AutoSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Extractor.FindFiles("??");
+        }
     }
 }

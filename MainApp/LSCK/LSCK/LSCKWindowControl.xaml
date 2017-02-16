@@ -43,7 +43,7 @@
             </TabItem>
             <TabItem Header="Auto add" BorderBrush="#FF19461D">
 
-                <Button Content="Run" x:Name="AutoSearch"   HorizontalAlignment="Right" Width="100" Margin="0,217,96,31" Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand">
+                <Button Content="Run" x:Name="AutoSearch" Click="AutoSearch_Click" HorizontalAlignment="Right" Width="100" Margin="0,217,96,31" Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
