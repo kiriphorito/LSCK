@@ -373,10 +373,10 @@ namespace LSCK
         public void InsertSnippet(string section, string language, string comment, List<string> code)
         {
             string codeString = string.Join("\n", code.ToArray());
-            insertSnippet(section, language, comment, codeString);
+            InsertSnippet(section, language, comment, codeString);
         }
 
-        public void insertSnippet(string section, string language, string comment, string content)
+        public void InsertSnippet(string section, string language, string comment, string content)
         {
             switch (language)
             {
