@@ -260,15 +260,15 @@ namespace LSCK
         ///<summary>
         ///<para>Reteive all snippets from a specific page, removing section information</para>
         ///</summary>
-        public List<Snippet> GetPageSnippetOnly(string pageTitle)
+        public List<Snippet> GetPageSnippet(string pageTitle)
         {
-            return PageSnippetsOnly(GetPage(pageTitle));
+            return PageSnippets(GetPage(pageTitle));
         }
 
         ///<summary>
         ///<para>Retreive snippets from sections, i.e removing section information</para>
         ///</summary>
-        public List<Snippet> PageSnippetsOnly(List<Section> page)
+        public List<Snippet> PageSnippets(List<Section> page)
         {
             var result = new List<Snippet>();
 

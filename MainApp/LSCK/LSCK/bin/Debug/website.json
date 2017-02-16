@@ -1,76 +1,67 @@
 {
-  "title": "Hahaha",
-  "ace_theme": "idle_fingers",
+  "title": "mono-sgen32",
+  "ace_theme": "twilight",
   "page_titles": [
-    "index",
-    "lol"
+    "home",
+    "Kiriphorito"
   ],
   "sections": [
     {
-      "sectionName": "New sect",
-      "page": "index",
-      "position": 2,
-      "snippets": [
-        {
-          "position": 1,
-          "language": "csharp",
-          "comment": "Switch statement"
-        },
-        {
-          "position": 2,
-          "language": "java",
-          "comment": "This here is a verrryyy long commentt"
-        },
-        {
-          "position": 3,
-          "language": "java",
-          "comment": "This here is a verrryyy long commentt"
-        }
-      ]
-    },
-    {
-      "sectionName": "Other sect",
-      "page": "index",
-      "position": 3,
-      "snippets": [
-        {
-          "position": 1,
-          "language": "csharp",
-          "comment": "Includes"
-        },
-        {
-          "position": 2,
-          "language": "csharp",
-          "comment": "Includes"
-        }
-      ]
-    },
-    {
-      "sectionName": "Lol sect",
-      "page": "index",
+      "sectionName": "Hello World!",
+      "page": "home",
       "position": 1,
       "snippets": [
         {
           "position": 1,
-          "language": "csharp",
-          "comment": "If statement"
+          "language": "c_cpp",
+          "comment": "We invented the for loop"
+        },
+        {
+          "position": 2,
+          "language": "php",
+          "comment": "Hello"
+        },
+        {
+          "position": 3,
+          "language": "html",
+          "comment": "The world's first html!"
+        },
+        {
+          "position": 4,
+          "language": "php",
+          "comment": "PHP yay!"
+        },
+        {
+          "position": 5,
+          "language": "file",
+          "comment": "A random txt file."
         }
       ]
     },
     {
-      "sectionName": "secttest",
-      "page": null,
-      "position": 0,
+      "sectionName": "Goodbye World!",
+      "page": "home",
+      "position": 2,
       "snippets": [
         {
           "position": 1,
-          "language": "file",
-          "comment": ""
+          "language": "c_cpp",
+          "comment": "We invented the for loop"
         },
         {
           "position": 2,
-          "language": "file",
-          "comment": ""
+          "language": "fortan",
+          "comment": "Hello"
+        },
+        {
+          "position": 3,
+          "language": "html",
+          "comment": "The world's first html!"
+        },
+        {
+          "position": 4,
+          "language": "php",
+          "comment": "PHP yay!"
         }
       ]
     }

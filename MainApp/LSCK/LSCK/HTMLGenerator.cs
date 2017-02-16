@@ -76,7 +76,7 @@ namespace LSCK
             var htmlCL = new List<string>(); //HTMLContentList
 
             List<Section> page = fjController.GetPage(pageTitle);
-            List<Snippet> pageSnippets = fjController.PageSnippetsOnly(page);
+            List<Snippet> pageSnippets = fjController.PageSnippets(page);
 
             htmlCL.Add(GenerateHead(fjController.GetTitle()));
             htmlCL.Add(GenerateBody(page, fjController.GetTitle(), pageTitle));
