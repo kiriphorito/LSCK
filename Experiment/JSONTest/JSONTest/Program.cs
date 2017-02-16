@@ -40,7 +40,10 @@ namespace JSONTest
             //Console.Write(fileJson);
 
             FJController fjController = FJController.GetInstance;
-            fjController.ReadAceThemeIndex();
+
+            
+
+            //fjController.ReadAceThemeIndex();
             //fjController.SetAceTheme("twilight");
             //foreach (string fileName in fjController.readFileNames("Hello World!"))
             //{
@@ -68,29 +71,29 @@ namespace JSONTest
             //fjController.deleteSection("Hello World!");
 
             //fjController.insertPageName("Kiriphorito");
-            //fjController.insertSection("Goodbye World!");
+            //fjController.InsertSection("Goodbye World!");
             //fjController.setPage("Hello World!" , "home");
             //fjController.nullPage("Hello World!");
 
-            String test1 = "for (int i=0;i < total;i++){\n    printf(\"blah\");\n}";            //String test2 = "<?php\n  echo 'Hello World' \n?>";
-            String test2 = "<html>\n<body>\n    Hello World\n</body>\n</html>";
-            String test3 = "<?php\n    echo \"Hello World\"\n?>";
-            String test4 = "<?php\n    echo \"Goodbye Wrold\"\n?>";
+            string test1 = "for (int i=0;i < total;i++){\n    printf(\"blah\");\n}";            //String test2 = "<?php\n  echo 'Hello World' \n?>";
+            string test2 = "<html>\n<body>\n    Hello World\n</body>\n</html>";
+            string test3 = "<?php\n    echo \"Hello World\"\n?>";
+            string test4 = "<?php\n    echo \"Goodbye Wrold\"\n?>";
 
-            //fjController.insertSection("Hello World!");
+            //fjController.InsertSection("Hello World!");
             //fjController.swapSection("Hello World!", "Goodbye World!");
 
 
 
-            //fjController.insertSnippet("Hello World!", "c" , "We invented the for loop" , test1);
-            //fjController.insertSnippet("Hello World!", "html", "The world's first html!", test2);
-            //fjController.insertSnippet("Hello World!", "php", "PHP yay!", test3);
-            //fjController.insertSnippet("Hello World!", 2, "fortan", "Hello", test4);
+            fjController.InsertSnippet("Hello World!", "c", "we invented the for loop",test1);
+            fjController.InsertSnippet("Hello World!", "html", "the world's first html!", test2);
+            fjController.InsertSnippet("Hello World!", "php", "php yay!", test3);
+            fjController.InsertSnippet("Hello World!", 2, "fortan", "hello", test4);
 
-            //fjController.insertSnippet("Goodbye World!", "c" , "We invented the for loop" , test1);
-            //fjController.insertSnippet("Goodbye World!", "html", "The world's first html!", test2);
-            //fjController.insertSnippet("Goodbye World!", "php", "PHP yay!", test3);
-            //fjController.insertSnippet("Goodbye World!", 2, "fortan", "Hello", test4);
+            fjController.InsertSnippet("Goodbye World!", "c", "we invented the for loop", test1);
+            fjController.InsertSnippet("Goodbye World!", "html", "the world's first html!", test2);
+            fjController.InsertSnippet("Goodbye World!", "php", "php yay!", test3);
+            fjController.InsertSnippet("Goodbye World!", 2, "fortan", "hello", test4);
 
             //fjController.swapSnippet(2, 4, "Hello World!");
 
