@@ -80,7 +80,8 @@ namespace JSONTest
             string test3 = "<?php\n    echo \"Hello World\"\n?>";
             string test4 = "<?php\n    echo \"Goodbye Wrold\"\n?>";
 
-            //fjController.InsertSection("Hello World!");
+            fjController.InsertSection("Hello World!");
+            fjController.InsertSection("Goodbye World!");
             //fjController.swapSection("Hello World!", "Goodbye World!");
 
 
