@@ -4,7 +4,11 @@
 library
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Javier\Documents\LSCK\MainApp\LSCK\LSCK\obj\Debug\
+=======
+C:\Users\Sam\Git\LSCK\MainApp\LSCK\LSCK\obj\Debug\
+>>>>>>> origin/master
 LSCK
 none
 false
@@ -13,7 +17,11 @@ DEBUG;TRACE
 3-1395186390
 7-1718886799
 17855118111
+<<<<<<< HEAD
 91-2043434148
+=======
+91-210055307
+>>>>>>> origin/master
 LSCKWindowControl.xaml;SitePreviewControl.xaml;StructureControl.xaml;
 
 False
