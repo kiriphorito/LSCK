@@ -66,7 +66,8 @@ namespace LSCK
 
         private void updateUI(int index)
         {
-            switch (index) {
+            switch (index)
+            {
                 case 0:
                     List<string> pageNames = fjController.GetPageTitles();
                     comboPages.Items.Clear();
@@ -89,17 +90,29 @@ namespace LSCK
                     break;
                 case 2:
                     sectionName = comboSections.SelectedValue.ToString();
+                    MessageBox.Show(sectionName);
                     List<Snippet> snippets = fjController.GetSectionSnippets(sectionName);
                     listSnippets.Items.Clear();
+                    commentBox.Text = "";
+                    codeBox.Text = "";
                     foreach (Snippet snippet in snippets)
                     {
-                        string shortComment = snippet.comment.Substring(0,20)+"...";
+                        string shortComment;
+                        if (snippet.comment.Length > 20)
+                        {
+                             shortComment= snippet.comment.Substring(0, 19) + "...";
+                        }
+                        else
+                        {
+                            shortComment = snippet.comment;
+                        }
                         listSnippets.Items.Add(shortComment);
                         commentBox.Text = snippet.comment;
+                        codeBox.Text = snippet.code;
                     }
                     break;
                 case 3:
-                    Snippet selectedSnippet = fjController.GetSectionSnippets(sectionName)[];
+                    Snippet selectedSnippet = fjController.GetSectionSnippets(sectionName)[0];
                     break;
             }
         }
@@ -122,17 +135,21 @@ namespace LSCK
 
         private void comboPages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            updateUI(1);
+            if (string.IsNullOrEmpty(comboSections.Text))
+            {
+                updateUI(1);
+            }
         }
 
         private void addSectionsButton_Click(object sender, RoutedEventArgs e)
         {
             int x = 0;
-            foreach (var p in TheList.Where(p => p.check == true)){
+            foreach (var p in TheList.Where(p => p.check == true))
+            {
                 fjController.SetPage(p.name, comboPages.SelectedValue.ToString());
                 x++;
             }
-            for (int i =0; i<TheList.Count; i++)
+            for (int i = 0; i < TheList.Count; i++)
             {
                 if ((TheList[i].check))
                 {
@@ -140,17 +157,18 @@ namespace LSCK
                 }
             }
             updateUI(1);
-            MessageBox.Show(x+ " sections added to "+ comboPages.SelectedValue.ToString());
+            MessageBox.Show(x + " sections added to " + comboPages.SelectedValue.ToString());
         }
 
         private void deleteSectionButton_Click(object sender, RoutedEventArgs e)
         {
-            if (listSections.SelectedValue!=null)
+            if (listSections.SelectedValue != null)
             {
-                string sectionName=listSections.SelectedValue.ToString();
+                string sectionName = listSections.SelectedValue.ToString();
                 fjController.NullPage(sectionName);
                 updateUI(1);
-            }else
+            }
+            else
             {
                 MessageBox.Show("Please selectthe section you wish to delete.");
             }
@@ -158,7 +176,10 @@ namespace LSCK
 
         private void comboSections_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            updateUI(2);
+            if (string.IsNullOrEmpty(comboSections.Text))
+            {
+                updateUI(2);
+            }
         }
 
         private void listSnippets_SelectionChanged(object sender, SelectionChangedEventArgs e)

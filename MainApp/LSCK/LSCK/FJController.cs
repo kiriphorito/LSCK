@@ -429,7 +429,7 @@ namespace LSCK
         public List<Snippet> GetSectionSnippets(string sectionName)
         {
             List<Snippet> result = new List<Snippet>();
-            for (int x = 1; x < json.GetNumberOfSnippets(sectionName); x++)
+            for (int x = 1; x <= json.GetNumberOfSnippets(sectionName); x++)
             {
                 result.Add(GetSnippet(sectionName, x));
             }

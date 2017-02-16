@@ -3,25 +3,35 @@
   "ace_theme": "idle_fingers",
   "page_titles": [
     "index",
-    "Main functions"
+    "lol"
   ],
   "sections": [
     {
       "sectionName": "New sect",
-      "page": null,
-      "position": 0,
+      "page": "index",
+      "position": 2,
       "snippets": [
         {
           "position": 1,
           "language": "csharp",
           "comment": "Switch statement"
+        },
+        {
+          "position": 2,
+          "language": "java",
+          "comment": "This here is a verrryyy long commentt"
+        },
+        {
+          "position": 3,
+          "language": "java",
+          "comment": "This here is a verrryyy long commentt"
         }
       ]
     },
     {
       "sectionName": "Other sect",
-      "page": "Main functions",
-      "position": 1,
+      "page": "index",
+      "position": 3,
       "snippets": [
         {
           "position": 1,

@@ -80,11 +80,6 @@
                                 <StackPanel Orientation="Vertical" Margin="0,5,0,0">
                                     <TextBlock HorizontalAlignment="Center" Text="Snippets/Files:"/>
                                     <ListBox x:Name="listSnippets" SelectionChanged="listSnippets_SelectionChanged" Width="200" Height="180" Margin="0,5,0,0">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <Button ></Button>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
                                         <ListBoxItem>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock>ListBox Item #1</TextBlock>
@@ -104,11 +99,11 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="50,5,0,0">
                                     <TextBlock HorizontalAlignment="Center" Text="Comment:"/>
-                                    <TextBox x:Name="commentBox" Height="60" Width="200"></TextBox>
+                                    <TextBox x:Name="commentBox" Height="60" Width="200" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap"></TextBox>
                                     <TextBlock HorizontalAlignment="Center" Text="Code:"/>
                                     <TextBox x:Name="codeBox" Height="120" Width="200"></TextBox>
 
-                                    
+
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
