@@ -1,8 +1,68 @@
 {
-  "title": "devenv.exe",
-  "ace_theme": "monokai",
+  "title": "Hahaha",
+  "ace_theme": "idle_fingers",
   "page_titles": [
-    "index"
+    "index",
+    "Main functions"
   ],
-  "sections": []
+  "sections": [
+    {
+      "sectionName": "New sect",
+      "page": "Main functions",
+      "position": 1,
+      "snippets": [
+        {
+          "position": 1,
+          "language": "csharp",
+          "comment": "Switch statement"
+        }
+      ]
+    },
+    {
+      "sectionName": "Other sect",
+      "page": "Main functions",
+      "position": 2,
+      "snippets": [
+        {
+          "position": 1,
+          "language": "csharp",
+          "comment": "Includes"
+        },
+        {
+          "position": 2,
+          "language": "csharp",
+          "comment": "Includes"
+        }
+      ]
+    },
+    {
+      "sectionName": "Lol sect",
+      "page": "index",
+      "position": 1,
+      "snippets": [
+        {
+          "position": 1,
+          "language": "csharp",
+          "comment": "If statement"
+        }
+      ]
+    },
+    {
+      "sectionName": "secttest",
+      "page": "Main functions",
+      "position": 3,
+      "snippets": [
+        {
+          "position": 1,
+          "language": "file",
+          "comment": ""
+        },
+        {
+          "position": 2,
+          "language": "file",
+          "comment": ""
+        }
+      ]
+    }
+  ]
 }

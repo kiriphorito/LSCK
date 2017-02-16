@@ -1,0 +1,2 @@
+if (result == Microsoft.VisualStudio.VSConstants.S_OK)                                                                           // Show MyToolWindow
+                Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());

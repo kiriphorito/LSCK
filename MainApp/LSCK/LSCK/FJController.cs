@@ -10,6 +10,7 @@
  * Website Information
  * - GetTitle()
  * - GetAceTheme()
+ * - GetAceThemeIndex()
  * - GetPageTitles()
  * 
  * - SetTitle()
@@ -18,8 +19,13 @@
  * - InsertPageTitle()
  * 
  * Page Infomation 
- * - ReadPage()
- * - ReadPageSnippetOnly()
+ * - GetPage()
+ * - GetPageSnippetOnly()
+ * - GetPageTitles()
+ * 
+ * - SetPageTitle()
+ * - DeletePage()
+ * - SwapPage()
  * 
  * Section Information
  * - InsertSection()
@@ -30,23 +36,23 @@
  * 
  * - PageSnippetsOnly()
  * - SnippetsOnly()
- * - ReadSectionNames()
+ * - GetSectionNames()
+ * - GetPageSections()
  * 
  * Snippet Information
  * - InsertSnippet()
  * - DeleteSnippet()
  * - DeleteFileSnippet()
  * - SwapSnippet()
- * - ReadSnippet()
+ * - GetSnippet()
  * 
- * - ReadFileNames()
+ * - GetFileNames()
 */
 
 using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using System.Windows;
 
 namespace LSCK
 {
@@ -107,25 +113,36 @@ namespace LSCK
             json.SetTitle(newTitle);
         }
 
-        ///<summary>
-        ///<para>Retreive the theme for Ace Editor of the website fron JSON</para>
-        ///</summary>
-        public string ReadAceTheme()
+        public void SetPageTitle(string oldName, string newName)
         {
-            return json.GetAceTheme();
+            json.UpdatePageName(oldName, newName);
         }
 
-        public int ReadAceThemeIndex()
+        public void DeletePage(string pageName)
+        {
+            json.DeletePage(pageName);
+        }
+
+        public void SwapPage(string firstName, string secondName)
+        {
+            json.SwapPage(firstName, secondName);
+        }
+
+        private List<string> getListofThemes()
         {
             var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
             string stringThemes = reader.ReadToEnd();
             reader.Close();
-            List<string> themes = stringThemes.Split('\n').ToList();
+            return stringThemes.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();
+        }
+
+        public int GetAceThemeIndex()
+        {
+            List<string> themes = getListofThemes();
             int x = 0;
             foreach (string theme in themes)
             {
-                string correctedTheme = theme.Substring(0, theme.Length - 1);
-                if (json.GetAceTheme().Equals(correctedTheme))
+                if (json.GetAceTheme().Equals(theme))
                 {
                     return x;
                 }
@@ -135,25 +152,22 @@ namespace LSCK
         }
 
         ///<summary>
+        ///<para>Retreive the theme for Ace Editor of the website fron JSON</para>
+        ///</summary>
+        public string GetAceTheme()
+        {
+            return json.GetAceTheme();
+        }
+
+        ///<summary>
         ///<para>Set the theme for Ace Editor of the website fron JSON</para>
         ///</summary>
         public void SetAceTheme(string newAceTheme)
         {
-            var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
-            string stringThemes = reader.ReadToEnd();
-            reader.Close();
-            List<string> themes = stringThemes.Split('\n').ToList();
-            foreach (string theme in themes)
-            {
-                string correctedTheme = theme.Substring(0, theme.Length - 1);
-                if (newAceTheme.Equals(correctedTheme))
-                {
-                    json.SetAceTheme(newAceTheme);
-                    return;
-                }
-            }
-            throw new InvalidInputException("You have entered an invalid theme for the Ace Editor!");
-            
+            List<string> themes = getListofThemes();
+            if (!themes.Contains(newAceTheme))
+                throw new InvalidInputException("You have entered an invalid theme for the Ace Editor!");
+            json.SetAceTheme(newAceTheme);
         }
 
         ///<summary>
@@ -167,22 +181,12 @@ namespace LSCK
         ///<summary>
         ///<para>Add a new page to the website</para>
         ///</summary>
-        public void InsertPage(string newPageTitle)
+        public void InsertPageTitle(string newPageTitle)
         {
             if (json.GetPageTitles().Contains(newPageTitle))
                 throw (new InvalidInputException("You have already entered this title for a page!"));
             else
                 json.InsertPage(newPageTitle);
-        }
-
-        public void DeletePage(string pageName)
-        {
-            json.DeletePage(pageName);
-        }
-
-        public void SwapPages(string firstPage, string secondPage)
-        {
-            json.SwapPage(firstPage, secondPage);
         }
 
         ///<summary>
@@ -206,7 +210,7 @@ namespace LSCK
         ///<summary>
         ///<para>Retreive all elements of a snippet</para>
         ///</summary>
-        public Snippet ReadSnippet(string sectionName, int index)
+        public Snippet GetSnippet(string sectionName, int index)
         {
             var snippet = new Snippet();
             snippet.language = json.GetLanguage(sectionName, index);
@@ -218,7 +222,7 @@ namespace LSCK
         ///<summary>
         ///<para>Retreive all sections on a specific page</para>
         ///</summary>
-        public List<Section> ReadPage(string pageTitle)
+        public List<Section> GetPage(string pageTitle)
         {
             var result = new List<Section>();
 
@@ -240,7 +244,7 @@ namespace LSCK
                 var listOfSnippets = new List<Snippet>();
                 for (int y = 1; y <= json.GetNumberOfSnippets(section.sectionName); y++)
                 {
-                    listOfSnippets.Add(ReadSnippet(section.sectionName, y));
+                    listOfSnippets.Add(GetSnippet(section.sectionName, y));
                 }
                 section.snippets = listOfSnippets;
                 result.Add(section);
@@ -248,12 +252,17 @@ namespace LSCK
             return result;
         }
 
+        public List<string> GetPageSections(string pageName)
+        {
+            return json.GetPageSections(pageName);
+        }
+
         ///<summary>
         ///<para>Reteive all snippets from a specific page, removing section information</para>
         ///</summary>
-        public List<Snippet> ReadPageSnippetOnly(string pageTitle)
+        public List<Snippet> GetPageSnippetOnly(string pageTitle)
         {
-            return PageSnippetsOnly(ReadPage(pageTitle));
+            return PageSnippetsOnly(GetPage(pageTitle));
         }
 
         ///<summary>
@@ -277,7 +286,7 @@ namespace LSCK
         ///<summary>
         ///<para>Retreive all sections names stored</para>
         ///</summary>
-        public List<string> ReadSectionNames()
+        public List<string> GetSectionNames()
         {
             return json.GetSectionNames();
         }
@@ -285,7 +294,7 @@ namespace LSCK
         ///<summary>
         ///<para>Retreive all file names in a particular snippet</para>
         ///</summary>
-        public List<string> ReadFileNames(string sectionName)
+        public List<string> GetFileNames(string sectionName)
         {
             var result = new List<string>();
             for (int x = 1; x <= json.GetNumberOfSnippets(sectionName); x++)

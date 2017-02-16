@@ -75,12 +75,12 @@ namespace LSCK
         {
             var htmlCL = new List<string>(); //HTMLContentList
 
-            List<Section> page = fjController.ReadPage(pageTitle);
+            List<Section> page = fjController.GetPage(pageTitle);
             List<Snippet> pageSnippets = fjController.PageSnippetsOnly(page);
 
             htmlCL.Add(GenerateHead(fjController.GetTitle()));
             htmlCL.Add(GenerateBody(page, fjController.GetTitle(), pageTitle));
-            htmlCL.Add(GenerateAceScript(pageSnippets, fjController.ReadAceTheme()));
+            htmlCL.Add(GenerateAceScript(pageSnippets, fjController.GetAceTheme()));
             htmlCL.Add(GenerateFooter());
 
             string htmlContent = string.Join("\n", htmlCL.ToArray());
