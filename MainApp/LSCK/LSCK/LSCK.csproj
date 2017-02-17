@@ -75,6 +75,7 @@
     <Compile Include="StructureControl.xaml.cs">
       <DependentUpon>StructureControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TEST.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

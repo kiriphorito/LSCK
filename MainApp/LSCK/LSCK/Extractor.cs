@@ -16,7 +16,7 @@ namespace LSCK
             List<Tuple<string, string>> files = new List<Tuple<string, string>>();
             EnvDTE80.DTE2 dte2 = (EnvDTE80.DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE.14.0");
             string mainDir = System.IO.Path.GetDirectoryName(dte2.Solution.FullName);
-            string[] extensions = { ".cs", ".c", ".java", ".py" };
+            string[] extensions = { ".cs", ".c", ".java", ".py",".php",".html" };
             string[] foundFiles = Directory.GetFiles(mainDir, "*.*", System.IO.SearchOption.AllDirectories);
             foreach (string foundFile in foundFiles)
             {
@@ -40,38 +40,50 @@ namespace LSCK
                     break;
                 case ".cs":
                     marker = "//";
-                    languageName = "C#";
+                    languageName = "csharp";
                     break;
                 case ".java":
                     marker = "//";
                     languageName = "java";
                     break;
+                case ".html":
+                    marker = "//";
+                    languageName = "html";
+                    break;
+                case ".php":
+                    marker = "//";
+                    languageName = "php";
+                    break;
                 default:
                     marker = "//";
-                    languageName = "C";
+                    languageName = "c";
                     break;
             }
             return new Tuple<string, string>(marker, languageName);
         }
+
         private static void FindSnippets(string file, string marker, string key,string languageName)
         {
+            StringBuilder lines = new StringBuilder();
             StringBuilder code = new StringBuilder();
             FJController fjController = FJController.GetInstance;
             int keyCounter = 0;
+            int totalCounter = 0;
+            int startPos;
             string comment=null,sectionName=null;
             foreach (var line in File.ReadAllLines(file))
             {
                 if (line.Contains(marker + key))
                 {
+                    startPos=line.IndexOf(marker + key);
                     keyCounter++;
+                    totalCounter++;
                     if (keyCounter == 1)
                     {
-                        sectionName = line.Substring(marker.Length + key.Length, line.Length - (marker.Length + key.Length));
-                        System.Windows.MessageBox.Show(sectionName);
+                        sectionName = line.Substring(startPos+marker.Length + key.Length, line.Length - (startPos+marker.Length + key.Length));
                     }else if (keyCounter == 2)
                     {
-                        comment = line.Substring(marker.Length + key.Length, line.Length - (marker.Length + key.Length));
-                        System.Windows.MessageBox.Show(comment);
+                        comment = line.Substring(startPos+marker.Length + key.Length, line.Length - (startPos+marker.Length + key.Length));
                     }else
                     {
                         keyCounter = 0;
@@ -79,11 +91,16 @@ namespace LSCK
                     }
                 }else
                 {
+                    lines.Append(line+"\n");
                     if (keyCounter == 2)
                     {
-                        code.Append(line);
+                        code.Append(line+"\n");
                     }
                 }
+            }
+            if (totalCounter > 0) {
+                File.WriteAllText(file, lines.ToString());
+                MessageBox.Show("" + (totalCounter / 3) + " new snippets were added.");
             }
 
         }
