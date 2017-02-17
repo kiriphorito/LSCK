@@ -64,9 +64,9 @@ namespace LSCK
                 "Structure");
         }
 
-        private void updateUI(int index)
+        private void updateUI(int key)
         {
-            switch (index)
+            switch (key)
             {
                 case 0:
                     List<string> pageNames = fjController.GetPageTitles();
@@ -112,7 +112,10 @@ namespace LSCK
                     }
                     break;
                 case 3:
-                    Snippet selectedSnippet = fjController.GetSectionSnippets(sectionName)[0];
+                    int index = listSnippets.SelectedIndex;
+                    Snippet selectedSnippet = fjController.GetSectionSnippets(sectionName)[index];
+                    commentBox.Text = selectedSnippet.comment;
+                    codeBox.Text = selectedSnippet.code;
                     break;
             }
         }
@@ -135,7 +138,7 @@ namespace LSCK
 
         private void comboPages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(comboSections.Text))
+            if (!string.IsNullOrEmpty(comboPages.Text))
             {
                 updateUI(1);
             }
@@ -184,7 +187,18 @@ namespace LSCK
 
         private void listSnippets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (listSnippets.Items.Count>0)
+            {
+                updateUI(3);
+            }
+        }
 
+        private void deleteSnippetButton_Click(object sender, RoutedEventArgs e)
+        {
+            int index = listSnippets.SelectedIndex;
+            if (index >= 0) {
+                fjController.DeleteSnippet(comboSections.SelectedValue.ToString(),index);
+            }
         }
     }
 }

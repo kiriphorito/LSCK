@@ -231,7 +231,7 @@ namespace LSCK
 
         private void AutoSearch_Click(object sender, RoutedEventArgs e)
         {
-            Extractor.FindFiles("??");
+            Extractor.FindFiles(keySequence.Text);
         }
     }
 }

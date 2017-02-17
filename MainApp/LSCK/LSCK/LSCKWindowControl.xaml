@@ -27,7 +27,7 @@
                         <ComboBoxItem>Python</ComboBoxItem>
                         <ComboBoxItem>Javascript</ComboBoxItem>
                     </ComboBox>
-                    <TextBlock Margin="110,10,96,10" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold" Text="Section Title" Height="22" Width="86"/>
+                    <TextBlock  Margin="110,10,96,10" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold" Text="Section Title" Height="22" Width="86"/>
                     <StackPanel Orientation="Horizontal">
                         <ComboBox x:Name="comboSectionsCode" SelectionChanged="comboSectionsCode_SelectionChanged" HorizontalAlignment="Left" Width="143" Margin="5" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
                         <Button x:Name="createSection" Click="createSection_Click" Content="Create" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="20,0,0,0"/>
@@ -42,13 +42,18 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="Auto add" BorderBrush="#FF19461D">
-
-                <Button Content="Run" x:Name="AutoSearch" Click="AutoSearch_Click" HorizontalAlignment="Right" Width="100" Margin="0,217,96,31" Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
-                </Button>
-
+                <StackPanel>
+                    <TextBlock Visibility="Hidden" Height="193" TextWrapping="Wrap" TextAlignment="Justify">You can add snippets automatically to your website by typing a comment, followed by a specified sequence of characters and then the section you wish to add the snippet to. On the next line, again you must have a comment with the key characters following it and a some text to describe your snippet. These two lines should go before the code you wish to add. Finally, you must place another comment followed by the key sequence one line after the code. This can be done as many times in any of the supported files on your project.</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="5,0,0,0">Key character sequence: </TextBlock>
+                        <TextBox x:Name="keySequence" MaxLength="6" Width="100" Margin="20,0,0,0" Text="??" TextAlignment="Center"/>
+                    </StackPanel>
+                    <Button Content="Run" x:Name="AutoSearch" Click="AutoSearch_Click" Width="100"  Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand" Margin="0,20,0,0">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
             </TabItem>
 
             <TabItem Header="Files" BorderBrush="#FF19461D" Height="22" VerticalAlignment="Top">
