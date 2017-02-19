@@ -1,4 +1,4 @@
-﻿/*
+/*
  * The following class is a controller to manaage a JSON class and a File Handler class - MVC pattern
  * Controller - FJController
  * Model - FileHander & JSON

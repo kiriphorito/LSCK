@@ -1,8 +1,6 @@
-﻿//------------------------------------------------------------------------------
 // <copyright file="ToolWindow1.cs" company="Company">
 //     Copyright (c) Company.  All rights reserved.
 // </copyright>
-//------------------------------------------------------------------------------
 
 namespace LSCK
 {

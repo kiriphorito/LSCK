@@ -1,8 +1,6 @@
-﻿//------------------------------------------------------------------------------
 // <copyright file="SitePreviewControl.xaml.cs" company="Company">
 //     Copyright (c) Company.  All rights reserved.
 // </copyright>
-//------------------------------------------------------------------------------
 
 namespace LSCK
 {
@@ -27,11 +25,8 @@ namespace LSCK
         public SitePreviewControl()
         {
             this.InitializeComponent();
-            MessageBox.Show("init");
             fjController = FJController.GetInstance;
-            string homepage=fjController.GetPageTitles()[0];
-            string curDir = Directory.GetCurrentDirectory();
-            Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", curDir,homepage)));
+            Refresh();
 
         }
 
@@ -39,7 +34,10 @@ namespace LSCK
         {
             string homepage = fjController.GetPageTitles()[0];
             string curDir = Directory.GetCurrentDirectory();
-            Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", curDir, homepage)));
+            if (File.Exists(curDir + "/generatedWebsite/" + homepage + ".html"))
+            {
+                Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", curDir, homepage)));
+            }
         }
 
         /// <summary>

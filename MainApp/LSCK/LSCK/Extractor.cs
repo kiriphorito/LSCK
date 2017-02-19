@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +10,7 @@ namespace LSCK
 {
     public static class Extractor
     {
+        private static int snippetCounter = 0, fileCounter = 0;
         public static void FindFiles(string key)
         {
             List<Tuple<string, string>> files = new List<Tuple<string, string>>();
@@ -27,6 +27,9 @@ namespace LSCK
                     FindSnippets(foundFile,langProperties.Item1,key,langProperties.Item2);
                 }
             }
+            MessageBox.Show("" + snippetCounter + " new snippets were added from "+fileCounter+" files.");
+            fileCounter = 0;
+            snippetCounter = 0;
         }
 
         private static Tuple<string,string> getLanguageProperties(string extension)
@@ -88,6 +91,7 @@ namespace LSCK
                     {
                         keyCounter = 0;
                         fjController.InsertSnippet(sectionName, languageName, comment, code.ToString());
+                        snippetCounter++;
                     }
                 }else
                 {
@@ -99,8 +103,8 @@ namespace LSCK
                 }
             }
             if (totalCounter > 0) {
+                fileCounter++;
                 File.WriteAllText(file, lines.ToString());
-                MessageBox.Show("" + (totalCounter / 3) + " new snippets were added.");
             }
 
         }
