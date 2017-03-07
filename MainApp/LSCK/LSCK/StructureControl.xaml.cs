@@ -75,16 +75,19 @@ namespace LSCK
                     }
                     break;
                 case 1:
-                    string page = comboPages.SelectedValue.ToString();
-                    List<string> sectionNames = fjController.GetPageSections(page);
-                    listSections.Items.Clear();
-                    comboSections.Items.Clear();
-                    foreach (string section in sectionNames)
+                    if (comboPages.SelectedIndex != -1)
                     {
-                        comboSections.Items.Add(section);
-                        listSections.Items.Add(section);
+                        string page = comboPages.SelectedValue.ToString();
+                        List<string> sectionNames = fjController.GetPageSections(page);
+                        listSections.Items.Clear();
+                        comboSections.Items.Clear();
+                        foreach (string section in sectionNames)
+                        {
+                            comboSections.Items.Add(section);
+                            listSections.Items.Add(section);
+                        }
+                        CreateCheckBoxList();
                     }
-                    CreateCheckBoxList();
                     break;
                 case 2:
                     sectionName = comboSections.SelectedValue.ToString();
@@ -136,10 +139,9 @@ namespace LSCK
 
         private void comboPages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(comboPages.Text))
-            {
+
                 updateUI(1);
-            }
+
         }
 
         private void addSectionsButton_Click(object sender, RoutedEventArgs e)

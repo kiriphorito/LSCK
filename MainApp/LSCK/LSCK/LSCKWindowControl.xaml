@@ -62,21 +62,7 @@
                     <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="144" Margin="60,37,0,187" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
                     <TextBlock Margin="108,85,128,-65" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Files</TextBlock>
                     <ListBox  x:Name="listFile" Margin="0,115,0,71"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>ListBox Item #1</TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>ListBox Item #2</TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>ListBox Item #3</TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
+                        
                     </ListBox>
                     <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="100" Margin="0,223,88,4" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
                         <Button.Effect>

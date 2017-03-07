@@ -119,12 +119,15 @@ namespace LSCK
                 case 1:
                     break;
                 case 2:
-                    string sectionName = comboSectionsFile.SelectedValue.ToString();
-                    List<string> fileNames = fjController.GetFileNames(sectionName);
-                    listFile.Items.Clear();
-                    foreach (string fileName in fileNames)
+                    if (comboSectionsFile.SelectedIndex != -1)
                     {
-                        listFile.Items.Add(fileName);
+                        string sectionName = comboSectionsFile.SelectedValue.ToString();
+                        List<string> fileNames = fjController.GetFileNames(sectionName);
+                        listFile.Items.Clear();
+                        foreach (string fileName in fileNames)
+                        {
+                            listFile.Items.Add(fileName);
+                        }
                     }
                     break;
                 case 3:
@@ -154,6 +157,7 @@ namespace LSCK
             {
                 string path = browseFileDialog.FileName;
                 fjController.InsertSnippet(comboSectionsFile.SelectedValue.ToString(),"file","",path);
+                updateUI(2);
 
             }
         }
