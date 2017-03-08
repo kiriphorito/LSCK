@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using System.Runtime.InteropServices;
+using EnvDTE80;
 
 namespace LSCK
 {
@@ -45,7 +47,8 @@ namespace LSCK
             if (!File.Exists(this.fileDir))
             {
                 //Default settings
-                JSONFile.title = Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName);
+                DTE2 dte = (DTE2)Marshal.GetActiveObject("VisualStudio.DTE");
+                JSONFile.title = Path.GetFileName(Path.GetFileNameWithoutExtension(dte.Solution.FullName));
                 JSONFile.ace_theme = "monokai";
                 JSONFile.page_titles = new List<string>();
                 JSONFile.page_titles.Add("index");

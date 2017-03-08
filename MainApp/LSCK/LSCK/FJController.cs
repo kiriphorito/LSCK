@@ -6,53 +6,14 @@
  * 
  * FJController class follows the Singleton design pattern where only one instance can be instantiated
  * 
- * Public Functions
- * Website Information
- * - GetTitle()
- * - GetAceTheme()
- * - GetAceThemeIndex()
- * - GetPageTitles()
- * 
- * - SetTitle()
- * - SetAceTheme()
- * 
- * - InsertPageTitle()
- * 
- * Page Infomation 
- * - GetPage()
- * - GetPageSnippetOnly()
- * - GetPageTitles()
- * 
- * - SetPageTitle()
- * - DeletePage()
- * - SwapPage()
- * 
- * Section Information
- * - InsertSection()
- * - DeleteSection()
- * - SwapSection()
- * - SetPage()
- * - NullPage()
- * 
- * - PageSnippetsOnly()
- * - SnippetsOnly()
- * - GetSectionNames()
- * - GetPageSections()
- * 
- * Snippet Information
- * - InsertSnippet()
- * - DeleteSnippet()
- * - DeleteFileSnippet()
- * - SwapSnippet()
- * - GetSnippet()
- * 
- * - GetFileNames()
 */
 
 using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using EnvDTE80;
+using System.Runtime.InteropServices;
 
 namespace LSCK
 {
@@ -69,11 +30,14 @@ namespace LSCK
 
         private FJController()
         {
-            fileDir = Environment.CurrentDirectory;
+            DTE2 dte = (DTE2)Marshal.GetActiveObject("VisualStudio.DTE");
+            string solutionDir = Path.GetDirectoryName(dte.Solution.FullName);
+            fileDir = solutionDir + @"\LSCK Data";
+            Directory.CreateDirectory(fileDir);
             json = new JSON(fileDir, jsonSettingsName);
-            if (!Directory.Exists(string.Concat(fileDir, @"/data")))
+            if (!Directory.Exists(string.Concat(fileDir, @"\data")))
             {
-                Directory.CreateDirectory(string.Concat(fileDir, @"/data"));
+                Directory.CreateDirectory(string.Concat(fileDir, @"\data"));
             }
         }
 
@@ -106,13 +70,16 @@ namespace LSCK
         }
 
         ///<summary>
-        ///<para>Set the Title of the website fron JSON</para>
+        ///<para>Set the Title of the website in JSON</para>
         ///</summary>
         public void SetTitle(string newTitle)
         {
             json.SetTitle(newTitle);
         }
 
+        ///<summary>
+        ///<para>Set the title of a page of the website in JSON</para>
+        ///</summary>
         public void SetPageTitle(string oldName, string newName)
         {
             json.UpdatePageName(oldName, newName);
@@ -130,7 +97,7 @@ namespace LSCK
 
         private List<string> getListofThemes()
         {
-            var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
+            var reader = new StreamReader(@"acceptable_ace_themes.txt");
             string stringThemes = reader.ReadToEnd();
             reader.Close();
             return stringThemes.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();
@@ -424,6 +391,11 @@ namespace LSCK
                     }
                 }
             }
+        }
+
+        public string GetDataDir()
+        {
+            return fileDir;
         }
 
         public List<Snippet> GetSectionSnippets(string sectionName)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -41,7 +42,7 @@ namespace JSONTest
 
             FJController fjController = FJController.GetInstance;
 
-            
+
 
             //fjController.ReadAceThemeIndex();
             //fjController.SetAceTheme("twilight");
@@ -64,37 +65,41 @@ namespace JSONTest
             //    Console.WriteLine("SAME INSTANCE");
             //}
 
-            //fjController.insertFile("Hello World!", "A random txt file.", "/Users/sampham/Documents/Test1.txt");
+            //fjController.InsertSnippet("Hello World!", "file" ,"A random txt file.", @"E:\Steps.docx");
+            //fjController.InsertSnippet("Hello World!", "file" ,"Gin no Saji", @"E:\Hachiken.Yugo.full.1612302.jpg");
+            //fjController.InsertSnippet("Hello World!", "file", "1080p", @"E:\1080p-hd-wallpaper-1080p-backgrounds-hd.jpg");
+            //fjController.InsertSnippet("Hello World!", "file", "6th Biweekly report", @"E:\6th Bi-Weekly Report.pdf");
 
             //fjController.deleteSnippet("Hello World!", 5);
 
             //fjController.deleteSection("Hello World!");
 
-            //fjController.insertPageName("Kiriphorito");
+            //fjController.InsertPageTitle("Kiriphorito");
             //fjController.InsertSection("Goodbye World!");
-            //fjController.setPage("Hello World!" , "home");
+            //fjController.SetPage("Hello World!" , "index");
+            //fjController.SetPage("Goodbye World!" , "index");
             //fjController.nullPage("Hello World!");
 
-            string test1 = "for (int i=0;i < total;i++){\n    printf(\"blah\");\n}";            //String test2 = "<?php\n  echo 'Hello World' \n?>";
-            string test2 = "<html>\n<body>\n    Hello World\n</body>\n</html>";
-            string test3 = "<?php\n    echo \"Hello World\"\n?>";
-            string test4 = "<?php\n    echo \"Goodbye Wrold\"\n?>";
+            //string test1 = "for (int i=0;i < total;i++){\n    printf(\"blah\");\n}";            //String test2 = "<?php\n  echo 'Hello World' \n?>";
+            //string test2 = "<html>\n<body>\n    Hello World\n</body>\n</html>";
+            //string test3 = "<?php\n    echo \"Hello World\"\n?>";
+            //string test4 = "<?php\n    echo \"Goodbye Wrold\"\n?>";
 
-            fjController.InsertSection("Hello World!");
-            fjController.InsertSection("Goodbye World!");
+            //fjController.InsertSection("Hello World!");
+            //fjController.InsertSection("Goodbye World!");
             //fjController.swapSection("Hello World!", "Goodbye World!");
 
 
 
-            fjController.InsertSnippet("Hello World!", "c", "we invented the for loop",test1);
-            fjController.InsertSnippet("Hello World!", "html", "the world's first html!", test2);
-            fjController.InsertSnippet("Hello World!", "php", "php yay!", test3);
-            fjController.InsertSnippet("Hello World!", 2, "fortan", "hello", test4);
+            //fjController.InsertSnippet("Hello World!", "c", "we invented the for loop",test1);
+            //fjController.InsertSnippet("Hello World!", "html", "the world's first html!", test2);
+            //fjController.InsertSnippet("Hello World!", "php", "php yay!", test3);
+            //fjController.InsertSnippet("Hello World!", 2, "fortan", "hello", test4);
 
-            fjController.InsertSnippet("Goodbye World!", "c", "we invented the for loop", test1);
-            fjController.InsertSnippet("Goodbye World!", "html", "the world's first html!", test2);
-            fjController.InsertSnippet("Goodbye World!", "php", "php yay!", test3);
-            fjController.InsertSnippet("Goodbye World!", 2, "fortan", "hello", test4);
+            //fjController.InsertSnippet("Goodbye World!", "c", "we invented the for loop", test1);
+            //fjController.InsertSnippet("Goodbye World!", "html", "the world's first html!", test2);
+            //fjController.InsertSnippet("Goodbye World!", "php", "php yay!", test3);
+            //fjController.InsertSnippet("Goodbye World!", 2, "fortan", "hello", test4);
 
             //fjController.swapSnippet(2, 4, "Hello World!");
 
@@ -119,14 +124,17 @@ namespace JSONTest
 
             //fjController.setAceTheme("monokai");
 
-            //HTMLGenerator html = new HTMLGenerator(fjController , false , Environment.CurrentDirectory, Environment.CurrentDirectory + @"/generatedWebsite");
-            //html.generateWebsite();
+            //WebsiteGenerator html = new WebsiteGenerator(fjController, false, Environment.CurrentDirectory, @"C:\generatedWebsite");
+            //html.GenerateWebsite();
+
+            //SSH ssh = new SSH(@"C:\generatedWebsite");
+            //ssh.UploadWebsite();
 
             //AcceptableList gen = new AcceptableList();
             //gen.modeList("theme-*.js", Environment.CurrentDirectory + @"/presets/ace", "acceptable_ace_themes");
 
-
-
+            //Console.WriteLine(@"C:\generatedWebsite");
+            //Console.ReadLine();
             //html.writeHTML();
             //Console.WriteLine(html.generateHTML());
 
@@ -136,6 +144,15 @@ namespace JSONTest
             //fh.insertSnippet(test2, 2, "Hello World", Environment.CurrentDirectory + @"/data");
             //fh.insertSnippet(test3, 3, "Hello World", Environment.CurrentDirectory + @"/data");
             //fh.delete(2, "Hello World", Environment.CurrentDirectory + @"/data");
+
+            String[] allfiles = System.IO.Directory.GetFiles(Environment.CurrentDirectory + @"\presets\", "*.*", System.IO.SearchOption.AllDirectories);
+            for (int x = 0; x < allfiles.Count(); x++)
+            {
+                allfiles[x] = allfiles[x].Substring(69);
+                Console.WriteLine(allfiles[x]);
+            }
+            File.WriteAllLines("C:/generatedWebsite/offlineFiles.txt", allfiles);
+            Console.ReadLine();
         }
     }
 }

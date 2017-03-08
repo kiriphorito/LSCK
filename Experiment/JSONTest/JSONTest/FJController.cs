@@ -130,7 +130,7 @@ namespace JSONTest
 
         private List<string> getListofThemes()
         {
-            var reader = new StreamReader(fileDir + @"/presets/acceptable_ace_themes.txt");
+            var reader = new StreamReader(@"acceptable_ace_themes.txt");
             string stringThemes = reader.ReadToEnd();
             reader.Close();
             return stringThemes.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();

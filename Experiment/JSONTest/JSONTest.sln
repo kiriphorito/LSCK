@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONTest", "JSONTest\JSONTest.csproj", "{16977B02-2030-4845-8350-58579618DA76}"
 EndProject
 Global
@@ -13,6 +14,9 @@ Global
 		{16977B02-2030-4845-8350-58579618DA76}.Debug|x86.Build.0 = Debug|x86
 		{16977B02-2030-4845-8350-58579618DA76}.Release|x86.ActiveCfg = Release|x86
 		{16977B02-2030-4845-8350-58579618DA76}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
