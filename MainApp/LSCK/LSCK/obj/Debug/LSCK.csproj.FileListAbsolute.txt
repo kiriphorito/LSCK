@@ -431,3 +431,6 @@ C:\Users\Sam\Git\LSCK\MainApp\LSCK\LSCK\bin\Debug\Resources\Assets\presets\ace\w
 C:\Users\Sam\Git\LSCK\MainApp\LSCK\LSCK\bin\Debug\Resources\Assets\presets\bootstrap.min.css
 C:\Users\Sam\Git\LSCK\MainApp\LSCK\LSCK\bin\Debug\Renci.SshNet.dll
 C:\Users\Sam\Git\LSCK\MainApp\LSCK\LSCK\bin\Debug\Renci.SshNet.xml
+C:\Users\Sam\Git\LSCK\MainApp\LSCK\LSCK\bin\Debug\Resources\Assets\acceptable_ace_modes.txt
+C:\Users\Sam\Git\LSCK\MainApp\LSCK\LSCK\bin\Debug\Resources\Assets\acceptable_ace_themes.txt
+C:\Users\Sam\Git\LSCK\MainApp\LSCK\LSCK\bin\Debug\Resources\Assets\offlineFiles.txt

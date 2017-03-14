@@ -314,8 +314,7 @@ namespace JSONTest
         {
             if (json.GetSectionNames().Contains(section))
             {
-                Console.WriteLine("You have already entered this title for a section!");
-                return;
+                throw new InvalidInputException("The name you have entered already exists for a section!");
             }
             else {
                 json.InsertSection(section);
@@ -327,11 +326,18 @@ namespace JSONTest
         ///</summary>
         public void DeleteSection(string section)
         {
-            for (int x = json.GetNumberOfSnippets(section); x >= 1; x--)
+            if (json.GetSectionNames().Contains(section))
             {
-                DeleteSnippet(section, x);
+                for (int x = json.GetNumberOfSnippets(section); x >= 1; x--)
+                {
+                    DeleteSnippet(section, x);
+                }
+                json.DeleteSection(section);
             }
-            json.DeleteSection(section);
+            else
+            {
+                throw new InvalidInputException("The section you have entered doesn't exist!");
+            }
         }
 
         ///<summary>

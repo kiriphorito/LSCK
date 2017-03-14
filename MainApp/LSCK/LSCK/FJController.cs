@@ -14,6 +14,7 @@ using System.Linq;
 using System.Collections.Generic;
 using EnvDTE80;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace LSCK
 {
@@ -97,10 +98,10 @@ namespace LSCK
 
         private List<string> getListofThemes()
         {
-            var reader = new StreamReader(@"acceptable_ace_themes.txt");
-            string stringThemes = reader.ReadToEnd();
-            reader.Close();
-            return stringThemes.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("LSCK.Resources.Assets.acceptable_ace_themes.txt");
+            TextReader tr = new StreamReader(stream);
+            string fileContents = tr.ReadToEnd();
+            return fileContents.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();
         }
 
         public int GetAceThemeIndex()
@@ -281,8 +282,7 @@ namespace LSCK
         {
             if (json.GetSectionNames().Contains(section))
             {
-                Console.WriteLine("You have already entered this title for a section!");
-                return;
+                throw new InvalidInputException("The name you have entered already exists for a section!");
             }
             else
             {
@@ -295,11 +295,18 @@ namespace LSCK
         ///</summary>
         public void DeleteSection(string section)
         {
-            for (int x = json.GetNumberOfSnippets(section); x >= 1; x--)
+            if (json.GetSectionNames().Contains(section))
             {
-                DeleteSnippet(section, x);
+                for (int x = json.GetNumberOfSnippets(section); x >= 1; x--)
+                {
+                    DeleteSnippet(section, x);
+                }
+                json.DeleteSection(section);
             }
-            json.DeleteSection(section);
+            else
+            {
+                throw new InvalidInputException("The section you have entered doesn't exist!");
+            }
         }
 
         ///<summary>

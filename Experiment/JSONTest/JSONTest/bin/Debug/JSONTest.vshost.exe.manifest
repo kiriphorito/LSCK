@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="JSONTest.exe" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="JSONTest" version="1.0.6268.25775" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="JSONTest" version="1.0.6268.42706" language="neutral" processorArchitecture="x86" />
     <commandLine file="JSONTest.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,13 +43,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JSONTest.exe" size="30632">
-      <assemblyIdentity name="JSONTest" version="1.0.6268.25775" language="neutral" processorArchitecture="x86" />
+      <assemblyIdentity name="JSONTest" version="1.0.6268.42706" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aaJG9FjQdOLSLlx65wfCy17n83MyCHd3QY/JX5GY6zU=</dsig:DigestValue>
+        <dsig:DigestValue>RzOvOSj9y7Sv8pQvibWDtr2ufwabwDj8vjlXN+mdzuQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

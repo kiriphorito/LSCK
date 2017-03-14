@@ -1146,9 +1146,15 @@
     <EmbeddedResource Include="Resources\Assets\presets\bootstrap.min.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Resources\Assets\acceptable_ace_modes.txt" />
-    <Content Include="Resources\Assets\acceptable_ace_themes.txt" />
-    <Content Include="Resources\Assets\offlineFiles.txt" />
+    <EmbeddedResource Include="Resources\Assets\acceptable_ace_modes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Assets\acceptable_ace_themes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Assets\offlineFiles.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Resources\LSCKWindowCommand.png" />
     <Content Include="Resources\LSCKWindowPackage.ico" />
     <Resource Include="Resources\refresh.png" />
