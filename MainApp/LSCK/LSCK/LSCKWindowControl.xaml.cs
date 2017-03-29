@@ -31,10 +31,16 @@ namespace LSCK
         public LSCKWindowControl()
         {
             dte2 = (EnvDTE80.DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE.14.0");
-            solutionDir = System.IO.Path.GetDirectoryName(dte2.Solution.FullName);
+            solutionDir = Path.GetDirectoryName(dte2.Solution.FullName);
             this.InitializeComponent();
             fjController = FJController.GetInstance;
             updateUI(0);
+            if (comboSectionsCode.HasItems)
+            {
+                comboSectionsCode.SelectedIndex = 0;
+                comboSectionsFile.SelectedIndex = 0;
+            }
+                
         }
 
         /// <summary>

@@ -29,7 +29,7 @@ namespace LSCK
             this.InitializeComponent();
             fjController = FJController.GetInstance;
             Refresh();
-
+      
         }
 
         public void Refresh()

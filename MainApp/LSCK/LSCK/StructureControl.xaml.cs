@@ -135,13 +135,14 @@ namespace LSCK
         private void StructureWindow_Loaded(object sender, RoutedEventArgs e)
         {
             updateUI(0);
+            comboPages.SelectedIndex = 0;
+            if (comboSections.HasItems)
+                comboSections.SelectedIndex = 0;
         }
 
         private void comboPages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-                updateUI(1);
-
+            updateUI(1);
         }
 
         private void addSectionsButton_Click(object sender, RoutedEventArgs e)
