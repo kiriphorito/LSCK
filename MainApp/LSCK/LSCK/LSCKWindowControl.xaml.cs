@@ -210,7 +210,9 @@ namespace LSCK
 
         private void uploadButton_Click(object sender, RoutedEventArgs e)
         {
-            WebsiteGenerator html = new WebsiteGenerator(fjController , false , Environment.CurrentDirectory, Environment.CurrentDirectory + @"/generatedWebsite");
+            dte2 = (EnvDTE80.DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE.14.0");
+            solutionDir = System.IO.Path.GetDirectoryName(dte2.Solution.FullName);
+            WebsiteGenerator html = new WebsiteGenerator(fjController , false , solutionDir, solutionDir + @"/generatedWebsite");
             html.GenerateWebsite();
             IVsUIShell vsUIShell = (IVsUIShell)Package.GetGlobalService(typeof(SVsUIShell));
             Guid guid = typeof(SitePreview).GUID;
@@ -226,7 +228,7 @@ namespace LSCK
 
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
-            WebsiteGenerator html = new WebsiteGenerator(fjController, false, Environment.CurrentDirectory, Environment.CurrentDirectory + @"/generatedWebsite");
+            WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite");
             html.GenerateWebsite();
             System.Windows.MessageBox.Show("HTML Generated");
         }
