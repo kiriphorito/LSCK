@@ -195,7 +195,7 @@ namespace LSCK
                         {
                             Directory.CreateDirectory(generateDir + @"/userfiles");
                         }
-                        string originalPath = fileDir + @"/data/userfiles/" + code[0];
+                        string originalPath = fileDir + @"/LSCK Data/data/userfiles/" + code[0];
                         File.Copy(originalPath, generateDir + @"/userfiles/" + code[0]);
                         string[] allowedFormats = { ".jpg", ".png", ".gif" };
                         switch (Path.GetExtension(originalPath))

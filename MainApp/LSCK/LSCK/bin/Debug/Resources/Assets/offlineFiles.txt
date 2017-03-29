@@ -1,5 +1,3 @@
-acceptable_ace_modes.txt
-acceptable_ace_themes.txt
 bootstrap.min.css
 ace\ace.js
 ace\ext-beautify.js
