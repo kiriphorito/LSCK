@@ -5,9 +5,11 @@
 namespace LSCK
 {
     using EnvDTE;
+    using EnvDTE80;
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
+    using System.Runtime.InteropServices;
     using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
@@ -33,10 +35,11 @@ namespace LSCK
         public void Refresh()
         {
             string homepage = fjController.GetPageTitles()[0];
-            string curDir = Directory.GetCurrentDirectory();
-            if (File.Exists(curDir + "/generatedWebsite/" + homepage + ".html"))
+            DTE2 dte = (DTE2)Marshal.GetActiveObject("VisualStudio.DTE");
+            string solutionDir = Path.GetDirectoryName(dte.Solution.FullName);
+            if (File.Exists(solutionDir + "/generatedWebsite/" + homepage + ".html"))
             {
-                Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", curDir, homepage)));
+                Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", solutionDir, homepage)));
             }
         }
 
