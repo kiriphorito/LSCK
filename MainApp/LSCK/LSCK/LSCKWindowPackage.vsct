@@ -46,35 +46,21 @@
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>LSCKWindow</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidLSCKWindowPackageCmdSet" id="cmdidToolWindow1Command" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
-        <Icon guid="guidImages1" id="bmpPic1" />
-        <Strings>
-          <ButtonText>ToolWindow1</ButtonText>
+          <ButtonText>LSCK - Main Window</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidLSCKWindowPackageCmdSet" id="cmdidStructureCommand" priority="0x0100" type="Button">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
         <Icon guid="guidImages2" id="bmpPic1" />
         <Strings>
-          <ButtonText>Structure</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidLSCKWindowPackageCmdSet" id="cmdidToolWindow2Command" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
-        <Icon guid="guidImages3" id="bmpPic1" />
-        <Strings>
-          <ButtonText>ToolWindow2</ButtonText>
+          <ButtonText>LSCK - Structure</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidLSCKWindowPackageCmdSet" id="cmdidSitePreviewCommand" priority="0x0100" type="Button">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
         <Icon guid="guidImages4" id="bmpPic1" />
         <Strings>
-          <ButtonText>SitePreview</ButtonText>
+          <ButtonText>LSCK - Site Preview</ButtonText>
         </Strings>
       </Button>
     </Buttons>
