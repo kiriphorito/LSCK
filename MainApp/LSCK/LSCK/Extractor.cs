@@ -110,7 +110,15 @@ namespace LSCK
                     }else
                     {
                         keyCounter = 0;
-                        fjController.InsertSnippet(sectionName, languageName, comment, code.ToString());
+                        if (fjController.SectionExists(sectionName))
+                        {
+                            fjController.InsertSnippet(sectionName, languageName, comment, code.ToString());
+                        }else
+                        {
+                            fjController.InsertSection(sectionName);
+                            fjController.InsertSnippet(sectionName, languageName, comment, code.ToString());
+
+                        }
                         snippetCounter++;
                     }
                 }else
