@@ -89,6 +89,48 @@
           "comment": "php yay!"
         }
       ]
+    },
+    {
+      "sectionName": "Test",
+      "page": "index",
+      "position": 3,
+      "snippets": [
+        {
+          "position": 1,
+          "language": "python",
+          "comment": "This is a python "
+        },
+        {
+          "position": 2,
+          "language": "sql",
+          "comment": "This is a sql"
+        },
+        {
+          "position": 3,
+          "language": "c_cpp",
+          "comment": "This is a c plus plus code"
+        },
+        {
+          "position": 4,
+          "language": "c",
+          "comment": "This is a c code"
+        },
+        {
+          "position": 5,
+          "language": "html",
+          "comment": "html code"
+        },
+        {
+          "position": 6,
+          "language": "markdown",
+          "comment": "md code"
+        },
+        {
+          "position": 7,
+          "language": "java",
+          "comment": "Comment"
+        }
+      ]
     }
   ]
 }
