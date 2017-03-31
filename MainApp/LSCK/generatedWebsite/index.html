@@ -70,34 +70,107 @@
             <div id = "editor5">
 </div>
             <br>
+            <p>This is a c code</p>
+            <div id = "editor6">return new Tuple&lt;string, string>(marker, languageName);
+return new Tuple&lt;string, string>(marker, languageName);</div>
+            <br>
             <h3><strong>Goodbye World!</strong></h3>
             <p>we invented the for loop</p>
-            <div id = "editor6">for (int i=0;i &lt; total;i++){
+            <div id = "editor7">for (int i=0;i &lt; total;i++){
     printf("blah");
 }</div>
             <br>
             <p>hello</p>
-            <div id = "editor7">&lt;?php
+            <div id = "editor8">&lt;?php
     echo "Goodbye Wrold"
 ?></div>
             <br>
             <p>the world's first html!</p>
-            <div id = "editor8">&lt;html>
+            <div id = "editor9">&lt;html>
 &lt;body>
     Hello World
 &lt;/body>
 &lt;/html></div>
             <br>
             <p>php yay!</p>
-            <div id = "editor9">&lt;?php
+            <div id = "editor10">&lt;?php
     echo "Hello World"
 ?></div>
+            <br>
+            <h3><strong>Test</strong></h3>
+            <p>This is a python </p>
+            <div id = "editor11">import smtplib
+
+server = smtplib.SMTP('smtp.gmail.com', 587)
+server.ehlo()
+server.starttls()
+server.ehlo()
+server.login("youremailusername", "password")
+text = msg.as_string()
+server.sendmail(fromaddr, toaddr, text)
+</div>
+            <br>
+            <p>This is a sql</p>
+            <div id = "editor12">USE AdventureWorks2012;
+GO
+SELECT *
+FROM Production.Product
+ORDER BY Name ASC;
+USE AdventureWorks2012;
+GO
+SELECT p.*
+FROM Production.Product AS p
+ORDER BY Name ASC;
+GO
+</div>
+            <br>
+            <p>This is a c plus plus code</p>
+            <div id = "editor13">
+int main(void){
+	int i=0;
+}
+</div>
+            <br>
+            <p>This is a c code</p>
+            <div id = "editor14">
+int main(void){
+	int i=0;
+}
+</div>
+            <br>
+            <p>html code</p>
+            <div id = "editor15">&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;title>This is html code&lt;/title>
+&lt;/head>
+&lt;body>
+
+&lt;/body>
+&lt;/html>
+</div>
+            <br>
+            <p>md code</p>
+            <div id = "editor16">&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;title>This is md code&lt;/title>
+&lt;/head>
+&lt;body>
+
+&lt;/body>
+&lt;/html>
+</div>
+            <br>
+            <p>Comment</p>
+            <div id = "editor17">                    languageName = "less";
+                    languageName = "less";</div>
             <br>
         </div>
     </div>
     <script src="styles/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        for (x = 1 ; x <= 9 ; x++){
+        for (x = 1 ; x <= 17 ; x++){
         var editor = ace.edit("editor" + x);
             editor.getSession().setUseWorker(false);
             editor.setTheme("ace/theme/monokai");
@@ -117,9 +190,17 @@
         ace.edit("editor4").getSession().setMode("ace/mode/php");
         ace.edit("editor5").getSession().setMode("ace/mode/java");
         ace.edit("editor6").getSession().setMode("ace/mode/c");
-        ace.edit("editor7").getSession().setMode("ace/mode/fortan");
-        ace.edit("editor8").getSession().setMode("ace/mode/html");
-        ace.edit("editor9").getSession().setMode("ace/mode/php");
+        ace.edit("editor7").getSession().setMode("ace/mode/c");
+        ace.edit("editor8").getSession().setMode("ace/mode/fortan");
+        ace.edit("editor9").getSession().setMode("ace/mode/html");
+        ace.edit("editor10").getSession().setMode("ace/mode/php");
+        ace.edit("editor11").getSession().setMode("ace/mode/python");
+        ace.edit("editor12").getSession().setMode("ace/mode/sql");
+        ace.edit("editor13").getSession().setMode("ace/mode/c_cpp");
+        ace.edit("editor14").getSession().setMode("ace/mode/c");
+        ace.edit("editor15").getSession().setMode("ace/mode/html");
+        ace.edit("editor16").getSession().setMode("ace/mode/markdown");
+        ace.edit("editor17").getSession().setMode("ace/mode/java");
     </script>
 </body>
 </html>
