@@ -1,6 +1,0 @@
-C:\Users\Sam\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\LSCK\1.0\\LSCK.dll
-C:\Users\Sam\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\LSCK\1.0\\LSCK.pdb
-C:\Users\Sam\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\LSCK\1.0\\Newtonsoft.Json.dll
-C:\Users\Sam\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\LSCK\1.0\\Renci.SshNet.dll
-C:\Users\Sam\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\LSCK\1.0\\LSCK.pkgdef
-C:\Users\Sam\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\javier.pascual.mesa\LSCK\1.0\\extension.vsixmanifest
