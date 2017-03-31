@@ -259,6 +259,14 @@ namespace LSCK
             return json.GetSectionNames();
         }
 
+        public Boolean SectionExists(string sectionName)
+        {
+            if (json.GetSectionNames().Contains(sectionName))
+                return true;
+            else
+                return false;
+        }
+
         ///<summary>
         ///<para>Retreive all file names in a particular snippet</para>
         ///</summary>

@@ -70,26 +70,45 @@
             <div id = "editor5">
 </div>
             <br>
+            <p>hadjfhsdjhfgsjdhg</p>
+            <div id = "editor6"> public SSH(string generateDir)
+        {
+            this.generateDir = generateDir;
+        }
+
+        public ConnectionInfo CreateConnectionInfo(string ip, string username, string privateKeyFilePath)
+        {
+            ConnectionInfo connectionInfo;
+            using (var stream = new FileStream(privateKeyFilePath, FileMode.Open, FileAccess.Read))
+            {
+                var privateKeyFile = new PrivateKeyFile(stream);
+                AuthenticationMethod authenticationMethod = new PrivateKeyAuthenticationMethod(username, privateKeyFile);
+                connectionInfo = new ConnectionInfo(ip, username, authenticationMethod);
+            }
+            return connectionInfo;
+        }
+</div>
+            <br>
             <h3><strong>Goodbye World!</strong></h3>
             <p>we invented the for loop</p>
-            <div id = "editor6">for (int i=0;i &lt; total;i++){
+            <div id = "editor7">for (int i=0;i &lt; total;i++){
     printf("blah");
 }</div>
             <br>
             <p>hello</p>
-            <div id = "editor7">&lt;?php
+            <div id = "editor8">&lt;?php
     echo "Goodbye Wrold"
 ?></div>
             <br>
             <p>the world's first html!</p>
-            <div id = "editor8">&lt;html>
+            <div id = "editor9">&lt;html>
 &lt;body>
     Hello World
 &lt;/body>
 &lt;/html></div>
             <br>
             <p>php yay!</p>
-            <div id = "editor9">&lt;?php
+            <div id = "editor10">&lt;?php
     echo "Hello World"
 ?></div>
             <br>
@@ -97,7 +116,7 @@
     </div>
     <script src="styles/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        for (x = 1 ; x <= 9 ; x++){
+        for (x = 1 ; x <= 10 ; x++){
         var editor = ace.edit("editor" + x);
             editor.getSession().setUseWorker(false);
             editor.setTheme("ace/theme/monokai");
@@ -116,10 +135,11 @@
         ace.edit("editor3").getSession().setMode("ace/mode/html");
         ace.edit("editor4").getSession().setMode("ace/mode/php");
         ace.edit("editor5").getSession().setMode("ace/mode/java");
-        ace.edit("editor6").getSession().setMode("ace/mode/c");
-        ace.edit("editor7").getSession().setMode("ace/mode/fortan");
-        ace.edit("editor8").getSession().setMode("ace/mode/html");
-        ace.edit("editor9").getSession().setMode("ace/mode/php");
+        ace.edit("editor6").getSession().setMode("ace/mode/java");
+        ace.edit("editor7").getSession().setMode("ace/mode/c");
+        ace.edit("editor8").getSession().setMode("ace/mode/fortan");
+        ace.edit("editor9").getSession().setMode("ace/mode/html");
+        ace.edit("editor10").getSession().setMode("ace/mode/php");
     </script>
 </body>
 </html>

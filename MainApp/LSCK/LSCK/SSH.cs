@@ -13,29 +13,22 @@ namespace LSCK
             this.generateDir = generateDir;
         }
 
-        public ConnectionInfo CreateConnectionInfo()
+        public ConnectionInfo CreateConnectionInfo(string ip, string username, string privateKeyFilePath)
         {
-            const string privateKeyFilePath = @"C:\Users\Sam\Downloads\comp205p.pem";
             ConnectionInfo connectionInfo;
             using (var stream = new FileStream(privateKeyFilePath, FileMode.Open, FileAccess.Read))
             {
                 var privateKeyFile = new PrivateKeyFile(stream);
-                AuthenticationMethod authenticationMethod =
-                    new PrivateKeyAuthenticationMethod("ubuntu", privateKeyFile);
-
-                connectionInfo = new ConnectionInfo(
-                    "52.56.181.183",
-                    "ubuntu",
-                    authenticationMethod);
+                AuthenticationMethod authenticationMethod = new PrivateKeyAuthenticationMethod(username, privateKeyFile);
+                connectionInfo = new ConnectionInfo(ip, username, authenticationMethod);
             }
-
             return connectionInfo;
         }
 
 
         public void UploadWebsite()
         {
-            using (var ssh = new SshClient(CreateConnectionInfo()))
+            using (var ssh = new SshClient(CreateConnectionInfo("52.56.181.183", "ubuntu", @"C:\Users\Sam\Downloads\comp205p.pem")))
             {
                 ssh.Connect();
                 var command = ssh.CreateCommand("rm -r *");
@@ -43,12 +36,10 @@ namespace LSCK
                 Console.Out.WriteLine(result);
                 ssh.Disconnect();
             }
-            using (var scp = new ScpClient(CreateConnectionInfo()))
+            using (var scp = new ScpClient(CreateConnectionInfo("52.56.181.183", "ubuntu", @"C:\Users\Sam\Downloads\comp205p.pem")))
             {
                 scp.Connect();
-
                 scp.Upload(new DirectoryInfo(generateDir), "/var/www/html/");
-
                 scp.Disconnect();
             }
         }
