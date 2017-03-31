@@ -2,6 +2,7 @@
 ._.DS_Store
 **/bin/Debug/
 MainApp/LSCK/LSCK\ Data/*
+MainApp/LSCK/generatedWebsite/*
 MainApp/**/bin/Debug/
 MainApp/**/obj/Debug/
 MainApp/**/bin/Release/
