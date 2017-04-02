@@ -74,16 +74,29 @@
             <div id = "editor6">return new Tuple&lt;string, string>(marker, languageName);
 return new Tuple&lt;string, string>(marker, languageName);</div>
             <br>
+            <h3><strong>Goodbye World!</strong></h3>
+            <p>we invented the for loop</p>
+            <div id = "editor7">for (int i=0;i &lt; total;i++){
+    printf("blah");
+}</div>
+            <br>
+            <p>hello</p>
+            <div id = "editor8">&lt;?php
+    echo "Goodbye Wrold"
+?></div>
+            <br>
             <p>LOl</p>
-            <div id = "editor7">            MessageBox.Show("" + snippetCounter + " new snippets were added from "+fileCounter+" files.");
-            fileCounter = 0;
-            snippetCounter = 0;</div>
+            <div id = "editor9">&lt;html>
+&lt;body>
+    Hello World
+&lt;/body>
+&lt;/html></div>
             <br>
         </div>
     </div>
     <script src="styles/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        for (x = 1 ; x <= 7 ; x++){
+        for (x = 1 ; x <= 9 ; x++){
         var editor = ace.edit("editor" + x);
             editor.getSession().setUseWorker(false);
             editor.setTheme("ace/theme/tomorrow_night_eighties");
@@ -103,7 +116,9 @@ return new Tuple&lt;string, string>(marker, languageName);</div>
         ace.edit("editor4").getSession().setMode("ace/mode/php");
         ace.edit("editor5").getSession().setMode("ace/mode/java");
         ace.edit("editor6").getSession().setMode("ace/mode/c");
-        ace.edit("editor7").getSession().setMode("ace/mode/java");
+        ace.edit("editor7").getSession().setMode("ace/mode/c");
+        ace.edit("editor8").getSession().setMode("ace/mode/fortan");
+        ace.edit("editor9").getSession().setMode("ace/mode/java");
     </script>
 </body>
 </html>

@@ -228,6 +228,18 @@ namespace LSCK
             WriteJSON();
         }
 
+        public void SetComment(string sectionName, int index, string newComment)
+        {
+            for (int x = 0; x < JSONFile.sections.Count; x++)
+            {
+                if (JSONFile.sections[x].sectionName == sectionName)
+                {
+                    JSONFile.sections[x].snippets[index].comment = newComment;
+                    WriteJSON();
+                }
+            }
+        }
+
         //Swaps two entries in a specific section
         public void SwapSnippet(string sectionName, int first, int second)
         {

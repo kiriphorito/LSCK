@@ -58,12 +58,8 @@
         },
         {
           "position": 10,
-<<<<<<< HEAD
           "language": "c",
           "comment": "This is a c code"
-=======
-          "language": "java",
-          "comment": "hadjfhsdjhfgsjdhg"
         }
       ]
     },
@@ -81,7 +77,6 @@
           "position": 2,
           "language": "fortan",
           "comment": "hello"
->>>>>>> 40a836d2b5f0ded664b00da37f4e5d74cc4e2e0e
         },
         {
           "position": 11,
