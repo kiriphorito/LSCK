@@ -12,6 +12,7 @@ namespace LSCK
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
+    using System.Runtime.CompilerServices;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Forms;
@@ -250,9 +251,17 @@ namespace LSCK
 
         private void uploadButton_Click(object sender, RoutedEventArgs e)
         {
+            System.Threading.Thread webGen = new System.Threading.Thread(generateWebsite);
+            webGen.Start();
+            
+        }
+
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        private void generateWebsite()
+        {
             dte2 = (EnvDTE80.DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE.14.0");
             solutionDir = System.IO.Path.GetDirectoryName(dte2.Solution.FullName);
-            WebsiteGenerator html = new WebsiteGenerator(fjController , false , solutionDir, solutionDir + @"/generatedWebsite");
+            WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite");
             html.GenerateWebsite();
             IVsUIShell vsUIShell = (IVsUIShell)Package.GetGlobalService(typeof(SVsUIShell));
             Guid guid = typeof(SitePreview).GUID;
@@ -265,7 +274,6 @@ namespace LSCK
             if (result == Microsoft.VisualStudio.VSConstants.S_OK)                                                                           // Show MyToolWindow
                 Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
         }
-
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
             WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite");
