@@ -373,6 +373,9 @@ namespace LSCK
             }
         }
 
+        ///<summary>
+        ///<para>Edits a comment in a certain snippet</para>
+        ///</summary>
         public void SetComment(string sectionName, int index, string newComment)
         {
             json.SetComment(sectionName, index, newComment);

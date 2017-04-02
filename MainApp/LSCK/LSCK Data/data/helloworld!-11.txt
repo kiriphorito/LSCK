@@ -1,3 +1,0 @@
-            MessageBox.Show("" + snippetCounter + " new snippets were added from "+fileCounter+" files.");
-            fileCounter = 0;
-            snippetCounter = 0;
