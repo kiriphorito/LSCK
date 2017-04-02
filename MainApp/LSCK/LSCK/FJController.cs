@@ -328,12 +328,34 @@ namespace LSCK
             json.SwapSection(first, second);
         }
 
+        private string removeWhiteSpace(string code)
+        {
+            List<string> lines = code.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).ToList();
+            int minSpaces = lines[0].TakeWhile(Char.IsWhiteSpace).Count();
+            foreach (string line in lines)
+            {
+                int count = line.TakeWhile(Char.IsWhiteSpace).Count();
+                if (count < minSpaces)
+                {
+                    minSpaces = count;
+                }
+            }
+            if (minSpaces > 0)
+            {
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    lines[i] = lines[i].Substring(minSpaces - 1);
+                }
+            }
+            return String.Join("\n", lines.ToArray());
+        }
+
         ///<summary>
         ///<para>Add a snippet to a specific position in the section</para>
         ///</summary>
         public void InsertSnippet(string section, int index, string language, string comment, List<string> code)
         {
-            string codeString = string.Join("\n", code.ToArray());
+            string codeString = removeWhiteSpace(string.Join("\n", code.ToArray()));
             InsertSnippet(section, index, language, comment, codeString);
         }
 
@@ -346,6 +368,7 @@ namespace LSCK
                     json.InsertSnippet(section, index, "file", comment);
                     break;
                 default:
+                    content = removeWhiteSpace(content);
                     fileHandler.InsertSnippet(content, index, section, fileDir + @"/data/");
                     json.InsertSnippet(section, index, language, comment);
                     break;
@@ -357,7 +380,7 @@ namespace LSCK
         ///</summary>
         public void InsertSnippet(string section, string language, string comment, List<string> code)
         {
-            string codeString = string.Join("\n", code.ToArray());
+            string codeString = removeWhiteSpace(string.Join("\n", code.ToArray()));
             InsertSnippet(section, language, comment, codeString);
         }
 
@@ -370,6 +393,7 @@ namespace LSCK
                     json.InsertSnippet(section, json.GetNumberOfSnippets(section) + 1, "file", comment);
                     break;
                 default:
+                    content = removeWhiteSpace(content);
                     fileHandler.InsertSnippet(content, json.GetNumberOfSnippets(section) + 1, section, fileDir + @"/data/");
                     json.InsertSnippet(section, json.GetNumberOfSnippets(section) + 1, language, comment);
                     break;
