@@ -94,6 +94,11 @@ namespace LSCK
                         }
                         CreateCheckBoxList();
                     }
+                    if (comboSections.Items.Count > 0)
+                    {
+                        comboSections.SelectedValue = comboSections.Items.GetItemAt(0);
+                        updateUI(2);
+                    }
                     break;
                 case 2:
                     sectionName = comboSections.SelectedValue.ToString();
@@ -162,11 +167,6 @@ namespace LSCK
         private void comboPages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             updateUI(1);
-            if (comboSections.Items.Count > 0)
-            {
-                comboSections.SelectedValue = comboSections.Items.GetItemAt(0);
-                updateUI(2);
-            }
         }
 
         private void addSectionsButton_Click(object sender, RoutedEventArgs e)
@@ -222,20 +222,20 @@ namespace LSCK
         {
             int index = listSnippets.SelectedIndex;
             if (index >= 0) {
-                fjController.DeleteSnippet(comboSections.SelectedValue.ToString(),index);
+                fjController.DeleteSnippet(comboSections.SelectedValue.ToString(),index+1);
             }
         }
 
         private void modifyCommentButton_Click(object sender, RoutedEventArgs e)
         {
-            //fjController.SetComment(comboSections.Text, currentSnippetIndex+1).comment = commentBox.Text;
+            fjController.SetComment(comboSections.Text, currentSnippetIndex + 1, commentBox.Text);
             currentComment = commentBox.Text;
             modifyCommentButton.Visibility = Visibility.Hidden;
         }
 
         private void commentBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            MessageBox.Show(commentBox.Text+","+ currentComment);
+            //MessageBox.Show(commentBox.Text+","+ currentComment);
             if (commentBox.Text != currentComment && currentComment != null)
             {
                 if (!modifyCommentButton.IsVisible)

@@ -1,32 +1,37 @@
 {
-  "title": "LSCK Project",
-  "ace_theme": "sqlserver",
+  "title": "LSCK",
+  "ace_theme": "monokai",
   "page_titles": [
     "index",
-    "Kiriphorito"
+    "New page"
   ],
   "sections": [
     {
-      "sectionName": "Hello World!",
-      "page": "index",
+      "sectionName": "Test",
+      "page": "New page",
       "position": 1,
       "snippets": [
         {
           "position": 1,
-          "language": "csharp",
-          "comment": "Form"
+          "language": "java",
+          "comment": "Comment 1"
         }
       ]
     },
     {
-      "sectionName": "New sect",
-      "page": "index",
+      "sectionName": "Other sect",
+      "page": "New page",
       "position": 2,
       "snippets": [
         {
           "position": 1,
           "language": "java",
-          "comment": "If"
+          "comment": "Comment 2"
+        },
+        {
+          "position": 2,
+          "language": "java",
+          "comment": "Insert methodmethod"
         }
       ]
     }
