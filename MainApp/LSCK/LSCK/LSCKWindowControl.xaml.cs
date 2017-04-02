@@ -56,29 +56,9 @@ namespace LSCK
         {
           var selection = (TextSelection)dte2.ActiveDocument.Selection;
           string comment = textBox.Text;
-          string code = removeWhiteSpace(selection.Text);
+          string code = selection.Text;
           string language = getConvertedLang();
           fjController.InsertSnippet(comboSectionsCode.SelectedValue.ToString(),language,comment,code);
-        }
-
-        private string removeWhiteSpace(string code)
-        {
-            List<string> lines = code.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).ToList();
-            int minSpaces = lines[0].TakeWhile(Char.IsWhiteSpace).Count();
-            foreach (string line in lines)
-            {
-                int count = line.TakeWhile(Char.IsWhiteSpace).Count();
-                if (count < minSpaces)
-                {
-                    minSpaces = count;
-                }
-            }
-            if (minSpaces > 0) {
-                for (int i = 0; i < lines.Count; i++) {
-                    lines[i] = lines[i].Substring(minSpaces - 1);
-                }
-            }
-            return String.Join("\n", lines.ToArray());
         }
 
         private string getConvertedLang()
