@@ -7,8 +7,12 @@ namespace LSCK
 
         public string Read(string fileDir)
         {
-            var reader = new StreamReader(fileDir);
-            return reader.ReadToEnd();
+            string result = "";
+            using (StreamReader reader = new StreamReader(fileDir))
+            {
+                result = reader.ReadToEnd();
+            }
+            return result;
         }
 
         public List<string> GetFileNames(string sectionName, string fileDir)
@@ -66,6 +70,7 @@ namespace LSCK
         public void Delete(int index, string section, string fileDir)
         {
             string sectionFD = fileDir + "/" + section.ToLower().Replace(" ", "") + "-";
+            //If the snippet has a file associated with it such as an image
             if (File.Exists(fileDir + @"/userfiles/" + Read(sectionFD + index + ".txt").Split('\n')[0]))
             {
                 File.Delete(fileDir + @"/userfiles/" + Read(sectionFD + index + ".txt"));

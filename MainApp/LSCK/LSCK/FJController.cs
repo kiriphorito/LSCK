@@ -86,6 +86,9 @@ namespace LSCK
             json.UpdatePageName(oldName, newName);
         }
 
+        ///<summary>
+        ///<para>Delete a page in the website</para>
+        ///</summary>
         public void DeletePage(string pageName)
         {
             json.DeletePage(pageName);
@@ -373,6 +376,9 @@ namespace LSCK
             }
         }
 
+        ///<summary>
+        ///<para>Edits a comment in a certain snippet</para>
+        ///</summary>
         public void SetComment(string sectionName, int index, string newComment)
         {
             json.SetComment(sectionName, index, newComment);
@@ -413,11 +419,17 @@ namespace LSCK
             }
         }
 
+        ///<summary>
+        ///<para>Retrieves the directory where the data for the extension is stored</para>
+        ///</summary>
         public string GetDataDir()
         {
             return fileDir;
         }
 
+        ///<summary>
+        ///<para>Retrieves all snippets in a certain Section</para>
+        ///</summary>
         public List<Snippet> GetSectionSnippets(string sectionName)
         {
             List<Snippet> result = new List<Snippet>();
