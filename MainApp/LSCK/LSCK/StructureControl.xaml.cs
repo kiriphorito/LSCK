@@ -10,6 +10,7 @@ namespace LSCK
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -21,6 +22,8 @@ namespace LSCK
         public ObservableCollection<BoolStringClass> TheList { get; set; }
         FJController fjController;
         string sectionName;
+        string currentComment=null;
+        int currentSnippetIndex=0;
         /// <summary>
         /// Initializes a new instance of the <see cref="StructureControl"/> class.
         /// </summary>
@@ -80,7 +83,10 @@ namespace LSCK
                         string page = comboPages.SelectedValue.ToString();
                         List<string> sectionNames = fjController.GetPageSections(page);
                         listSections.Items.Clear();
+                        listSnippets.Items.Clear();
                         comboSections.Items.Clear();
+                        commentBox.Clear();
+                        codeBox.Clear();
                         foreach (string section in sectionNames)
                         {
                             comboSections.Items.Add(section);
@@ -91,7 +97,6 @@ namespace LSCK
                     break;
                 case 2:
                     sectionName = comboSections.SelectedValue.ToString();
-                    MessageBox.Show(sectionName);
                     List<Snippet> snippets = fjController.GetSectionSnippets(sectionName);
                     listSnippets.Items.Clear();
                     commentBox.Text = "";
@@ -111,11 +116,25 @@ namespace LSCK
                         commentBox.Text = snippet.comment;
                         codeBox.Text = snippet.code;
                     }
+                    if (listSnippets.Items.Count > 0)
+                    {
+                        listSnippets.SelectedItem = listSnippets.Items.GetItemAt(0);
+                    }
+                    currentSnippetIndex = 0;
+                    if (snippets.Count > 0)
+                    {
+                        currentComment = snippets[0].comment;
+                    }
                     break;
                 case 3:
                     int index = listSnippets.SelectedIndex;
+                    if (index != -1)
+                    {
+                        currentSnippetIndex = index;
+                    }
                     Snippet selectedSnippet = fjController.GetSectionSnippets(sectionName)[index];
-                    commentBox.Text = selectedSnippet.comment;
+                    commentBox.Text= selectedSnippet.comment;
+                    currentComment = selectedSnippet.comment;
                     codeBox.Text = selectedSnippet.code;
                     break;
             }
@@ -143,6 +162,11 @@ namespace LSCK
         private void comboPages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             updateUI(1);
+            if (comboSections.Items.Count > 0)
+            {
+                comboSections.SelectedValue = comboSections.Items.GetItemAt(0);
+                updateUI(2);
+            }
         }
 
         private void addSectionsButton_Click(object sender, RoutedEventArgs e)
@@ -174,13 +198,13 @@ namespace LSCK
             }
             else
             {
-                MessageBox.Show("Please selectthe section you wish to delete.");
+                MessageBox.Show("Please select the section you wish to delete.");
             }
         }
 
         private void comboSections_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(comboSections.Text))
+            if (comboSections.SelectedValue != null)
             {
                 updateUI(2);
             }
@@ -199,6 +223,28 @@ namespace LSCK
             int index = listSnippets.SelectedIndex;
             if (index >= 0) {
                 fjController.DeleteSnippet(comboSections.SelectedValue.ToString(),index);
+            }
+        }
+
+        private void modifyCommentButton_Click(object sender, RoutedEventArgs e)
+        {
+            //fjController.SetComment(comboSections.Text, currentSnippetIndex+1).comment = commentBox.Text;
+            currentComment = commentBox.Text;
+            modifyCommentButton.Visibility = Visibility.Hidden;
+        }
+
+        private void commentBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            MessageBox.Show(commentBox.Text+","+ currentComment);
+            if (commentBox.Text != currentComment && currentComment != null)
+            {
+                if (!modifyCommentButton.IsVisible)
+                {
+                    modifyCommentButton.Visibility = Visibility.Visible;
+                }
+            }else
+            {
+                modifyCommentButton.Visibility = Visibility.Hidden;
             }
         }
     }

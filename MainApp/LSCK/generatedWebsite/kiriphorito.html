@@ -31,14 +31,25 @@
     </nav>
     <div class="container">
         <div class="container-fluid text-left">
+            <h3><strong>Hello World!</strong></h3>
+            <p>Form</p>
+            <div id = "editor1">Form prompt = new Form()
+            {
+                Width = 500,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = caption,
+                StartPosition = FormStartPosition.CenterScreen
+            };</div>
+            <br>
         </div>
     </div>
     <script src="styles/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        for (x = 1 ; x <= 0 ; x++){
+        for (x = 1 ; x <= 1 ; x++){
         var editor = ace.edit("editor" + x);
             editor.getSession().setUseWorker(false);
-            editor.setTheme("ace/theme/tomorrow_night_eighties");
+            editor.setTheme("ace/theme/sqlserver");
             editor.renderer.setScrollMargin(10, 10, 0, 0);
             editor.renderer.$cursorLayer.element.style.opacity = 0;
             editor.setShowPrintMargin(false);
@@ -49,6 +60,7 @@
                 highlightGutterLine: false,
             });
         }
+        ace.edit("editor1").getSession().setMode("ace/mode/csharp");
     </script>
 </body>
 </html>

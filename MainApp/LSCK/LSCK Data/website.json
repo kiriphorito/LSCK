@@ -1,6 +1,6 @@
 {
   "title": "LSCK Project",
-  "ace_theme": "tomorrow_night_eighties",
+  "ace_theme": "sqlserver",
   "page_titles": [
     "index",
     "Kiriphorito"
@@ -13,80 +13,20 @@
       "snippets": [
         {
           "position": 1,
-          "language": "c",
-          "comment": "we invented the for loop"
-        },
-        {
-          "position": 2,
-          "language": "fortan",
-          "comment": "hello"
-        },
-        {
-          "position": 3,
-          "language": "html",
-          "comment": "the world's first html!"
-        },
-        {
-          "position": 4,
-          "language": "php",
-          "comment": "php yay!"
-        },
-        {
-          "position": 5,
-          "language": "file",
-          "comment": "A random txt file."
-        },
-        {
-          "position": 6,
-          "language": "file",
-          "comment": "Gin no Saji"
-        },
-        {
-          "position": 7,
-          "language": "file",
-          "comment": "1080p"
-        },
-        {
-          "position": 8,
-          "language": "file",
-          "comment": "6th Biweekly report"
-        },
-        {
-          "position": 9,
-          "language": "java",
-          "comment": "Comment"
-        },
-        {
-          "position": 10,
-<<<<<<< HEAD
-          "language": "c",
-          "comment": "This is a c code"
-=======
-          "language": "java",
-          "comment": "hadjfhsdjhfgsjdhg"
+          "language": "csharp",
+          "comment": "Form"
         }
       ]
     },
     {
-      "sectionName": "Goodbye World!",
+      "sectionName": "New sect",
       "page": "index",
       "position": 2,
       "snippets": [
         {
           "position": 1,
-          "language": "c",
-          "comment": "we invented the for loop"
-        },
-        {
-          "position": 2,
-          "language": "fortan",
-          "comment": "hello"
->>>>>>> 40a836d2b5f0ded664b00da37f4e5d74cc4e2e0e
-        },
-        {
-          "position": 11,
           "language": "java",
-          "comment": "LOl"
+          "comment": "If"
         }
       ]
     }
