@@ -26,6 +26,11 @@
                         <ComboBoxItem>PHP</ComboBoxItem>
                         <ComboBoxItem>Python</ComboBoxItem>
                         <ComboBoxItem>Javascript</ComboBoxItem>
+                        <ComboBoxItem>Typescript</ComboBoxItem>
+                        <ComboBoxItem>HTML</ComboBoxItem>
+                        <ComboBoxItem>Go</ComboBoxItem>
+                        <ComboBoxItem>Less</ComboBoxItem>
+                        <ComboBoxItem>SQL</ComboBoxItem>
                     </ComboBox>
                     <TextBlock  Margin="110,10,96,10" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold" Text="Section Title" Height="22" Width="86"/>
                     <StackPanel Orientation="Horizontal">

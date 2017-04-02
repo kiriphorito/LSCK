@@ -223,6 +223,7 @@ namespace LSCK
             int index = listSnippets.SelectedIndex;
             if (index >= 0) {
                 fjController.DeleteSnippet(comboSections.SelectedValue.ToString(),index+1);
+                updateUI(2);
             }
         }
 

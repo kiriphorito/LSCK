@@ -11,6 +11,7 @@ namespace LSCK
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Forms;
@@ -53,11 +54,31 @@ namespace LSCK
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            var selection = (TextSelection)dte2.ActiveDocument.Selection;
-            string comment = textBox.Text;
-            string code = selection.Text;
-            string language = getConvertedLang();
-            fjController.InsertSnippet(comboSectionsCode.SelectedValue.ToString(),language,comment,code);
+          var selection = (TextSelection)dte2.ActiveDocument.Selection;
+          string comment = textBox.Text;
+          string code = removeWhiteSpace(selection.Text);
+          string language = getConvertedLang();
+          fjController.InsertSnippet(comboSectionsCode.SelectedValue.ToString(),language,comment,code);
+        }
+
+        private string removeWhiteSpace(string code)
+        {
+            List<string> lines = code.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).ToList();
+            int minSpaces = lines[0].TakeWhile(Char.IsWhiteSpace).Count();
+            foreach (string line in lines)
+            {
+                int count = line.TakeWhile(Char.IsWhiteSpace).Count();
+                if (count < minSpaces)
+                {
+                    minSpaces = count;
+                }
+            }
+            if (minSpaces > 0) {
+                for (int i = 0; i < lines.Count; i++) {
+                    lines[i] = lines[i].Substring(minSpaces - 1);
+                }
+            }
+            return String.Join("\n", lines.ToArray());
         }
 
         private string getConvertedLang()
@@ -71,6 +92,7 @@ namespace LSCK
                 case "C#":
                     return "csharp";
                 case "C":
+                    return "c";
                 case "C++":
                     return "c_cpp";
                 case "PHP":
@@ -79,6 +101,18 @@ namespace LSCK
                     return "python";
                 case "Javascript":
                     return "javascript";
+                case "HTML":
+                    return "html";
+                case "Less":
+                    return "less";
+                case "SQL":
+                    return "sql";
+                case "Markdown":
+                    return "markdown";
+                case "Typescript":
+                    return "typescript";
+                case "Go":
+                    return "golang";
                 default:
                     throw new InvalidInputException("Language Not Supported");
             }
