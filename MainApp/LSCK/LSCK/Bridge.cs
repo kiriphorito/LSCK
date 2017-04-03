@@ -20,7 +20,7 @@ namespace LSCK
             dte2 = (EnvDTE80.DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE.14.0");
             solutionDir = Path.GetDirectoryName(dte2.Solution.FullName);
             fileDir = solutionDir + @"\LSCK Data";
-            fjController =  FJController.GetInstance;
+            fjController = FJController.GetInstance;
         }
         public static void CheckDir()
         {
@@ -30,7 +30,7 @@ namespace LSCK
                 System.Windows.MessageBox.Show(newSolutionDir);
                 solutionDir = newSolutionDir;
                 fileDir = solutionDir + @"\LSCK Data";
-                fjController = FJController.GetInstance;
+                fjController.Recreate();
             }
         }
 

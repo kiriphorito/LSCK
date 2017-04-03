@@ -21,7 +21,7 @@ namespace LSCK
 {
     public sealed class FJController
     {
-        private readonly JSON json;
+        private JSON json;
         private readonly FileHandler fileHandler = new FileHandler();
 
         private string jsonSettingsName = "website";
@@ -59,6 +59,15 @@ namespace LSCK
             public InvalidInputException(string message) : base(message) { }
         }
 
+        public void Recreate()
+        {
+            Directory.CreateDirectory(fileDir);
+            json = new JSON(fileDir, jsonSettingsName);
+            if (!Directory.Exists(string.Concat(fileDir, @"\data")))
+            {
+                Directory.CreateDirectory(string.Concat(fileDir, @"\data"));
+            }
+        }
         ///<summary>
         ///<para>Retreive the Title of the website fron JSON</para>
         ///</summary>

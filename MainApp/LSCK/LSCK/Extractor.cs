@@ -14,10 +14,8 @@ namespace LSCK
         public static void FindFiles(string key)
         {
             List<Tuple<string, string>> files = new List<Tuple<string, string>>();
-            EnvDTE80.DTE2 dte2 = (EnvDTE80.DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE.14.0");
-            string mainDir = System.IO.Path.GetDirectoryName(dte2.Solution.FullName);
             string[] extensions = { ".cs", ".c", ".java", ".py",".php",".html",".cpp",".md",".markdown",".ts",".less",".sql",".js",".go" };
-            string[] foundFiles = Directory.GetFiles(mainDir, "*.*", System.IO.SearchOption.AllDirectories);
+            string[] foundFiles = Directory.GetFiles(Bridge.solutionDir, "*.*", System.IO.SearchOption.AllDirectories);
             foreach (string foundFile in foundFiles)
             {
                 if (extensions.Any(x => foundFile.EndsWith(x, StringComparison.Ordinal)))
