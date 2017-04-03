@@ -34,15 +34,24 @@ namespace LSCK
         {
             System.Threading.Thread solutionChangeThread = new System.Threading.Thread(checkDTEChange);
             SetDTE2();
+            solutionChangeThread.Start();
             this.InitializeComponent();
             updateUI(0);
-            if (comboSectionsCode.HasItems)
-            {
-                comboSectionsCode.SelectedIndex = 0;
-                comboSectionsFile.SelectedIndex = 0;
-            }
-            solutionChangeThread.Start();
+
                 
+        }
+
+        private void resetControl() {
+            if (state == 1)
+            {
+                this.IsEnabled = true;
+                state = 0;
+                updateUI(0);
+            }else if (state == 2)
+            {
+                state = 0;
+                this.IsEnabled = false;
+            }
         }
 
         public void checkDTEChange()
@@ -51,6 +60,10 @@ namespace LSCK
             {
                 System.Threading.Thread.Sleep(500);
                 this.Dispatcher.Invoke(new Action(() => CheckDir()));
+                if (state != 0)
+                {
+                    this.Dispatcher.Invoke(new Action(() => resetControl()));
+                }
             }
         }
 
@@ -128,22 +141,28 @@ namespace LSCK
         {
             switch (tab) {
                 case 0:
-                    List<string> sectionNames = fjController.GetSectionNames();
-                    comboSectionsCode.Items.Clear();
-                    comboSectionsFile.Items.Clear();
-                    foreach (string section in sectionNames)
+                    if (fjController != null)
                     {
-                        comboSectionsFile.Items.Add(section);
-                        comboSectionsCode.Items.Add(section);
-                    }
-                    projectTitle.Text = fjController.GetTitle();
-                    comboTheme.SelectedIndex = fjController.GetAceThemeIndex();
-                    comboTheme.SelectionChanged += comboTheme_SelectionChanged;
-                    List<string> pageNames = fjController.GetPageTitles();
-                    listPages.Items.Clear();
-                    foreach (string pageName in pageNames)
+                            List<string> sectionNames = fjController.GetSectionNames();
+                            comboSectionsCode.Items.Clear();
+                            comboSectionsFile.Items.Clear();
+                            foreach (string section in sectionNames)
+                            {
+                                comboSectionsFile.Items.Add(section);
+                                comboSectionsCode.Items.Add(section);
+                            }
+                            projectTitle.Text = fjController.GetTitle();
+                            comboTheme.SelectedIndex = fjController.GetAceThemeIndex();
+                            comboTheme.SelectionChanged += comboTheme_SelectionChanged;
+                            List<string> pageNames = fjController.GetPageTitles();
+                            listPages.Items.Clear();
+                            foreach (string pageName in pageNames)
+                            {
+                                listPages.Items.Add(pageName);
+                            }
+                    }else
                     {
-                        listPages.Items.Add(pageName);
+                        this.IsEnabled = false;
                     }
                     break;
                 case 1:
@@ -298,7 +317,8 @@ namespace LSCK
                     browsePEM.Focusable = false;
                     detailType.Text = "PEM Directory:";
                 }
-            }else
+            }
+            else
             {
                 browsePEM.Visibility = Visibility.Collapsed;
                 browsePEM.Focusable = true;

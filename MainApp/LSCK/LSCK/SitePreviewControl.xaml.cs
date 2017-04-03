@@ -20,15 +20,12 @@ namespace LSCK
     /// </summary>
     public partial class SitePreviewControl : UserControl
     {
-        FJController fjController;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SitePreviewControl"/> class.
         /// </summary>
         public SitePreviewControl()
         {
             this.InitializeComponent();
-            fjController = FJController.GetInstance;
             Refresh();
             System.Threading.Thread checkRefreshThread = new System.Threading.Thread(checkRefresh);
             checkRefreshThread.Start();
@@ -63,10 +60,13 @@ namespace LSCK
 
         public void Refresh()
         {
-            string homepage = fjController.GetPageTitles()[0];
-            if (File.Exists(Bridge.solutionDir + "/generatedWebsite/" + homepage + ".html"))
+            if (Bridge.fjController != null)
             {
-                Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", Bridge.solutionDir, homepage)));
+                string homepage = Bridge.fjController.GetPageTitles()[0];
+                if (File.Exists(Bridge.solutionDir + "/generatedWebsite/" + homepage + ".html"))
+                {
+                    Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", Bridge.solutionDir, homepage)));
+                }
             }
         }
 
