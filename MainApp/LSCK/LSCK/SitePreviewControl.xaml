@@ -12,7 +12,6 @@
     <Grid>
         <StackPanel Orientation="Vertical" Height="700">
             <WebBrowser x:Name="Browser" Height="530"/>
-            <Button x:Name="refreshButton" Click="refreshButton_Click" Height="30"></Button>
         </StackPanel>
     </Grid>
 </UserControl>

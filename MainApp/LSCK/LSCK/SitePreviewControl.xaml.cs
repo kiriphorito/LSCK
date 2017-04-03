@@ -13,6 +13,7 @@ namespace LSCK
     using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Threading;
 
     /// <summary>
     /// Interaction logic for SitePreviewControl.
@@ -29,17 +30,43 @@ namespace LSCK
             this.InitializeComponent();
             fjController = FJController.GetInstance;
             Refresh();
+            System.Threading.Thread checkRefreshThread = new System.Threading.Thread(checkRefresh);
+            checkRefreshThread.Start();
       
+        }
+
+        private bool getRefresh()
+        {
+            return Bridge.refresh;
+        }
+
+        private void setRefresh()
+        {
+            Bridge.refresh = true;
+        }
+
+        private void checkRefresh()
+        {
+            bool refreshed = true;
+            while (true)
+            {
+                System.Threading.Thread.Sleep(500);
+                refreshed = this.Dispatcher.Invoke(getRefresh, DispatcherPriority.Normal);
+                if (!refreshed)
+                {
+                    this.Dispatcher.Invoke(Refresh, DispatcherPriority.Normal);
+                    refreshed = true;
+                    this.Dispatcher.Invoke(setRefresh, DispatcherPriority.Normal);
+                }
+            }
         }
 
         public void Refresh()
         {
             string homepage = fjController.GetPageTitles()[0];
-            DTE2 dte = (DTE2)Marshal.GetActiveObject("VisualStudio.DTE");
-            string solutionDir = Path.GetDirectoryName(dte.Solution.FullName);
-            if (File.Exists(solutionDir + "/generatedWebsite/" + homepage + ".html"))
+            if (File.Exists(Bridge.solutionDir + "/generatedWebsite/" + homepage + ".html"))
             {
-                Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", solutionDir, homepage)));
+                Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", Bridge.solutionDir, homepage)));
             }
         }
 

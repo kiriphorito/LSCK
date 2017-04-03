@@ -13,9 +13,12 @@ namespace LSCK
     using System.IO;
     using System.Linq;
     using System.Runtime.CompilerServices;
+    using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Forms;
+    using System.Windows.Threading;
+    using static LSCK.Bridge;
 
     /// <summary>
     /// Interaction logic for LSCKWindowControl.
@@ -25,24 +28,30 @@ namespace LSCK
         /// <summary>
         /// Initializes a new instance of the <see cref="LSCKWindowControl"/> class.
         /// </summary>
-        FJController fjController;
-        EnvDTE80.DTE2 dte2;
-        String solutionDir;
         String currentSection;
 
         public LSCKWindowControl()
         {
-            dte2 = (EnvDTE80.DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE.14.0");
-            solutionDir = Path.GetDirectoryName(dte2.Solution.FullName);
+            System.Threading.Thread solutionChangeThread = new System.Threading.Thread(checkDTEChange);
+            SetDTE2();
             this.InitializeComponent();
-            fjController = FJController.GetInstance;
             updateUI(0);
             if (comboSectionsCode.HasItems)
             {
                 comboSectionsCode.SelectedIndex = 0;
                 comboSectionsFile.SelectedIndex = 0;
             }
+            solutionChangeThread.Start();
                 
+        }
+
+        public void checkDTEChange()
+        {
+            while (true)
+            {
+                System.Threading.Thread.Sleep(500);
+                this.Dispatcher.Invoke(new Action(() => CheckDir()));
+            }
         }
 
         /// <summary>
@@ -232,15 +241,18 @@ namespace LSCK
         private void uploadButton_Click(object sender, RoutedEventArgs e)
         {
             System.Threading.Thread webGen = new System.Threading.Thread(generateWebsite);
+            uploadButton.Visibility = Visibility.Collapsed;
+            genText.Visibility = Visibility.Visible;
             webGen.Start();
-            
+            //uploadButton.Visibility = Visibility.Visible;
+            //genText.Visibility = Visibility.Hidden;
+
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
         private void generateWebsite()
         {
-            dte2 = (EnvDTE80.DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE.14.0");
-            solutionDir = System.IO.Path.GetDirectoryName(dte2.Solution.FullName);
+
             WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite");
             html.GenerateWebsite();
             IVsUIShell vsUIShell = (IVsUIShell)Package.GetGlobalService(typeof(SVsUIShell));
@@ -253,7 +265,17 @@ namespace LSCK
 
             if (result == Microsoft.VisualStudio.VSConstants.S_OK)                                                                           // Show MyToolWindow
                 Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
+            refresh = false;
+            this.Dispatcher.Invoke(endWebGen,DispatcherPriority.Normal);
         }
+
+        private void endWebGen()
+        {
+            uploadButton.Visibility = Visibility.Visible;
+            genText.Visibility = Visibility.Collapsed;
+            lastDate.Text = DateTime.Now.ToString("M/d/yyyy hh:mm:ss");
+        }
+
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
             WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite");
@@ -261,9 +283,59 @@ namespace LSCK
             System.Windows.MessageBox.Show("HTML Generated");
         }
 
-        private void AutoSearch_Click(object sender, RoutedEventArgs e)
+        private void autoSearch_Click(object sender, RoutedEventArgs e)
         {
             Extractor.FindFiles(keySequence.Text);
+        }
+
+        private void connectType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (connectType.SelectedIndex == 0)
+            {
+                if (browsePEM != null)
+                {
+                    browsePEM.Visibility = Visibility.Visible;
+                    browsePEM.Focusable = false;
+                    detailType.Text = "PEM Directory:";
+                }
+            }else
+            {
+                browsePEM.Visibility = Visibility.Collapsed;
+                browsePEM.Focusable = true;
+                detailType.Text = "Password:";
+            }
+        }
+
+        private void browsePEM_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog browseFileDialog = new OpenFileDialog();
+            browseFileDialog.Filter = "PEM file|*.pem;*.docx";
+            browseFileDialog.Title = "Select PEM directory";
+
+            // Show the Dialog.
+            if (browseFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string path = browseFileDialog.FileName;
+                details.Text = path;
+
+            }
+        }
+
+        private void addType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (addType.SelectedIndex == 0)
+            {
+                if (autoAdd != null && manualAdd != null)
+                {
+                    autoAdd.Visibility = Visibility.Collapsed;
+                    manualAdd.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                autoAdd.Visibility = Visibility.Visible;
+                manualAdd.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

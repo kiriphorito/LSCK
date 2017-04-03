@@ -93,7 +93,7 @@ namespace LSCK
             int keyCounter = 0;
             int totalCounter = 0;
             int startPos;
-            string comment=null,sectionName=null;
+            string comment = null,sectionName = null;
             foreach (var line in File.ReadAllLines(file))
             {
                 if (line.Contains(marker + key))

@@ -75,6 +75,7 @@
     <Compile Include="StructureControl.xaml.cs">
       <DependentUpon>StructureControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bridge.cs" />
     <Compile Include="WebsiteGenerator.cs" />
   </ItemGroup>
   <ItemGroup>

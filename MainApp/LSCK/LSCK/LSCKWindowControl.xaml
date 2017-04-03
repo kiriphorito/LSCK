@@ -8,56 +8,52 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Name="MyToolWindow" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" BorderThickness="2,0,0,0" MinWidth="300" MinHeight="300" MaxWidth="300" MaxHeight="300">
     <Grid>
-        <Button x:Name="refreshButton" Width="30" Height="20" Margin="264,1,0,280" Click="refreshButton_Click" Cursor="Hand">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="Resources/refresh.png"/>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
         <TabControl x:Name="tabs"  Background="#FF86D0E6">
             <TabItem Header="Add Code" BorderBrush="#FF4386F4">
-                <StackPanel Orientation="Vertical" Margin="0,20,0,0">
-                    <ComboBox x:Name="comboLang"  Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small">
-                        <ComboBoxItem>C#</ComboBoxItem>
-                        <ComboBoxItem IsSelected="True">Java</ComboBoxItem>
-                        <ComboBoxItem>C</ComboBoxItem>
-                        <ComboBoxItem>C++</ComboBoxItem>
-                        <ComboBoxItem>PHP</ComboBoxItem>
-                        <ComboBoxItem>Python</ComboBoxItem>
-                        <ComboBoxItem>Javascript</ComboBoxItem>
-                        <ComboBoxItem>Typescript</ComboBoxItem>
-                        <ComboBoxItem>HTML</ComboBoxItem>
-                        <ComboBoxItem>Go</ComboBoxItem>
-                        <ComboBoxItem>Less</ComboBoxItem>
-                        <ComboBoxItem>SQL</ComboBoxItem>
+                <StackPanel Orientation="Vertical" Margin="0,5,0,0">
+                    <ComboBox x:Name="addType" SelectionChanged="addType_SelectionChanged" HorizontalAlignment="Right" Width="100"  Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" SelectedIndex="0">
+                        <ComboBoxItem>Manual</ComboBoxItem>
+                        <ComboBoxItem>Auto</ComboBoxItem>
                     </ComboBox>
-                    <TextBlock  Margin="110,10,96,10" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold" Text="Section Title" Height="22" Width="86"/>
-                    <StackPanel Orientation="Horizontal">
-                        <ComboBox x:Name="comboSectionsCode" SelectionChanged="comboSectionsCode_SelectionChanged" HorizontalAlignment="Left" Width="143" Margin="5" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
-                        <Button x:Name="createSection" Click="createSection_Click" Content="Create" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="20,0,0,0"/>
+                    <StackPanel x:Name="manualAdd">
+                        <TextBlock  Margin="5,10" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold" Text="Section Title" Height="22" Width="86"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <ComboBox x:Name="comboSectionsCode" SelectionChanged="comboSectionsCode_SelectionChanged" HorizontalAlignment="Center" Width="143"  Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
+                            <Button x:Name="createSection" Click="createSection_Click" Content="Create" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="20,0,0,0"/>
+                        </StackPanel>
+                        <ComboBox x:Name="comboLang"  Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small" Margin="0,15">
+                            <ComboBoxItem>C#</ComboBoxItem>
+                            <ComboBoxItem IsSelected="True">Java</ComboBoxItem>
+                            <ComboBoxItem>C</ComboBoxItem>
+                            <ComboBoxItem>C++</ComboBoxItem>
+                            <ComboBoxItem>PHP</ComboBoxItem>
+                            <ComboBoxItem>Python</ComboBoxItem>
+                            <ComboBoxItem>Javascript</ComboBoxItem>
+                            <ComboBoxItem>Typescript</ComboBoxItem>
+                            <ComboBoxItem>HTML</ComboBoxItem>
+                            <ComboBoxItem>Go</ComboBoxItem>
+                            <ComboBoxItem>Less</ComboBoxItem>
+                            <ComboBoxItem>SQL</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Margin="5" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold">Add Comment or Brief Description</TextBlock>
+                        <TextBox x:Name="textBox" Height="36" TextWrapping="Wrap" Text="Comment" Background="#FFA9DFF0" BorderBrush="#FF62A7CF" FontFamily="Sitka Small" Foreground="#FF0C0F0D"/>
+                        <Button Click="addButton_Click" Content="Add" Height="23" x:Name="button1" Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand" Width="60">
+                            <Button.Effect>
+                                <DropShadowEffect/>
+                            </Button.Effect>
+                        </Button>
                     </StackPanel>
-                    <TextBlock Margin="10" HorizontalAlignment="Center" FontSize="14" FontFamily="Leelawadee UI Semilight" FontWeight="Bold">Add Comment or Brief Description</TextBlock>
-                    <TextBox x:Name="textBox" Height="36" TextWrapping="Wrap" Text="Comment" Background="#FFA9DFF0" BorderBrush="#FF62A7CF" FontFamily="Sitka Small" Foreground="#FF0C0F0D"/>
-                    <Button Click="addButton_Click" Content="Add" Width="120" Height="32" x:Name="button1" Margin="90,10,82,10" Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand">
-                        <Button.Effect>
-                            <DropShadowEffect/>
-                        </Button.Effect>
-                    </Button>
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="Auto add" BorderBrush="#FF19461D">
-                <StackPanel>
-                    <TextBlock Visibility="Hidden" Height="193" TextWrapping="Wrap" TextAlignment="Justify">You can add snippets automatically to your website by typing a comment, followed by a specified sequence of characters and then the section you wish to add the snippet to. On the next line, again you must have a comment with the key characters following it and a some text to describe your snippet. These two lines should go before the code you wish to add. Finally, you must place another comment followed by the key sequence one line after the code. This can be done as many times in any of the supported files on your project.</TextBlock>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="5,0,0,0">Key character sequence: </TextBlock>
-                        <TextBox x:Name="keySequence" MaxLength="6" Width="100" Margin="20,0,0,0" Text="??" TextAlignment="Center"/>
+                    <StackPanel x:Name="autoAdd" Visibility="Collapsed" >
+                        <StackPanel Orientation="Horizontal" Margin="30">
+                            <TextBlock Margin="5,0,0,0">Key character sequence:</TextBlock>
+                            <TextBox x:Name="keySequence" MaxLength="6" Width="100" Margin="20,0,0,0" Text="??" TextAlignment="Center"/>
+                        </StackPanel>
+                        <Button Content="Run" x:Name="autoSearch" Click="autoSearch_Click" Width="100"  Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand" Margin="0,5,0,0">
+                            <Button.Effect>
+                                <DropShadowEffect/>
+                            </Button.Effect>
+                        </Button>
                     </StackPanel>
-                    <Button Content="Run" x:Name="AutoSearch" Click="AutoSearch_Click" Width="100"  Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand" Margin="0,20,0,0">
-                        <Button.Effect>
-                            <DropShadowEffect/>
-                        </Button.Effect>
-                    </Button>
                 </StackPanel>
             </TabItem>
 
@@ -67,7 +63,7 @@
                     <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="144" Margin="60,37,0,187" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
                     <TextBlock Margin="108,85,128,-65" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Files</TextBlock>
                     <ListBox  x:Name="listFile" Margin="0,115,0,71"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
-                        
+
                     </ListBox>
                     <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="100" Margin="0,223,88,4" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
                         <Button.Effect>
@@ -143,13 +139,35 @@
                     <Button x:Name="openStructure" Click="openStructure_Click" Content="Structure" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="0,5,0,0"/>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="Customize" BorderBrush="#FF19461D">
+                
+            </TabItem>
             <TabItem Header="Order" BorderBrush="#FF19461D">
                 <StackPanel Orientation="Vertical">
-                    <Button x:Name="uploadButton" Click="uploadButton_Click">Hello</Button>
+                    <TextBlock HorizontalAlignment="Center">Last Generation:</TextBlock>
+                    <TextBlock x:Name="lastDate" HorizontalAlignment="Center">x/x/x</TextBlock>
+                    <Button Margin="80,10" x:Name="uploadButton" Click="uploadButton_Click" Background="#FF5AD8B6" BorderBrush="#FF32911D">Create</Button>
+                    <StackPanel x:Name="genText" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Hidden">
+                        <TextBlock>Creating website ...</TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <ComboBox HorizontalAlignment="Center" SelectionChanged="connectType_SelectionChanged" x:Name="connectType" Width="143" Margin="5" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" SelectedIndex="0">
+                            <ComboBoxItem>PEM</ComboBoxItem>
+                            <ComboBoxItem>Password</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock HorizontalAlignment="Center">IP Adress:</TextBlock>
+                        <TextBox x:Name="ipAdress" Height="20" TextWrapping="Wrap" Text="" Width="200"/>
+                        <TextBlock x:Name="detailType" Margin="0,5,0,0" HorizontalAlignment="Center">PEM Directory:</TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBox MaxLines="1"  x:Name="details" Height="23" TextWrapping="Wrap" TextAlignment="Center" Width="200" HorizontalAlignment="Center"/>
+                            <Button Click="browsePEM_Click" x:Name="browsePEM"  Height="27" Width="52" HorizontalAlignment="Center" Margin="5,0" Background="#FF5AD8B6" BorderBrush="#FF32911D">Browse</Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <Button x:Name="upload"  Height="27" Width="52" HorizontalAlignment="Center" Margin="0,20" Background="#FF5AD8B6" BorderBrush="#FF32911D">Upload</Button>
                 </StackPanel>
             </TabItem>
+
         </TabControl>
-        
     </Grid>
 
 </UserControl>

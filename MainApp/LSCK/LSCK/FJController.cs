@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using EnvDTE80;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using static LSCK.Bridge;
 
 namespace LSCK
 {
@@ -22,7 +23,6 @@ namespace LSCK
     {
         private readonly JSON json;
         private readonly FileHandler fileHandler = new FileHandler();
-        private readonly string fileDir;
 
         private string jsonSettingsName = "website";
 
@@ -31,9 +31,6 @@ namespace LSCK
 
         private FJController()
         {
-            DTE2 dte = (DTE2)Marshal.GetActiveObject("VisualStudio.DTE");
-            string solutionDir = Path.GetDirectoryName(dte.Solution.FullName);
-            fileDir = solutionDir + @"\LSCK Data";
             Directory.CreateDirectory(fileDir);
             json = new JSON(fileDir, jsonSettingsName);
             if (!Directory.Exists(string.Concat(fileDir, @"\data")))
