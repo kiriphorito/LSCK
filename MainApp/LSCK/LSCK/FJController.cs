@@ -12,8 +12,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using EnvDTE80;
-using System.Runtime.InteropServices;
 using System.Reflection;
 using static LSCK.Bridge;
 

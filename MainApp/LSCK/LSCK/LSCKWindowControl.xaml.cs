@@ -32,6 +32,7 @@ namespace LSCK
         String currentSection;
         WebsiteGenerator wg;
         bool upload = false;
+
         public LSCKWindowControl()
         {
             System.Threading.Thread solutionChangeThread = new System.Threading.Thread(checkDTEChange);
@@ -39,9 +40,6 @@ namespace LSCK
             solutionChangeThread.Start();
             this.InitializeComponent();
             updateUI(0);
-            //populateFonts();
-
-                
         }
 
         private void resetControl() {

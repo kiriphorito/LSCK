@@ -60,13 +60,13 @@
 
             <TabItem Header="Files" BorderBrush="#FF19461D" Height="22" VerticalAlignment="Top">
                 <Grid Margin="10">
-                    <TextBlock Margin="109,0,105,19.6" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Sections</TextBlock>
-                    <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="144" Margin="66,19,0,205.6" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
-                    <TextBlock Margin="119,50,117,-30.4" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Files</TextBlock>
-                    <ListBox  x:Name="listFile" Margin="0,68,0,31.6"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF"/>
-                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="100" Margin="0,225,85,1.6" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
+                    <TextBlock Margin="116,-8,112,27.6" HorizontalAlignment="Center">Sections</TextBlock>
+                    <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="272" Margin="0,10,0,217.6" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" Height="21.6"/>
+                    <TextBlock Margin="119,37,117,-17.4" HorizontalAlignment="Center">Files</TextBlock>
+                    <ListBox  x:Name="listFile" Margin="0,56,0,21.6"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF"/>
+                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="272" Margin="0,233,0,-6.4" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
                         <Button.Effect>
-                            <DropShadowEffect/>
+                            <DropShadowEffect BlurRadius="0" Direction="0" Opacity="0"/>
                         </Button.Effect>
                     </Button>
                 </Grid>
@@ -74,8 +74,8 @@
 
             <TabItem Header="Details" BorderBrush="#FF19461D">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Margin="94,10,90,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Project title" Width="108"/>
-                    <TextBox x:Name="projectTitle" LostFocus="projectTitle_LostFocus" Margin="62,0,66,0" HorizontalAlignment="Center" Width="164"/>
+                    <TextBlock Margin="114,2" HorizontalAlignment="Center" Text="Project Title" Width="64"/>
+                    <TextBox x:Name="projectTitle" LostFocus="projectTitle_LostFocus" Margin="10,0" HorizontalAlignment="Center" Width="272" Height="21.6"/>
                     <TextBlock Margin="102,10,112,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Pages"/>
                     <ListBox  x:Name="listPages" Background="#FFA9DFF0" BorderBrush="#FF62A7CF" Height="51" Margin="10,0"/>
                     <StackPanel Orientation="Horizontal" Margin="0,12,0,0" HorizontalAlignment="Center" >
@@ -84,40 +84,40 @@
                     </StackPanel>
                     <TextBlock Margin="30,10,0,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Ace theme:" Width="108"/>
                     <ComboBox x:Name="comboTheme" Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small">
-                        <ComboBoxItem>Ambiance</ComboBoxItem>
-                        <ComboBoxItem IsSelected="True">Chaos</ComboBoxItem>
-                        <ComboBoxItem>Chrome</ComboBoxItem>
-                        <ComboBoxItem>Clouds</ComboBoxItem>
-                        <ComboBoxItem>Clouds Midnight</ComboBoxItem>
-                        <ComboBoxItem>Cobalt</ComboBoxItem>
-                        <ComboBoxItem>Crimson Editor</ComboBoxItem>
-                        <ComboBoxItem>Dawn</ComboBoxItem>
-                        <ComboBoxItem>Dreamweaver</ComboBoxItem>
-                        <ComboBoxItem>Eclipse</ComboBoxItem>
-                        <ComboBoxItem>Github</ComboBoxItem>
-                        <ComboBoxItem>Idle Fingers</ComboBoxItem>
-                        <ComboBoxItem>Iplastic</ComboBoxItem>
-                        <ComboBoxItem>Katzenmilch</ComboBoxItem>
-                        <ComboBoxItem>Kr Theme</ComboBoxItem>
-                        <ComboBoxItem>Kuroir</ComboBoxItem>
-                        <ComboBoxItem>Merbivore</ComboBoxItem>
-                        <ComboBoxItem>Merbivore Soft</ComboBoxItem>
-                        <ComboBoxItem>Mono Industrial</ComboBoxItem>
-                        <ComboBoxItem>Monokai</ComboBoxItem>
-                        <ComboBoxItem>Pastel On Dark</ComboBoxItem>
-                        <ComboBoxItem>Solarized Dark</ComboBoxItem>
-                        <ComboBoxItem>Solarized Light</ComboBoxItem>
-                        <ComboBoxItem>SQLserver</ComboBoxItem>
-                        <ComboBoxItem>Terminal</ComboBoxItem>
-                        <ComboBoxItem>Textmate</ComboBoxItem>
-                        <ComboBoxItem>Tomorrow</ComboBoxItem>
-                        <ComboBoxItem>Tomorrow Night</ComboBoxItem>
-                        <ComboBoxItem>Tomorrow Night Blue</ComboBoxItem>
-                        <ComboBoxItem>Tomorrow Night Bright</ComboBoxItem>
-                        <ComboBoxItem>Tomorrow Night Eighties</ComboBoxItem>
-                        <ComboBoxItem>Twilight</ComboBoxItem>
-                        <ComboBoxItem>Vibrant Ink</ComboBoxItem>
-                        <ComboBoxItem>Xcode</ComboBoxItem>
+                        <ComboBoxItem Content="Ambiance"/>
+                        <ComboBoxItem IsSelected="True" Content="Chaos"/>
+                        <ComboBoxItem Content="Chrome"/>
+                        <ComboBoxItem Content="Clouds"/>
+                        <ComboBoxItem Content="Clouds Midnight"/>
+                        <ComboBoxItem Content="Cobalt"/>
+                        <ComboBoxItem Content="Crimson Editor"/>
+                        <ComboBoxItem Content="Dawn"/>
+                        <ComboBoxItem Content="Dreamweaver"/>
+                        <ComboBoxItem Content="Eclipse"/>
+                        <ComboBoxItem Content="Github"/>
+                        <ComboBoxItem Content="Idle Fingers"/>
+                        <ComboBoxItem Content="Iplastic"/>
+                        <ComboBoxItem Content="Katzenmilch"/>
+                        <ComboBoxItem Content="Kr Theme"/>
+                        <ComboBoxItem Content="Kuroir"/>
+                        <ComboBoxItem Content="Merbivore"/>
+                        <ComboBoxItem Content="Merbivore Soft"/>
+                        <ComboBoxItem Content="Mono Industrial"/>
+                        <ComboBoxItem Content="Monokai"/>
+                        <ComboBoxItem Content="Pastel On Dark"/>
+                        <ComboBoxItem Content="Solarized Dark"/>
+                        <ComboBoxItem Content="Solarized Light"/>
+                        <ComboBoxItem Content="SQLserver"/>
+                        <ComboBoxItem Content="Terminal"/>
+                        <ComboBoxItem Content="Textmate"/>
+                        <ComboBoxItem Content="Tomorrow"/>
+                        <ComboBoxItem Content="Tomorrow Night"/>
+                        <ComboBoxItem Content="Tomorrow Night Blue"/>
+                        <ComboBoxItem Content="Tomorrow Night Bright"/>
+                        <ComboBoxItem Content="Tomorrow Night Eighties"/>
+                        <ComboBoxItem Content="Twilight"/>
+                        <ComboBoxItem Content="Vibrant Ink"/>
+                        <ComboBoxItem Content="Xcode"/>
                     </ComboBox>
                     <Button x:Name="openStructure" Click="openStructure_Click" Content="Structure" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="0,5,0,0"/>
                 </StackPanel>
