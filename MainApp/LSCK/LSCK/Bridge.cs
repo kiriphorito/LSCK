@@ -43,7 +43,7 @@ namespace LSCK
                         System.Windows.MessageBox.Show(newSolutionDir);
                         solutionDir = newSolutionDir;
                         fileDir = solutionDir + @"\LSCK Data";
-                        fjController.Recreate();
+                        fjController.Reset();
                         state = 1;
                     }
                 }
@@ -66,7 +66,7 @@ namespace LSCK
                     }
                     else
                     {
-                        fjController.Recreate();
+                        fjController.Reset();
                         state = 1;
                     }
                 }

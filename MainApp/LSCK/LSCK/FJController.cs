@@ -31,6 +31,11 @@ namespace LSCK
 
         private FJController()
         {
+            Reset();
+        }
+
+        public void Reset()
+        {
             Directory.CreateDirectory(fileDir);
             json = new JSON(fileDir, jsonSettingsName);
             if (!Directory.Exists(string.Concat(fileDir, @"\data")))
@@ -59,15 +64,6 @@ namespace LSCK
             public InvalidInputException(string message) : base(message) { }
         }
 
-        public void Recreate()
-        {
-            Directory.CreateDirectory(fileDir);
-            json = new JSON(fileDir, jsonSettingsName);
-            if (!Directory.Exists(string.Concat(fileDir, @"\data")))
-            {
-                Directory.CreateDirectory(string.Concat(fileDir, @"\data"));
-            }
-        }
         ///<summary>
         ///<para>Retreive the Title of the website fron JSON</para>
         ///</summary>
