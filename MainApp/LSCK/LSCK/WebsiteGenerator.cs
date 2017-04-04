@@ -13,13 +13,15 @@ namespace LSCK
         private readonly string fileDir;
         private readonly string generateDir;
         private bool CDN;
+        private List<string> custStrings;
 
-        public WebsiteGenerator(FJController fjController, bool CDN, string fileDir, string generateDir)
+        public WebsiteGenerator(FJController fjController, bool CDN, string fileDir, string generateDir,List<string> custStrings)
         {
             this.fjController = fjController;
             this.fileDir = fileDir;
             this.generateDir = generateDir;
             this.CDN = CDN;
+            this.custStrings = custStrings;
         }
 
         private void WriteHTML(string htmlCode, string pageTitle)
@@ -60,6 +62,7 @@ namespace LSCK
             {
                 WriteHTML(GenerateHTML(pageTitle), pageTitle);
             }
+            GenerateCustomCSS();
         }
 
         private static void ExtractEmbeddedResource(string outputDir, string resourceLocation, List<string> files)
@@ -120,11 +123,31 @@ namespace LSCK
             {
                 htmlCL.Add("    <link rel=\"stylesheet\" href=\"styles/bootstrap.min.css\"/>");
             }
+            htmlCL.Add("    <link href=\"styles/custom.css\" rel=\"stylesheet\">");
             htmlCL.Add("    <link href=\"style.css\" rel=\"stylesheet\">");
             htmlCL.Add("</head>");
 
             string htmlContent = string.Join("\n", htmlCL.ToArray());
             return htmlContent;
+        }
+
+        private void GenerateCustomCSS()
+        {
+            var cssCL = new List<string>(); //HTMLContentList
+            string path = generateDir + "/styles/custom.css";
+            cssCL.Add(".navbar-default {\n  background-color:"+custStrings[0]+";\n   border-color: "+custStrings[5]+"\n}");//NavBar bg color and border color
+            cssCL.Add(".navbar-default .navbar-brand {\n    color:"+custStrings[1]+";\n}");//NavBar Title color
+            cssCL.Add(".navbar-default .navbar-brand:hover,\n.navbar-default .navbar-brand:focus {\ncolor:"+custStrings[2]+";\n}");//NavBar title hover color
+            cssCL.Add(".navbar-default .navbar-nav > li > a {\n\tcolor: "+custStrings[3]+";\n}");//NavBar Page color
+            cssCL.Add(".navbar-default .navbar-nav > li > a:hover,\n.navbar-default .navbar-nav > li > a:focus {\n  color: "+custStrings[4]+";\n}");//NavBar page hover color
+            cssCL.Add(".navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   a:hover, .navbar-default .navbar-nav > .active > a:focus {color: "+custStrings[9]+";}");
+            cssCL.Add("body {\nbackground-color: "+custStrings[6]+";\n}");
+            cssCL.Add("h3 {\nfont-family: \""+custStrings[10]+"\";\nfont-size: "+custStrings[12]+"px;\ncolor: "+custStrings[7]+";\n}");
+            cssCL.Add("p{\nfont-family: "+custStrings[11]+";\nfont-size: "+custStrings[13]+"px;\ncolor: "+custStrings[8]+";\n}");
+
+            string cssContent = string.Join("\n", cssCL.ToArray());
+            File.WriteAllText(path, cssContent);
+
         }
 
         private string GenerateNavBar(string title, string pageTitle)

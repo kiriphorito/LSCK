@@ -10,6 +10,7 @@ namespace LSCK
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Drawing;
     using System.IO;
     using System.Linq;
     using System.Runtime.CompilerServices;
@@ -37,6 +38,7 @@ namespace LSCK
             solutionChangeThread.Start();
             this.InitializeComponent();
             updateUI(0);
+            //populateFonts();
 
                 
         }
@@ -268,11 +270,44 @@ namespace LSCK
 
         }
 
+        private bool getCDNCheck()
+        {
+            return (bool)checkCDN.IsChecked;
+        }
+
+        private List<string> getCustomStrings()
+        {
+            List<string> custStrings = new List<string>();
+            custStrings.Add(ClrPcker_Background.SelectedColorText);
+            custStrings.Add(ClrPcker_TitColor.SelectedColorText);
+            custStrings.Add(ClrPcker_TitSelect.SelectedColorText);
+            custStrings.Add(ClrPcker_OtherColor.SelectedColorText);
+            custStrings.Add(ClrPcker_OtherSelect.SelectedColorText);
+            custStrings.Add(ClrPcker_Border.SelectedColorText);
+            custStrings.Add(ClrPcker_PageBg.SelectedColorText);
+            custStrings.Add(ClrPcker_PageTitle.SelectedColorText);
+            custStrings.Add(ClrPcker_PageText.SelectedColorText);
+            custStrings.Add(ClrPcker_SelBackground.SelectedColorText);
+            for (int i = 0; i < custStrings.Count; i++)
+            {
+                if (custStrings[i][0] == '#')
+                {
+                    custStrings[i] = "#" + custStrings[i].Substring(3);
+                }
+            }
+            custStrings.Add(fontTitle.Text);
+            custStrings.Add(fontText.Text);
+            custStrings.Add(titSize.Text);
+            custStrings.Add(commSize.Text);
+            return custStrings;
+        }
+
         [MethodImpl(MethodImplOptions.Synchronized)]
         private void generateWebsite()
         {
-
-            WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite");
+            List<string> custStrings = this.Dispatcher.Invoke(getCustomStrings, DispatcherPriority.Normal);
+            bool cdn = this.Dispatcher.Invoke(getCDNCheck, DispatcherPriority.Normal);
+            WebsiteGenerator html = new WebsiteGenerator(fjController,cdn, solutionDir, solutionDir + @"/generatedWebsite",custStrings);
             html.GenerateWebsite();
             IVsUIShell vsUIShell = (IVsUIShell)Package.GetGlobalService(typeof(SVsUIShell));
             Guid guid = typeof(SitePreview).GUID;
@@ -297,7 +332,7 @@ namespace LSCK
 
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
-            WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite");
+            WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite",getCustomStrings());
             html.GenerateWebsite();
             System.Windows.MessageBox.Show("HTML Generated");
         }
@@ -357,5 +392,59 @@ namespace LSCK
                 manualAdd.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void ClrPcker_Background_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<System.Windows.Media.Color?> e)
+        {
+            
+        }
+
+        private void custType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (custType.SelectedIndex == 0)
+            {
+                if (customGeneral != null && customNav != null)
+                {
+                    customNav.Visibility = Visibility.Collapsed;
+                    customGeneral.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                customNav.Visibility = Visibility.Visible;
+                customGeneral.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void populateFonts()
+        {
+            foreach (FontFamily font in System.Drawing.FontFamily.Families)
+            {
+                fontTitle.Items.Add(font.Name);
+                fontText.Items.Add(font.Name);
+            }
+            fontTitle.SelectedIndex = 0;
+            fontText.SelectedIndex = 0;
+        }
+
+        private void fontTitle_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cvt = new FontConverter();
+            string text = (fontTitle.SelectedItem as ComboBoxItem).Content.ToString();
+            if (text != null && prevTit != null)
+            {
+                prevTit.FontFamily = new System.Windows.Media.FontFamily(text);
+            }
+        }
+
+        private void fontText_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cvt = new FontConverter();
+            string text = (fontText.SelectedItem as ComboBoxItem).Content.ToString();
+            if (text != null && prevComm != null)
+            {
+                prevComm.FontFamily = new System.Windows.Media.FontFamily(text);
+            }
+        }
     }
+
 }
