@@ -129,9 +129,7 @@ namespace LSCK
             public InvalidInputException(string message)
                 : base(message) { }
         }
-
-
-
+        
         private void createSection_Click(object sender, RoutedEventArgs e)
         {
             string sectionName = Prompt.ShowDialog("Section name:", "Create Section");
@@ -194,8 +192,6 @@ namespace LSCK
                     }
                     break;
                 case 1:
-                    break;
-                case 2:
                     if (comboSectionsFile.SelectedIndex != -1)
                     {
                         string sectionName = comboSectionsFile.SelectedValue.ToString();
@@ -207,20 +203,13 @@ namespace LSCK
                         }
                     }
                     break;
-                case 3:
-                    
-                    break;
-                case 4:
-                    
-                    break;
-
             }
         }
 
         private void comboSectionsFile_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             e.Handled = true;
-            updateUI(2);
+            updateUI(1);
         }
 
         private void browseButton_Click(object sender, RoutedEventArgs e)
@@ -234,7 +223,7 @@ namespace LSCK
             {
                 string path = browseFileDialog.FileName;
                 fjController.InsertSnippet(comboSectionsFile.SelectedValue.ToString(),"file","",path);
-                updateUI(2);
+                updateUI(1);
 
             }
         }

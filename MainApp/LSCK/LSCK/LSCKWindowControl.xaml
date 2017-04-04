@@ -60,13 +60,11 @@
 
             <TabItem Header="Files" BorderBrush="#FF19461D" Height="22" VerticalAlignment="Top">
                 <Grid Margin="10">
-                    <TextBlock Margin="102,10,112,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Sections</TextBlock>
-                    <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="144" Margin="60,37,0,187" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
-                    <TextBlock Margin="108,85,128,-65" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Files</TextBlock>
-                    <ListBox  x:Name="listFile" Margin="0,115,0,71"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
-
-                    </ListBox>
-                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="100" Margin="0,223,88,4" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
+                    <TextBlock Margin="109,0,105,19.6" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Sections</TextBlock>
+                    <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="144" Margin="66,19,0,205.6" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
+                    <TextBlock Margin="119,50,117,-30.4" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold">Files</TextBlock>
+                    <ListBox  x:Name="listFile" Margin="0,68,0,31.6"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF"/>
+                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="100" Margin="0,225,85,1.6" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
@@ -79,23 +77,7 @@
                     <TextBlock Margin="94,10,90,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Project title" Width="108"/>
                     <TextBox x:Name="projectTitle" LostFocus="projectTitle_LostFocus" Margin="62,0,66,0" HorizontalAlignment="Center" Width="164"/>
                     <TextBlock Margin="102,10,112,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Pages"/>
-                    <ListBox  x:Name="listPages" Background="#FFA9DFF0" BorderBrush="#FF62A7CF">
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock><Run Text="ListBox Item #1"/></TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock><Run Text="ListBox Item #2"/></TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock><Run Text="ListBox Item #3"/></TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
-                    </ListBox>
+                    <ListBox  x:Name="listPages" Background="#FFA9DFF0" BorderBrush="#FF62A7CF" Height="51" Margin="10,0"/>
                     <StackPanel Orientation="Horizontal" Margin="0,12,0,0" HorizontalAlignment="Center" >
                         <Button x:Name="createPage" Click="createPage_Click" Content="Add" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="0,0,5,0"/>
                         <Button x:Name="deletePage" Click="deletePage_Click" Content="Delete" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D"/>
@@ -143,14 +125,14 @@
             <TabItem Header="Customize" BorderBrush="#FF19461D">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                     <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
-                        <ComboBox x:Name="custType" SelectionChanged="custType_SelectionChanged" Width="100"  Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" SelectedIndex="0" Margin="0,5">
+                        <ComboBox x:Name="custType" SelectionChanged="custType_SelectionChanged" Width="100"  Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" SelectedIndex="0" Margin="0,5" Height="20.8">
                             <ComboBoxItem Content="General"/>
                             <ComboBoxItem Content="Nav Bar"/>
                         </ComboBox>
-                        <Button x:Name="saveCSS"  Content="Save" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="10,0,0,0" RenderTransformOrigin="1.195,-0.656" Click="saveCSS_Click"/>
+                        <Button x:Name="saveCSS"  Content="Save" Height="20.8" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="10,0,0,0" RenderTransformOrigin="1.195,-0.656" Click="saveCSS_Click"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" x:Name="customGeneral">
-                        <TextBlock HorizontalAlignment="Center">Colors:</TextBlock>
+                        <TextBlock HorizontalAlignment="Center">Website Colors</TextBlock>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
@@ -161,11 +143,11 @@
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="1*" />
                             </Grid.RowDefinitions>
-                            <TextBlock  Grid.Row="0" Grid.Column="0" Height="16" Margin="0,4,64.2,8.8" Grid.ColumnSpan="2">Background Color:</TextBlock>
-                            <TextBlock  Grid.Row="1" Grid.Column="0" Height="16" Margin="0,5.2,0.4,4.4">Titles Color:</TextBlock>
-                            <TextBlock  Grid.Row="2" Grid.Column="0" Height="16" Margin="0,8.6,0.4,0.2">Comments Color:</TextBlock>
+                            <TextBlock  Grid.Row="0" Grid.Column="0" Height="16" Margin="0,4,64.2,8.8" Grid.ColumnSpan="2">Background Color</TextBlock>
+                            <TextBlock Grid.Column="0" Height="16" Margin="1,37,80.2,1.4" Grid.ColumnSpan="2" Grid.RowSpan="2">Titles Color</TextBlock>
+                            <TextBlock  Grid.Row="2" Grid.Column="0" Height="16" Margin="0,8.6,0.4,0.2">Comments Color</TextBlock>
                             <xctk:ColorPicker SelectedColor="White" Grid.Column="1" Grid.Row="0" ColorMode="ColorPalette" Name="ClrPcker_PageBg" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Width="40" Margin="22.6,0,2.2,4.8" Height="22.4"/>
-                            <xctk:ColorPicker SelectedColor="Black" Grid.Column="1" Name="ClrPcker_SectionTitle" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Width="40" Margin="30.6,0,10.2,1.4" Height="22" VerticalAlignment="Bottom" Grid.Row="1"/>
+                            <xctk:ColorPicker SelectedColor="Black" Grid.Column="1" Name="ClrPcker_SectionTitle" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Width="40" Margin="30.6,0,9.2,23.2" Height="22.4" VerticalAlignment="Bottom" Grid.RowSpan="3"/>
                             <xctk:ColorPicker SelectedColor="Black" Grid.Column="1" Grid.Row="2" ColorMode="ColorPalette" Name="ClrPcker_Comment" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Width="40" Margin="30.6,4.6,10.2,-3.8" Height="22.4"/>
                         </Grid>
                         <TextBlock HorizontalAlignment="Center" Margin="0,5">Fonts:</TextBlock>
