@@ -134,7 +134,9 @@ namespace LSCK
         private void GenerateCustomCSS()
         {
             var cssCL = new List<string>(); //HTMLContentList
+            System.IO.Directory.CreateDirectory(generateDir+"/styles");
             string path = generateDir + "/styles/custom.css";
+
             cssCL.Add(".navbar-default {\n  background-color:"+custStrings[0]+";\n   border-color: "+custStrings[5]+"\n}");//NavBar bg color and border color
             cssCL.Add(".navbar-default .navbar-brand {\n    color:"+custStrings[1]+";\n}");//NavBar Title color
             cssCL.Add(".navbar-default .navbar-brand:hover,\n.navbar-default .navbar-brand:focus {\ncolor:"+custStrings[2]+";\n}");//NavBar title hover color
