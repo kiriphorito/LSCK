@@ -36,6 +36,20 @@ namespace LSCK
         {
             public string title { get; set; }
             public string ace_theme { get; set; }
+            public string CSSNavBgC { get; set; }
+            public string CSSNavTitleC { get; set; }
+            public string CSSNavTitleHoverC { get; set; }
+            public string CSSNavMenuC { get; set; }
+            public string CSSNavMenuHoverC { get; set; }
+            public string CSSNavMenuSelectedC { get; set; }
+            public string CSSNavBorderC { get; set; }
+            public string CSSPageBgC { get; set; }
+            public string CSSSectionTitleC { get; set; }
+            public string CSSCommentC { get; set; }
+            public string CSSSectionTitleF { get; set; }
+            public string CSSCommentF { get; set; }
+            public string CSSSectionTitleFS { get; set; }
+            public string CSSCommentFS { get; set; }
             public List<string> page_titles { get; set; }
             public List<Section> sections { get; set; }
         }
@@ -50,6 +64,20 @@ namespace LSCK
                 DTE2 dte = (DTE2)Marshal.GetActiveObject("VisualStudio.DTE");
                 JSONFile.title = Path.GetFileName(Path.GetFileNameWithoutExtension(dte.Solution.FullName));
                 JSONFile.ace_theme = "monokai";
+                JSONFile.CSSNavBgC = "Black";
+                JSONFile.CSSNavTitleC = "White";
+                JSONFile.CSSNavTitleHoverC = "Aquamarine";
+                JSONFile.CSSNavMenuC = "White";
+                JSONFile.CSSNavMenuHoverC = "Aquamarine";
+                JSONFile.CSSNavMenuSelectedC = "Aquamarine";
+                JSONFile.CSSNavBorderC = "Transparent";
+                JSONFile.CSSPageBgC = "White";
+                JSONFile.CSSSectionTitleC = "Black";
+                JSONFile.CSSCommentC = "Black";
+                JSONFile.CSSSectionTitleF = "Helvetica";
+                JSONFile.CSSCommentF = "Helvetica";
+                JSONFile.CSSSectionTitleFS = "32";
+                JSONFile.CSSCommentFS = "14";
                 JSONFile.page_titles = new List<string>();
                 JSONFile.page_titles.Add("index");
                 JSONFile.sections = new List<Section>();
@@ -78,6 +106,45 @@ namespace LSCK
         {
             JSONFile.ace_theme = newTheme;
             WriteJSON();
+        }
+
+        public void SetCSS(List<string> CSSSettings)
+        {
+            JSONFile.CSSNavBgC = CSSSettings[0];
+            JSONFile.CSSNavTitleC = CSSSettings[1];
+            JSONFile.CSSNavTitleHoverC = CSSSettings[2];
+            JSONFile.CSSNavMenuC = CSSSettings[3];
+            JSONFile.CSSNavMenuHoverC = CSSSettings[4];
+            JSONFile.CSSNavMenuSelectedC = CSSSettings[5];
+            JSONFile.CSSNavBorderC = CSSSettings[6];
+            JSONFile.CSSPageBgC = CSSSettings[7];
+            JSONFile.CSSSectionTitleC = CSSSettings[8];
+            JSONFile.CSSCommentC = CSSSettings[9];
+            JSONFile.CSSSectionTitleF = CSSSettings[10];
+            JSONFile.CSSCommentF = CSSSettings[11];
+            JSONFile.CSSSectionTitleFS = CSSSettings[12];
+            JSONFile.CSSCommentFS = CSSSettings[13];
+            WriteJSON();
+        }
+
+        public List<string> GetCSS()
+        {
+            List<string> CSSSettings = new List<string>();
+            CSSSettings.Add(JSONFile.CSSNavBgC);
+            CSSSettings.Add(JSONFile.CSSNavTitleC);
+            CSSSettings.Add(JSONFile.CSSNavTitleHoverC);
+            CSSSettings.Add(JSONFile.CSSNavMenuC);
+            CSSSettings.Add(JSONFile.CSSNavMenuHoverC);
+            CSSSettings.Add(JSONFile.CSSNavMenuSelectedC);
+            CSSSettings.Add(JSONFile.CSSNavBorderC);
+            CSSSettings.Add(JSONFile.CSSPageBgC);
+            CSSSettings.Add(JSONFile.CSSSectionTitleC);
+            CSSSettings.Add(JSONFile.CSSCommentC);
+            CSSSettings.Add(JSONFile.CSSSectionTitleF);
+            CSSSettings.Add(JSONFile.CSSCommentF);
+            CSSSettings.Add(JSONFile.CSSSectionTitleFS);
+            CSSSettings.Add(JSONFile.CSSCommentFS);
+            return CSSSettings;
         }
 
         public void UpdatePageName(string oldName, string newName)

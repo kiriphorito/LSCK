@@ -163,7 +163,32 @@ namespace LSCK
                             {
                                 listPages.Items.Add(pageName);
                             }
-                    }else
+                        List<string> cssSettings = fjController.GetCSSSettings();
+                        List<System.Windows.Media.Color> colors = new List<System.Windows.Media.Color>();
+                        for (int x = 0; x < 10; x++)
+                        {
+                            if (cssSettings[x][0] == '#')
+                            {
+                                cssSettings[x] = "#FF" + cssSettings[x].Substring(1);
+                            }
+                            colors.Add((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(cssSettings[x]));
+                        }
+                        ClrPcker_Background.SelectedColor = colors[0];
+                        ClrPcker_TitleColor.SelectedColor = colors[1];
+                        ClrPcker_TitleSelect.SelectedColor = colors[2];
+                        ClrPcker_OtherColor.SelectedColor = colors[3];
+                        ClrPcker_OtherSelect.SelectedColor = colors[4];
+                        ClrPcker_SelBackground.SelectedColor = colors[5];
+                        ClrPcker_Border.SelectedColor = colors[6];
+                        ClrPcker_PageBg.SelectedColor = colors[7];
+                        ClrPcker_SectionTitle.SelectedColor = colors[8];
+                        ClrPcker_Comment.SelectedColor = colors[9];
+                        fontSectionTitle.Text = cssSettings[10];
+                        fontComment.Text = cssSettings[11];
+                        sizeSectionTitle.Text = cssSettings[12];
+                        sizeComment.Text = cssSettings[13];
+                    }
+                    else
                     {
                         this.IsEnabled = false;
                     }
@@ -283,15 +308,15 @@ namespace LSCK
         {
             List<string> custStrings = new List<string>();
             custStrings.Add(ClrPcker_Background.SelectedColorText);
-            custStrings.Add(ClrPcker_TitColor.SelectedColorText);
-            custStrings.Add(ClrPcker_TitSelect.SelectedColorText);
+            custStrings.Add(ClrPcker_TitleColor.SelectedColorText);
+            custStrings.Add(ClrPcker_TitleSelect.SelectedColorText);
             custStrings.Add(ClrPcker_OtherColor.SelectedColorText);
             custStrings.Add(ClrPcker_OtherSelect.SelectedColorText);
+            custStrings.Add(ClrPcker_SelBackground.SelectedColorText);
             custStrings.Add(ClrPcker_Border.SelectedColorText);
             custStrings.Add(ClrPcker_PageBg.SelectedColorText);
-            custStrings.Add(ClrPcker_PageTitle.SelectedColorText);
-            custStrings.Add(ClrPcker_PageText.SelectedColorText);
-            custStrings.Add(ClrPcker_SelBackground.SelectedColorText);
+            custStrings.Add(ClrPcker_SectionTitle.SelectedColorText);
+            custStrings.Add(ClrPcker_Comment.SelectedColorText);
             for (int i = 0; i < custStrings.Count; i++)
             {
                 if (custStrings[i][0] == '#')
@@ -299,19 +324,18 @@ namespace LSCK
                     custStrings[i] = "#" + custStrings[i].Substring(3);
                 }
             }
-            custStrings.Add(fontTitle.Text);
-            custStrings.Add(fontText.Text);
-            custStrings.Add(titSize.Text);
-            custStrings.Add(commSize.Text);
+            custStrings.Add(fontSectionTitle.Text);
+            custStrings.Add(fontComment.Text);
+            custStrings.Add(sizeSectionTitle.Text);
+            custStrings.Add(sizeComment.Text);
             return custStrings;
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
         private void generateWebsite()
         {
-            List<string> custStrings = this.Dispatcher.Invoke(getCustomStrings, DispatcherPriority.Normal);
             bool cdn = this.Dispatcher.Invoke(getCDNCheck, DispatcherPriority.Normal);
-            wg = new WebsiteGenerator(fjController,cdn, solutionDir, solutionDir + @"/generatedWebsite",custStrings);
+            wg = new WebsiteGenerator(fjController,cdn, solutionDir, solutionDir + @"/generatedWebsite");
             wg.GenerateWebsite();
             IVsUIShell vsUIShell = (IVsUIShell)Package.GetGlobalService(typeof(SVsUIShell));
             Guid guid = typeof(SitePreview).GUID;
@@ -345,7 +369,7 @@ namespace LSCK
 
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
-            WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite",getCustomStrings());
+            WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite");
             html.GenerateWebsite();
             System.Windows.MessageBox.Show("HTML Generated");
         }
@@ -432,17 +456,17 @@ namespace LSCK
         {
             foreach (FontFamily font in System.Drawing.FontFamily.Families)
             {
-                fontTitle.Items.Add(font.Name);
-                fontText.Items.Add(font.Name);
+                fontSectionTitle.Items.Add(font.Name);
+                fontComment.Items.Add(font.Name);
             }
-            fontTitle.SelectedIndex = 0;
-            fontText.SelectedIndex = 0;
+            fontSectionTitle.SelectedIndex = 0;
+            fontComment.SelectedIndex = 0;
         }
 
         private void fontTitle_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var cvt = new FontConverter();
-            string text = (fontTitle.SelectedItem as ComboBoxItem).Content.ToString();
+            string text = (fontSectionTitle.SelectedItem as ComboBoxItem).Content.ToString();
             if (text != null && prevTit != null)
             {
                 prevTit.FontFamily = new System.Windows.Media.FontFamily(text);
@@ -452,7 +476,7 @@ namespace LSCK
         private void fontText_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var cvt = new FontConverter();
-            string text = (fontText.SelectedItem as ComboBoxItem).Content.ToString();
+            string text = (fontComment.SelectedItem as ComboBoxItem).Content.ToString();
             if (text != null && prevComm != null)
             {
                 prevComm.FontFamily = new System.Windows.Media.FontFamily(text);
@@ -504,6 +528,11 @@ namespace LSCK
             checkCDN.Visibility = Visibility.Collapsed;
             upload = true;
             sshGen.Start();
+        }
+
+        private void saveCSS_Click(object sender, RoutedEventArgs e)
+        {
+            fjController.SetCSSSettings(getCustomStrings());
         }
     }
 

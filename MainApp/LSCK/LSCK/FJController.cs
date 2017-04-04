@@ -72,6 +72,16 @@ namespace LSCK
             return json.GetTitle();
         }
 
+        public List<string> GetCSSSettings()
+        {
+            return json.GetCSS();
+        }
+
+        public void SetCSSSettings(List<string> css)
+        {
+            json.SetCSS(css);
+        }
+
         ///<summary>
         ///<para>Set the Title of the website in JSON</para>
         ///</summary>
