@@ -19,6 +19,7 @@ namespace LSCK
             switch (type)
             {
                 case "pem":
+                case "PEM":
                     string privateKeyFilePath = details;
                     using (var stream = new FileStream(privateKeyFilePath, FileMode.Open, FileAccess.Read))
                     {
@@ -27,6 +28,7 @@ namespace LSCK
                     }
                     break;
                 case "password":
+                case "Password":
                     authenticationMethod = new PasswordAuthenticationMethod(username, details);
                     break;
                 default:

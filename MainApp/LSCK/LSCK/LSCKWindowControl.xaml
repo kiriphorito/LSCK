@@ -271,28 +271,28 @@
             </TabItem>
             <TabItem Header="Website" BorderBrush="#FF19461D">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Center">Last Generation:</TextBlock>
-                    <TextBlock x:Name="lastDate" HorizontalAlignment="Center">x/x/x</TextBlock>
-                    <Button Margin="80,10" x:Name="uploadButton" Click="uploadButton_Click" Background="#FF5AD8B6" BorderBrush="#FF32911D">Create</Button>
-                    <StackPanel x:Name="genText" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Hidden">
-                        <TextBlock>Creating website ...</TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                        <ComboBox HorizontalAlignment="Center" SelectionChanged="connectType_SelectionChanged" x:Name="connectType" Width="143" Margin="5" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" SelectedIndex="0">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,0">
+                        <ComboBox HorizontalAlignment="Center" SelectionChanged="connectType_SelectionChanged" x:Name="connectType" Width="143" Margin="0,20,0,10" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" SelectedIndex="0">
                             <ComboBoxItem>PEM</ComboBoxItem>
                             <ComboBoxItem>Password</ComboBoxItem>
                         </ComboBox>
+
                         <TextBlock HorizontalAlignment="Center">IP Adress:</TextBlock>
                         <TextBox x:Name="ipAdress" Height="20" TextWrapping="Wrap" Text="" Width="200"/>
-                        <TextBlock x:Name="detailType" Margin="0,5,0,0" HorizontalAlignment="Center">PEM Directory:</TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,5">Username:</TextBlock>
+                        <TextBox x:Name="username" Height="20" TextWrapping="Wrap" Text="" Width="200" TextAlignment="Center"/>
+                        <TextBlock x:Name="detailType" Margin="0,10,0,5" HorizontalAlignment="Center">PEM Directory:</TextBlock>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <TextBox MaxLines="1"  x:Name="details" Height="23" TextWrapping="Wrap" TextAlignment="Center" Width="200" HorizontalAlignment="Center"/>
                             <Button Click="browsePEM_Click" x:Name="browsePEM"  Height="27" Width="52" HorizontalAlignment="Center" Margin="5,0" Background="#FF5AD8B6" BorderBrush="#FF32911D">Browse</Button>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,-40,0">
-                        <Button x:Name="upload"  Height="27" Width="52" Margin="20,20" Background="#FF5AD8B6" BorderBrush="#FF32911D" Content="Upload"/>
-                        <CheckBox x:Name="checkCDN" Content="CDN" Height="24" Width="100" IsChecked="True"/>
+                        <TextBlock></TextBlock>
+                        <Button Margin="0,10" Height="28" Width="52" x:Name="previewButton" Click="uploadButton_Click" Background="#FF5AD8B6" BorderBrush="#FF32911D">Preview</Button>
+                        <Button x:Name="uploadButton" Click="upload_Click" Height="28" Width="52" Margin="20,5" Background="#FF5AD8B6" BorderBrush="#FF32911D" Content="Upload"/>
+                        <TextBlock Margin="0,5,0,0"  x:Name="loadText"  Visibility="Collapsed">Creating website ...</TextBlock>
+                        <CheckBox x:Name="checkCDN" Content="CDN" Height="24" Width="100" IsChecked="True" Margin="0,0,0,-6"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>

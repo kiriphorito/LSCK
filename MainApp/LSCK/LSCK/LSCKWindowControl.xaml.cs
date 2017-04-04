@@ -30,7 +30,8 @@ namespace LSCK
         /// Initializes a new instance of the <see cref="LSCKWindowControl"/> class.
         /// </summary>
         String currentSection;
-
+        WebsiteGenerator wg;
+        bool upload = false;
         public LSCKWindowControl()
         {
             System.Threading.Thread solutionChangeThread = new System.Threading.Thread(checkDTEChange);
@@ -263,9 +264,12 @@ namespace LSCK
         {
             System.Threading.Thread webGen = new System.Threading.Thread(generateWebsite);
             uploadButton.Visibility = Visibility.Collapsed;
-            genText.Visibility = Visibility.Visible;
+            loadText.Visibility = Visibility.Visible;
+            previewButton.Visibility = Visibility.Collapsed;
+            checkCDN.Visibility = Visibility.Collapsed;
+            loadText.Text = "Creating website ...";
             webGen.Start();
-            //uploadButton.Visibility = Visibility.Visible;
+
             //genText.Visibility = Visibility.Hidden;
 
         }
@@ -307,8 +311,8 @@ namespace LSCK
         {
             List<string> custStrings = this.Dispatcher.Invoke(getCustomStrings, DispatcherPriority.Normal);
             bool cdn = this.Dispatcher.Invoke(getCDNCheck, DispatcherPriority.Normal);
-            WebsiteGenerator html = new WebsiteGenerator(fjController,cdn, solutionDir, solutionDir + @"/generatedWebsite",custStrings);
-            html.GenerateWebsite();
+            wg = new WebsiteGenerator(fjController,cdn, solutionDir, solutionDir + @"/generatedWebsite",custStrings);
+            wg.GenerateWebsite();
             IVsUIShell vsUIShell = (IVsUIShell)Package.GetGlobalService(typeof(SVsUIShell));
             Guid guid = typeof(SitePreview).GUID;
             IVsWindowFrame windowFrame;
@@ -320,14 +324,23 @@ namespace LSCK
             if (result == Microsoft.VisualStudio.VSConstants.S_OK)                                                                           // Show MyToolWindow
                 Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
             refresh = false;
-            this.Dispatcher.Invoke(endWebGen,DispatcherPriority.Normal);
+            this.Dispatcher.Invoke(resetWebView,DispatcherPriority.Normal);
         }
 
-        private void endWebGen()
+        private void resetWebView()
         {
-            uploadButton.Visibility = Visibility.Visible;
-            genText.Visibility = Visibility.Collapsed;
-            lastDate.Text = DateTime.Now.ToString("M/d/yyyy hh:mm:ss");
+            if (!upload)
+            {
+                changeLoadText();
+                previewButton.Visibility = Visibility.Visible;
+                uploadButton.Visibility = Visibility.Visible;
+                loadText.Visibility = Visibility.Collapsed;
+                checkCDN.Visibility = Visibility.Visible;
+            }else
+            {
+                changeLoadText();
+                upload = false;
+            }
         }
 
         private void refreshButton_Click(object sender, RoutedEventArgs e)
@@ -444,6 +457,53 @@ namespace LSCK
             {
                 prevComm.FontFamily = new System.Windows.Media.FontFamily(text);
             }
+        }
+
+        private void setExistingCustomCSS()
+        {
+
+        }
+
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        private void sshGeneration()
+        {
+            generateWebsite();
+            SSH ssh = new SSH(solutionDir + "/generatedWebsite");
+            List<string> sshDetails= this.Dispatcher.Invoke(getSSHDetails, DispatcherPriority.Normal);
+            ssh.UploadWebsite(sshDetails[0], sshDetails[1],sshDetails[2], sshDetails[3]);
+            this.Dispatcher.Invoke(resetWebView, DispatcherPriority.Normal);
+
+        }
+       
+        private void changeLoadText()
+        {
+            if (upload)
+            {
+                loadText.Text = "Uploading website ...";
+            }else
+            {
+                loadText.Text = "Creating website ...";
+            }
+        }
+        private List<string> getSSHDetails()
+        {
+            string conType = (connectType.SelectedItem as ComboBoxItem).Content.ToString();
+            List<string> sshDetails = new List<string>();
+            sshDetails.Add(ipAdress.Text);
+            sshDetails.Add(username.Text);
+            sshDetails.Add(conType);
+            sshDetails.Add(details.Text);
+            return sshDetails;
+        }
+        private void upload_Click(object sender, RoutedEventArgs e)
+        {
+            System.Threading.Thread sshGen = new System.Threading.Thread(sshGeneration);
+            previewButton.Visibility = Visibility.Collapsed;
+            uploadButton.Visibility = Visibility.Collapsed;
+            loadText.Visibility = Visibility.Visible;
+            checkCDN.Visibility = Visibility.Collapsed;
+            upload = true;
+            sshGen.Start();
         }
     }
 
