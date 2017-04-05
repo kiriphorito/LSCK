@@ -13,6 +13,7 @@ namespace LSCK
     using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
+    using static LSCK.Bridge;
 
     /// <summary>
     /// Interaction logic for StructureControl.
@@ -20,7 +21,6 @@ namespace LSCK
     public partial class StructureControl : UserControl
     {
         public ObservableCollection<BoolStringClass> TheList { get; set; }
-        FJController fjController;
         string sectionName;
         string currentComment=null;
         int currentSnippetIndex=0;
@@ -30,7 +30,6 @@ namespace LSCK
         public StructureControl()
         {
             this.InitializeComponent();
-            fjController = FJController.GetInstance;
         }
 
         public class BoolStringClass
