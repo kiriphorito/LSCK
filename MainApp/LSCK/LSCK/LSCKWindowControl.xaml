@@ -116,10 +116,10 @@
                     <ListBox  x:Name="listPages" Background="#D3D8E5" BorderBrush="#FF62A7CF" Height="93" Margin="10,0"/>
                     <StackPanel Orientation="Horizontal" Margin="0,5
                                 ,0,0" HorizontalAlignment="Center" >
-                        <Button x:Name="createPage" Click="createPage_Click" Content="Add" Height="24" Width="85" Background="#314765" BorderBrush="#FF32911D" Margin="0,0,5,0" BorderThickness="0"/>
-                        <Button x:Name="deletePage" Click="deletePage_Click" Content="Delete" Height="24" Width="85" Background="#314765" BorderBrush="#FF32911D" BorderThickness="0"/>
+                        <Button x:Name="createPage" Click="createPage_Click" Content="Add" Height="24" Width="85" Background="#314765" BorderBrush="{x:Null}" Margin="0,0,5,0" BorderThickness="0" Foreground="#FFFFFBFB"/>
+                        <Button x:Name="deletePage" Click="deletePage_Click" Content="Delete" Height="24" Width="85" Background="#314765" BorderBrush="{x:Null}" BorderThickness="0" Foreground="#FFFFFBFB"/>
                     </StackPanel>
-                    <Button x:Name="openStructure" Click="openStructure_Click" Content="Structure" Height="24" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="10,5,10,0" BorderThickness="0"/>
+                    <Button x:Name="openStructure" Click="openStructure_Click" Content="Structure" Height="24" Background="#FF314765" BorderBrush="{x:Null}" Margin="10,5,10,0" BorderThickness="0" Foreground="White"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Customize" BorderBrush="#FF19461D">
@@ -129,7 +129,7 @@
                             <ComboBoxItem Content="General"/>
                             <ComboBoxItem Content="Nav Bar"/>
                         </ComboBox>
-                        <Button x:Name="saveCSS"  Content="Save" Height="20.8" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="10,0,0,0" RenderTransformOrigin="1.195,-0.656" Click="saveCSS_Click" BorderThickness="0"/>
+                        <Button x:Name="saveCSS"  Content="Save" Height="20.8" Width="85" Background="#FF314765" BorderBrush="{x:Null}" Margin="10,0,0,0" RenderTransformOrigin="1.195,-0.656" Click="saveCSS_Click" BorderThickness="0" Foreground="White"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" x:Name="customGeneral">
                         <TextBlock HorizontalAlignment="Center">Website Colors</TextBlock>
@@ -272,12 +272,12 @@
                         <TextBlock x:Name="detailType" Margin="0,10,0,5" HorizontalAlignment="Center">PEM Directory</TextBlock>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <TextBox MaxLines="1"  x:Name="details" Height="23" TextWrapping="Wrap" TextAlignment="Center" Width="200" HorizontalAlignment="Center"/>
-                            <Button Click="browsePEM_Click" x:Name="browsePEM"  Height="23" Width="52" HorizontalAlignment="Center" Margin="5,0" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="0">Browse</Button>
+                            <Button Click="browsePEM_Click" x:Name="browsePEM"  Height="23" Width="52" HorizontalAlignment="Center" Margin="5,0" Background="#FF314765" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">Browse</Button>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="29,0,23,0" >
-                        <Button Margin="0,10" Height="24" Width="76" x:Name="previewButton" Click="previewButton_Click" Background="#FF5AD8B6" BorderBrush="#FF32911D" Content="Preview" BorderThickness="0"/>
-                        <Button x:Name="uploadButton" Click="uploadButton_Click" Height="24" Width="76" Margin="20,5" Background="#FF5AD8B6" BorderBrush="#FF32911D" Content="Upload" BorderThickness="0"/>
+                        <Button Margin="0,10" Height="24" Width="76" x:Name="previewButton" Click="previewButton_Click" Background="#FF314765" BorderBrush="{x:Null}" Content="Preview" BorderThickness="0" Foreground="White"/>
+                        <Button x:Name="uploadButton" Click="uploadButton_Click" Height="24" Width="76" Margin="20,5" Background="#FF314765" BorderBrush="{x:Null}" Content="Upload" BorderThickness="0" Foreground="White"/>
                         <TextBlock Margin="0,5,0,0"  x:Name="loadText"  Visibility="Collapsed"><Run Text="Creating website ..."/></TextBlock>
                         <CheckBox x:Name="checkCDN" Content="CDN" Height="15" Width="48" IsChecked="True" Margin="0,0,0,0"/>
                     </StackPanel>
