@@ -92,6 +92,7 @@ namespace LSCK
           string code = selection.Text;
           string language = getConvertedLang();
           fjController.InsertSnippet(comboSectionsCode.SelectedValue.ToString(),language,comment,code);
+          System.Windows.MessageBox.Show("Snippet added successfully");
         }
 
         private string getConvertedLang()
@@ -194,6 +195,7 @@ namespace LSCK
                         sizeComment.Text = cssSettings[13];
                         ipAddress.Text = fjController.GetDeployIP();
                         username.Text = fjController.GetDeployUsername();
+                        comboSectionsCode.SelectedIndex = comboSectionsCode.Items.Count - 1;
                     }
                     else
                     {
@@ -265,7 +267,6 @@ namespace LSCK
         {
             ListBoxItem selectedItem = comboTheme.SelectedItem as ListBoxItem;
             string themeName = selectedItem.Content.ToString();
-            System.Windows.MessageBox.Show(themeName.ToLower().Replace(' ', '_'));
             fjController.SetAceTheme(themeName.ToLower().Replace(' ', '_'));
         }
 
