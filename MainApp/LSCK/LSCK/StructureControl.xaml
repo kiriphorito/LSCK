@@ -11,7 +11,7 @@
              Loaded="StructureWindow_Loaded">
     <Grid>
         <StackPanel Orientation="Vertical" Panel.ZIndex="6" HorizontalAlignment="Center" Margin="10,47,469,-47" Width="125">
-            <TextBlock HorizontalAlignment="Center">Page:</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5">Page</TextBlock>
             <ComboBox x:Name="comboPages"  SelectionChanged="comboPages_SelectionChanged" Width="120"/>
         </StackPanel>
         <StackPanel Orientation="Vertical">
@@ -24,7 +24,7 @@
                                     <Button x:Name="removeSectionButton" Click="removeSectionButton_Click" HorizontalAlignment="Center" Width="60" Margin="0,60,0,0" Background="#FF314765" BorderBrush="{x:Null}" Foreground="White">Delete</Button>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="8,5,-35,0">
-                                    <TextBlock HorizontalAlignment="Center">Unset Sections:<Run/></TextBlock>
+                                    <TextBlock HorizontalAlignment="Center">Unset Sections<Run/></TextBlock>
                                     <ListBox x:Name="listFreeSections" Width="200" Height="198" Margin="0,5,0,0" ItemsSource="{Binding TheList}" Background="#FFD3D8E5" >
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
@@ -66,8 +66,8 @@
                                     </Button>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="-35,5,0,0">
-                                    <TextBlock HorizontalAlignment="Center">Page Sections::</TextBlock>
-                                    <ListBox  x:Name="listSections" BorderBrush="#FF62A7CF" Width="200" Height="198" Margin="0,5,0,0" Background="#FFD3D8E5">
+                                    <TextBlock HorizontalAlignment="Center">Page Sections</TextBlock>
+                                    <ListBox  x:Name="listSections" BorderBrush="#FFABADB3" Width="200" Height="198" Margin="0,5,0,0" Background="#FFD3D8E5" BorderThickness="1">
                                     </ListBox>
                                 </StackPanel>
                             </StackPanel>
@@ -76,20 +76,19 @@
                     <TabItem Header="Snippets" Height="22" VerticalAlignment="Bottom">
                         <Grid Background="White">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,0,0,0">
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,60,50,0">
-                                    <TextBlock HorizontalAlignment="Center" Text="Section:"/>
-                                    <ComboBox x:Name="comboSections" SelectionChanged="comboSections_SelectionChanged" Width="120" Margin="0,10,0,0"/>
-                                    <Button x:Name="modifyCommentButton" Click="modifyCommentButton_Click"  Width="60" Margin="0,50,0,0" BorderBrush="{x:Null}" Foreground="White" Background="#FF314765" >Save</Button>
-                                    <Button x:Name="deleteSnippetButton" Click="deleteSnippetButton_Click"  Width="60" Margin="0,15,0,0" BorderBrush="{x:Null}" Foreground="White" Background="#FF314765">Delete</Button>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="1,60,50,0">
+                                    <TextBlock HorizontalAlignment="Center" Text="Section" Margin="0,5,0,0"/>
+                                    <ComboBox x:Name="comboSections" SelectionChanged="comboSections_SelectionChanged" Width="120" Margin="0,5,0,0"/>
+                                    <Button x:Name="modifyCommentButton" Click="modifyCommentButton_Click"  Width="60" Margin="0,50,0,0" BorderBrush="{x:Null}" Foreground="White" Background="#FF314765" Content="Save" />
+                                    <Button x:Name="deleteSnippetButton" Click="deleteSnippetButton_Click"  Width="60" Margin="0,15,0,0" BorderBrush="{x:Null}" Foreground="White" Background="#FF314765" Content="Delete"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="-30,5,0,0">
-                                    <TextBlock HorizontalAlignment="Center" Text="Snippets/Files:"/>
-                                    <ListBox x:Name="listSnippets" SelectionChanged="listSnippets_SelectionChanged" Width="200" Height="198" Margin="0,5,0,0" Background="#FFD3D8E5">
-                                    </ListBox>
+                                    <TextBlock HorizontalAlignment="Center" Text="Snippets/Files"/>
+                                    <ListBox x:Name="listSnippets" SelectionChanged="listSnippets_SelectionChanged" Width="200" Height="198" Margin="0,5,0,0" Background="#FFD3D8E5"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
                                     <StackPanel Orientation="Vertical" Margin="4,41,10,0" HorizontalAlignment="Center">
-                                        <Button Click="upArrowSnippet_Click" Width="21" Margin="0,15">
+                                        <Button Click="upArrowSnippet_Click" Width="21" Margin="-1,15,0,15">
                                             <Button.Template>
                                                 <ControlTemplate>
                                                     <Image Source="Resources/arrowUp.png"/>
@@ -106,10 +105,10 @@
                                     </StackPanel>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="-5,10,0,0">
-                                    <TextBlock HorizontalAlignment="Center" Text="Comment:"/>
-                                    <TextBox x:Name="commentBox" Height="60" Width="200" TextChanged="commentBox_TextChanged" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap" Background="#FFD3D8E5" ></TextBox>
-                                    <TextBlock HorizontalAlignment="Center" Text="Code:"/>
-                                    <TextBox x:Name="codeBox" IsReadOnly="True" Height="121" Width="200" Background="#FFD3D8E5"></TextBox>
+                                    <TextBlock HorizontalAlignment="Center" Text="Comment"/>
+                                    <TextBox x:Name="commentBox" Height="60" Width="200" TextChanged="commentBox_TextChanged" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap" Background="#FFD3D8E5" />
+                                    <TextBlock HorizontalAlignment="Center" Text="Code"/>
+                                    <TextBox x:Name="codeBox" IsReadOnly="True" Height="121" Width="200" Background="#FFD3D8E5"/>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>

@@ -65,7 +65,7 @@
                     <TextBlock Margin="116,-8,112,27.6" HorizontalAlignment="Center">Sections</TextBlock>
                     <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="272" Margin="0,10,0,217.6" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" Height="20.8"/>
                     <TextBlock Margin="119,37,117,-17.4" HorizontalAlignment="Center">Files</TextBlock>
-                    <ListBox  x:Name="listFile" Margin="0,56,0,23.6"  Background="#D3D8E5" BorderBrush="#FF62A7CF"/>
+                    <ListBox  x:Name="listFile" Margin="0,56,0,23.6"  Background="#D3D8E5" BorderBrush="#FFABADB3"/>
                     <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="272" Margin="0,230,0,-4.4" Background="#314765" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand" Foreground="White" Height="23">
                     </Button>
                 </Grid>
@@ -113,7 +113,7 @@
                         <ComboBoxItem Content="Xcode"/>
                     </ComboBox>
                     <TextBlock Margin="132,4,128,4" HorizontalAlignment="Center" Text="Pages"/>
-                    <ListBox  x:Name="listPages" Background="#D3D8E5" BorderBrush="#FF62A7CF" Height="93" Margin="10,0"/>
+                    <ListBox  x:Name="listPages" Background="#D3D8E5" BorderBrush="#FFABADB3" Height="93" Margin="10,0"/>
                     <StackPanel Orientation="Horizontal" Margin="0,5
                                 ,0,0" HorizontalAlignment="Center" >
                         <Button x:Name="createPage" Click="createPage_Click" Content="Add" Height="24" Width="85" Background="#314765" BorderBrush="{x:Null}" Margin="0,0,5,0" BorderThickness="0" Foreground="#FFFFFBFB"/>
