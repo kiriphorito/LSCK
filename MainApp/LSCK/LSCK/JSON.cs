@@ -345,7 +345,7 @@ namespace LSCK
         //Deletes an entry
         public void DeleteSnippet(string sectionName, int index)
         {
-            int sectionIndex = getSectionIndex(sectionName);
+            int  sectionIndex = getSectionIndex(sectionName);
             JSONFile.sections[sectionIndex].snippets.RemoveAt(index - 1);
             for (int x = index - 1; x < JSONFile.sections[sectionIndex].snippets.Count; x++)
             {
