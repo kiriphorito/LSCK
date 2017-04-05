@@ -24,12 +24,14 @@ namespace LSCK
         string sectionName;
         string currentComment=null;
         int currentSnippetIndex=0;
+        FJController fjController;
         /// <summary>
         /// Initializes a new instance of the <see cref="StructureControl"/> class.
         /// </summary>
         public StructureControl()
         {
             this.InitializeComponent();
+            fjController = FJController.GetInstance;
         }
 
         public class BoolStringClass
@@ -246,6 +248,23 @@ namespace LSCK
             {
                 modifyCommentButton.Visibility = Visibility.Hidden;
             }
+        }
+
+        private void downArrow_Click(object sender, RoutedEventArgs e)
+        {
+            if (listSections.SelectedIndex - 1 >= 0)
+            {
+                string selectedSection = listSections.SelectedItem.ToString();
+                string prevSection = listSections.Items.GetItemAt(listSections.SelectedIndex - 1).ToString();
+                System.Windows.MessageBox.Show(selectedSection + "," + prevSection);
+                fjController.SwapSection(selectedSection, prevSection);
+                updateUI(1);
+            }
+        }
+
+        private void upArrow_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -1154,6 +1154,8 @@
     <EmbeddedResource Include="Resources\Assets\offlineFiles.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="Resources\arrowDown.png" />
+    <Content Include="Resources\arrowUp.png" />
     <Content Include="Resources\LSCKWindowCommand.png" />
     <Content Include="Resources\LSCKWindowPackage.ico" />
     <Resource Include="Resources\refresh.png" />

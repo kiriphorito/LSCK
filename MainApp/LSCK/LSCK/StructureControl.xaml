@@ -21,6 +21,22 @@
                                     <TextBlock HorizontalAlignment="Center">Page Sections:</TextBlock>
                                     <ListBox  x:Name="listSections" BorderBrush="#FF62A7CF" Width="200" Height="180" Margin="0,5,0,0">
                                     </ListBox>
+                                    <StackPanel Orientation="Horizontal" Margin="0,5" HorizontalAlignment="Center">
+                                        <Button Click="upArrow_Click">
+                                            <Button.Template>
+                                                <ControlTemplate>
+                                                    <Image Source="Resources/arrowUp.png" Height="19" Width="40"/>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                        <Button Content="D" Click="downArrow_Click">
+                                            <Button.Template>
+                                                <ControlTemplate>
+                                                    <Image Source="Resources/arrowDown.png" Height="19" Width="40"/>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </StackPanel>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <Button x:Name="deleteSectionButton" Click="deleteSectionButton_Click" Height="35" Width="100" HorizontalAlignment="Center" Margin="0,4,0,0" Content="Delete Section" Background="#FF2DF10E" BorderBrush="#FFF70404" Foreground="{x:Null}" Cursor="Hand">
