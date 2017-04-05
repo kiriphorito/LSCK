@@ -13,35 +13,38 @@
             <TabItem Header="Add Code" BorderBrush="#FF4386F4">
                 <StackPanel Orientation="Vertical" Margin="0,5,0,0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Margin="10,2.5,10,0"><Run Text="Method:"/></TextBlock>
+                        <TextBlock Margin="10,2.5,10,0"><Run Text="Method"/></TextBlock>
                         <ComboBox x:Name="addType" SelectionChanged="addType_SelectionChanged" HorizontalAlignment="Center" Width="73"  Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" SelectedIndex="0">
                             <ComboBoxItem Content="Manual"/>
                             <ComboBoxItem Content="Auto"/>
                         </ComboBox>
                     </StackPanel>
                     <StackPanel x:Name="manualAdd">
-                        <TextBlock  Margin="5,10" HorizontalAlignment="Center" Text="Section Title" Height="22" Width="86"/>
+                        <TextBlock  Margin="114,5,111,5" HorizontalAlignment="Center" Text="Section Title" Height="15" Width="67"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                            <ComboBox x:Name="comboSectionsCode" SelectionChanged="comboSectionsCode_SelectionChanged" HorizontalAlignment="Center" Width="143"  Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small"/>
-                            <Button x:Name="createSection" Click="createSection_Click" Content="Create" Height="24" Width="85" Background="#314765" BorderBrush="{x:Null}" Margin="20,0,0,0" Foreground="White"/>
+                            <ComboBox x:Name="comboSectionsCode" SelectionChanged="comboSectionsCode_SelectionChanged" HorizontalAlignment="Center" Width="167"  Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" Height="20.8"/>
+                            <Button x:Name="createSection" Click="createSection_Click" Content="Create" Height="20.8" Width="85" Background="#314765" BorderBrush="{x:Null}" Margin="20,0,0,0" Foreground="White" BorderThickness="0"/>
                         </StackPanel>
-                        <ComboBox x:Name="comboLang"  Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small" Margin="0,15">
-                            <ComboBoxItem>C#</ComboBoxItem>
-                            <ComboBoxItem IsSelected="True">Java</ComboBoxItem>
-                            <ComboBoxItem>C</ComboBoxItem>
-                            <ComboBoxItem>C++</ComboBoxItem>
-                            <ComboBoxItem>PHP</ComboBoxItem>
-                            <ComboBoxItem>Python</ComboBoxItem>
-                            <ComboBoxItem>Javascript</ComboBoxItem>
-                            <ComboBoxItem>Typescript</ComboBoxItem>
-                            <ComboBoxItem>HTML</ComboBoxItem>
-                            <ComboBoxItem>Go</ComboBoxItem>
-                            <ComboBoxItem>Less</ComboBoxItem>
-                            <ComboBoxItem>SQL</ComboBoxItem>
-                        </ComboBox>
-                        <TextBlock Margin="5" HorizontalAlignment="Center" FontFamily="Seogoe ui">Add Comment or Brief Description</TextBlock>
-                        <TextBox x:Name="textBox" Height="36" TextWrapping="Wrap" Text="Comment" Background="#D3D8E5"  FontFamily="Sitka Small" Foreground="#FF0C0F0D" Margin="10,0"/>
-                        <Button Click="addButton_Click" Content="Add" Height="23" x:Name="button1" Background="#314765" FontFamily="Consolas" FontSize="14" BorderThickness="1" Cursor="Hand" Width="60" Margin="116,5,116,0" Foreground="White" BorderBrush="{x:Null}"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                            <TextBlock Margin="10,2.5,10,0"><Run Text="Language"/></TextBlock>
+                            <ComboBox x:Name="comboLang"  Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small" Margin="0">
+                                <ComboBoxItem Content="C#"/>
+                                <ComboBoxItem IsSelected="True" Content="Java"/>
+                                <ComboBoxItem Content="C"/>
+                                <ComboBoxItem Content="C++"/>
+                                <ComboBoxItem Content="PHP"/>
+                                <ComboBoxItem Content="Python"/>
+                                <ComboBoxItem Content="Javascript"/>
+                                <ComboBoxItem Content="Typescript"/>
+                                <ComboBoxItem Content="HTML"/>
+                                <ComboBoxItem Content="Go"/>
+                                <ComboBoxItem Content="Less"/>
+                                <ComboBoxItem Content="SQL"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <TextBlock Margin="5,10,5,5" HorizontalAlignment="Center" FontFamily="Seogoe ui">Add Comment or Brief Description</TextBlock>
+                        <TextBox x:Name="textBox" Height="104" TextWrapping="Wrap" Text="Comment" Background="#D3D8E5" Foreground="#FF0C0F0D" Margin="10,0"/>
+                        <Button Click="addButton_Click" Content="Add" Height="23" x:Name="button1" Background="#314765" FontFamily="Consolas" FontSize="14" BorderThickness="0" Cursor="Hand" Margin="10,5,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                     </StackPanel>
                     <StackPanel x:Name="autoAdd" Visibility="Collapsed" >
                         <StackPanel Orientation="Horizontal" Margin="30">
@@ -62,8 +65,8 @@
                     <TextBlock Margin="116,-8,112,27.6" HorizontalAlignment="Center">Sections</TextBlock>
                     <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="272" Margin="0,10,0,217.6" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" Height="20.8"/>
                     <TextBlock Margin="119,37,117,-17.4" HorizontalAlignment="Center">Files</TextBlock>
-                    <ListBox  x:Name="listFile" Margin="0,56,0,28"  Background="#D3D8E5" BorderBrush="#FF62A7CF"/>
-                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="272" Margin="0,227,0,-1" Background="#314765" BorderBrush="{x:Null}" BorderThickness="1" Cursor="Hand" Foreground="White">
+                    <ListBox  x:Name="listFile" Margin="0,56,0,23.6"  Background="#D3D8E5" BorderBrush="#FF62A7CF"/>
+                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="272" Margin="0,230,0,-4.4" Background="#314765" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand" Foreground="White" Height="23">
                     </Button>
                 </Grid>
             </TabItem>
@@ -113,10 +116,10 @@
                     <ListBox  x:Name="listPages" Background="#D3D8E5" BorderBrush="#FF62A7CF" Height="93" Margin="10,0"/>
                     <StackPanel Orientation="Horizontal" Margin="0,5
                                 ,0,0" HorizontalAlignment="Center" >
-                        <Button x:Name="createPage" Click="createPage_Click" Content="Add" Height="24" Width="85" Background="#314765" BorderBrush="#FF32911D" Margin="0,0,5,0"/>
-                        <Button x:Name="deletePage" Click="deletePage_Click" Content="Delete" Height="24" Width="85" Background="#314765" BorderBrush="#FF32911D"/>
+                        <Button x:Name="createPage" Click="createPage_Click" Content="Add" Height="24" Width="85" Background="#314765" BorderBrush="#FF32911D" Margin="0,0,5,0" BorderThickness="0"/>
+                        <Button x:Name="deletePage" Click="deletePage_Click" Content="Delete" Height="24" Width="85" Background="#314765" BorderBrush="#FF32911D" BorderThickness="0"/>
                     </StackPanel>
-                    <Button x:Name="openStructure" Click="openStructure_Click" Content="Structure" Height="24" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="10,5,10,0"/>
+                    <Button x:Name="openStructure" Click="openStructure_Click" Content="Structure" Height="24" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="10,5,10,0" BorderThickness="0"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Customize" BorderBrush="#FF19461D">
@@ -126,7 +129,7 @@
                             <ComboBoxItem Content="General"/>
                             <ComboBoxItem Content="Nav Bar"/>
                         </ComboBox>
-                        <Button x:Name="saveCSS"  Content="Save" Height="20.8" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="10,0,0,0" RenderTransformOrigin="1.195,-0.656" Click="saveCSS_Click"/>
+                        <Button x:Name="saveCSS"  Content="Save" Height="20.8" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="10,0,0,0" RenderTransformOrigin="1.195,-0.656" Click="saveCSS_Click" BorderThickness="0"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" x:Name="customGeneral">
                         <TextBlock HorizontalAlignment="Center">Website Colors</TextBlock>
@@ -253,28 +256,30 @@
             </TabItem>
             <TabItem Header="Website" BorderBrush="#FF19461D">
                 <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,0">
-                        <ComboBox HorizontalAlignment="Center" SelectionChanged="connectType_SelectionChanged" x:Name="connectType" Width="143" Margin="0,20,0,10" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" SelectedIndex="0">
-                            <ComboBoxItem>PEM</ComboBoxItem>
-                            <ComboBoxItem>Password</ComboBoxItem>
-                        </ComboBox>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,44">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <TextBlock HorizontalAlignment="Center" Margin="0,2.5,10,0">Authentication Method</TextBlock>
+                            <ComboBox HorizontalAlignment="Center" SelectionChanged="connectType_SelectionChanged" x:Name="connectType" Width="116" Margin="0,0,0,2" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" SelectedIndex="0">
+                                <ComboBoxItem>PEM</ComboBoxItem>
+                                <ComboBoxItem>Password</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
 
-                        <TextBlock HorizontalAlignment="Center">IP Adress:</TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,5">IP Address</TextBlock>
                         <TextBox x:Name="ipAddress" Height="20" TextWrapping="Wrap" Text="" Width="200"/>
-                        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,5">Username:</TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,5">Username</TextBlock>
                         <TextBox x:Name="username" Height="20" TextWrapping="Wrap" Text="" Width="200" TextAlignment="Center"/>
-                        <TextBlock x:Name="detailType" Margin="0,10,0,5" HorizontalAlignment="Center">PEM Directory:</TextBlock>
+                        <TextBlock x:Name="detailType" Margin="0,10,0,5" HorizontalAlignment="Center">PEM Directory</TextBlock>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <TextBox MaxLines="1"  x:Name="details" Height="23" TextWrapping="Wrap" TextAlignment="Center" Width="200" HorizontalAlignment="Center"/>
-                            <Button Click="browsePEM_Click" x:Name="browsePEM"  Height="23" Width="52" HorizontalAlignment="Center" Margin="5,0" Background="#FF5AD8B6" BorderBrush="#FF32911D">Browse</Button>
+                            <Button Click="browsePEM_Click" x:Name="browsePEM"  Height="23" Width="52" HorizontalAlignment="Center" Margin="5,0" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="0">Browse</Button>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,-40,0">
-                        <TextBlock></TextBlock>
-                        <Button Margin="0,10" Height="28" Width="52" x:Name="previewButton" Click="previewButton_Click" Background="#FF5AD8B6" BorderBrush="#FF32911D">Preview</Button>
-                        <Button x:Name="uploadButton" Click="uploadButton_Click" Height="28" Width="52" Margin="20,5" Background="#FF5AD8B6" BorderBrush="#FF32911D" Content="Upload"/>
-                        <TextBlock Margin="0,5,0,0"  x:Name="loadText"  Visibility="Collapsed">Creating website ...</TextBlock>
-                        <CheckBox x:Name="checkCDN" Content="CDN" Height="24" Width="100" IsChecked="True" Margin="0,0,0,-6"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="29,0,23,0" >
+                        <Button Margin="0,10" Height="24" Width="76" x:Name="previewButton" Click="previewButton_Click" Background="#FF5AD8B6" BorderBrush="#FF32911D" Content="Preview" BorderThickness="0"/>
+                        <Button x:Name="uploadButton" Click="uploadButton_Click" Height="24" Width="76" Margin="20,5" Background="#FF5AD8B6" BorderBrush="#FF32911D" Content="Upload" BorderThickness="0"/>
+                        <TextBlock Margin="0,5,0,0"  x:Name="loadText"  Visibility="Collapsed"><Run Text="Creating website ..."/></TextBlock>
+                        <CheckBox x:Name="checkCDN" Content="CDN" Height="15" Width="48" IsChecked="True" Margin="0,0,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
