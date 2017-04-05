@@ -63,6 +63,7 @@
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
                                     </ListBox>
+                                    <Button x:Name="removeSectionButton" Click="removeSectionButton_Click"  Width="60" Margin="0,5,0,0">Delete</Button>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
@@ -79,7 +80,24 @@
                                     <TextBlock HorizontalAlignment="Center" Text="Snippets/Files:"/>
                                     <ListBox x:Name="listSnippets" SelectionChanged="listSnippets_SelectionChanged" Width="200" Height="180" Margin="0,5,0,0">
                                     </ListBox>
+                                    <StackPanel Orientation="Horizontal" Margin="0,5" HorizontalAlignment="Center">
+                                        <Button Click="upArrowSnippet_Click">
+                                            <Button.Template>
+                                                <ControlTemplate>
+                                                    <Image Source="Resources/arrowUp.png" Height="19" Width="40"/>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                        <Button Content="D" Click="downArrowSnippet_Click">
+                                            <Button.Template>
+                                                <ControlTemplate>
+                                                    <Image Source="Resources/arrowDown.png" Height="19" Width="40"/>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </StackPanel>
                                 </StackPanel>
+
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="50,5,0,0">
                                     <TextBlock HorizontalAlignment="Center" Text="Comment:"/>
                                     <TextBox x:Name="commentBox" Height="60" Width="200" TextChanged="commentBox_TextChanged" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap" ></TextBox>

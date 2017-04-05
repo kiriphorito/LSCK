@@ -82,7 +82,12 @@ namespace LSCK
                     if (comboPages.SelectedIndex != -1)
                     {
                         string page = comboPages.SelectedValue.ToString();
-                        List<string> sectionNames = fjController.GetPageSections(page);
+                        List<Section> sections = fjController.GetPage(page);
+                        List<string> sectionNames = new List<string>();
+                        foreach (Section section in sections)
+                        {
+                            sectionNames.Add(section.sectionName);
+                        }
                         listSections.Items.Clear();
                         listSnippets.Items.Clear();
                         comboSections.Items.Clear();
@@ -252,19 +257,68 @@ namespace LSCK
 
         private void downArrow_Click(object sender, RoutedEventArgs e)
         {
-            if (listSections.SelectedIndex - 1 >= 0)
+            if (listSections.SelectedIndex + 1  < listSections.Items.Count)
             {
                 string selectedSection = listSections.SelectedItem.ToString();
-                string prevSection = listSections.Items.GetItemAt(listSections.SelectedIndex - 1).ToString();
-                System.Windows.MessageBox.Show(selectedSection + "," + prevSection);
-                fjController.SwapSection(selectedSection, prevSection);
+                string nextSection = listSections.Items.GetItemAt(listSections.SelectedIndex + 1).ToString();
+                MessageBox.Show(selectedSection + "," + nextSection);
+                fjController.SwapSection(selectedSection, nextSection);
                 updateUI(1);
             }
         }
 
         private void upArrow_Click(object sender, RoutedEventArgs e)
         {
+            if (listSections.SelectedIndex -1  >= 0)
+            {
+                string selectedSection = listSections.SelectedItem.ToString();
+                string prevSection = listSections.Items.GetItemAt(listSections.SelectedIndex - 1).ToString();
+                MessageBox.Show(selectedSection + "," + prevSection);
+                fjController.SwapSection(selectedSection, prevSection);
+                updateUI(1);
+            }
+        }
 
+        private void downArrowSnippet_Click(object sender, RoutedEventArgs e)
+        {
+            if (listSnippets.SelectedIndex + 1 < listSnippets.Items.Count)
+            {
+                int selectedSnippet = listSnippets.SelectedIndex+1;
+                int nextSnippet = listSnippets.SelectedIndex + 2;
+                MessageBox.Show(selectedSnippet + "," + nextSnippet);
+                fjController.SwapSnippet(selectedSnippet, nextSnippet,comboSections.SelectedItem.ToString());
+                updateUI(1);
+            }
+        }
+
+        private void upArrowSnippet_Click(object sender, RoutedEventArgs e)
+        {
+            if (listSnippets.SelectedIndex -1 >= 0)
+            {
+                int selectedSnippet = listSnippets.SelectedIndex + 1;
+                int prevSnippet = listSnippets.SelectedIndex;
+                MessageBox.Show(selectedSnippet + "," + prevSnippet);
+                fjController.SwapSnippet(prevSnippet, selectedSnippet, comboSections.SelectedItem.ToString());
+                updateUI(1);
+            }
+        }
+
+        private void removeSectionButton_Click(object sender, RoutedEventArgs e)
+        {
+            int x = 0;
+            foreach (var p in TheList.Where(p => p.check == true))
+            {
+                fjController.DeleteSection(p.name);
+                x++;
+            }
+            for (int i = 0; i < TheList.Count; i++)
+            {
+                if ((TheList[i].check))
+                {
+                    TheList.RemoveAt(i);
+                }
+            }
+            updateUI(1);
         }
     }
 }
