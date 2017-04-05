@@ -75,6 +75,21 @@ namespace LSCK
             return json.GetCSS();
         }
 
+        public string GetDeployIP()
+        {
+            return json.GetDeployIP();
+        }
+
+        public string GetDeployUsername()
+        {
+            return json.GetDeployUsername();
+        }
+
+        public void SetDeploy(string ip, string username)
+        {
+            json.SetDeploy(ip, username);
+        }
+
         public void SetCSSSettings(List<string> css)
         {
             json.SetCSS(css);

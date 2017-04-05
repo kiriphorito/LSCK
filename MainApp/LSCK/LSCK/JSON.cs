@@ -66,6 +66,8 @@ namespace LSCK
                 DTE2 dte = (DTE2)Marshal.GetActiveObject("VisualStudio.DTE");
                 JSONFile.title = Path.GetFileName(Path.GetFileNameWithoutExtension(dte.Solution.FullName));
                 JSONFile.ace_theme = "monokai";
+                JSONFile.deployIP = "";
+                JSONFile.deployUsername = "";
                 JSONFile.CSSNavBgC = "Black";
                 JSONFile.CSSNavTitleC = "White";
                 JSONFile.CSSNavTitleHoverC = "Aquamarine";
@@ -147,6 +149,22 @@ namespace LSCK
             CSSSettings.Add(JSONFile.CSSSectionTitleFS);
             CSSSettings.Add(JSONFile.CSSCommentFS);
             return CSSSettings;
+        }
+
+        public void SetDeploy(string ip, string username)
+        {
+            JSONFile.deployIP = ip;
+            JSONFile.deployUsername = username;
+        }
+
+        public string GetDeployIP()
+        {
+            return JSONFile.deployIP;
+        }
+
+        public string GetDeployUsername()
+        {
+            return JSONFile.deployUsername;
         }
 
         public void UpdatePageName(string oldName, string newName)
@@ -264,6 +282,7 @@ namespace LSCK
             string tempPage = JSONFile.sections[firstElementIndex].page;
             JSONFile.sections[firstElementIndex].position = JSONFile.sections[secondElementIndex].position;
             JSONFile.sections[firstElementIndex].page = JSONFile.sections[secondElementIndex].page;
+            JSONFile.sections[secondElementIndex].position = tempPosition;
             JSONFile.sections[secondElementIndex].page = tempPage;
             WriteJSON();
         }
