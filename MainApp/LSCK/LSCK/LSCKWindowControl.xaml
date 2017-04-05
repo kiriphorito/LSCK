@@ -244,9 +244,9 @@
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="1*" />
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Margin="0,6,0,5.5" Grid.RowSpan="2"><Run Text="Color:"/></TextBlock>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,31.865,0,-1" Grid.RowSpan="2"><Run Text="Border:"/></TextBlock>
-                            <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,11,0,17" Grid.RowSpan="2"><Run Text="Selection Color:"/></TextBlock>
+                            <TextBlock Grid.Row="0" Margin="0,6,0,5.5" Grid.RowSpan="2"><Run Text="Color"/></TextBlock>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,31.865,0,-1" Grid.RowSpan="2"><Run Text="Border"/></TextBlock>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,11,0,17" Grid.RowSpan="2"><Run Text="Selection Color"/></TextBlock>
                             <xctk:ColorPicker SelectedColor="Black" ColorMode="ColorPalette" x:Name="ClrPcker_Background" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Height="25" Width="40" Grid.Column="1" Grid.Row="0" Margin="10,0,-29,0"/>
                             <xctk:ColorPicker SelectedColor="Bisque" ColorMode="ColorPalette" x:Name="ClrPcker_SelBackground" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Height="25" Width="40" Grid.Column="1"  Grid.Row="1" Margin="24,5,33,20" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
                             <xctk:ColorPicker SelectedColor="Gray" ColorMode="ColorPalette" x:Name="ClrPcker_Border" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Height="25" Width="40" Grid.Column="1" Grid.Row="2" Margin="24,20.5,33,20" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
