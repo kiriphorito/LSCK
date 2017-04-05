@@ -63,8 +63,8 @@
                     <TextBlock Margin="116,-8,112,27.6" HorizontalAlignment="Center">Sections</TextBlock>
                     <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="272" Margin="0,10,0,217.6" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" Height="21.6"/>
                     <TextBlock Margin="119,37,117,-17.4" HorizontalAlignment="Center">Files</TextBlock>
-                    <ListBox  x:Name="listFile" Margin="0,56,0,21.6"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF"/>
-                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="272" Margin="0,233,0,-6.4" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
+                    <ListBox  x:Name="listFile" Margin="0,56,0,28"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF"/>
+                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="272" Margin="0,227,0,-1" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="0" Direction="0" Opacity="0"/>
                         </Button.Effect>
@@ -274,8 +274,8 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,-40,0">
                         <TextBlock></TextBlock>
-                        <Button Margin="0,10" Height="28" Width="52" x:Name="previewButton" Click="uploadButton_Click" Background="#FF5AD8B6" BorderBrush="#FF32911D">Preview</Button>
-                        <Button x:Name="uploadButton" Click="upload_Click" Height="28" Width="52" Margin="20,5" Background="#FF5AD8B6" BorderBrush="#FF32911D" Content="Upload"/>
+                        <Button Margin="0,10" Height="28" Width="52" x:Name="previewButton" Click="previewButton_Click" Background="#FF5AD8B6" BorderBrush="#FF32911D">Preview</Button>
+                        <Button x:Name="uploadButton" Click="uploadButton_Click" Height="28" Width="52" Margin="20,5" Background="#FF5AD8B6" BorderBrush="#FF32911D" Content="Upload"/>
                         <TextBlock Margin="0,5,0,0"  x:Name="loadText"  Visibility="Collapsed">Creating website ...</TextBlock>
                         <CheckBox x:Name="checkCDN" Content="CDN" Height="24" Width="100" IsChecked="True" Margin="0,0,0,-6"/>
                     </StackPanel>

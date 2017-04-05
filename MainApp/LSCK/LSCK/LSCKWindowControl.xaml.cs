@@ -272,8 +272,9 @@ namespace LSCK
                 Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
         }
 
-        private void uploadButton_Click(object sender, RoutedEventArgs e)
+        private void previewButton_Click(object sender, RoutedEventArgs e)
         {
+            fjController.SetCSSSettings(getCustomStrings());
             System.Threading.Thread webGen = new System.Threading.Thread(generateWebsite);
             uploadButton.Visibility = Visibility.Collapsed;
             loadText.Visibility = Visibility.Visible;
@@ -439,17 +440,6 @@ namespace LSCK
             }
         }
 
-        private void populateFonts()
-        {
-            foreach (FontFamily font in System.Drawing.FontFamily.Families)
-            {
-                fontSectionTitle.Items.Add(font.Name);
-                fontComment.Items.Add(font.Name);
-            }
-            fontSectionTitle.SelectedIndex = 0;
-            fontComment.SelectedIndex = 0;
-        }
-
         private void fontTitle_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var cvt = new FontConverter();
@@ -506,8 +496,9 @@ namespace LSCK
             sshDetails.Add(details.Text);
             return sshDetails;
         }
-        private void upload_Click(object sender, RoutedEventArgs e)
+        private void uploadButton_Click(object sender, RoutedEventArgs e)
         {
+            fjController.SetCSSSettings(getCustomStrings());
             System.Threading.Thread sshGen = new System.Threading.Thread(sshGeneration);
             previewButton.Visibility = Visibility.Collapsed;
             uploadButton.Visibility = Visibility.Collapsed;
