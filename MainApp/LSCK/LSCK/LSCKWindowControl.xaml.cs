@@ -501,7 +501,7 @@ namespace LSCK
         {
             string conType = (connectType.SelectedItem as ComboBoxItem).Content.ToString();
             List<string> sshDetails = new List<string>();
-            sshDetails.Add(ipAdress.Text);
+            sshDetails.Add(ipAddress.Text);
             sshDetails.Add(username.Text);
             sshDetails.Add(conType);
             sshDetails.Add(details.Text);
@@ -510,6 +510,7 @@ namespace LSCK
         private void uploadButton_Click(object sender, RoutedEventArgs e)
         {
             fjController.SetCSSSettings(getCustomStrings());
+            //fjController.SetDeploy(get);
             System.Threading.Thread sshGen = new System.Threading.Thread(sshGeneration);
             previewButton.Visibility = Visibility.Collapsed;
             uploadButton.Visibility = Visibility.Collapsed;
