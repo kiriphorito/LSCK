@@ -43,7 +43,7 @@
                             </ComboBox>
                         </StackPanel>
                         <TextBlock Margin="5,10,5,5" HorizontalAlignment="Center" FontFamily="Seogoe ui">Add Comment or Brief Description</TextBlock>
-                        <TextBox x:Name="textBox" Height="104" TextWrapping="Wrap" Text="Comment" Background="#D3D8E5" Foreground="#FF0C0F0D" Margin="10,0"/>
+                        <TextBox GotFocus="textBox_GotFocus" x:Name="textBox" Height="104" TextWrapping="Wrap" Text="Comment" Background="#D3D8E5" Foreground="#FF0C0F0D" Margin="10,0"/>
                         <Button Click="addButton_Click" Content="Add" Height="23" x:Name="button1" Background="#314765" FontFamily="Consolas" FontSize="14" BorderThickness="0" Cursor="Hand" Margin="10,5,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                     </StackPanel>
                     <StackPanel x:Name="autoAdd" Visibility="Collapsed" >

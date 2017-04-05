@@ -535,6 +535,14 @@ namespace LSCK
         {
             fjController.SetCSSSettings(getCustomStrings());
         }
+
+        private void textBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBox.Text == "Comment")
+            {
+                textBox.Text = "";
+            }
+        }
     }
 
 }
