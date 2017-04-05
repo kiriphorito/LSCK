@@ -10,60 +10,65 @@
              Name="StructureWindow" Width="606"
              Loaded="StructureWindow_Loaded">
     <Grid>
+        <StackPanel Orientation="Vertical" Panel.ZIndex="6" HorizontalAlignment="Center" Margin="10,47,469,-47" Width="125">
+            <TextBlock HorizontalAlignment="Center">Page:</TextBlock>
+            <ComboBox x:Name="comboPages"  SelectionChanged="comboPages_SelectionChanged" Width="120"/>
+        </StackPanel>
         <StackPanel Orientation="Vertical">
-            <ComboBox x:Name="comboPages" SelectionChanged="comboPages_SelectionChanged" Width="120" Margin="0,10,0,0"/>
             <Grid Height="266">
                 <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="266" VerticalAlignment="Top" Width="600">
                     <TabItem Header="Sections">
                         <Grid Background="#FFE5E5E5">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <StackPanel Orientation="Vertical" Margin="30,5,0,0">
-                                    <TextBlock HorizontalAlignment="Center">Page Sections:</TextBlock>
-                                    <ListBox  x:Name="listSections" BorderBrush="#FF62A7CF" Width="200" Height="180" Margin="0,5,0,0">
-                                    </ListBox>
-                                    <StackPanel Orientation="Horizontal" Margin="0,5" HorizontalAlignment="Center">
-                                        <Button Click="upArrow_Click">
-                                            <Button.Template>
-                                                <ControlTemplate>
-                                                    <Image Source="Resources/arrowUp.png" Height="19" Width="40"/>
-                                                </ControlTemplate>
-                                            </Button.Template>
-                                        </Button>
-                                        <Button Content="D" Click="downArrow_Click">
-                                            <Button.Template>
-                                                <ControlTemplate>
-                                                    <Image Source="Resources/arrowDown.png" Height="19" Width="40"/>
-                                                </ControlTemplate>
-                                            </Button.Template>
-                                        </Button>
-                                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,-16,0" Width="610">
+                                <StackPanel Orientation="Vertical" Width="142">
+                                    <Button x:Name="removeSectionButton" Click="removeSectionButton_Click" HorizontalAlignment="Center" Width="60" Margin="0,60,0,0">Delete</Button>
                                 </StackPanel>
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                    <Button x:Name="deleteSectionButton" Click="deleteSectionButton_Click" Height="35" Width="100" HorizontalAlignment="Center" Margin="0,4,0,0" Content="Delete Section" Background="#FF2DF10E" BorderBrush="#FFF70404" Foreground="{x:Null}" Cursor="Hand">
-                                        <Button.Template>
-                                            <ControlTemplate>
-                                                <Image Source="Resources/arrow-18 copy.png"/>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
-                                    <Button x:Name="addSectionsButton" Click="addSectionsButton_Click" Height="35" Width="100" HorizontalAlignment="Center" Margin="0,15,0,0" Cursor="Hand" OpacityMask="#FFC72D2D">
-                                        <Button.Template>
-                                            <ControlTemplate>
-                                                <Image Source="Resources/arrow-18.png"/>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Margin="0,5,0,0">
-                                    <TextBlock HorizontalAlignment="Center">Unset sections:</TextBlock>
-                                    <ListBox x:Name="listFreeSections" Width="200" Height="180" Margin="0,5,0,0" ItemsSource="{Binding TheList}" >
+                                <StackPanel Orientation="Vertical" Margin="0,5,-35,0">
+                                    <TextBlock HorizontalAlignment="Center">Unset Sections:<Run/></TextBlock>
+                                    <ListBox x:Name="listFreeSections" Width="200" Height="198" Margin="0,5,0,0" ItemsSource="{Binding TheList}" >
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <CheckBox Content="{Binding name}" IsChecked="{Binding check}" Margin="5 5 0 0"/>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
                                     </ListBox>
-                                    <Button x:Name="removeSectionButton" Click="removeSectionButton_Click"  Width="60" Margin="0,5,0,0">Delete</Button>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Vertical" Margin="0,5,0,10" HorizontalAlignment="Center">
+                                        <Button Click="upArrow_Click" Width="21">
+                                            <Button.Template>
+                                                <ControlTemplate>
+                                                    <Image Source="Resources/arrowUp.png"/>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                        <Button Content="D" Click="downArrow_Click" Margin="15" Width="21">
+                                            <Button.Template>
+                                                <ControlTemplate>
+                                                    <Image Source="Resources/arrowDown.png"/>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </StackPanel>
+                                    <Button x:Name="deleteSectionButton" Click="deleteSectionButton_Click" Height="25" Width="100" HorizontalAlignment="Center" Margin="0,4,0,0" Content="Delete Section" Background="#FF2DF10E" BorderBrush="#FFF70404" Foreground="{x:Null}" Cursor="Hand">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Image Source="Resources/arrow-18.png"/>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <Button x:Name="addSectionsButton" Click="addSectionsButton_Click" Height="25" Width="100" HorizontalAlignment="Center" Margin="0,5,0,0" Cursor="Hand" OpacityMask="#FFC72D2D">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Image Source="Resources/arrow-18 copy.png"/>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="-35,5,0,0">
+                                    <TextBlock HorizontalAlignment="Center">Page Sections::</TextBlock>
+                                    <ListBox  x:Name="listSections" BorderBrush="#FF62A7CF" Width="200" Height="198" Margin="0,5,0,0">
+                                    </ListBox>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
@@ -71,7 +76,7 @@
                     <TabItem Header="Snippets" Height="22" VerticalAlignment="Bottom">
                         <Grid Background="#FFE5E5E5">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,0,0,0">
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,5,50,0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,60,50,0">
                                     <TextBlock HorizontalAlignment="Center" Text="Section:"/>
                                     <ComboBox x:Name="comboSections" SelectionChanged="comboSections_SelectionChanged" Width="120" Margin="0,10,0,0"/>
                                     <Button x:Name="modifyCommentButton" Click="modifyCommentButton_Click"  Width="60" Margin="0,50,0,0" >Save</Button>
@@ -79,31 +84,32 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="-30,5,0,0">
                                     <TextBlock HorizontalAlignment="Center" Text="Snippets/Files:"/>
-                                    <ListBox x:Name="listSnippets" SelectionChanged="listSnippets_SelectionChanged" Width="200" Height="180" Margin="0,5,0,0">
+                                    <ListBox x:Name="listSnippets" SelectionChanged="listSnippets_SelectionChanged" Width="200" Height="198" Margin="0,5,0,0">
                                     </ListBox>
-                                    <StackPanel Orientation="Horizontal" Margin="0,5" HorizontalAlignment="Center">
-                                        <Button Click="upArrowSnippet_Click">
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Vertical" Margin="4,41,10,0" HorizontalAlignment="Center">
+                                        <Button Click="upArrowSnippet_Click" Width="21" Margin="0,15">
                                             <Button.Template>
                                                 <ControlTemplate>
-                                                    <Image Source="Resources/arrowUp.png" Height="19" Width="40"/>
+                                                    <Image Source="Resources/arrowUp.png"/>
                                                 </ControlTemplate>
                                             </Button.Template>
                                         </Button>
-                                        <Button Content="D" Click="downArrowSnippet_Click">
+                                        <Button Content="D" Click="downArrowSnippet_Click" Width="21">
                                             <Button.Template>
                                                 <ControlTemplate>
-                                                    <Image Source="Resources/arrowDown.png" Height="19" Width="40"/>
+                                                    <Image Source="Resources/arrowDown.png"/>
                                                 </ControlTemplate>
                                             </Button.Template>
                                         </Button>
                                     </StackPanel>
                                 </StackPanel>
-
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="30,5,0,0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="-5,10,0,0">
                                     <TextBlock HorizontalAlignment="Center" Text="Comment:"/>
                                     <TextBox x:Name="commentBox" Height="60" Width="200" TextChanged="commentBox_TextChanged" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap" ></TextBox>
                                     <TextBlock HorizontalAlignment="Center" Text="Code:"/>
-                                    <TextBox x:Name="codeBox" IsReadOnly="True" Height="120" Width="200"></TextBox>
+                                    <TextBox x:Name="codeBox" IsReadOnly="True" Height="121" Width="200"></TextBox>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
