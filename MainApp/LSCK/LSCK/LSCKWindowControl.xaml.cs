@@ -510,7 +510,7 @@ namespace LSCK
         private void uploadButton_Click(object sender, RoutedEventArgs e)
         {
             fjController.SetCSSSettings(getCustomStrings());
-            //fjController.SetDeploy(get);
+            fjController.SetDeploy(getSSHDetails()[0], getSSHDetails()[1]);
             System.Threading.Thread sshGen = new System.Threading.Thread(sshGeneration);
             previewButton.Visibility = Visibility.Collapsed;
             uploadButton.Visibility = Visibility.Collapsed;

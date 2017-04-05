@@ -155,6 +155,7 @@ namespace LSCK
         {
             JSONFile.deployIP = ip;
             JSONFile.deployUsername = username;
+            WriteJSON();
         }
 
         public string GetDeployIP()
