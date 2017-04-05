@@ -10,7 +10,7 @@
              Width="{Binding SystemParameters.PrimaryScreenWidth}"
              Name="MyToolWindow">
     <Grid>
-        <StackPanel Orientation="Vertical" Height="700">
+        <StackPanel Orientation="Vertical" Height="700" Grid.RowSpan="2">
             <WebBrowser x:Name="Browser" Height="530"/>
         </StackPanel>
     </Grid>

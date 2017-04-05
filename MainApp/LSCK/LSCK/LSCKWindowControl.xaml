@@ -19,7 +19,7 @@
                             <ComboBoxItem Content="Auto"/>
                         </ComboBox>
                     </StackPanel>
-                    <StackPanel x:Name="manualAdd">
+                    <StackPanel x:Name="manualAdd" Visibility="Collapsed">
                         <TextBlock  Margin="114,5,111,5" HorizontalAlignment="Center" Text="Section Title" Height="15" Width="67"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                             <ComboBox x:Name="comboSectionsCode" SelectionChanged="comboSectionsCode_SelectionChanged" HorizontalAlignment="Center" Width="167"  Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" Height="20.8"/>
@@ -46,15 +46,12 @@
                         <TextBox GotFocus="textBox_GotFocus" x:Name="textBox" Height="104" TextWrapping="Wrap" Text="Comment" Background="#D3D8E5" Foreground="#FF0C0F0D" Margin="10,0"/>
                         <Button Click="addButton_Click" Content="Add" Height="23" x:Name="button1" Background="#314765" FontFamily="Consolas" FontSize="14" BorderThickness="0" Cursor="Hand" Margin="10,5,10,0" Foreground="White" BorderBrush="{x:Null}"/>
                     </StackPanel>
-                    <StackPanel x:Name="autoAdd" Visibility="Collapsed" >
+                    <StackPanel x:Name="autoAdd" Visibility="Visible" >
                         <StackPanel Orientation="Horizontal" Margin="30">
                             <TextBlock Margin="5,0,0,0">Key character sequence:</TextBlock>
-                            <TextBox x:Name="keySequence" MaxLength="6" Width="100" Margin="20,0,0,0" Text="??" TextAlignment="Center"/>
+                            <TextBox x:Name="keySequence" MaxLength="6" Width="77" Margin="20,0,0,0" Text="??" TextAlignment="Center"/>
                         </StackPanel>
-                        <Button Content="Run" x:Name="autoSearch" Click="autoSearch_Click" Width="100"  Background="#FF5AD8B6" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="#FF32911D" Cursor="Hand" Margin="0,5,0,0">
-                            <Button.Effect>
-                                <DropShadowEffect/>
-                            </Button.Effect>
+                        <Button Content="Run" x:Name="autoSearch" Click="autoSearch_Click" Width="100"  Background="#FF314765" FontFamily="Consolas" FontSize="14" BorderThickness="2" BorderBrush="{x:Null}" Cursor="Hand" Margin="0,5,0,0" Foreground="White">
                         </Button>
                     </StackPanel>
                 </StackPanel>
