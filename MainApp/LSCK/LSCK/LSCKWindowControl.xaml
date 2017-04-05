@@ -261,7 +261,7 @@
                         </ComboBox>
 
                         <TextBlock HorizontalAlignment="Center">IP Adress:</TextBlock>
-                        <TextBox x:Name="ipAdress" Height="20" TextWrapping="Wrap" Text="" Width="200"/>
+                        <TextBox x:Name="ipAddress" Height="20" TextWrapping="Wrap" Text="" Width="200"/>
                         <TextBlock HorizontalAlignment="Center" Margin="0,10,0,5">Username:</TextBlock>
                         <TextBox x:Name="username" Height="20" TextWrapping="Wrap" Text="" Width="200" TextAlignment="Center"/>
                         <TextBlock x:Name="detailType" Margin="0,10,0,5" HorizontalAlignment="Center">PEM Directory:</TextBlock>

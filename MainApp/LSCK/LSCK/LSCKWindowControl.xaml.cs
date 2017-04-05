@@ -192,6 +192,8 @@ namespace LSCK
                         fontComment.Text = cssSettings[11];
                         sizeSectionTitle.Text = cssSettings[12];
                         sizeComment.Text = cssSettings[13];
+                        ipAddress.Text = fjController.GetDeployIP();
+                        username.Text = fjController.GetDeployUsername();
                     }
                     else
                     {
