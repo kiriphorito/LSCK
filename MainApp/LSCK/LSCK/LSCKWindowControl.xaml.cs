@@ -26,12 +26,12 @@ namespace LSCK
     /// </summary>
     public partial class LSCKWindowControl : System.Windows.Controls.UserControl
     {
+        WebsiteGenerator wg;
+        bool upload = false;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LSCKWindowControl"/> class.
         /// </summary>
-        String currentSection;
-        WebsiteGenerator wg;
-        bool upload = false;
 
         public LSCKWindowControl()
         {
@@ -40,6 +40,10 @@ namespace LSCK
             solutionChangeThread.Start();
             this.InitializeComponent();
             updateUI(0);
+            if (comboSectionsFile.HasItems)
+                comboSectionsFile.SelectedIndex = 0;
+            if (comboSectionsCode.HasItems)
+                comboSectionsCode.SelectedIndex = 0;
         }
 
         private void resetControl() {
@@ -48,7 +52,12 @@ namespace LSCK
                 this.IsEnabled = true;
                 state = 0;
                 updateUI(0);
-            }else if (state == 2)
+                if (comboSectionsFile.HasItems)
+                    comboSectionsFile.SelectedIndex = 0;
+                if (comboSectionsCode.HasItems)
+                    comboSectionsCode.SelectedIndex = 0;
+            }
+            else if (state == 2)
             {
                 state = 0;
                 this.IsEnabled = false;

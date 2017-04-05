@@ -61,13 +61,10 @@
             <TabItem Header="Files" BorderBrush="#FF19461D" Height="22" VerticalAlignment="Top">
                 <Grid Margin="10">
                     <TextBlock Margin="116,-8,112,27.6" HorizontalAlignment="Center">Sections</TextBlock>
-                    <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="272" Margin="0,10,0,217.6" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" Height="21.6"/>
+                    <ComboBox x:Name="comboSectionsFile" SelectionChanged="comboSectionsFile_SelectionChanged" HorizontalAlignment="Left" Width="272" Margin="0,10,0,217.6" Foreground="#FF273380" BorderBrush="#FF0F7C45" FontFamily="Sitka Small" Height="20.8"/>
                     <TextBlock Margin="119,37,117,-17.4" HorizontalAlignment="Center">Files</TextBlock>
                     <ListBox  x:Name="listFile" Margin="0,56,0,28"  Background="#FFA9DFF0" BorderBrush="#FF62A7CF"/>
-                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="272" Margin="0,227,0,-1" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="2" Cursor="Hand">
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="0" Direction="0" Opacity="0"/>
-                        </Button.Effect>
+                    <Button Content="Add" x:Name="browseButton" Click="browseButton_Click" HorizontalAlignment="Right" Width="272" Margin="0,227,0,-1" Background="#FF5AD8B6" BorderBrush="#FF32911D" BorderThickness="1" Cursor="Hand">
                     </Button>
                 </Grid>
             </TabItem>
@@ -75,15 +72,9 @@
             <TabItem Header="Details" BorderBrush="#FF19461D">
                 <StackPanel Orientation="Vertical">
                     <TextBlock Margin="114,2" HorizontalAlignment="Center" Text="Project Title" Width="64"/>
-                    <TextBox x:Name="projectTitle" LostFocus="projectTitle_LostFocus" Margin="10,0" HorizontalAlignment="Center" Width="272" Height="21.6"/>
-                    <TextBlock Margin="102,10,112,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Pages"/>
-                    <ListBox  x:Name="listPages" Background="#FFA9DFF0" BorderBrush="#FF62A7CF" Height="51" Margin="10,0"/>
-                    <StackPanel Orientation="Horizontal" Margin="0,12,0,0" HorizontalAlignment="Center" >
-                        <Button x:Name="createPage" Click="createPage_Click" Content="Add" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="0,0,5,0"/>
-                        <Button x:Name="deletePage" Click="deletePage_Click" Content="Delete" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D"/>
-                    </StackPanel>
-                    <TextBlock Margin="30,10,0,10" HorizontalAlignment="Center" FontFamily="Courier New" FontWeight="Bold" Text="Ace theme:" Width="108"/>
-                    <ComboBox x:Name="comboTheme" Width="100" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small">
+                    <TextBox x:Name="projectTitle" LostFocus="projectTitle_LostFocus" Margin="10,0" HorizontalAlignment="Center" Width="272" Height="20.8"/>
+                    <TextBlock Margin="99,5,98,5" HorizontalAlignment="Center" FontFamily="Seoge UI" Text="Ace Editor Theme" Width="95"/>
+                    <ComboBox x:Name="comboTheme" Foreground="#FF273380" BorderBrush="#FF355AFF" FontFamily="Sitka Small" Margin="52,0" Height="20.8" Width="188">
                         <ComboBoxItem Content="Ambiance"/>
                         <ComboBoxItem IsSelected="True" Content="Chaos"/>
                         <ComboBoxItem Content="Chrome"/>
@@ -119,7 +110,14 @@
                         <ComboBoxItem Content="Vibrant Ink"/>
                         <ComboBoxItem Content="Xcode"/>
                     </ComboBox>
-                    <Button x:Name="openStructure" Click="openStructure_Click" Content="Structure" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="0,5,0,0"/>
+                    <TextBlock Margin="132,4,128,4" HorizontalAlignment="Center" Text="Pages"/>
+                    <ListBox  x:Name="listPages" Background="#FFA9DFF0" BorderBrush="#FF62A7CF" Height="93" Margin="10,0"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,5
+                                ,0,0" HorizontalAlignment="Center" >
+                        <Button x:Name="createPage" Click="createPage_Click" Content="Add" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="0,0,5,0"/>
+                        <Button x:Name="deletePage" Click="deletePage_Click" Content="Delete" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D"/>
+                    </StackPanel>
+                    <Button x:Name="openStructure" Click="openStructure_Click" Content="Structure" Height="24" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="10,5,10,0"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Customize" BorderBrush="#FF19461D">
