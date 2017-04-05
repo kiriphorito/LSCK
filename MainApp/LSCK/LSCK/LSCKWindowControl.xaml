@@ -107,7 +107,7 @@
                         <ComboBoxItem Content="Xcode"/>
                     </ComboBox>
                     <TextBlock Margin="132,4,128,4" HorizontalAlignment="Center" Text="Pages"/>
-                    <ListBox  x:Name="listPages" Background="#FFA9DFF0" BorderBrush="#FF62A7CF" Height="93" Margin="10,0"/>
+                    <ListBox  x:Name="listPages" Background="#D3D8E5" BorderBrush="#FF62A7CF" Height="93" Margin="10,0"/>
                     <StackPanel Orientation="Horizontal" Margin="0,5
                                 ,0,0" HorizontalAlignment="Center" >
                         <Button x:Name="createPage" Click="createPage_Click" Content="Add" Height="24" Width="85" Background="#FF5AD8B6" BorderBrush="#FF32911D" Margin="0,0,5,0"/>
