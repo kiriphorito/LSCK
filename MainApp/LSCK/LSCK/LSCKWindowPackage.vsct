@@ -46,21 +46,7 @@
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>LSCK - Main Window</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidLSCKWindowPackageCmdSet" id="cmdidStructureCommand" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
-        <Icon guid="guidImages2" id="bmpPic1" />
-        <Strings>
-          <ButtonText>LSCK - Structure</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidLSCKWindowPackageCmdSet" id="cmdidSitePreviewCommand" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
-        <Icon guid="guidImages4" id="bmpPic1" />
-        <Strings>
-          <ButtonText>LSCK - Site Preview</ButtonText>
+          <ButtonText>LSCK</ButtonText>
         </Strings>
       </Button>
     </Buttons>

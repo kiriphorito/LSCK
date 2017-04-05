@@ -36,6 +36,8 @@ namespace LSCK
         {
             public string title { get; set; }
             public string ace_theme { get; set; }
+            public string deployIP { get; set; }
+            public string deployUsername { get; set; }
             public string CSSNavBgC { get; set; }
             public string CSSNavTitleC { get; set; }
             public string CSSNavTitleHoverC { get; set; }
