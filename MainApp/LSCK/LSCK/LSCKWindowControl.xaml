@@ -271,7 +271,8 @@
                         <TextBox x:Name="username" Height="20" TextWrapping="Wrap" Text="" Width="200" TextAlignment="Center"/>
                         <TextBlock x:Name="detailType" Margin="0,10,0,5" HorizontalAlignment="Center">PEM Directory</TextBlock>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBox MaxLines="1"  x:Name="details" Height="23" TextWrapping="Wrap" TextAlignment="Center" Width="200" HorizontalAlignment="Center"/>
+                            <TextBox IsReadOnly="True" MaxLines="1"  x:Name="details" Height="23" TextWrapping="Wrap" TextAlignment="Center" Width="200" HorizontalAlignment="Center"/>
+                            <PasswordBox  x:Name="detailsPass" Height="23" Width="200" HorizontalAlignment="Center" Visibility="Collapsed"/>
                             <Button Click="browsePEM_Click" x:Name="browsePEM"  Height="23" Width="52" HorizontalAlignment="Center" Margin="5,0" Background="#FF314765" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">Browse</Button>
                         </StackPanel>
                     </StackPanel>

@@ -388,6 +388,8 @@ namespace LSCK
                     browsePEM.Visibility = Visibility.Visible;
                     browsePEM.Focusable = false;
                     detailType.Text = "PEM Directory:";
+                    detailsPass.Visibility = Visibility.Collapsed;
+                    details.Visibility = Visibility.Visible;
                 }
             }
             else
@@ -395,6 +397,8 @@ namespace LSCK
                 browsePEM.Visibility = Visibility.Collapsed;
                 browsePEM.Focusable = true;
                 detailType.Text = "Password:";
+                details.Visibility = Visibility.Collapsed;
+                detailsPass.Visibility = Visibility.Visible;
             }
         }
 
@@ -505,7 +509,13 @@ namespace LSCK
             sshDetails.Add(ipAddress.Text);
             sshDetails.Add(username.Text);
             sshDetails.Add(conType);
-            sshDetails.Add(details.Text);
+            if (details.Visibility == Visibility.Visible)
+            {
+                sshDetails.Add(details.Text);
+            }else
+            {
+                sshDetails.Add(detailsPass.Password);
+            }
             return sshDetails;
         }
         private void uploadButton_Click(object sender, RoutedEventArgs e)
