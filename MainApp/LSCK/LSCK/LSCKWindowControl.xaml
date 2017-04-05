@@ -147,7 +147,7 @@
                             <TextBlock Grid.Column="0" Height="16" Margin="1,37,80.2,1.4" Grid.ColumnSpan="2" Grid.RowSpan="2">Titles Color</TextBlock>
                             <TextBlock  Grid.Row="2" Grid.Column="0" Height="16" Margin="0,8.6,0.4,0.2">Comments Color</TextBlock>
                             <xctk:ColorPicker SelectedColor="White" Grid.Column="1" Grid.Row="0" ColorMode="ColorPalette" Name="ClrPcker_PageBg" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Width="40" Margin="22.6,0,2.2,4.8" Height="22.4"/>
-                            <xctk:ColorPicker SelectedColor="Black" Grid.Column="1" Name="ClrPcker_SectionTitle" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Width="40" Margin="30.6,0,9.2,23.2" Height="22.4" VerticalAlignment="Bottom" Grid.RowSpan="3"/>
+                            <xctk:ColorPicker SelectedColor="Black" Grid.Column="1" Name="ClrPcker_SectionTitle" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Width="40" Margin="31,0,10,23" Height="22" VerticalAlignment="Bottom" Grid.RowSpan="3"/>
                             <xctk:ColorPicker SelectedColor="Black" Grid.Column="1" Grid.Row="2" ColorMode="ColorPalette" Name="ClrPcker_Comment" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" Width="40" Margin="30.6,4.6,10.2,-3.8" Height="22.4"/>
                         </Grid>
                         <Grid Margin="0,15">
