@@ -335,7 +335,7 @@ namespace LSCK
         private void generateWebsite()
         {
             bool cdn = this.Dispatcher.Invoke(getCDNCheck, DispatcherPriority.Normal);
-            wg = new WebsiteGenerator(fjController,cdn, solutionDir, solutionDir + @"/generatedWebsite");
+            wg = new WebsiteGenerator(fjController, cdn, solutionDir, fileDir + @"/generatedWebsite");
             wg.GenerateWebsite();
             IVsUIShell vsUIShell = (IVsUIShell)Package.GetGlobalService(typeof(SVsUIShell));
             Guid guid = typeof(SitePreview).GUID;
@@ -365,13 +365,6 @@ namespace LSCK
                 changeLoadText();
                 upload = false;
             }
-        }
-
-        private void refreshButton_Click(object sender, RoutedEventArgs e)
-        {
-            WebsiteGenerator html = new WebsiteGenerator(fjController, false, solutionDir, solutionDir + @"/generatedWebsite");
-            html.GenerateWebsite();
-            System.Windows.MessageBox.Show("HTML Generated");
         }
 
         private void autoSearch_Click(object sender, RoutedEventArgs e)
@@ -474,11 +467,6 @@ namespace LSCK
             {
                 prevComm.FontFamily = new System.Windows.Media.FontFamily(text);
             }
-        }
-
-        private void setExistingCustomCSS()
-        {
-
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]

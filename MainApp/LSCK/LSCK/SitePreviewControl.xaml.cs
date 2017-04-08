@@ -63,9 +63,9 @@ namespace LSCK
             if (Bridge.fjController != null)
             {
                 string homepage = Bridge.fjController.GetPageTitles()[0];
-                if (File.Exists(Bridge.solutionDir + "/generatedWebsite/" + homepage + ".html"))
+                if (File.Exists(Bridge.fileDir + "/generatedWebsite/" + homepage + ".html"))
                 {
-                    Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", Bridge.solutionDir, homepage)));
+                    Browser.Navigate(new Uri(String.Format("file:///{0}/generatedWebsite/{1}.html", Bridge.fileDir, homepage)));
                 }
             }
         }
