@@ -24,14 +24,12 @@ namespace LSCK
         string sectionName;
         string currentComment=null;
         int currentSnippetIndex=0;
-        FJController fjController;
         /// <summary>
         /// Initializes a new instance of the <see cref="StructureControl"/> class.
         /// </summary>
         public StructureControl()
         {
             this.InitializeComponent();
-            fjController = FJController.GetInstance;
         }
 
         public class BoolStringClass

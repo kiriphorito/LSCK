@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace LSCK
 {
@@ -28,7 +29,7 @@ namespace LSCK
                 fjController = FJController.GetInstance;
             }
             catch (Exception ex){
-
+                MessageBox.Show("No solution open");
             }
         }
         public static void CheckDir()

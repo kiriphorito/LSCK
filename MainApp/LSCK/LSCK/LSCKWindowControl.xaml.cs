@@ -69,7 +69,7 @@ namespace LSCK
             while (true)
             {
                 System.Threading.Thread.Sleep(500);
-                //this.Dispatcher.Invoke(new Action(() => CheckDir()));
+                this.Dispatcher.Invoke(new Action(() => CheckDir()));
                 if (state != 0)
                 {
                     this.Dispatcher.Invoke(new Action(() => resetControl()));
