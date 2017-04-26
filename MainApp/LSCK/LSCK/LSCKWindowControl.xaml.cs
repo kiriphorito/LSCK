@@ -258,9 +258,15 @@ namespace LSCK
 
         private void deletePage_Click(object sender, RoutedEventArgs e)
         {
-            string pageName = listPages.SelectedValue.ToString();
-            fjController.DeletePage(pageName);
-            updateUI(0);
+            if (listPages.SelectedIndex != 0)
+            {
+                string pageName = listPages.SelectedValue.ToString();
+                fjController.DeletePage(pageName);
+                updateUI(0);
+            }else
+            {
+                System.Windows.MessageBox.Show("You cannot delete the index page");
+            }
         }
 
         private void comboTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -473,7 +479,7 @@ namespace LSCK
         private void sshGeneration()
         {
             generateWebsite();
-            SSH ssh = new SSH(solutionDir + "/generatedWebsite");
+            SSH ssh = new SSH(fileDir + "/generatedWebsite");
             List<string> sshDetails= this.Dispatcher.Invoke(getSSHDetails, DispatcherPriority.Normal);
             ssh.UploadWebsite(sshDetails[0], sshDetails[1],sshDetails[2], sshDetails[3]);
             this.Dispatcher.Invoke(resetWebView, DispatcherPriority.Normal);
