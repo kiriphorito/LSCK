@@ -152,23 +152,23 @@ namespace LSCK
                 case 0:
                     if (fjController != null)
                     {
-                            List<string> sectionNames = fjController.GetSectionNames();
-                            comboSectionsCode.Items.Clear();
-                            comboSectionsFile.Items.Clear();
-                            foreach (string section in sectionNames)
-                            {
-                                comboSectionsFile.Items.Add(section);
-                                comboSectionsCode.Items.Add(section);
-                            }
-                            projectTitle.Text = fjController.GetTitle();
-                            comboTheme.SelectedIndex = fjController.GetAceThemeIndex();
-                            comboTheme.SelectionChanged += comboTheme_SelectionChanged;
-                            List<string> pageNames = fjController.GetPageTitles();
-                            listPages.Items.Clear();
-                            foreach (string pageName in pageNames)
-                            {
-                                listPages.Items.Add(pageName);
-                            }
+                        List<string> sectionNames = fjController.GetSectionNames();
+                        comboSectionsCode.Items.Clear();
+                        comboSectionsFile.Items.Clear();
+                        foreach (string section in sectionNames)
+                        {
+                            comboSectionsFile.Items.Add(section);
+                            comboSectionsCode.Items.Add(section);
+                        }
+                        projectTitle.Text = fjController.GetTitle();
+                        comboTheme.SelectedIndex = fjController.GetAceThemeIndex();
+                        comboTheme.SelectionChanged += comboTheme_SelectionChanged;
+                        List<string> pageNames = fjController.GetPageTitles();
+                        listPages.Items.Clear();
+                        foreach (string pageName in pageNames)
+                        {
+                            listPages.Items.Add(pageName);
+                        }
                         List<string> cssSettings = fjController.GetCSSSettings();
                         List<System.Windows.Media.Color> colors = new List<System.Windows.Media.Color>();
                         for (int x = 0; x < 10; x++)

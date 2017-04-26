@@ -41,7 +41,7 @@ namespace LSCK
                     string newSolutionDir = Path.GetDirectoryName(dte2.Solution.FullName);
                     if (solutionDir != newSolutionDir)
                     {
-                        System.Windows.MessageBox.Show(newSolutionDir);
+                        //System.Windows.MessageBox.Show(newSolutionDir);
                         solutionDir = newSolutionDir;
                         fileDir = solutionDir + @"\LSCK Data";
                         fjController.Reset();

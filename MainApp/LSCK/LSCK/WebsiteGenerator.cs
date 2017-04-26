@@ -228,7 +228,7 @@ namespace LSCK
                                 htmlCL.Add("            <center><img src=\"userfiles/" + code[0] + "\" style=\"max-width:50em\"/></center>");
                                 break;
                             case ".pdf":
-                                htmlCL.Add("            <center><embed  src=\"userfiles/" + code[0] + "\" width=\"800px\" height=\"1000px\"/></center>");
+                                htmlCL.Add("            <center><iframe  src=\"userfiles/" + code[0] + "\" width=\"100%\" height=\"1000px\"/></iframe></center>");
                                 break;
                             default:
                                 htmlCL.Add("            <center><a href=\"userfiles/" + code[0] + "\"/>" + code[0] + "</a></center>");
