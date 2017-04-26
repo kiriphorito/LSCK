@@ -8,6 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="main.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
   <style>
 
     div.uclimage{
@@ -17,38 +19,228 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="projectindex.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Background<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="background.html">Introduction</a></li>
+                <li><a href="irequirements.html">Requirements and Use Cases</a></li>
+                <li><a href="frequirements.html">Completed Requirements</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="prototyping.html">Prototyping</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Architecture<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="achievements.html">Achievements and Implementations</a></li>
+                <li><a href="technologies.html">Technologies Used</a></li>
+                <li><a href="references.html">Reference Materials</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progress<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="progress.html">Overall</a></li>
+                <li><a href="devplan.html">Developement Plan</a></li>
+                <li><a href="futuredevelopments.html">Future Developements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Testing<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="testing.html">Testing Methods</a></li>
+                <li><a href="results.html">Testing</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav pull-right">
-        <li><a href="background.html">Background</a></li>
-        <li><a href="requirements.html">Requirements</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li class="active"><a href="prototyping.html">Prototyping</a></li>
-        <li><a href="testing.html">Testing</a></li>
-        <li><a href="progress.html">Progress</a></li>
-        <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
-      </ul>
-      <div>
-    </div>
-  </div>
-</nav>
+  </nav>
 <div class="content">
 <div class="container">
   <h1>Prototyping</h1><br>
-  <p>In this page we will talk about our client and the task that they have assigned us.</p>
-  <h3>Initial Requirements</h3>
-  <p>The clients for this project are the Visual Studio team from Microsoft and Dean Mohamedally. The Visual Studio Team at Microsoft produces a variety of software and services for developers around the world to use such as Visual Studio Team Services (VSTS), Visual Studio Code and Visual Studio IDE. We are developing an extension for Visual Studio IDE.</p>
+
+  <p class="message">In this page we will talk about our prototyping and our methods</p>
+
+  <h3>Platform</h3>
+  <p>The sole potential platform for the extension is Windows, as the extension is intended to work on Visual Studio only, and at the moment macOS is only compatible with VS Code. Initially, the application will work with as many languages possible (C#, Java, C…), as we understand all businesses utilize different language combinations for their projects.</p>
   <hr>
-  <h3>Gathering Requirements</h3>
-  <p>Imagine there is a new start-up that wishes to showcase their new project with a few snippets of code and paraphrasing other sections. They could have to take time out of their schedule to first trawl through their code base to find the snippets of code, add comments or a paraphrase and with this develop a website that include this along with images and videos. </p>
-  <p>This time could have been spent further developing the project and an extension could have generated the website. All you had to do was link the files and add tags to the code that you wanted to include as a snippet. This is what we want to investigate and achieve.</p>
+  <h3>Process</h3>
+  <p>Initially, we explored different extensions that would serve as an inspiration or provide us with ideas in the process of developing the extension. It was also important to understand how extensions are made, and we tried creating some basic ones from scratch first, to make sure we truly understood what we were doing. On top of this, we researched into how extensions are packaged into VSIX format and uploaded to the visual studio marketplace. The team found code-search extensions and even open source examples. The latter helped us understand how to create files. So far, we have developed an extension which can create a file, for either C# or Java, and save selected code by the user under different sections (also created by the user). This is an important milestone in our progress, as it is one of the 3 key functionalities we are willing to have in our final product. The design of the extension still looks very trivial, and we hope to work on that too in the next stages of the project:</p>
+  <br><center><image src="images/prototype1.png"></center><br>
+  <p>To develop this basic prototype the team also had to research how to read and write files properly, as the extension needs to read every file saved (for every language) to list the different sections created, and also has to write the code selected at each specific section, accompanied by a comment. We have also studied open source extensions which are helpful to scan the entire code in the project, and will be very useful for the next steps, as we wish to search an entire visual studio open project for specific sequences of characters.</p><br>
+  <div class="col-sm-12 videowrapper">
+    <center><iframe width="560" height="315" src="https://www.youtube.com/embed/lRQx_1VXe0s" frameborder="0" allowfullscreen></iframe></center>
+  </div>
+  <p>
+  <p>Below is the layout of the architecture of the extension: (Pre-JSON and FileHandler consideration)</p>
+  <div class="jumbotronThumbnail">
+    <center><img src="images/architecture.png"></img></center>
+  </div>
   <hr>
-  <h3>Negotiated Requirements</h3>
+  <h3>Experiments</h3>
+  <table class="table table-condensed">
+  <tbody>
+      <tr style="background-color:#ccc">
+         <td colspan="1" rowspan="1">
+            <p><span>Experiment No.</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+            <p><span>Experiment Title</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+            <p><span>Success or Failure</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+            <p><span>Done By</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>1</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Generating simple HTML files</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Success</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Sam</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>2</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Generating files from the extension for various languages</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Success</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Javier</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>3</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Adding BootStrap to HTML</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Success</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Sam</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>4</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Automating uploading of HTML to Azure</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Success</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Sam</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>5</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Parsing code for tags</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Success</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Javier</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>6</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Reading and writing files from a vs extension</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Success</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Javier</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>7</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Creating a very basic project-searching tool</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Failure</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Javier</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>8</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Making different layout extensions with xaml (tabs, checkbox lists etc.)</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Success</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Javier</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>9</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Detecting specific symbols from a read file, and filtering the subsequent section name or code comments.</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Success</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Javier</span></p>
+         </td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
 </div>
 <footer class="container-fluid text-center">
@@ -56,7 +248,7 @@
     <div class="uclimage">
   <a href="http://ucl.ac.uk"><img id="ucl" src="images/ucl-logo.png"></a>
 </div>
-  <p>Copyright © 2016 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
+  <p>Copyright © 2017 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
 </div>
 </footer>
 

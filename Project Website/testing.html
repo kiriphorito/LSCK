@@ -8,6 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="main.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
   <style>
 
     div.uclimage{
@@ -17,38 +19,89 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="projectindex.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Background<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="background.html">Introduction</a></li>
+                <li><a href="irequirements.html">Requirements and Use Cases</a></li>
+                <li><a href="frequirements.html">Completed Requirements</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="prototyping.html">Prototyping</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Architecture<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="achievements.html">Achievements and Implementations</a></li>
+                <li><a href="technologies.html">Technologies Used</a></li>
+                <li><a href="references.html">Reference Materials</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progress<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="progress.html">Overall</a></li>
+                <li><a href="devplan.html">Developement Plan</a></li>
+                <li><a href="futuredevelopments.html">Future Developements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Testing<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="testing.html">Testing Methods</a></li>
+                <li><a href="results.html">Testing</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav pull-right">
-        <li><a href="background.html">Background</a></li>
-        <li><a href="requirements.html">Requirements</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="prototyping.html">Prototyping</a></li>
-        <li class="active"><a href="testing.html">Testing</a></li>
-        <li><a href="progress.html">Progress</a></li>
-        <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
-      </ul>
-      <div>
-    </div>
-  </div>
-</nav>
-<div class="content">
+  </nav><div class="content">
 <div class="container">
   <h1>Testing</h1><br>
-  <p>In this page we will talk about our client and the task that they have assigned us.</p>
-  <h3>Initial Requirements</h3>
-  <p>The clients for this project are the Visual Studio team from Microsoft and Dean Mohamedally. The Visual Studio Team at Microsoft produces a variety of software and services for developers around the world to use such as Visual Studio Team Services (VSTS), Visual Studio Code and Visual Studio IDE. We are developing an extension for Visual Studio IDE.</p>
+  <p class="message">In the page we will be discussing about possible testing methods that we can use during our software development.</p>
+  <p>There are two main types of testing that we hope to do in this project. Unit testing and integration & functional testing with the possible help of automated testing.</p>
+  <h3>Unit Testing</h3>
+  <p>Unit testing is where you test the components of the code base to ensure that they are function correctly and to the way you expect. Doing this early on means that you can weed out bugs and potentials errors earlier and know that it isn’t an issue in high level testing such as integration and functional testing.</p>
+  <p>In terms of the extension, we have decided that it would be best to code it in C# rather than Visual Basics. As a result, the NUnit framework we feel is the most appropriate for unit testing in C# and it is actually a port from JUnit, the unit testing framework for Java. With the help of automated testing, this should be run every time changes are made to the code base.</p>
+  <center><img src="images/nunitlogo.gif"></center>
   <hr>
-  <h3>Gathering Requirements</h3>
-  <p>Imagine there is a new start-up that wishes to showcase their new project with a few snippets of code and paraphrasing other sections. They could have to take time out of their schedule to first trawl through their code base to find the snippets of code, add comments or a paraphrase and with this develop a website that include this along with images and videos. </p>
+  <h3>Integration and Functional Testing/User Acceptance Testing</h3>
+  <p>This type of testing is where you test the entire system as a whole to see if the product meets the requirements set by the client and ensure the product works as it should. Unfortunately, we haven’t yet been able to look into a way of doing this automatically. But manually, we can ask other members of the COMP204P and COMP205P who use Visual Studio in their development to load the plug-in and see if the extension works in the way that they expect.</p>
   <p>This time could have been spent further developing the project and an extension could have generated the website. All you had to do was link the files and add tags to the code that you wanted to include as a snippet. This is what we want to investigate and achieve.</p>
   <hr>
-  <h3>Negotiated Requirements</h3>
+  <h3>Cross Browser Testing (HTML Generation)</h3>
+  <p>For the HTML generation section of the extension, we need to test and see if the generated website works on a variety of different browser and check for unexpected behaviours and fix them.</p>
+  <p>We hope to test the generated websites on the following browsers:<p>
+  <ul>
+    <li>Chrome (PC & Android)</li>
+    <li>Firefox</li>
+    <li>Safari (Mac & iOS)</li>
+    <li>Opera</li>
+    <li>Microsoft Edge</li>
+  </ul>
+  <p>There are a number of tools available on the internet that has some form of automation when it comes to cross browser testing but they come at a price. We will look further into this to find a suitable framework for this.</p>
+  <center><img style="padding-right: 10px;" src="images/chrome.png"><img style="padding-left: 10px; padding-right: 10px;"src="images/firefox.jpg"><img style="padding-left: 10px; padding-right: 10px;"src="images/safari.png"><img style="padding-left: 10px; padding-right: 10px;"src="images/opera.jpg"><img style="padding-right: 10px;"src="images/edge.png"></center>
+  <hr>
+  <h3>Speed and UX Testing (HTML Generation)</h3>
+  <p>For speed an user interface testing, we can us Google’s Pagespeed Insights and as well as telling us speed and UX issues, it can also tell us how to improve it. We can also use Pingdom to tell us the exact loading times of the HTML pages. Of course, this is after hosting it on an Azure server.</p>
+  <center><img style="padding-right: 10px;" src="images/google-pagespeed-insights.png"><img style="padding-left: 10px;"src="images/pingdom.png"></center>
 </div>
 </div>
 <footer class="container-fluid text-center">
@@ -56,7 +109,7 @@
     <div class="uclimage">
   <a href="http://ucl.ac.uk"><img id="ucl" src="images/ucl-logo.png"></a>
 </div>
-  <p>Copyright © 2016 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
+  <p>Copyright © 2017 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
 </div>
 </footer>
 
