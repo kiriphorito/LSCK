@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LSCK</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="main.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+  <style>
+
+    div.uclimage{
+      padding-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="projectindex.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Background<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="background.html">Introduction</a></li>
+                <li><a href="irequirements.html">Requirements and Use Cases</a></li>
+                <li><a href="frequirements.html">Completed Requirements</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="prototyping.html">Prototyping</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Architecture<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="achievements.html">Achievements and Implementations</a></li>
+                <li><a href="technologies.html">Technologies Used</a></li>
+                <li><a href="references.html">Reference Materials</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progress<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="progress.html">Overall</a></li>
+                <li><a href="devplan.html">Developement Plan</a></li>
+                <li><a href="futuredevelopments.html">Future Developements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Testing<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="testing.html">Testing Methods</a></li>
+                <li><a href="results.html">Testing</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+<div class="content">
+<div class="container">
+  <h1>SDK &#38; Future Developments</h1><br>
+  <p class="message">In this page we will talk what potential the extension has for the future.</p>
+  <h3>SDK and Collabration</h3>
+  <p>Many parts of our project could be applied for many other different purposes external to the actual LSCK extension. For the purpose of the latter, we developed a singleton called FJController, which can be used to write and read different parts of a JSON files. With some slight modifications, FJController could be used to store and retrieve data from JSON files so that you can have a small database structure with each entry possible having a file associated with it, or with even less modifications, it could be used to generate even more complex websites. You could even redesign the entire front-end, the UI and just use FJController for the back end. The modularty of the MVC design pattern allows these developments to happen.</p>
+  <p>We also developed an extractor class which goes through an entire solution looking for specific character sequences. With some changes, the extractor class could be used for other purposes like a search tool, or to retrieve specific data from files based on what was found within them.</p>
+  <hr>
+  <h3>Potential Future Developments</h3>
+  <p>Even though we are very please with the extension. We could fulfill all the requirements set by the client in time. And with any extension, there are always more features you can add to allow the user to have a more pleasing and enjoyable experience.</p>
+  <p>Future development could include:</p>
+  <ul>
+    <li>Allowing the user to use other operating systems for hosting such as Windows</li>
+    <li>Deploying a virtual machine from within the extension using Subscription ID with Azure</li>
+    <li>Making generated websites with PHP so that they can be modified easily by experienced web developers</li>
+    <li>Maybe add some backend control for things like content databases or authentication</li>
+    <li>Maybe linking the extension to other microsoft services like VSTS</li>
+    <li>Allows more customisations to the user such as having a side-bar rather than just a menu bar</li>
+  </p>
+  </div>
+</div>
+<footer class="container-fluid text-center">
+  <div class="container">
+    <div class="uclimage">
+  <a href="http://ucl.ac.uk"><img id="ucl" src="images/ucl-logo.png"></a>
+</div>
+  <p>Copyright © 2017 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>

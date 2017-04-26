@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LSCK</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="main.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+  <style>
+
+    div.uclimage{
+      padding-bottom: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="projectindex.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Background<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="background.html">Introduction</a></li>
+                <li><a href="irequirements.html">Requirements and Use Cases</a></li>
+                <li><a href="frequirements.html">Completed Requirements</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="prototyping.html">Prototyping</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Architecture<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="achievements.html">Achievements and Implementations</a></li>
+                <li><a href="technologies.html">Technologies Used</a></li>
+                <li><a href="references.html">Reference Materials</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progress<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="progress.html">Overall</a></li>
+                <li><a href="devplan.html">Developement Plan</a></li>
+                <li><a href="futuredevelopments.html">Future Developements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Testing<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="testing.html">Testing Methods</a></li>
+                <li><a href="results.html">Testing</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+<div class="content">
+  <div class="container">
+    <h1>Achievements and Implementations</h1><br>
+    <p class="message">In this page we will discuss about achievements and implementations that haven't been mentioned in other parts of the project. For instance design patterns are in Architecture.</p>
+    <h3>Concurrency and Threading</h3>
+    <p>We had issues updating the UI when a new solution was opened, and when a solution was closed. On top of this, Visual Studio would crash and throw errors, so we decided to implement threading to solve the problema. This is used to constantly check for changes in the open solution and the generated website. Threads are created from the constructors of the tool windows and check every certain time for a particular change in a static class, which is used as a bridge connecting the different tool windows. This bridge class enables communication between the Visual Studio IDE and the actual UI, updating the latter as needed when changes are detected. Thanks to this, the extensión knows at all times when a new solution has been opened, or when the existing one is closed.</p>
+    <p>This however derived in another issue, which was the fact that the extensión would throw many errors if no solution was open. For this purpose, and knowing that LSCK is of no use when no solution is open, we decided to combine the detection of the closing solution to an event in the UI that would blank out the entire extensión, not allowing the user to perform any actions.</p>
+    <div class="jumbotronHalfThumbnail">
+      <center><img src="images/uiblock.png"></img></center>
+    </div>
+    <p>
+    <p>When uploading and previewing the website, Visual Studio hung and this also gave us some errors. Threading was also used to solve this problema, as a thread running in the background would check every certain amount of time if the website had been updated (again, through the bridge class).</p>
+    <h3>Extractor Class</h3>
+    <p>For dealing with the automatic extraction of code, we initially couldnt find a way of implementing something relatively simple. To solve this problema we built the extractor class, which runs through the entire solution opened by the user, looking for specific character sequences. It will add all snippets (commented in the way the LSCK extension requires) to the website the app automatically generates. This extractor class only supports the languages specified in the code, which in the case of the LSCK extension, are the main languages supported by Visual Studio.</p>
+    <div class="jumbotronHalfThumbnail">
+      <center><img src="images/autoaddwindow.png"></img></center>
+    </div>
+    <h3>UI Design</h3>
+    <p>We believe we have designed a UI that fits well with the Visual Studio default design. When developing the XAML, we didn’t want to make it look too fancy, as it would not sink in too well with the rest of the Visual Studio IDE. The fact that the extension is divided into tabs which have clear purposes for working towards the automatically generated website is good for usability, and helps the user understand the way the extension works and familiarize quickly. We also divided the UI into three key tool windows so the funtions were not overloaded into one single window. Hence, each tool window has a distinct and clear purpose, whereby the LSCK window is responsible for the overall addition of code and website customization, the Structure window enables the user to reorganize previously added snippets and sections, and modify comments, and the Preview tool window acts as a browser to help the user get a feeling of what the site will look like before actually uploading.</p>
+    </div>
+</div>
+<footer class="container-fluid text-center">
+  <div class="container">
+    <div class="uclimage">
+      <a href="http://ucl.ac.uk"><img id="ucl" src="images/ucl-logo.png"></a>
+    </div>
+    <p>Copyright © 2017 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
