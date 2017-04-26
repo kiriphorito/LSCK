@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LSCK</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="main.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+  <style>
+
+    div.uclimage{
+      padding-bottom: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="projectindex.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Background<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="background.html">Introduction</a></li>
+                <li><a href="irequirements.html">Requirements and Use Cases</a></li>
+                <li><a href="frequirements.html">Completed Requirements</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="prototyping.html">Prototyping</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Architecture<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="achievements.html">Achievements and Implementations</a></li>
+                <li><a href="technologies.html">Technologies Used</a></li>
+                <li><a href="references.html">Reference Materials</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progress<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="progress.html">Overall</a></li>
+                <li><a href="devplan.html">Developement Plan</a></li>
+                <li><a href="futuredevelopments.html">Future Developements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Testing<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="testing.html">Testing Methods</a></li>
+                <li><a href="results.html">Testing</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+<div class="content">
+  <div class="container">
+    <h1>Architecture</h1><br>
+    <p class="message">In this page we will discuss about the architecture of the LSCK extension and design patterns that have been implemented.</p>
+    <h3>High Level Diagram</h3>
+    <div class="jumbotronThumbnail">
+      <center><img src="images/blockdiagram.jpg"></img></center>
+    </div>
+    <center><p>Above is the diagram of the main parts of LSCK</p></center>
+    <h3>Model-View-Controller (MVC)</h3>
+    The main part of the extension, so storing and manipulating snippets, organising the strucutre of the website and portfolio details are part of the MVC design pattern or the Model-Viw-Controller design pattern. So the user interfaces are the views in the pattern so this includes the LSCKWindow, the StructureControl and the SitePreview. The view is what the user can see and change content with. The views then use the FJController to edit the content and details itself at a high level, such as adding a new snippet or file. FJ standing for Files and JSON and FJController being the controller in the pattern. FJController then uses the model classes, JSON and FileHandler, to change files with hold the codes and other files and the JSON data structure itself.</p>
+    <p>One of the main reasons for why we are using JSON and files for the model is that content and be saved externally from the extension. This allows the user to continue where they left off instead of having to start from scratch each time the open LSCK. Each solution that uses LSCK will have a folder call LSCK Data which will hold this information.</p>
+    <center><img src="images/lsckdata.png"></img>
+    <img src="images/lsckdatacontent.png"></img></center>
+    <p>
+    <p>Another reason is let's say if the user is working on multiple projects. All they need to do is load up the other solution and LSCK will load the data for the recently opened solution. So you can switch between portfolios.</p>
+    <p>Other classes in LSCK of significance are:</p>
+    <ul>
+      <li><strong>Extraction</strong> - which does deals with the tagging method by scanning through the code and finding the set comment sequence and then passing the snippets over to FJController to add. And removes the comments sequences after.</li>
+      <li><strong>WebsiteGenerator</strong> - which creates the portfolio by getting data from FJController</li>
+      <li><strong>SSH</strong> - which uploads and sets up the virtual machine for hosting the content</li>
+    </ul>
+    <h3>Singleton</h3>
+    <p>The singleton design pattern is also used in this project. So the singleton pattern’s purpose is to limit the amount of instantiations of a class to only one instance. And FJController is the class the follows this pattern. This is because we only want one instance of the FJController at any one time as having more than one means you could potentially have the database being written at the same time which can cause problems. Or each can have a different set of data and writing over each other. So we made a design decision to only have on Controller in the extension or the singleton pattern.
+    </p>
+    <h3>Balking</h3>
+    <p>In our project, we used the Balking design pattern to only allow certain methods to be run when some objects were under certain conditions. This was used, for example, in the Bridge class, for checking when a new solution is opened. This method would only run if the object reference to the current open directory is not null. On top of this, many UI methods only run under certain conditions to avoid bugs and crashes. </p>
+    <h3>Proxy</h3>
+    <p>We also make use of the Proxy design pattern, represented by the FJController class which is used to control the actions of other classes (FileHandler and JSON). Methods from these two previous classes are not called directly from the class, but are controlled by the FJController singleton and UI methods then call them from here.</p>
+    <h3>Observer</h3>
+    <p>On top of this, our design uses the observer design pattern, whereby many of our classes depend on the Bridge class. A state change in this class, will affect or control many different aspects of the other classes. For instance, if a FJController has been initialized from the Bridge class, then UI classes will behave in one way or another. Another example can be seen from modifying the “refresh” boolean value from the Bridge.</p>
+  </div>
+</div>
+<footer class="container-fluid text-center">
+  <div class="container">
+    <div class="uclimage">
+      <a href="http://ucl.ac.uk"><img id="ucl" src="images/ucl-logo.png"></a>
+    </div>
+    <p>Copyright © 2017 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

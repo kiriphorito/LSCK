@@ -8,6 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="main.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
   <style>
 
     div.uclimage{
@@ -17,32 +19,66 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="projectindex.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Background<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="background.html">Introduction</a></li>
+                <li><a href="irequirements.html">Requirements and Use Cases</a></li>
+                <li><a href="frequirements.html">Completed Requirements</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="prototyping.html">Prototyping</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Architecture<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="achievements.html">Achievements and Implementations</a></li>
+                <li><a href="technologies.html">Technologies Used</a></li>
+                <li><a href="references.html">Reference Materials</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progress<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="progress.html">Overall</a></li>
+                <li><a href="devplan.html">Developement Plan</a></li>
+                <li><a href="futuredevelopments.html">Future Developements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Testing<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="testing.html">Testing Methods</a></li>
+                <li><a href="results.html">Testing</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav pull-right">
-        <li><a href="background.html">Background</a></li>
-        <li><a href="requirements.html">Requirements</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="prototyping.html">Prototyping</a></li>
-        <li><a href="testing.html">Testing</a></li>
-        <li class="active"><a href="progress.html">Progress</a></li>
-        <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
-      </ul>
-      <div>
-    </div>
-  </div>
-</nav>
+  </nav>
 <div class="content">
 <div class="container">
   <h1>Progress</h1><br>
-  <p class="message">In this page we will talk what progress and issues that we have had over the last term with COMP204P along with bi-weekly reports and other documents. We will also talk about what we plan to do next term.</p>
+  <p class="message">In this page we will talk what progress and issues that we have had over the first and last terms with COMP204P and COMP205P along with bi-weekly reports and other documents.</p>
   <h3>Overall</h3>
-  <p>Over the past term, the aim of the team for this project was to: </p>
+  <p>In the first term of the project past term, the aim of the team for this project was to: </p>
   <ul>
     <li>Meet up with client</li>
     <li>Establish the requirements with the client</li>
@@ -51,27 +87,71 @@
     <li>Come up with a design and prototype for the extension and the website</li>
     <li>Create a website to promote the project and document it</li>
   </ul>
+  <p>In the second term, the aim was to:</p>
+  <ul>
+    <li>Start on the implementation by using the experiments and joining them into one app</li>
+    <li>Start manual testing for integrated testing</li>
+    <li>Have a final proof of concept</li>
+    <li>Finsh the project website will all content</li>
+  </ul>
+  <hr>
+  <h3>Imagine Cup 2017</h3>
+  <p>Since our client is Microsoft and our project was designed with Microsoft Visual Studio in mind. We decided that it would be good to submit our project is Microsoft's Imagine Cup 2017. Our team name is Javisam and our project title is Lightweight Start-up Company Kit (LSCK).</p>
+  <div class="jumbotronHalfThumbnail">
+    <center><img src="images/iclogo.png"></img></center>
+  </div>
   <hr>
   <h3>Set-Backs and Issues</h3>
   <p>As a team, we have had a number of set-backs which has led us to feel that we are behind the schedule. Firstly, we only have two members in this project rather than three and also we didn’t manage to meet our client until the 8th week of the project. It was only then we found that our initial assumptions from the brief given were wrong making our experiments, research and prototypes where completely incorrect.</p>
   <p>Given these setbacks, we as a team are still moving ahead to get this project completed.</p>
   <hr>
   <h3>Bi-Weekly Reports</h3>
-  <p>12th October 2016: <a href="progress/1biweeklyreport.pdf">Bi-Weekly Report 1</a></p>
-  <p>28th October 2016: <a href="progress/2biweeklyreport.pdf">Bi-Weekly Report 2</a></p>
-  <p>18th November 2016: <a href="progress/3biweeklyreport.pdf">Bi-Weekly Report 3</a></p>
-  <p>02th December 2016: <a href="progress/4biweeklyreport.pdf">Bi-Weekly Report 4</a></p>
-  <p>16th December 2016: Bi-Weekly Report 5</p>
+  <p>12th October 2016: <a href="download/1biweeklyreport.pdf">Bi-Weekly Report 1</a></p>
+  <p>28th October 2016: <a href="download/2biweeklyreport.pdf">Bi-Weekly Report 2</a></p>
+  <p>18th November 2016: <a href="download/3biweeklyreport.pdf">Bi-Weekly Report 3</a></p>
+  <p>02th December 2016: <a href="download/4biweeklyreport.pdf">Bi-Weekly Report 4</a></p>
+  <p>16th December 2016: <a href="download/5biweeklyreport.pdf">Bi-Weekly Report 5</a></p>
+  <p>27th January 2017: <a href="download/6biweeklyreport.pdf">Bi-Weekly Report 6</a></p>
+  <p>10th February 2017: <a href="download/7biweeklyreport.pdf">Bi-Weekly Report 7</a></p>
+  <p>27th February 2017: <a href="download/8biweeklyreport.pdf">Bi-Weekly Report 8</a></p>
+  <p>10th March 2017: <a href="download/9biweeklyreport.pdf">Bi-Weekly Report 9</a></p>
+  <p>24th March 2017: <a href="download/10biweeklyreport.pdf">Bi-Weekly Report 10</a></p>
   <hr>
-  <h3>Plans for Term 2</h3>
-</div>
+  <h3>Work Packages</h3>
+  <h4>Sam Pham</h4>
+  <h5><i>Team Leader, Client Liason and Chief Researcher</i></h5>
+  <p>Being team leader, Sam is in charge of looking over the entire project and keeping the project on schedule and helping whenever necessary. He also over looks over the progress and the work of members to make sure that the standard of the work is excellent. Being client liaison, Sam was also in charge of being in contact with the client has well as other people which have helped with this project such as Lee Stott and our teaching assistant. And lastly, being chief researcher, Sam has been looking up technologies and researching for the project or deciding what members should research. Work packages done by Sam include:</p>
+  <ul>
+    <li>Background and techinical research</li>
+    <li>Client liason</li>
+    <li>Bi-weekly reports and meeting minutes</li>
+    <li>Presenations</li>
+    <li>Posters</li>
+    <li>Backend development - JSON, FileHandler, FJController</li>
+    <li>Website generator design and implimentation</li>
+    <li>Uploading and hosing class</li>
+    <li>Project website design and content</li>
+  </ul>
+  <h4>Javier Pascual Mesa</h4>
+  <h5><i>Deputy Team Leader, Technical Lead and Chief Editor</i></h5>
+  <p>Javier is the technical lead in this project taking the implementations of all members and putting them into one application. Also making architectural decisions after listening to all possible solutions and implementations. He is also a chief editor, so he has been in charge of all the videos that have been made for this project and also making all the manuals and a part of the website’s content as well as proof reading it.</p>
+  <ul>
+    <li>Front-end and User interface</li>
+    <li>Videos</li>
+    <li>Website content</li>
+    <li>User and System manuals</li>
+    <li>Multi-threading</li>
+    <li>Extractor class for auto adding code</li>
+    <li>Bridge class which acts at a monitor</li>
+  </ul>
+  </div>
 </div>
 <footer class="container-fluid text-center">
   <div class="container">
     <div class="uclimage">
   <a href="http://ucl.ac.uk"><img id="ucl" src="images/ucl-logo.png"></a>
 </div>
-  <p>Copyright © 2016 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
+  <p>Copyright © 2017 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
 </div>
 </footer>
 

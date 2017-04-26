@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LSCK</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="main.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+  <style>
+
+    div.uclimage{
+      padding-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="projectindex.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Background<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="background.html">Introduction</a></li>
+                <li><a href="irequirements.html">Requirements and Use Cases</a></li>
+                <li><a href="frequirements.html">Completed Requirements</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="prototyping.html">Prototyping</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Architecture<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="achievements.html">Achievements and Implementations</a></li>
+                <li><a href="technologies.html">Technologies Used</a></li>
+                <li><a href="references.html">Reference Materials</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progress<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="progress.html">Overall</a></li>
+                <li><a href="devplan.html">Developement Plan</a></li>
+                <li><a href="futuredevelopments.html">Future Developements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Testing<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="testing.html">Testing Methods</a></li>
+                <li><a href="results.html">Testing</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav><div class="content">
+<div class="container">
+  <h1>Test Cases</h1><br>
+  <p class="message">For this page we will discuss about some of the test cases that we used to test the extension.</p>
+  <p></p>
+  <h3>Manual Testing</h3>
+  <p>The following test cases for the higher level features that we couldn't automate the testing.</p>
+  <table class="table table-condensed">
+  <tbody>
+      <tr style="background-color:#ccc">
+         <td colspan="1" rowspan="1">
+            <p><span>Test Case</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+            <p><span>Input Type</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+            <p><span>Expected Result</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+            <p><span>Actual Result</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+            <p><span>Pass/Fail</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Previewing site</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Site previews correctly</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Adding snippet</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Snippet added to a created section</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Deleting snippet</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Snippet deleted from structure window</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Adding section</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Section added from Code tab</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Delete section</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Section deleted from structure</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Adding file</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>File added from file tab to created section</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Deleteing file</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>File deleted from structure window</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Adding page</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Page added from Details tab</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Delete page</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Page deleted from Details tab</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Commenting for auto add</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Files commented for auto add function</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Auto add snippets</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Snippets added automatically</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Uploading site (password)</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Site uploaded to address with password</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Uploading site (PEM)</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Site uploaded to address with PEM</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Modifying ace theme</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Theme in website modified from Details tab</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Modifying snippet order</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Order of snippets modified from structure</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Modifying section order</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Order of sections modified from structure</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Displaying PDF</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>PDF displayed correctly in site</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Displaying images</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Images displayed correctly in site</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Displaying all code correctly</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Code displays correctly in site</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Customizing navbar</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Colors change for navbar</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Customizing web fonts and colors</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Colors and fonts change for site</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Deleting index page</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Abnormal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Does not allow page to be deleted</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Using with closed solution</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Does not allow usage of extension</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>As expected</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Pass</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Using with changed solution</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>UI updates correctly</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Not updated</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Fail</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Add file without selected section</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Error message shown</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Crash</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Fail</span></p>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="1" rowspan="1">
+            <p><span>Upload wrong details</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Normal</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Error message shown</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Crash</span></p>
+         </td>
+         <td colspan="1" rowspan="1">
+              <p><span>Fail</span></p>
+         </td>
+      </tr>
+   </tbody>
+ </table>
+</div>
+</div>
+<footer class="container-fluid text-center">
+  <div class="container">
+    <div class="uclimage">
+  <a href="http://ucl.ac.uk"><img id="ucl" src="images/ucl-logo.png"></a>
+</div>
+  <p>Copyright © 2017 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>

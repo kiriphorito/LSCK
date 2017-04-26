@@ -8,6 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="main.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
   <style>
 
     div.uclimage{
@@ -17,38 +19,138 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="projectindex.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Background<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="background.html">Introduction</a></li>
+                <li><a href="irequirements.html">Requirements and Use Cases</a></li>
+                <li><a href="frequirements.html">Completed Requirements</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="prototyping.html">Prototyping</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Architecture<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="achievements.html">Achievements and Implementations</a></li>
+                <li><a href="technologies.html">Technologies Used</a></li>
+                <li><a href="references.html">Reference Materials</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progress<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="progress.html">Overall</a></li>
+                <li><a href="devplan.html">Developement Plan</a></li>
+                <li><a href="futuredevelopments.html">Future Developements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Testing<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="testing.html">Testing Methods</a></li>
+                <li><a href="results.html">Testing</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav pull-right">
-        <li><a href="background.html">Background</a></li>
-        <li><a href="requirements.html">Requirements</a></li>
-        <li class="active"><a href="research.html">Research</a></li>
-        <li><a href="prototyping.html">Prototyping</a></li>
-        <li><a href="testing.html">Testing</a></li>
-        <li><a href="progress.html">Progress</a></li>
-        <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
-      </ul>
-      <div>
-    </div>
-  </div>
-</nav>
+  </nav>
 <div class="content">
 <div class="container">
   <h1>Research</h1><br>
-  <p class="message">In this page we will talk about our client and the task that they have assigned us.</p>
-  <h3>Initial Requirements</h3>
-  <p>The clients for this project are the Visual Studio team from Microsoft and Dean Mohamedally. The Visual Studio Team at Microsoft produces a variety of software and services for developers around the world to use such as Visual Studio Team Services (VSTS), Visual Studio Code and Visual Studio IDE. We are developing an extension for Visual Studio IDE.</p>
+  <p class="message">In this page we will talk about the technologies that we are using and why?</p>
+  <h3>Visual Studio Extension</h3>
+  <p>One of the very first things we had to research was how to develop a Visual Studio extension and already we as a team need to make a decision. Should the extension be developed in C# or Visual Basic. With C#, neither of us has used it before, but with VB one of the members have.</p>
+  <center><img style="padding-right: 10px;" src="images/csharp.png"><img style="padding-left: 10px;"src="images/vb.png"></center>
+  <p>After research around extensions and the two languages, we came to the conclusion that C# would be the better option for the following reasons:</p>
+    <ul>
+      <li>Many of the open source code which we can use are in C#</li>
+      <li>It interfaces with more APIs in comparisons to Visual Basics</li>
+      <li>Some operations in C# are faster</li>
+      <li>C# is similar to other C languages and we studied C last year</li>
+    </ul>
+    <p>There are also a larger number of packages available to use for C# than VB. Some that we are looking into are Json.NET and SSH.NET.</p>
+  </p>
+  <h3>Data Model</h3>
+  <div class="jumbotronHalfThumbnail">
+    <center><img src="images/datamodel.png"></img></center>
+  </div>
+  <p>For the back-end of the extension, we needed a way to store data externally easily and be able to read it back into the extension. At first we considered just using a plain txt file with delimiters but it was apparently that this was both inefficient and inconvenient. So we decided to use a pre-existing data structure or easy way to make a data strucutre. The two we considered are XML or Extensible Markup Language or JSON JavaScript Object Notation.</p>
+  <p>Both of them are similar in terms of:</p>
+  <ul>
+    <li>Being readable in plain text form</li>
+    <li>Being hierarchical</li>
+    <li>Having APIs for a variety of different languages and so can be used across programming platforms</li>
+  </ul>
+  <p>But there are reasons why JSON is better than XML. There are as follows:</p>
+  <ul>
+    <li>JSON is quicker read and write to</li>
+    <li>It is also shorter</li>
+    <li>Supports arrays</li>
+    <li>Easier to parse than XML</li>
+  </ul>
+  <p>Also a member of the team knows and understands the JSON data structure. Because of this and the points above, we decided to use JSON for the data structure.</p>
+  <h3>Front-end Framework</h3>
+  <div class="jumbotronHalfThumbnail">
+    <center><img src="images/frontend.png"></img></center>
+  </div>
+  <p>Moving onto the website portfolio, it was decided that we would use HTML and CSS for the base of the website. What is next to be considered is potentially which front-end framework should be used. There are a number of them available to use but the three we considered were:</p>
+  <ul>
+    <li>Bootstrap</li>
+    <li>Foundation</li>
+    <li>Skeleton</li>
+  </ul>
+  <p>First up is Skeleton. The framework is very simple and lightweight and you'd have to spend a lot of time in developement if you want to create a good looking website. But the website we hoped to generate is simple so Skeleton became a potential framework to use.</p>
+  <p>Foundation and Bootstrap on the other hand are loaded with examples and loads of features. Both are considered to be very good and popular among developers. Because of this there is also a lot of support and help online for both frameworks unlike Skeleton. But is it said that Bootstrap is better when it comes to cross platform developement. Also both members of the team have used Bootstrap before and have experience in it.</p>
+  <p>As a result of there being more support, features and that members have used this framework before, we selected to used Bootstrap.</p>
+  <h3>Hosting Operating System</h3>
+  <div class="jumbotronHalfThumbnail">
+    <center><img src="images/hostingos.png"></img></center>
+  </div>
+  <p>Next up is the choice of which operating system to support. This project being a Microsoft project, we had to consider Microsoft hosting which accounts for almost a third of the hosting on the internet. But there is also the LAMP stack or Linux hosting which accounts for almost two thirds of the market share.</p>
+  <p>There are not really any technologies that are cross platform between the two and that goes for web hosting. Apach and NGINX are all Linux based.</p>
+  <p>Unfortunately, one team member is experienced in setting up a LAMP stack. And no-one has used Microsoft hosting before. So due to lack of experience, lower market share, and generally more expensive than Linux (as Linux is open source), we decided to use Linux. It wasn’t a requirement to use Microsoft hosting.</p>
+  <p>Although support for Microsoft hosting could be a potential future implementation.</p>
+  <h3>Hosting Software</h3>
+  <div class="jumbotronHalfThumbnail">
+    <center><img src="images/hostingsoftware.png"></img></center>
+  </div>
+  <p>With the fact that we are using Linux, we now need to decide which web hosting software we want to use. There are two major competitors in this market. Apache and NGINX. Both are very popular on the internet with Apache losing market share to NGINX. Both have their pros and cons and are neck and neck with each other.</p>
+  <p>Apache is older and more developed with a lot of support and experienced users. It also supports dynamic content natively like PHP and doesn’t need to be processed externally. And has a lot of support of interpreted languages. But cannot deal with many concurrent requests very well as it slows down under load.</p>
+  <p>NGINX is the exact opposite. Younger software after being released in 2010 rather than the 1990s. Has to outsource dynamic content to another piece of software. But can deal with a lot of concurrent requests meaning performance can be estimated and it works as should with many users. It is also very lightweight and less resource intense compared to Apache.</p>
+  <p>Again like with all the other decision, one member of the team has experience with Apache, and with the potential to use PHP in the future Apache was the software of choice.</p>
   <hr>
-  <h3>Gathering Requirements</h3>
-  <p>Imagine there is a new start-up that wishes to showcase their new project with a few snippets of code and paraphrasing other sections. They could have to take time out of their schedule to first trawl through their code base to find the snippets of code, add comments or a paraphrase and with this develop a website that include this along with images and videos. </p>
-  <p>This time could have been spent further developing the project and an extension could have generated the website. All you had to do was link the files and add tags to the code that you wanted to include as a snippet. This is what we want to investigate and achieve.</p>
-  <hr>
-  <h3>Negotiated Requirements</h3>
+  <h3>GitHub</h3>
+  <div class="jumbotronHalfThumbnail">
+    <center><img src="images/gitrepo.png"></img></center>
+  </div>
+  <p>We made use of GitHub as our git repository to commit our changes to the project and create our repository. This is due to the fact that the team had worked together before using the platform, and had no previous issues with it. There are others like GitLab and BitBucket, but both members of the team are confortable with GitHub.</p>
+  <h3>Atom</h3>
+  <p>We used atom to write the html and css for the website. Both members of the team used this text-editing software as their standard coding tool, so we picked it over other choices like sublime text.</p>
+  <h3>Photoshop</h3>
+  <p>We chose to use photoshop to create mockups of what the extension would eventually look like. Photoshop was picked over other image editing software, as it is very intuitive and we had prior experience with it.</p>
+  <h3>draw.io</h3>
+  <p>To develop our flow diagram we used draw.io, a very useful software for designing any kind of diagrams, specially UML and flow charts.</p>
+  <h3>Slack</h3>
+  <p>Slack was used as a means of communication for the team. All important news and changes to the project were notified through here, and it has proven very useful up until now.</p>
 </div>
 </div>
 <footer class="container-fluid text-center">
@@ -56,7 +158,7 @@
     <div class="uclimage">
       <a href="http://ucl.ac.uk"><img id="ucl" src="images/ucl-logo.png"></a>
     </div>
-    <p>Copyright © 2016 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
+    <p>Copyright © 2017 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
   </div>
 </footer>
 </body>

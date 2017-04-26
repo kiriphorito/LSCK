@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LSCK</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="main.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+  <style>
+
+    td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="projectindex.html"><span><img style="max-height:35px; padding-right:10px; margin-top: -7px" src="images/lscklogo.png"></span>LSCK</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Background<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="background.html">Introduction</a></li>
+                <li><a href="irequirements.html">Requirements and Use Cases</a></li>
+                <li><a href="frequirements.html">Completed Requirements</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="prototyping.html">Prototyping</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Architecture<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="achievements.html">Achievements and Implementations</a></li>
+                <li><a href="technologies.html">Technologies Used</a></li>
+                <li><a href="references.html">Reference Materials</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progress<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="progress.html">Overall</a></li>
+                <li><a href="devplan.html">Developement Plan</a></li>
+                <li><a href="futuredevelopments.html">Future Developements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Testing<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="testing.html">Testing Methods</a></li>
+                <li><a href="results.html">Testing</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/kiriphorito/COMP204P">Git</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+<div class="content">
+<div class="container">
+  <h1>Development Plan</h1>
+  <h3>Iteration 1 – Creating the Back End</h3>
+  <p>After researching and discussing, each team member came up with two different approaches. Both only doing simple tasks so that we don’t spend too much time on an approach that we were no longer going to use. After some discussion we decided to use the FJController, JSON and FileHandler approach. We continued down this path using unit testing to see if the system works the way we thought it should. The other approach as a text file for each language with certain delimiters representing a certain detail.</p>
+  <br>
+  <div class="jumbotronHalfThumbnail">
+    <center><img src="images/blockdiagramcm.jpg"></img></center>
+  </div>
+  <h3>Iteration 2 – Development of WebsiteGenerator Class</h3>
+  <p>With the back-end now completed we can now move onto the WebsiteGenerator class which would use the back-end to get the data needed to create the portfolio. First we made the website example what of what we hope it would look like and asked colleagues for their opinions and feedback.</p>
+  <div class="jumbotronThumbnail">
+    <center><img src="images/websitedemo.png"></img></center>
+  </div>
+  <h3>Iteration 3 – Creating the Front End</h3>
+  <p>With the back-end and WebsiteGenerator class now finished we started to develop the front-end of the extension. Using the designs and initial prototype from the first term we started to develop the user interface. It went through several iterations after asking colleagues for their opinions on the extension.</p>
+  <div class="jumbotronHalfThumbnail">
+    <center><img src="images/earlyui.png"></img></center>
+  </div>
+  <center><p>This was the initial user interface</p></center>
+  <br>
+  <div class="jumbotronHalfThumbnail">
+    <center><img src="images/prototype1.png"></img></center>
+  </div>
+  <center><p>After some iterations the user interface became this</p></center>
+  <h3>Iteration 4 – Development of Extractor and SSH Classes</h3>
+  <p>We started to develop the Extractor and SSH classes in parallel since they are relatively small classes. These would be the last set of classes for the feature set.</p>
+  <h3>Iteration 5 – Optimisations for Visual Studio</h3>
+  <p>During this phase, we mainly did optimisations on the extension such as using threading to enhance the user experience so that Visual Studio wouldn’t hang or freeze when doing long tasks such as uploading a website or generating a preview. Also bug fixing is certain situations when the extension is being used such as opening LSCK when no solution is open. Or opening up a new solution doesn’t reset the JSON data.</p>
+  <h3>Iteration 6 – User Interface Enhancements</h3>
+  <p>This is the last phase for programming and it was just to enhance the user interface to be more colour co-ordinated with themes in Visual Studio as well as layouts.</p>
+  <div class="jumbotronThumbnail">
+    <center><img src="images/finalui.png"></img></center>
+  </div>
+
+</div>
+
+</div>
+<footer class="container-fluid text-center">
+  <div class="container">
+    <div class="uclimage">
+  <a href="http://ucl.ac.uk"><img id="ucl" src="images/ucl-logo.png"></a>
+</div>
+  <p>Copyright © 2017 Sam Pham, Javier Pascual Mesa. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>
